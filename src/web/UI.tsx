@@ -4,6 +4,7 @@ import {MouseEvent} from 'react'
 
 import MessageBox from "./MessageBox";
 import EthersContext from "./EthersContext";
+import FuelApp from "./FuelApp";
 
 function UI() {
 
@@ -85,7 +86,7 @@ function UI() {
         )}
 
         <EthersContext />
-        
+        <FuelApp />
     </div>)
 }
 
