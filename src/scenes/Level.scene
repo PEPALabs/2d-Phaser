@@ -48,7 +48,7 @@
             "label": "text",
             "components": [],
             "x": 640,
-            "y": 458,
+            "y": 468,
             "originX": 0.5,
             "originY": 0.5,
             "text": "Phaser 3 + Phaser Editor 2D\nWebpack + TypeScript",
@@ -56,9 +56,143 @@
             "fontFamily": "Arial",
             "fontSize": "3em",
             "list": []
+        },
+        {
+            "type": "Container",
+            "id": "51ecf151-d86e-485c-83f7-642c0b325a90",
+            "label": "container_1",
+            "components": [],
+            "y": -3,
+            "list": [
+                {
+                    "type": "TilemapLayer",
+                    "id": "98efa328-24cf-4313-b02c-beb91657f46a",
+                    "label": "land",
+                    "components": [],
+                    "scaleX": 0.3,
+                    "scaleY": 0.3,
+                    "list": [],
+                    "tilemapId": "1bd77e54-d669-43c3-b3d4-766c25eabc5c",
+                    "layerName": "Land",
+                    "tilesets": [
+                        "bundle3",
+                        "bundle2",
+                        "AutoMap Rules"
+                    ]
+                },
+                {
+                    "type": "TilemapLayer",
+                    "id": "720196e0-d671-40fc-a898-d0b27f898ffb",
+                    "label": "deco_1",
+                    "components": [],
+                    "scaleX": 0.3,
+                    "scaleY": 0.3,
+                    "list": [],
+                    "tilemapId": "7f4ee8dd-4c12-4a6d-97aa-281e49103f60",
+                    "layerName": "Deco",
+                    "tilesets": [
+                        "bundle3",
+                        "bundle2",
+                        "AutoMap Rules"
+                    ]
+                },
+                {
+                    "type": "TilemapLayer",
+                    "id": "244c819a-917a-487a-9b04-85bfe2e72061",
+                    "label": "house_1",
+                    "components": [],
+                    "scaleX": 0.3,
+                    "scaleY": 0.3,
+                    "list": [],
+                    "tilemapId": "200b3430-19bf-4ce8-b58a-51cf9c5fd27e",
+                    "layerName": "House",
+                    "tilesets": [
+                        "bundle3",
+                        "bundle2",
+                        "AutoMap Rules"
+                    ]
+                },
+                {
+                    "type": "TilemapLayer",
+                    "id": "8f491a54-5dd0-40ce-a231-0304c830a53b",
+                    "label": "houseFront_1",
+                    "components": [],
+                    "scaleX": 0.3,
+                    "scaleY": 0.3,
+                    "list": [],
+                    "tilemapId": "200b3430-19bf-4ce8-b58a-51cf9c5fd27e",
+                    "layerName": "HouseFront",
+                    "tilesets": [
+                        "bundle3",
+                        "bundle2",
+                        "AutoMap Rules"
+                    ]
+                }
+            ]
         }
     ],
-    "plainObjects": [],
+    "plainObjects": [
+        {
+            "id": "1bd77e54-d669-43c3-b3d4-766c25eabc5c",
+            "type": "Tilemap",
+            "label": "main1",
+            "key": "main1",
+            "tilesets": [
+                {
+                    "name": "bundle3",
+                    "imageKey": "bundle2"
+                },
+                {
+                    "name": "bundle2",
+                    "imageKey": "bundle1"
+                },
+                {
+                    "name": "AutoMap Rules",
+                    "imageKey": "guapen"
+                }
+            ]
+        },
+        {
+            "id": "7f4ee8dd-4c12-4a6d-97aa-281e49103f60",
+            "type": "Tilemap",
+            "label": "main",
+            "key": "main1",
+            "tilesets": [
+                {
+                    "name": "bundle3",
+                    "imageKey": "bundle1"
+                },
+                {
+                    "name": "bundle2",
+                    "imageKey": "bundle2"
+                },
+                {
+                    "name": "AutoMap Rules",
+                    "imageKey": "guapen"
+                }
+            ]
+        },
+        {
+            "id": "200b3430-19bf-4ce8-b58a-51cf9c5fd27e",
+            "type": "Tilemap",
+            "label": "main_1",
+            "key": "main1",
+            "tilesets": [
+                {
+                    "name": "bundle3",
+                    "imageKey": "bundle2"
+                },
+                {
+                    "name": "bundle2",
+                    "imageKey": "bundle1"
+                },
+                {
+                    "name": "AutoMap Rules",
+                    "imageKey": "guapen"
+                }
+            ]
+        }
+    ],
     "meta": {
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
