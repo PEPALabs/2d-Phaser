@@ -41,6 +41,11 @@
                 "url": "assets/main1.json",
                 "type": "tilemapTiledJSON",
                 "key": "main1"
+            },
+            {
+                "url": "assets/pig.png",
+                "type": "image",
+                "key": "pig"
             }
         ]
     },
