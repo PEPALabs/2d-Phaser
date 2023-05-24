@@ -6,6 +6,9 @@
 import Phaser from "phaser";
 import OnPointerDownScript from "../script-nodes-basic/OnPointerDownScript";
 import PushActionScript from "../script-nodes/PushActionScript";
+import Physics from "../components/Physics";
+import PlayerMovement from "../components/PlayerMovement";
+import ScriptNode from "../script-nodes-basic/ScriptNode";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
@@ -38,6 +41,18 @@ export default class Level extends Phaser.Scene {
 		main_1.addTilesetImage("bundle3", "bundle2");
 		main_1.addTilesetImage("bundle2", "bundle1");
 		main_1.addTilesetImage("AutoMap Rules", "guapen");
+
+		// keyboard_key
+		const keyboard_key = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+
+		// keyboard_key_1
+		const keyboard_key_1 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+
+		// keyboard_key_2
+		const keyboard_key_2 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+
+		// keyboard_key_3
+		const keyboard_key_3 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
 		// fufuSuperDino
 		const fufuSuperDino = this.add.image(640, 257, "FufuSuperDino");
@@ -81,16 +96,42 @@ export default class Level extends Phaser.Scene {
 		houseFront_1.scaleY = 0.3;
 		container_1.add(houseFront_1);
 
+		// pig
+		const pig = this.physics.add.sprite(167, 584, "pig");
+		pig.scaleX = 0.1;
+		pig.scaleY = 0.1;
+		pig.body.setSize(1134, 1572, false);
+
+		// scriptnode_1
+		const scriptnode_1 = new ScriptNode(this);
+
+		// pig (components)
+		new Physics(pig);
+		const pigPlayerMovement = new PlayerMovement(pig);
+		pigPlayerMovement.velocity = 250;
+
+		this.pig = pig;
+		this.scriptnode_1 = scriptnode_1;
 		this.main1 = main1;
 		this.main = main;
 		this.main_1 = main_1;
+		this.keyboard_key = keyboard_key;
+		this.keyboard_key_1 = keyboard_key_1;
+		this.keyboard_key_2 = keyboard_key_2;
+		this.keyboard_key_3 = keyboard_key_3;
 
 		this.events.emit("scene-awake");
 	}
 
+	private pig!: Phaser.Physics.Arcade.Sprite;
+	private scriptnode_1!: ScriptNode;
 	private main1!: Phaser.Tilemaps.Tilemap;
 	private main!: Phaser.Tilemaps.Tilemap;
 	private main_1!: Phaser.Tilemaps.Tilemap;
+	private keyboard_key!: Phaser.Input.Keyboard.Key;
+	private keyboard_key_1!: Phaser.Input.Keyboard.Key;
+	private keyboard_key_2!: Phaser.Input.Keyboard.Key;
+	private keyboard_key_3!: Phaser.Input.Keyboard.Key;
 
 	/* START-USER-CODE */
 

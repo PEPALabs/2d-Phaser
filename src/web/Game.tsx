@@ -38,7 +38,13 @@ function GameRoot() {
                 // autoCenter: Phaser.Scale.CENTER_BOTH,
             },
             // zoom: Phaser.Scale.MAX_ZOOM,
-            scene: [Boot, Preload, Level]
+            scene: [Boot, Preload, Level],
+            physics: {
+                default: "arcade",
+                arcade: {
+                    gravity: { y: 0 },
+                }
+            }
             
         });
     

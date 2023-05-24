@@ -129,6 +129,35 @@
                     ]
                 }
             ]
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "b71d5d03-0649-41d1-901d-4768b499bf92",
+            "label": "pig",
+            "scope": "CLASS",
+            "components": [
+                "Physics",
+                "PlayerMovement"
+            ],
+            "PlayerMovement.velocity": 250,
+            "texture": {
+                "key": "pig"
+            },
+            "x": 167,
+            "y": 584,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "body.width": 1134,
+            "body.height": 1572,
+            "list": []
+        },
+        {
+            "type": "ScriptNode",
+            "id": "2cefa90e-2b37-4f93-8b23-3c0c19a153cc",
+            "label": "scriptnode_1",
+            "scope": "CLASS",
+            "components": [],
+            "list": []
         }
     ],
     "plainObjects": [
@@ -191,6 +220,30 @@
                     "imageKey": "guapen"
                 }
             ]
+        },
+        {
+            "id": "b987e7cf-a6a9-4271-899c-1f2a098e0af3",
+            "type": "Keyboard.Key",
+            "label": "keyboard_key",
+            "keyCode": "W"
+        },
+        {
+            "id": "3f9957ac-3b39-4196-a5df-d854267fa221",
+            "type": "Keyboard.Key",
+            "label": "keyboard_key_1",
+            "keyCode": "A"
+        },
+        {
+            "id": "1ad4b112-fdf2-4632-ae9c-e172a6512e40",
+            "type": "Keyboard.Key",
+            "label": "keyboard_key_2",
+            "keyCode": "S"
+        },
+        {
+            "id": "c4d86dd7-b49c-4b0b-aa4b-d6950c70d790",
+            "type": "Keyboard.Key",
+            "label": "keyboard_key_3",
+            "keyCode": "D"
         }
     ],
     "meta": {

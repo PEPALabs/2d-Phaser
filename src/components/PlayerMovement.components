@@ -1,0 +1,44 @@
+{
+    "components": [
+        {
+            "name": "PlayerMovement",
+            "baseClass": "",
+            "gameObjectType": "Phaser.Physics.Arcade.Sprite",
+            "properties": [
+                {
+                    "name": "speed",
+                    "label": "speed",
+                    "tooltip": "speed",
+                    "defValue": 2,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                },
+                {
+                    "name": "velocity",
+                    "label": "velocity",
+                    "tooltip": "velocity",
+                    "defValue": 50,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Physics",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Image",
+            "properties": []
+        }
+    ],
+    "meta": {
+        "app": "Phaser Editor 2D - User Components Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.UserComponents"
+    },
+    "outputLang": "TYPE_SCRIPT",
+    "exportClass": true
+}
