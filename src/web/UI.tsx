@@ -5,16 +5,35 @@ import {MouseEvent} from 'react'
 import MessageBox from "./MessageBox";
 import EthersContext from "./EthersContext";
 import FuelApp from "./FuelApp";
+import SigninBox from './Signin';
 
 function UI() {
 
     const [message, setMessage] = useState('');
     const [showDialogBox, setShowDialogBox] = useState(false);
+    const [showLogin, setShowLogin] = useState(true);
+    const [login, setLogin] = useState(false);
+    const [username, setUsername] = useState('');
 
     const dialogBoxEventListener = ({ detail }:any) => {
         setMessage(detail.message);
         setShowDialogBox(true);
     };
+
+    // listen for login event
+    const loginEventListener = ({ detail }:any) => {
+        setShowLogin(false);
+    };
+    // todo:  pass callback to login page
+    const loginDone = useCallback(( {login, name} :any) => {
+        const customEvent = new CustomEvent('end-login');
+        window.dispatchEvent(customEvent);
+        // setShowLogin(false);
+        setLogin(login);
+        if(login){
+            setUsername(name);
+        }
+    }, ["no idea"]);
 
     const dislogDone = useCallback(() => {
         const customEvent = new CustomEvent('end-dialog');
@@ -33,9 +52,11 @@ function UI() {
     useEffect(() => {
 
         window.addEventListener('start-dialog', dialogBoxEventListener);
+        window.addEventListener('end-login', loginEventListener);
 
         return () => {
             window.removeEventListener('start-dialog', dialogBoxEventListener);
+            window.removeEventListener('end-login', loginEventListener);
         };
     });
 
@@ -82,6 +103,13 @@ function UI() {
             <MessageBox
                 message={message}
                 onDone={dislogDone}
+            />
+        )}
+
+        {showLogin && (
+            <SigninBox
+                message={message}
+                Signin={loginDone}
             />
         )}
 
