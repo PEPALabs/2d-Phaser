@@ -9,8 +9,13 @@ const SigninBox:React.FC<SigninProps> = ({ message, Signin }) => {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    // TODO: add connect wallet to button here
+
+    // TODO: solve input speed slow issue
 
     return (
+    <div className="w-full h-full flex  justify-center items-center 
+    bg-stone-100 backdrop-brightness-75">
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
             <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
                 <h1 className="text-3xl font-semibold text-center text-purple-700 underline">
@@ -68,6 +73,7 @@ const SigninBox:React.FC<SigninProps> = ({ message, Signin }) => {
                 </p>
             </div>
         </div>
+    </div>
     );
 }
 

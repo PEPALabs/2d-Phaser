@@ -10,7 +10,8 @@ import GameRoot from "./Game";
 function App(){
     const [messages, setMessage] = useState('');
     const [showDialogBox, setShowDialogBox] = useState(false);
-
+    const [showLogin, setShowLogin] = useState(true);
+    const [login, setLogin] = useState(false);
     
 
     
