@@ -5,7 +5,8 @@
 
 /* START-USER-IMPORTS */
 import { Physics } from 'phaser';
-import { publish} from '../event';
+// import { publish} from '../event';
+import PubSub from 'pubsub-js';
 /* END-USER-IMPORTS */
 
 export default class PlayerMovement {
@@ -72,11 +73,11 @@ export default class PlayerMovement {
 		// todo: trigger key on collision
 		else if (this.cursors.space.isDown) {
 			// dispatch events
-			publish('player:shop',{detail:true});
+			PubSub.publish('player:shop',"hello");
 		}
 		else if (this.cursors.shift.isDown) {
 			// dispatch events
-			publish('player:close',{detail:false});
+			PubSub.publish('player:close',"close");
 		}
 		else {
 			this.gameObject.setVelocity(0,0);

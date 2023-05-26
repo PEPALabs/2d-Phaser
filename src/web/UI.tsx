@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
 import { useState, useEffect, useCallback } from 'react';
 import {MouseEvent} from 'react'
+import PubSub from 'pubsub-js'
 
 import MessageBox from "./MessageBox";
 import EthersContext from "./EthersContext";
@@ -18,6 +19,8 @@ function UI() {
     const [login, setLogin] = useState(false);
     const [username, setUsername] = useState('');
 
+    var token:string, token1:string = '';
+
     const dialogBoxEventListener = ({ detail }:any) => {
         setMessage(detail.message);
         setShowDialogBox(true);
@@ -27,10 +30,10 @@ function UI() {
     const loginEventListener = ({ detail }:any) => {
         setShowLogin(false);
     };
-    const shopEventListener = ({ detail }:any) => {
+    const shopEventListener = (msg:string,data:any) => {
         setShowShop(true);
     };
-    const stopEventListener = ({ detail }:any) => {
+    const stopEventListener = (msg:string,data:any) => {
         setShowShop(false);
     };
     // todo:  pass callback to login page
@@ -62,13 +65,17 @@ function UI() {
 
         window.addEventListener('start-dialog', dialogBoxEventListener);
         window.addEventListener('end-login', loginEventListener);
-        window.addEventListener('player:shop', shopEventListener);
-        window.addEventListener('player:close', stopEventListener);
+        token = PubSub.subscribe('player:shop', shopEventListener);
+        token1 = PubSub.subscribe('player:close', stopEventListener);
+        // window.addEventListener('player:shop', shopEventListener);
+        // window.addEventListener('player:close', stopEventListener);
         return () => {
             window.removeEventListener('start-dialog', dialogBoxEventListener);
             window.removeEventListener('end-login', loginEventListener);
-            window.removeEventListener('player:shop', shopEventListener);
-            window.removeEventListener('player:close', stopEventListener);
+            // window.removeEventListener('player:shop', shopEventListener);
+            // window.removeEventListener('player:close', stopEventListener);
+            PubSub.unsubscribe(token);
+            PubSub.unsubscribe(token1);
         };
     });
 
