@@ -7,6 +7,7 @@ import preloadAssetPackUrl from "../../static/assets/preload-asset-pack.json";
 import Preload from "../scenes/Preload";
 
 function GameRoot() {
+    // TODO: add game event dispatcher
     class Boot extends Phaser.Scene {
 
         constructor() {

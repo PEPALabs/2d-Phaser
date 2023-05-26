@@ -1,19 +1,25 @@
 import React, { ReactElement } from 'react'
 import { useState, useEffect, useCallback } from 'react';
 import {MouseEvent} from 'react'
+import PubSub from 'pubsub-js'
 
 import MessageBox from "./MessageBox";
 import EthersContext from "./EthersContext";
 import FuelApp from "./FuelApp";
 import SigninBox from './Signin';
+import Shop from './Shop';
 
 function UI() {
+    // TODO: add game event handler
 
     const [message, setMessage] = useState('');
     const [showDialogBox, setShowDialogBox] = useState(false);
     const [showLogin, setShowLogin] = useState(true);
+    const [showShop, setShowShop] = useState(false);
     const [login, setLogin] = useState(false);
     const [username, setUsername] = useState('');
+
+    var token:string, token1:string = '';
 
     const dialogBoxEventListener = ({ detail }:any) => {
         setMessage(detail.message);
@@ -23,6 +29,12 @@ function UI() {
     // listen for login event
     const loginEventListener = ({ detail }:any) => {
         setShowLogin(false);
+    };
+    const shopEventListener = (msg:string,data:any) => {
+        setShowShop(true);
+    };
+    const stopEventListener = (msg:string,data:any) => {
+        setShowShop(false);
     };
     // todo:  pass callback to login page
     const loginDone = useCallback(( {login, name} :any) => {
@@ -53,10 +65,17 @@ function UI() {
 
         window.addEventListener('start-dialog', dialogBoxEventListener);
         window.addEventListener('end-login', loginEventListener);
-
+        token = PubSub.subscribe('player:shop', shopEventListener);
+        token1 = PubSub.subscribe('player:close', stopEventListener);
+        // window.addEventListener('player:shop', shopEventListener);
+        // window.addEventListener('player:close', stopEventListener);
         return () => {
             window.removeEventListener('start-dialog', dialogBoxEventListener);
             window.removeEventListener('end-login', loginEventListener);
+            // window.removeEventListener('player:shop', shopEventListener);
+            // window.removeEventListener('player:close', stopEventListener);
+            PubSub.unsubscribe(token);
+            PubSub.unsubscribe(token1);
         };
     });
 
@@ -78,7 +97,7 @@ function UI() {
                 <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
                     <button  onMouseDown={(e)=>{e.stopPropagation()}} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-                        Town
+                        {login? username:"Town"}
                     </button>
                 </li>
                 <li>
@@ -112,6 +131,12 @@ function UI() {
                 Signin={loginDone}
             />
         )}
+
+        {showShop && (
+            <Shop message={message}
+            Signin={loginDone}/>
+        )
+        }
 
         <EthersContext />
         <FuelApp />
