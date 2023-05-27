@@ -71,14 +71,14 @@ export default class PlayerMovement {
 		}
 		// todo: move to collision object 
 		// todo: trigger key on collision
-		else if (this.cursors.space.isDown) {
-			// dispatch events
-			PubSub.publish('player:shop',"hello");
-		}
-		else if (this.cursors.shift.isDown) {
-			// dispatch events
-			PubSub.publish('player:close',"close");
-		}
+		// else if (this.cursors.space.isDown) {
+		// 	// dispatch events
+		// 	PubSub.publish('player:shop',"hello");
+		// }
+		// else if (this.cursors.shift.isDown) {
+		// 	// dispatch events
+		// 	PubSub.publish('player:close',"close");
+		// }
 		else {
 			this.gameObject.setVelocity(0,0);
 			// this.gameObject.anims.play('turn');

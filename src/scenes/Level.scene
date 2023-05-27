@@ -156,7 +156,9 @@
             "id": "4107d512-6188-4071-8333-40e02bbba14d",
             "label": "image_1",
             "scope": "CLASS",
-            "components": [],
+            "components": [
+                "OpenShop"
+            ],
             "texture": {
                 "key": "guapen"
             },
