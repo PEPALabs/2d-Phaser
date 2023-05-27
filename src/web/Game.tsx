@@ -50,6 +50,8 @@ function GameRoot() {
         });
     
         game.scene.start("Boot");
+
+        // this.window.game = game;
     
         // function resize() {
         // 	game.scale.setMaxZoom();

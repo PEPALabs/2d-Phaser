@@ -9,6 +9,8 @@ import PushActionScript from "../script-nodes/PushActionScript";
 import Physics from "../components/Physics";
 import PlayerMovement from "../components/PlayerMovement";
 import ScriptNode from "../script-nodes-basic/ScriptNode";
+
+import PubSub from 'pubsub-js';
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
@@ -102,6 +104,15 @@ export default class Level extends Phaser.Scene {
 		pig.scaleY = 0.1;
 		pig.body.setSize(1134, 1572, false);
 
+		// image_1
+		const image_1 = this.physics.add.image(732, 256, "guapen");
+		image_1.body.moves = false;
+		image_1.body.allowGravity = false;
+		image_1.body.allowRotation = false;
+		image_1.body.pushable = false;
+		image_1.body.immovable = true;
+		image_1.body.setSize(208, 240, false);
+
 		// scriptnode_1
 		const scriptnode_1 = new ScriptNode(this);
 
@@ -111,6 +122,7 @@ export default class Level extends Phaser.Scene {
 		pigPlayerMovement.velocity = 250;
 
 		this.pig = pig;
+		this.image_1 = image_1;
 		this.scriptnode_1 = scriptnode_1;
 		this.main1 = main1;
 		this.main = main;
@@ -120,10 +132,25 @@ export default class Level extends Phaser.Scene {
 		this.keyboard_key_2 = keyboard_key_2;
 		this.keyboard_key_3 = keyboard_key_3;
 
+		// custom collision triggers
+		var triggerShop = false;
+		this.physics.add.overlap(pig, image_1, (e) => {
+			triggerShop = true;
+			PubSub.publish("player:shoptext", triggerShop);
+		},()=>{
+			if(triggerShop){
+				triggerShop = false;
+			}
+			else if(!triggerShop){
+				PubSub.publish("player:shoptextstop", triggerShop);
+			}return true;
+		})
+
 		this.events.emit("scene-awake");
 	}
 
 	private pig!: Phaser.Physics.Arcade.Sprite;
+	private image_1!: Phaser.Physics.Arcade.Image;
 	private scriptnode_1!: ScriptNode;
 	private main1!: Phaser.Tilemaps.Tilemap;
 	private main!: Phaser.Tilemaps.Tilemap;

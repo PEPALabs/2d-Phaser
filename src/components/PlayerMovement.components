@@ -32,6 +32,12 @@
             "baseClass": "",
             "gameObjectType": "Phaser.GameObjects.Image",
             "properties": []
+        },
+        {
+            "name": "OpenShop",
+            "baseClass": "",
+            "gameObjectType": "Phaser.Physics.Arcade.Image",
+            "properties": []
         }
     ],
     "meta": {
