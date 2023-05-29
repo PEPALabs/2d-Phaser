@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import { useState, useEffect, useCallback } from 'react';
 import {MouseEvent} from 'react'
 import PubSub from 'pubsub-js'
+import EventDispatcher from "../EventDispatcher"
 
 import MessageBox from "./MessageBox";
 import EthersContext from "./EthersContext";

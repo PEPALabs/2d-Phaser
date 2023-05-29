@@ -137,7 +137,8 @@
             "scope": "CLASS",
             "components": [
                 "Physics",
-                "PlayerMovement"
+                "PlayerMovement",
+                "OpenShop",
             ],
             "PlayerMovement.velocity": 250,
             "texture": {
@@ -149,6 +150,27 @@
             "scaleY": 0.1,
             "body.width": 1134,
             "body.height": 1572,
+            "list": []
+        },
+        {
+            "type": "ArcadeImage",
+            "id": "4107d512-6188-4071-8333-40e02bbba14d",
+            "label": "image_1",
+            "scope": "CLASS",
+            "components": [
+            ],
+            "texture": {
+                "key": "guapen"
+            },
+            "x": 732,
+            "y": 256,
+            "moves": false,
+            "allowGravity": false,
+            "allowRotation": false,
+            "pushable": false,
+            "immovable": true,
+            "body.width": 208,
+            "body.height": 240,
             "list": []
         },
         {
