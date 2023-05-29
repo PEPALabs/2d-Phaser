@@ -142,23 +142,14 @@ export default class Level extends Phaser.Scene {
 		// event dispatcher
 		this.emitter = EventDispatcher.getInstance();
 
-		// set text location
+		// set text initial location
 		this.gameManager.values["shopLocation"] = [image_1.x,image_1.y];
 		
-		// touching
-		this.gameManager.values["touching"] = !pig.body.touching.none;
 		
 
 		// custom collision triggers
-		var triggerShop = false;
 		this.physics.add.overlap(pig, image_1, (e) => {
-			triggerShop = true;
-			this.shopText = true;
-			// this.gameManager.values.shopText = true;
 			this.gameManager.values["shopText"] = true;
-			PubSub.publish("player:shoptext", triggerShop);
-			this.emitter.emit("player:shoptext", triggerShop);
-			// console.log("triggerShop: " + triggerShop);
 		});
 
 		
