@@ -7,6 +7,7 @@
 import { Physics } from 'phaser';
 // import { publish} from '../event';
 import PubSub from 'pubsub-js';
+import GameManager from '../GameManager';
 /* END-USER-IMPORTS */
 
 export default class PlayerMovement {
@@ -43,12 +44,44 @@ export default class PlayerMovement {
 	/* START-USER-CODE */
 	private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
 	private scene: Phaser.Scene;
+	private gameManager: GameManager = GameManager.getInstance();
+	private shopText: Phaser.GameObjects.Text = null;
 	// private gameObject: Phaser.Physics.Arcade.Sprite;
 	// private velocity: number;
 	// Write your code here.
 	update() {
-
+		var touching = !this.gameObject.body.touching.none;
 		const body = this.gameObject.body;
+
+		var proximity = ("shopText" in this.gameManager.values)? this.gameManager.values["shopText"] : false;
+
+		if (proximity && touching) {
+			if (this.shopText == null)
+				this.shopText = this.scene.add.text(this.gameManager.values["shopLocation"][0]-300, this.gameManager.values["shopLocation"][1], 'Press SPACE to open shop', { fontSize: '32px' });
+			
+			var shopOpen = ("shopOpen" in this.gameManager.values)? this.gameManager.values["shopOpen"] : false;
+			if (shopOpen) {
+				PubSub.publish('player:shop',"hello");
+			}
+			else {
+				PubSub.publish('player:close',"close");
+
+			}
+
+			if (this.cursors.space.isDown) {
+				// set shop open status
+				shopOpen = !shopOpen;
+				this.gameManager.values["shopOpen"] = shopOpen;
+			}
+		}
+		else{
+			if (this.shopText != null) {
+				this.shopText.destroy();
+				this.shopText = null;
+			}
+			this.gameManager.values["shopText"] = false;
+			this.gameManager.values["shopOpen"] = false;
+		}
 
 		if (!body){
 			return

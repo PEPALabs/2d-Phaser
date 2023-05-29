@@ -137,7 +137,8 @@
             "scope": "CLASS",
             "components": [
                 "Physics",
-                "PlayerMovement"
+                "PlayerMovement",
+                "OpenShop",
             ],
             "PlayerMovement.velocity": 250,
             "texture": {
@@ -157,7 +158,6 @@
             "label": "image_1",
             "scope": "CLASS",
             "components": [
-                "OpenShop"
             ],
             "texture": {
                 "key": "guapen"

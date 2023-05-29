@@ -48,7 +48,6 @@ function GameRoot() {
             }
             
         });
-    
         game.scene.start("Boot");
 
         // this.window.game = game;

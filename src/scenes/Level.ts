@@ -9,8 +9,11 @@ import PushActionScript from "../script-nodes/PushActionScript";
 import Physics from "../components/Physics";
 import PlayerMovement from "../components/PlayerMovement";
 import ScriptNode from "../script-nodes-basic/ScriptNode";
+import EventDispatcher from "../EventDispatcher";
+import GameManager from "../GameManager";
 
 import PubSub from 'pubsub-js';
+import OpenShop from "../components/OpenShop";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
@@ -105,7 +108,7 @@ export default class Level extends Phaser.Scene {
 		pig.body.setSize(1134, 1572, false);
 
 		// image_1
-		const image_1 = this.physics.add.image(732, 256, "guapen");
+		const image_1 = this.physics.add.sprite(732, 256, "guapen");
 		image_1.body.moves = false;
 		image_1.body.allowGravity = false;
 		image_1.body.allowRotation = false;
@@ -116,9 +119,13 @@ export default class Level extends Phaser.Scene {
 		// scriptnode_1
 		const scriptnode_1 = new ScriptNode(this);
 
+		// image_1 (components)
+		// const image_1OpenShop = new OpenShop(image_1);
+
 		// pig (components)
 		new Physics(pig);
 		const pigPlayerMovement = new PlayerMovement(pig);
+		const pigOpenShop = new OpenShop(pig);
 		pigPlayerMovement.velocity = 250;
 
 		this.pig = pig;
@@ -132,19 +139,30 @@ export default class Level extends Phaser.Scene {
 		this.keyboard_key_2 = keyboard_key_2;
 		this.keyboard_key_3 = keyboard_key_3;
 
+		// event dispatcher
+		this.emitter = EventDispatcher.getInstance();
+
+		// set text location
+		this.gameManager.values["shopLocation"] = [image_1.x,image_1.y];
+		
+		// touching
+		this.gameManager.values["touching"] = !pig.body.touching.none;
+		
+
 		// custom collision triggers
 		var triggerShop = false;
 		this.physics.add.overlap(pig, image_1, (e) => {
 			triggerShop = true;
+			this.shopText = true;
+			// this.gameManager.values.shopText = true;
+			this.gameManager.values["shopText"] = true;
 			PubSub.publish("player:shoptext", triggerShop);
-		},()=>{
-			if(triggerShop){
-				triggerShop = false;
-			}
-			else if(!triggerShop){
-				PubSub.publish("player:shoptextstop", triggerShop);
-			}return true;
-		})
+			this.emitter.emit("player:shoptext", triggerShop);
+			// console.log("triggerShop: " + triggerShop);
+		});
+
+		
+		
 
 		this.events.emit("scene-awake");
 	}
@@ -159,6 +177,9 @@ export default class Level extends Phaser.Scene {
 	private keyboard_key_1!: Phaser.Input.Keyboard.Key;
 	private keyboard_key_2!: Phaser.Input.Keyboard.Key;
 	private keyboard_key_3!: Phaser.Input.Keyboard.Key;
+	private emitter!: Phaser.Events.EventEmitter;
+	public shopText: boolean = false;
+	public gameManager: GameManager = GameManager.getInstance();
 
 	/* START-USER-CODE */
 
