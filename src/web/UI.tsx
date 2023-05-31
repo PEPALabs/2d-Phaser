@@ -118,29 +118,32 @@ function UI() {
             </div>
             </div>
         </nav>
+        <div>
 
-        {showDialogBox && (
-            <MessageBox
-                message={message}
-                onDone={dislogDone}
-            />
-        )}
+        
+            {showDialogBox && (
+                <MessageBox
+                    message={message}
+                    onDone={dislogDone}
+                />
+            )}
 
-        {showLogin && (
-            <SigninBox
-                message={message}
-                Signin={loginDone}
-            />
-        )}
+            {showLogin && (
+                <SigninBox
+                    message={message}
+                    Signin={loginDone}
+                />
+            )}
 
-        {showShop && (
-            <Shop message={message}
-            Signin={loginDone}/>
-        )
-        }
+            {showShop && (
+                <Shop message={message}
+                Signin={loginDone}/>
+            )
+            }
 
-        <EthersContext />
-        <FuelApp />
+            <EthersContext />
+            <FuelApp />
+        </div>
     </div>)
 }
 
