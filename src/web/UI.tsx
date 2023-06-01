@@ -9,6 +9,7 @@ import EthersContext from "./EthersContext";
 import FuelApp from "./FuelApp";
 import SigninBox from './Signin';
 import Shop from './Shop';
+import ShopUI from './ShopUI';
 
 function UI() {
     // TODO: add game event handler
@@ -136,13 +137,16 @@ function UI() {
             )}
 
             {showShop && (
-                <Shop message={message}
-                Signin={loginDone}/>
+                <ShopUI />
+                // <Shop message={message}
+                // Signin={loginDone}/>
             )
             }
 
             <EthersContext />
             <FuelApp />
+
+            
         </div>
     </div>)
 }

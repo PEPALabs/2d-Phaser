@@ -1,6 +1,6 @@
 
 import Phaser from 'phaser';
-
+import { ItemCategoriesType, ItemsMainCategoriesType } from "./data/items.type";
 
 let instance = null;
 
@@ -10,6 +10,9 @@ class GameManager {
         "shopOpen": false,
         "shopLocation" : [0,0],
         "touching":false,
+    };
+    public items: { [key: string]: any[] } = {
+        
     };
     constructor() {
         if (!instance) {

@@ -20,6 +20,7 @@
 			"node_module/phaser/types"
 		],
 		"types": [
+			"node",
 			"phaser",
 			"@fuel-wallet/sdk"
 		]
