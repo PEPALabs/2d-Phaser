@@ -7,7 +7,7 @@ type Props = {
 };
 
 const ShopGrid: React.FC<Props> = ({ items }) => (
-  <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+  <div className="grid grid-cols-6 md:grid-cols-5 gap-4">
     {items.map((item, index) => (
       <Item
         key={`${item.name}-${index}`}
