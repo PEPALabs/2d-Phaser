@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ItemsGrid from "./ItemsGrid";
+import ShopGrid from "./ShopGrid";
 import getItems from "../utils/getItems";
 import ItemsContext from "./ItemsContext";
 import ItemInformation from "./ItemInformation";
@@ -14,7 +15,7 @@ import {
 
 // import linkImage from "./assets/bg.png";
 
-function ShopUI() {
+function InventoryUI() {
   const items = getItems();
   const [itemSelected, setItemSelected] = useState(0);
   const contextState = {
@@ -54,13 +55,20 @@ function ShopUI() {
       tabIndex={0}
     >
       <div className="container mx-auto flex flex-col xl:flex-row">
-        <div className="w-full xl:w-1/2">
-            {/* expand the context to entire board */}
-          <ItemsContext.Provider value={contextState}>
-            <ItemsGrid items={items} />
-          </ItemsContext.Provider>
-        </div>
+        {/* Left panel */}
+          <div className="w-full xl:w-1/2">
+              {/* expand the context to entire board */}
+            <ItemsContext.Provider value={contextState}>
+              <ShopGrid items={items} />
+            </ItemsContext.Provider>
+          </div>
+
+        {/*Right panel */}
         <div className="flex flex-col items-center self-end xl:items-start w-full xl:w-1/2 my-6 xl:my-0">
+
+        
+          <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+
           {/* <img
             className="absolute hidden xl:block top-0 ml-48 z-0"
             src={linkImage}
@@ -69,11 +77,11 @@ function ShopUI() {
           
 
             {items[itemSelected].name && (
-                <ItemInformation item={items[itemSelected]} />
-          )}
+                  <ItemInformation item={items[itemSelected]} />
+            )}
 
-          {/* Add text component */}
-          <a href="#">    
+            {/* Add text component */}
+            <a href="#">    
                 <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
             </a>
             <div className="p-5">
@@ -93,10 +101,11 @@ function ShopUI() {
                     </a>
                 </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default ShopUI;
+export default InventoryUI;

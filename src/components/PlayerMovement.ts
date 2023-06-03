@@ -50,6 +50,10 @@ export default class PlayerMovement {
 
 	private spaceDown: boolean = false;
 	private spaceActivated: boolean = false;
+	public shopMessage:string = "player:shop";
+	public stopMessage:string = "player:close";
+	public textVariableName:string = "shopText";
+	public openVariableName:string = "shopOpen";
 	// private gameObject: Phaser.Physics.Arcade.Sprite;
 	// private velocity: number;
 	// Write your code here.
@@ -57,7 +61,7 @@ export default class PlayerMovement {
 		// check collide
 		const body = this.gameObject.body;
 		var touching = (!body.touching.none) || body.embedded;
-		this.gameManager.values["shopText"] = touching;
+		this.gameManager.values[this.textVariableName] = touching;
 
 		// check space key
 		this.spaceActivated = this.cursors.space.isDown && !this.spaceDown;
@@ -69,19 +73,18 @@ export default class PlayerMovement {
 			if (this.shopText == null)
 				this.shopText = this.scene.add.text(this.gameManager.values["shopLocation"][0]-300, this.gameManager.values["shopLocation"][1], 'Press SPACE to open shop', { fontSize: '32px' });
 			
-			var shopOpen = ("shopOpen" in this.gameManager.values)? this.gameManager.values["shopOpen"] : false;
+			var shopOpen = (this.openVariableName in this.gameManager.values)? this.gameManager.values[this.openVariableName] : false;
 			if (shopOpen) {
-				PubSub.publish('player:shop',"hello");
+				PubSub.publish(this.shopMessage,"hello");
 			}
 			else {
-				PubSub.publish('player:close',"close");
-
+				PubSub.publish(this.stopMessage,"close");
 			}
 
 			if (this.spaceActivated) {
 				// set shop open status
 				shopOpen = !shopOpen;
-				this.gameManager.values["shopOpen"] = shopOpen;
+				this.gameManager.values[this.openVariableName] = shopOpen;
 			}
 		}
 		else{
@@ -89,9 +92,9 @@ export default class PlayerMovement {
 				this.shopText.destroy();
 				this.shopText = null;
 			}
-			this.gameManager.values["shopText"] = false;
-			this.gameManager.values["shopOpen"] = false;
-			PubSub.publish('player:close',"close");
+			this.gameManager.values[this.textVariableName] = false;
+			this.gameManager.values[this.openVariableName] = false;
+			PubSub.publish(this.stopMessage,"close");
 		}
 
 		// movement
