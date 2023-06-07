@@ -14,6 +14,9 @@ const ShopGrid: React.FC<Props> = ({ items }) => (
         name={item.name}
         icon={item.icon}
         value={item.value}
+        category={item.category}
+        bonus={item.bonus}
+        itemIndex={index}
       />
     ))}
   </div>
