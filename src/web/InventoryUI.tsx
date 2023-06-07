@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ItemsGrid from "./ItemsGrid";
 import ShopGrid from "./ShopGrid";
-import getItems from "../utils/getItems";
+import {getItems, getInventoryItems} from "../utils/getItems";
 import ItemsContext from "./ItemsContext";
 import ItemInformation from "./ItemInformation";
 import {
@@ -13,16 +13,22 @@ import {
   getIndexFromMaxtrixPosition,
 } from "../utils/keyboardNavigation";
 
+import GameManager from "../GameManager";
+
 // import linkImage from "./assets/bg.png";
 
 function InventoryUI() {
+  const gameManager = GameManager.getInstance();
   const items = getItems();
+  gameManager.inventory.push(items[0]);
   const [itemSelected, setItemSelected] = useState(0);
   const contextState = {
     setItemSelected,
     itemSelected,
   };
+  const [inventoryItems, setInventoryItems] = useState(getInventoryItems(gameManager.inventory));
   const inventoryRef = useRef<HTMLDivElement>(null);
+ 
 
   const handleKeyPressed = (event: React.KeyboardEvent) => {
     let newItemSelected = null;
@@ -59,7 +65,7 @@ function InventoryUI() {
           <div className="w-full xl:w-1/2">
               {/* expand the context to entire board */}
             <ItemsContext.Provider value={contextState}>
-              <ShopGrid items={items} />
+              <ShopGrid items={inventoryItems} />
             </ItemsContext.Provider>
           </div>
 
@@ -76,8 +82,8 @@ function InventoryUI() {
           /> */}
           
 
-            {items[itemSelected].name && (
-                  <ItemInformation item={items[itemSelected]} />
+            {inventoryItems[itemSelected].name && (
+                  <ItemInformation item={inventoryItems[itemSelected]} />
             )}
 
             {/* Add text component */}

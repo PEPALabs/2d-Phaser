@@ -13,7 +13,7 @@ const emptyItem = {
   category: ItemCategoriesType.WEAPON,
 };
 
-const getItems = (
+export const getItems = (
   category = ItemsMainCategoriesType.WEAPONS,
   itemsPerPage = 20
 ): ItemType[] => {
@@ -24,4 +24,17 @@ const getItems = (
   return itemsGrid;
 };
 
-export default getItems;
+export const getInventoryItems = (
+    itemList: ItemType[],
+    itemsPerPage = 20
+  ): ItemType[] => {
+    const itemsGrid = itemList.concat(
+      new Array(itemsPerPage - itemList.length).fill(emptyItem)
+    );
+  
+    return itemsGrid;
+  };
+
+
+// export class getItems;
+// export class getInventoryItems;

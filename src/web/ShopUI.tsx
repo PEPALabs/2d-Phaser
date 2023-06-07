@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ItemsGrid from "./ItemsGrid";
-import getItems from "../utils/getItems";
+import {getItems, getInventoryItems} from "../utils/getItems";
 import ItemsContext from "./ItemsContext";
 import ItemInformation from "./ItemInformation";
 import {
