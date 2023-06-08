@@ -14,28 +14,36 @@ type Props = {
     itemIndex: number;
   };
 
-const Item: React.FC<Props> = ({ name, icon, value,category,bonus, itemIndex }) => {
+const Item: React.FC<Props> = ({ name, icon, value,category, bonus, itemIndex }) => {
     const {
         itemSelected,
         setItemSelected,
-        isModalOpened,
-        setIsModalOpened,
+        isModalOpened1,
+        setIsModalOpened1,
         itemsEquipped,
       } = useContext(ItemsContext);
 
-      const handleClick = () => {
-        if (!isModalOpened) {
-            // playAction();
-          }
-        setItemSelected && setItemSelected(itemIndex);
-        setIsModalOpened && setIsModalOpened(!isModalOpened);
-      };
-
+      //   setIsModalOpened(true);
+      //   console.log("itemIndex", isModalOpened, itemSelected);
       const isSelected = itemSelected === itemIndex;
       const isEquipped = itemsEquipped && itemsEquipped[category]?.name === name;
+
+      const handleClick = () => {
+        if (!isModalOpened1) {
+            // playAction();
+          }
+        // setIsModalOpened1(!isModalOpened1);
+        console.log("itemIndex", isModalOpened1, isSelected, itemSelected);
+        setItemSelected && setItemSelected(itemIndex);
+    //   setIsModalOpened(true);
+        // setIsModalOpened1(!isModalOpened1);
+        console.log("itemIndex1", isModalOpened1,  isSelected);
+        setIsModalOpened1 && setIsModalOpened1(!isModalOpened1);
+      };
     return (
         <div
-          onClick={handleClick}
+          onClick={()=>{handleClick();}}
+          onMouseDown={(e)=>{e.stopPropagation()}}
           className={cx(
             {
               "shadow-yellow border-zelda-softYellow border-2": isSelected,
@@ -44,7 +52,7 @@ const Item: React.FC<Props> = ({ name, icon, value,category,bonus, itemIndex }) 
             "relative w-20 h-20 bg-black border border-zelda-darkGray cursor-pointer"
           )}
         >
-            {isSelected && !isModalOpened }
+            {isSelected && !isModalOpened1 }
             {/* {bonus && (
                 <BonusIcon bonusType={bonus} className="absolute top-0 left-0" />
             )} */}
@@ -54,7 +62,8 @@ const Item: React.FC<Props> = ({ name, icon, value,category,bonus, itemIndex }) 
                 {value}
                 </div>
             )}
-            {isModalOpened && isSelected && <Modal />}
+            {/* TODO:fix modal open variable or shortcut */}
+            {isModalOpened1 && isSelected && <Modal />}
         </div>
     );
 };

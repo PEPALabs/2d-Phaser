@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import ItemsGrid from "./ItemsGrid";
-import {getItems, getInventoryItems} from "../utils/getItems";
+import {getItems, getInventoryItems, emptyItem} from "../utils/getItems";
 import ItemsContext from "./ItemsContext";
+import { ItemType } from "../data/items.type";
 import ItemInformation from "./ItemInformation";
 import {
   goUp,
@@ -15,23 +16,60 @@ import {
 // import linkImage from "./assets/bg.png";
 
 function ShopUI() {
-  const items = getItems();
+  const [items, setItems] = useState(getItems());
   const [itemSelected, setItemSelected] = useState(0);
   const [isModalOpened, setIsModalOpened] = useState(false);
+  
+  const [isModalOpened1, setIsModalOpened1] = useState(false);
+  const [itemsEquipped, setItemsEquipped] = useState<{
+    [key: string]: ItemType;
+  }>({});
   const isSelectedItemNotEmpty = items[itemSelected].name !== "";
   const inventoryRef = useRef<HTMLDivElement>(null);
+
   const closeModal = () => {
     setIsModalOpened(false);
     if (inventoryRef.current) {
       inventoryRef.current.focus();
     }
   };
+
+  const equipItem = () => {
+    const itemSelectedData = items[itemSelected];
+    setItemsEquipped({
+      ...itemsEquipped,
+      [itemSelectedData.category]: itemSelectedData,
+    });
+    // playAction();
+  };
+
+  const dropItem = () => {
+    const newItems = [...items];
+    newItems.splice(itemSelected, 1);
+    newItems.push(emptyItem);
+    setItems(newItems);
+    // setItemsPaginated(newItemsPaginated);
+    // playAction();
+  };
+//   setItemSelected: React.Dispatch<React.SetStateAction<number>>;
+//   setIsModalOpened: React.Dispatch<React.SetStateAction<boolean>>;
+//   itemSelected: number;
+//   isModalOpened: boolean;
+//   closeModal: () => void;
+//   equipItem: () => void;
+//   dropItem: () => void;
+//   itemsEquipped:
   const contextState = {
     setItemSelected,
+    setIsModalOpened,
+    setIsModalOpened1,
     itemSelected,
     isModalOpened,
-    setIsModalOpened,
+    isModalOpened1,
     closeModal,
+    equipItem,
+    dropItem,
+    itemsEquipped,
   };
   
 

@@ -5,7 +5,7 @@ import {
   ItemCategoriesType,
 } from "../data/items.type";
 
-const emptyItem = {
+export const emptyItem = {
   name: "",
   icon: "",
   value: "",
@@ -15,7 +15,7 @@ const emptyItem = {
 
 export const getItems = (
   category = ItemsMainCategoriesType.WEAPONS,
-  itemsPerPage = 20
+  itemsPerPage = 19
 ): ItemType[] => {
   const itemsGrid = items[category].concat(
     new Array(itemsPerPage - items[category].length).fill(emptyItem)
