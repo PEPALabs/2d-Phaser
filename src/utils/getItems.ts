@@ -5,7 +5,7 @@ import {
   ItemCategoriesType,
 } from "../data/items.type";
 
-const emptyItem = {
+export const emptyItem = {
   name: "",
   icon: "",
   value: "",
@@ -13,9 +13,9 @@ const emptyItem = {
   category: ItemCategoriesType.WEAPON,
 };
 
-const getItems = (
+export const getItems = (
   category = ItemsMainCategoriesType.WEAPONS,
-  itemsPerPage = 20
+  itemsPerPage = 19
 ): ItemType[] => {
   const itemsGrid = items[category].concat(
     new Array(itemsPerPage - items[category].length).fill(emptyItem)
@@ -24,4 +24,17 @@ const getItems = (
   return itemsGrid;
 };
 
-export default getItems;
+export const getInventoryItems = (
+    itemList: ItemType[],
+    itemsPerPage = 20
+  ): ItemType[] => {
+    const itemsGrid = itemList.concat(
+      new Array(itemsPerPage - itemList.length).fill(emptyItem)
+    );
+  
+    return itemsGrid;
+  };
+
+
+// export class getItems;
+// export class getInventoryItems;

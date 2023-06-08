@@ -1,8 +1,9 @@
 
 import Phaser from 'phaser';
 import { ItemCategoriesType, ItemsMainCategoriesType } from "./data/items.type";
+import {ItemType} from './data/items.type';
 
-let instance = null;
+let instance:GameManager = null;
 
 class GameManager {
     public values = {
@@ -11,9 +12,8 @@ class GameManager {
         "shopLocation" : [0,0],
         "touching":false,
     };
-    public items: { [key: string]: any[] } = {
-        
-    };
+    public inventory: ItemType[] = [];
+
     constructor() {
         if (!instance) {
             instance = this;
@@ -26,6 +26,14 @@ class GameManager {
             instance = new GameManager();
         }
         return instance;
+    }
+
+    static addItem(instance:GameManager, item: ItemType) {
+        instance.inventory.push(item);
+    }
+    // todo: handle item with quantity more than 1
+    static removeItem(instance:GameManager, item: ItemType) {
+        instance.inventory = instance.inventory.filter((i) => i.name != item.name);
     }
     //TODO: add save and load function
 }

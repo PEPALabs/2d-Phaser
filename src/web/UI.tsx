@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import {MouseEvent} from 'react'
 import PubSub from 'pubsub-js'
 import EventDispatcher from "../EventDispatcher"
+import InventoryUI from './InventoryUI';
 
 import MessageBox from "./MessageBox";
 import EthersContext from "./EthersContext";
@@ -11,6 +12,8 @@ import SigninBox from './Signin';
 import Shop from './Shop';
 import ShopUI from './ShopUI';
 
+import GameManager from '../GameManager';
+
 function UI() {
     // TODO: add game event handler
 
@@ -18,8 +21,10 @@ function UI() {
     const [showDialogBox, setShowDialogBox] = useState(false);
     const [showLogin, setShowLogin] = useState(true);
     const [showShop, setShowShop] = useState(false);
+    const [showInventory, setShowInventory] = useState(false);
     const [login, setLogin] = useState(false);
     const [username, setUsername] = useState('');
+    const [gameManager, setGameManager] = useState(GameManager.getInstance());
 
     var token:string, token1:string = '';
 
@@ -38,6 +43,22 @@ function UI() {
     const stopEventListener = (msg:string,data:any) => {
         setShowShop(false);
     };
+
+    function escFunction(event:KeyboardEvent){
+        if (event.key === "Escape") {
+            //Do whatever when esc is pressed
+            setShowInventory(false);
+            setShowShop(false);
+            setShowLogin(false);
+
+            gameManager.values["shopText"] = false;
+            gameManager.values["shopOpen"] = false;
+        }
+    }
+
+    function handleInventory(event: MouseEvent<HTMLButtonElement>) {
+        setShowInventory(true);
+    } 
     // todo:  pass callback to login page
     const loginDone = useCallback(( {login, name} :any) => {
         const customEvent = new CustomEvent('end-login');
@@ -69,6 +90,8 @@ function UI() {
         window.addEventListener('end-login', loginEventListener);
         token = PubSub.subscribe('player:shop', shopEventListener);
         token1 = PubSub.subscribe('player:close', stopEventListener);
+
+        document.addEventListener("keydown", escFunction, false);
         // window.addEventListener('player:shop', shopEventListener);
         // window.addEventListener('player:close', stopEventListener);
         return () => {
@@ -78,6 +101,8 @@ function UI() {
             // window.removeEventListener('player:close', stopEventListener);
             PubSub.unsubscribe(token);
             PubSub.unsubscribe(token1);
+
+            document.removeEventListener("keydown", escFunction, false);
         };
     });
 
@@ -98,7 +123,7 @@ function UI() {
             <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
                 <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
-                    <button  onMouseDown={(e)=>{e.stopPropagation()}} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                    <button  onClick={(e)=>{setShowLogin(true);}} onMouseDown={(e)=>{e.stopPropagation()}} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
                         {login? username:"Town"}
                     </button>
                 </li>
@@ -112,7 +137,7 @@ function UI() {
                         Home
                     </button>
                 </li>
-                    <button onMouseDown={(e)=>{e.stopPropagation()}} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                    <button onClick={handleInventory} onMouseDown={(e)=>{e.stopPropagation()}} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
                         Inventory
                     </button>
                 </ul>
@@ -138,6 +163,13 @@ function UI() {
 
             {showShop && (
                 <ShopUI />
+                // <Shop message={message}
+                // Signin={loginDone}/>
+            )
+            }
+
+            {showInventory && (
+                <InventoryUI />
                 // <Shop message={message}
                 // Signin={loginDone}/>
             )

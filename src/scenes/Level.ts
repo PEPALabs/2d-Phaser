@@ -116,6 +116,15 @@ export default class Level extends Phaser.Scene {
 		image_1.body.immovable = true;
 		image_1.body.setSize(208, 240, false);
 
+		// image_2
+		const image_2 = this.physics.add.sprite(932, 456, "guapen");
+		image_2.body.moves = false;
+		image_2.body.allowGravity = false;
+		image_2.body.allowRotation = false;
+		image_2.body.pushable = false;
+		image_2.body.immovable = true;
+		image_2.body.setSize(208, 240, false);
+
 		// scriptnode_1
 		const scriptnode_1 = new ScriptNode(this);
 
@@ -130,6 +139,7 @@ export default class Level extends Phaser.Scene {
 
 		this.pig = pig;
 		this.image_1 = image_1;
+		this.image_2 = image_2;
 		this.scriptnode_1 = scriptnode_1;
 		this.main1 = main1;
 		this.main = main;
@@ -160,6 +170,7 @@ export default class Level extends Phaser.Scene {
 
 	private pig!: Phaser.Physics.Arcade.Sprite;
 	private image_1!: Phaser.Physics.Arcade.Image;
+	private image_2!: Phaser.Physics.Arcade.Image;
 	private scriptnode_1!: ScriptNode;
 	private main1!: Phaser.Tilemaps.Tilemap;
 	private main!: Phaser.Tilemaps.Tilemap;

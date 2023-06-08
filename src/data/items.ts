@@ -23,6 +23,16 @@ export default {
         description:
             "The blade of this sword was made using an ancient power lost to this modern age. Its blade appears only when drawn, and its cutting power surpasses metal swords.",
         },
+        {
+            name: "Random Item",
+            category: ItemCategoriesType.WEAPON,
+            icon:
+                PUBLIC_URL +
+                "assets/guapen.png",
+            value: "1",
+            description:
+                "A random item that is not in the game.",
+            },
     ],
   [ItemsMainCategoriesType.SHIELDS]: [
     {
