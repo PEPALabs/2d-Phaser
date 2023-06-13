@@ -20,7 +20,7 @@ import GameManager from "../GameManager";
 function InventoryUI() {
   const gameManager = GameManager.getInstance();
   const items = getItems();
-  gameManager.inventory.push(items[0]);
+  GameManager.addItem(gameManager, items[0]);
   const [itemSelected, setItemSelected] = useState(0);
   const contextState = {
     setItemSelected,
@@ -51,6 +51,8 @@ function InventoryUI() {
     if (inventoryRef.current) {
       inventoryRef.current.focus();
     }
+    setInventoryItems(getInventoryItems(gameManager.inventory));
+    console.log("inventoryItems", gameManager.inventory);
   }, []);
 
   return (

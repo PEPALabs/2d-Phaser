@@ -13,6 +13,7 @@ class GameManager {
         "touching":false,
     };
     public inventory: ItemType[] = [];
+    public inventoryChanged: boolean = false;
 
     constructor() {
         if (!instance) {
@@ -30,10 +31,12 @@ class GameManager {
 
     static addItem(instance:GameManager, item: ItemType) {
         instance.inventory.push(item);
+        instance.inventoryChanged = true;
     }
     // todo: handle item with quantity more than 1
     static removeItem(instance:GameManager, item: ItemType) {
         instance.inventory = instance.inventory.filter((i) => i.name != item.name);
+        instance.inventoryChanged = true;
     }
     //TODO: add save and load function
 }

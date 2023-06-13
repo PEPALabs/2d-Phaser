@@ -66,7 +66,7 @@ export default class OpenShop {
 		// 	//display text
 		// 	if (this.shopText == null)
 		// 		this.shopText = this.scene.add.text(this.gameObject.x, this.gameObject.y, 'Press SPACE to open shop', { fontSize: '32px' });
-			
+
 		// 	if (this.cursors.space.isDown) {
 		// 		this.shopOpen = !this.shopOpen;
 		// 		if (this.shopOpen) {

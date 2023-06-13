@@ -4,18 +4,34 @@ import cx from "classnames";
 import useClickOutside from "../hooks/useClickOutside";
 import ItemsContext from "./ItemsContext";
 
+import GameManager from "../GameManager";
+import { Game } from "phaser";
+import { getItems } from "../utils/getItems";
 enum ModalOptions {
   EQUIP = 0,
   DROP = 1,
   CANCEL = 2,
+  ADD = 3,
 }
 
 export default () => {
-  const { closeModal, equipItem, dropItem } = useContext(ItemsContext);
+  const { closeModal, equipItem, dropItem, itemSelected } = useContext(ItemsContext);
   const [selectedOption, setSelectedOption] = useState(ModalOptions.EQUIP);
   const modalRef = useRef<HTMLDivElement>(null);
+  const [gameManager, setGameManager] = useState(GameManager.getInstance());
+
+  // TODO: add items to context
+  const [items, setItems] = useState(getItems());
 
   useClickOutside(modalRef, closeModal);
+
+  const addToInventoryAndClose = () => {
+    if (closeModal && gameManager) {
+      GameManager.addItem(gameManager,items[itemSelected]);
+      console.log("added item", items[itemSelected]);
+      closeModal();
+    }
+  }
 
   const equipAndClose = () => {
     if (closeModal && equipItem) {
@@ -98,6 +114,21 @@ export default () => {
           {selectedOption === ModalOptions.DROP}
           Drop
         </div>
+            {/* add item to inventory */}
+        <div
+          className={cx(
+            {
+              "shadow-yellow border-zelda-softYellow border-2":
+                selectedOption === ModalOptions.ADD,
+            },
+            "flex justify-center px-6 py-2 relative border border-zelda-darkGray mb-4"
+          )}
+          onClick={addToInventoryAndClose}
+        >
+          {selectedOption === ModalOptions.ADD}
+          Add
+        </div>
+
         <div
           className={cx(
             {
