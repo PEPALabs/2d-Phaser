@@ -53,9 +53,14 @@ function FuelApp() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <button onClick={connect} onMouseDown={(e)=>{e.stopPropagation()}} className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800">Connect Fuel</button>
-      {isConnected ? <span>Connected with <b>{account}</b></span> : <span>Not connected</span>}
-      <button onClick={disconnect} onMouseDown={(e)=>{e.stopPropagation()}} className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800">Disconnect Fuel</button>
+      {isConnected ? 
+        <button onClick={disconnect} onMouseDown={(e)=>{e.stopPropagation()}} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">{Account.substring(0,6) + "..."}</button>
+        : 
+        <button onClick={connect} onMouseDown={(e)=>{e.stopPropagation()}} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Connect Fuel</button>
+      }
+      {/* <button onClick={connect} onMouseDown={(e)=>{e.stopPropagation()}} className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800">Connect Fuel</button>
+      {/* {isConnected ? <span>Connected</span> : <span>Connect Wallet</span>} */}
+      {/* <button onClick={disconnect} onMouseDown={(e)=>{e.stopPropagation()}} className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800">Disconnect Fuel</button> */} 
     </div>
   );
 }

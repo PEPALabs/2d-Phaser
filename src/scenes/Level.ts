@@ -8,13 +8,12 @@ import OnPointerDownScript from "../script-nodes-basic/OnPointerDownScript";
 import PushActionScript from "../script-nodes/PushActionScript";
 import Physics from "../components/Physics";
 import PlayerMovement from "../components/PlayerMovement";
-import ScriptNode from "../script-nodes-basic/ScriptNode";
+import DisplayPlants from "../components/DisplayPlants";
+import testPrefab from "../script-nodes/testPrefab";
+/* START-USER-IMPORTS */
 import EventDispatcher from "../EventDispatcher";
 import GameManager from "../GameManager";
-
 import PubSub from 'pubsub-js';
-import OpenShop from "../components/OpenShop";
-/* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
 export default class Level extends Phaser.Scene {
@@ -60,7 +59,7 @@ export default class Level extends Phaser.Scene {
 		const keyboard_key_3 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
 		// fufuSuperDino
-		const fufuSuperDino = this.add.image(640, 257, "FufuSuperDino");
+		const fufuSuperDino = this.add.image(1153, 145, "FufuSuperDino");
 
 		// onPointerDownScript
 		const onPointerDownScript = new OnPointerDownScript(fufuSuperDino);
@@ -108,7 +107,7 @@ export default class Level extends Phaser.Scene {
 		pig.body.setSize(1134, 1572, false);
 
 		// image_1
-		const image_1 = this.physics.add.sprite(732, 256, "guapen");
+		const image_1 = this.physics.add.image(732, 256, "guapen");
 		image_1.body.moves = false;
 		image_1.body.allowGravity = false;
 		image_1.body.allowRotation = false;
@@ -116,31 +115,53 @@ export default class Level extends Phaser.Scene {
 		image_1.body.immovable = true;
 		image_1.body.setSize(208, 240, false);
 
-		// image_2
-		const image_2 = this.physics.add.sprite(932, 456, "guapen");
-		image_2.body.moves = false;
-		image_2.body.allowGravity = false;
-		image_2.body.allowRotation = false;
-		image_2.body.pushable = false;
-		image_2.body.immovable = true;
-		image_2.body.setSize(208, 240, false);
+		// container_2
+		const container_2 = this.add.container(0, 0);
+
+		// field1
+		const field1 = this.add.rectangle(850, 1200, 128, 128);
+		container_2.add(field1);
+
+		// field2
+		const field2 = this.add.rectangle(1100, 1200, 128, 128);
+		container_2.add(field2);
+
+		// field3
+		const field3 = this.add.rectangle(850, 1400, 128, 128);
+		container_2.add(field3);
+
+		// field4
+		const field4 = this.add.rectangle(1100, 1400, 128, 128);
+		container_2.add(field4);
+
+		// text_1
+		const text_1 = this.add.text(873, 1077, "", {});
+		text_1.text = "Farm";
+		text_1.setStyle({ "color": "#e68d00ff", "fontSize": "64px", "stroke": "#ffffffff", "shadow.offsetX":2,"shadow.offsetY":2,"shadow.color": "#e55353ff", "shadow.stroke":true,"shadow.fill":true});
+		container_2.add(text_1);
 
 		// scriptnode_1
-		const scriptnode_1 = new ScriptNode(this);
+		new testPrefab(this);
 
-		// image_1 (components)
-		// const image_1OpenShop = new OpenShop(image_1);
+		// lists
+		const list = [field4, field3, field2, field1];
+		const list_1: Array<any> = [];
 
 		// pig (components)
 		new Physics(pig);
 		const pigPlayerMovement = new PlayerMovement(pig);
-		const pigOpenShop = new OpenShop(pig);
 		pigPlayerMovement.velocity = 250;
+
+		// container_2 (components)
+		new DisplayPlants(container_2);
 
 		this.pig = pig;
 		this.image_1 = image_1;
-		this.image_2 = image_2;
-		this.scriptnode_1 = scriptnode_1;
+		this.field1 = field1;
+		this.field2 = field2;
+		this.field3 = field3;
+		this.field4 = field4;
+		this.container_2 = container_2;
 		this.main1 = main1;
 		this.main = main;
 		this.main_1 = main_1;
@@ -148,30 +169,19 @@ export default class Level extends Phaser.Scene {
 		this.keyboard_key_1 = keyboard_key_1;
 		this.keyboard_key_2 = keyboard_key_2;
 		this.keyboard_key_3 = keyboard_key_3;
-
-		// event dispatcher
-		this.emitter = EventDispatcher.getInstance();
-
-		// set text initial location
-		this.gameManager.values["shopLocation"] = [image_1.x,image_1.y];
-		
-		
-
-		// custom collision triggers
-		this.physics.add.overlap(pig, image_1, (e) => {
-			this.gameManager.values["shopText"] = true;
-		});
-
-		
-		
+		this.list = list;
+		this.list_1 = list_1;
 
 		this.events.emit("scene-awake");
 	}
 
 	private pig!: Phaser.Physics.Arcade.Sprite;
 	private image_1!: Phaser.Physics.Arcade.Image;
-	private image_2!: Phaser.Physics.Arcade.Image;
-	private scriptnode_1!: ScriptNode;
+	private field1!: Phaser.GameObjects.Rectangle;
+	private field2!: Phaser.GameObjects.Rectangle;
+	private field3!: Phaser.GameObjects.Rectangle;
+	private field4!: Phaser.GameObjects.Rectangle;
+	private container_2!: Phaser.GameObjects.Container;
 	private main1!: Phaser.Tilemaps.Tilemap;
 	private main!: Phaser.Tilemaps.Tilemap;
 	private main_1!: Phaser.Tilemaps.Tilemap;
@@ -179,17 +189,44 @@ export default class Level extends Phaser.Scene {
 	private keyboard_key_1!: Phaser.Input.Keyboard.Key;
 	private keyboard_key_2!: Phaser.Input.Keyboard.Key;
 	private keyboard_key_3!: Phaser.Input.Keyboard.Key;
-	private emitter!: Phaser.Events.EventEmitter;
-	public shopText: boolean = false;
-	public gameManager: GameManager = GameManager.getInstance();
+	public list!: Phaser.GameObjects.Rectangle[];
+	public list_1!: Array<any>;
 
 	/* START-USER-CODE */
 
 	// Write your code here
+	// private container_2!: Phaser.GameObjects.Container;
+	private emitter!: Phaser.Events.EventEmitter;
+	public updateGroup: Phaser.GameObjects.Group;
+	public shopText: boolean = false;
+	public gameManager: GameManager = GameManager.getInstance();
 
 	create() {
 
 		this.editorCreate();
+
+		// Create Group for updates
+		this.updateGroup = this.add.group([this.pig,this.image_1,this.field4,this.container_2],{runChildUpdate: true});
+		// this.updateGroup.runChildUpdate = true;
+		// this.updateGroup.add(this.pig);
+		// this.updateGroup.add(this.image_1);
+		// this.updateGroup.add(this.container_2);
+
+		// set camera
+		this.cameras.main.startFollow(this.pig);
+
+		// event dispatcher
+		this.emitter = EventDispatcher.getInstance();
+
+		// set text initial location
+		this.gameManager.values["shopLocation"] = [this.image_1.x,this.image_1.y];
+
+		// custom collision triggers
+		this.physics.add.overlap(this.pig, this.image_1, (e) => {
+			this.gameManager.values["shopText"] = true;
+		});
+
+
 	}
 
 	/* END-USER-CODE */

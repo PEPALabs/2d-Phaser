@@ -3,8 +3,9 @@
 
 /* START OF COMPILED CODE */
 
+import Phaser from "phaser";
 /* START-USER-IMPORTS */
-import Phaser,{ Physics } from 'phaser';
+import { Physics } from 'phaser';
 // import { publish} from '../event';
 import PubSub from 'pubsub-js';
 import EventDispatcher from '../EventDispatcher';
@@ -66,7 +67,7 @@ export default class OpenShop {
 		// 	//display text
 		// 	if (this.shopText == null)
 		// 		this.shopText = this.scene.add.text(this.gameObject.x, this.gameObject.y, 'Press SPACE to open shop', { fontSize: '32px' });
-			
+
 		// 	if (this.cursors.space.isDown) {
 		// 		this.shopOpen = !this.shopOpen;
 		// 		if (this.shopOpen) {

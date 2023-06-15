@@ -20,8 +20,8 @@
             "texture": {
                 "key": "FufuSuperDino"
             },
-            "x": 640,
-            "y": 257,
+            "x": 1153,
+            "y": 145,
             "list": [
                 {
                     "prefabId": "a06ed60b-79f1-4444-bf35-89046f71f954",
@@ -137,8 +137,7 @@
             "scope": "CLASS",
             "components": [
                 "Physics",
-                "PlayerMovement",
-                "OpenShop",
+                "PlayerMovement"
             ],
             "PlayerMovement.velocity": 250,
             "texture": {
@@ -157,8 +156,7 @@
             "id": "4107d512-6188-4071-8333-40e02bbba14d",
             "label": "image_1",
             "scope": "CLASS",
-            "components": [
-            ],
+            "components": [],
             "texture": {
                 "key": "guapen"
             },
@@ -174,11 +172,92 @@
             "list": []
         },
         {
-            "type": "ScriptNode",
-            "id": "2cefa90e-2b37-4f93-8b23-3c0c19a153cc",
-            "label": "scriptnode_1",
+            "type": "Container",
+            "id": "2da29669-c68b-49f5-8f56-3d2b980d7fce",
+            "label": "container_2",
             "scope": "CLASS",
+            "components": [
+                "DisplayPlants"
+            ],
+            "list": [
+                {
+                    "type": "Rectangle",
+                    "id": "a5d62151-23c1-4cec-9621-aa70d2adc0f0",
+                    "label": "field1",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 850,
+                    "y": 1200,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "acabb6f4-02da-4776-a0fc-23c62f30c10c",
+                    "label": "field2",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 1100,
+                    "y": 1200,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "c68e1e5d-27f9-4718-8f1e-d7270b265dce",
+                    "label": "field3",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 850,
+                    "y": 1400,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "2d72962a-a0b9-48da-8bf8-8533ad06558e",
+                    "label": "field4",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 1100,
+                    "y": 1400,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Text",
+                    "id": "3a50ea7b-b5e7-4bbc-865c-eccb9b20bbe0",
+                    "label": "text_1",
+                    "components": [],
+                    "x": 873,
+                    "y": 1077,
+                    "text": "Farm",
+                    "fontSize": "64px",
+                    "color": "#e68d00ff",
+                    "stroke": "#ffffffff",
+                    "shadow.offsetX": 2,
+                    "shadow.offsetY": 2,
+                    "shadow.stroke": true,
+                    "shadow.fill": true,
+                    "shadow.color": "#e55353ff",
+                    "list": []
+                }
+            ]
+        },
+        {
+            "prefabId": "46239938-4ed4-4201-8fc6-4c848b0c5a5a",
+            "id": "9632dffa-192c-4076-b1b7-7b79b3ad02c8",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "scriptnode_1",
             "components": [],
+            "nestedPrefabs": [],
             "list": []
         }
     ],
@@ -273,5 +352,23 @@
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
         "version": 3
-    }
+    },
+    "lists": [
+        {
+            "id": "afb671f1-6605-4a5f-b012-3f96dbca4341",
+            "label": "list",
+            "objectIds": [
+                "2d72962a-a0b9-48da-8bf8-8533ad06558e",
+                "c68e1e5d-27f9-4718-8f1e-d7270b265dce",
+                "acabb6f4-02da-4776-a0fc-23c62f30c10c",
+                "a5d62151-23c1-4cec-9621-aa70d2adc0f0"
+            ],
+            "scope": "PUBLIC"
+        },
+        {
+            "id": "b7cbd2f6-b5c2-46e4-8af9-13250f7dafd2",
+            "label": "list_1",
+            "scope": "PUBLIC"
+        }
+    ]
 }

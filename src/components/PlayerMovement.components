@@ -38,14 +38,37 @@
             "baseClass": "",
             "gameObjectType": "Phaser.Physics.Arcade.Sprite",
             "properties": []
+        },
+        {
+            "name": "DisplayPlants",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Container",
+            "properties": [
+                {
+                    "name": "property1",
+                    "label": "Property 1",
+                    "tooltip": "Property 1",
+                    "defValue": 0,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "RandomComponent",
+            "baseClass": "",
+            "gameObjectType": "Phaser.Physics.Arcade.Sprite",
+            "properties": []
         }
     ],
-    
     "meta": {
         "app": "Phaser Editor 2D - User Components Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.UserComponents"
     },
     "outputLang": "TYPE_SCRIPT",
-    "exportClass": true
+    "exportClass": true,
+    "autoImport": true
 }

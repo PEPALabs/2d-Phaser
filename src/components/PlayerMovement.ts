@@ -3,12 +3,13 @@
 
 /* START OF COMPILED CODE */
 
+import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import { Physics } from 'phaser';
 // import { publish} from '../event';
 import PubSub from 'pubsub-js';
 import GameManager from '../GameManager';
-import Phaser from 'phaser';
+// import Phaser from 'phaser';
 /* END-USER-IMPORTS */
 
 export default class PlayerMovement {
@@ -30,7 +31,7 @@ export default class PlayerMovement {
 		//this.keyS = this.scene.input.keyboard.addKey('S');
 		//this.keyD = this.scene.input.keyboard.addKey('D');
 
-		this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
+		this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
 		/* END-USER-CTR-CODE */
 	}
 
@@ -66,13 +67,13 @@ export default class PlayerMovement {
 		// check space key
 		this.spaceActivated = this.cursors.space.isDown && !this.spaceDown;
 		this.spaceDown = this.cursors.space.isDown
-		
+
 		// var proximity = ("shopText" in this.gameManager.values)? this.gameManager.values["shopText"] : false;
 
 		if (touching) {
 			if (this.shopText == null)
 				this.shopText = this.scene.add.text(this.gameManager.values["shopLocation"][0]-300, this.gameManager.values["shopLocation"][1], 'Press SPACE to open shop', { fontSize: '32px' });
-			
+
 			var shopOpen = (this.openVariableName in this.gameManager.values)? this.gameManager.values[this.openVariableName] : false;
 			if (shopOpen) {
 				PubSub.publish(this.shopMessage,"hello");
