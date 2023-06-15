@@ -3,6 +3,7 @@
 
 /* START OF COMPILED CODE */
 
+import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import { GameObjects } from "phaser";
 import GameManager from "../GameManager";
@@ -18,6 +19,11 @@ export default class DisplayPlants {
 		// Write your code here.
 
 		this.fieldLocation = this.gameObject.list;
+		// console.log("update2")
+		const scene = this.gameObject.scene;
+		this.scene = scene;
+		this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
+		// this.gameObject.runChildUpdate = true;
 		/* END-USER-CTR-CODE */
 	}
 
@@ -26,12 +32,13 @@ export default class DisplayPlants {
 	}
 
 	private gameObject: Phaser.GameObjects.Container;
+	public property1: number = 0;
 
 	/* START-USER-CODE */
 
 	// Write your code here.
-	// public plantLocation: [number, number][] = [[850,1200],[1100,1200],[850,1400],[1100,1400]];
-	public plantLocation: [number, number][] = [[0,0],[200,300],[850,1400],[1100,1400]];
+	public plantLocation: [number, number][] = [[850,1200],[1100,1200],[850,1400],[1100,1400]];
+	// public plantLocation: [number, number][] = [[0,0],[200,300],[850,1400],[1100,1400]];
 	public fieldLocation: GameObjects.GameObject[];
 	private scene: Phaser.Scene;
 	private gameManager: GameManager = GameManager.getInstance();
@@ -40,6 +47,7 @@ export default class DisplayPlants {
 	private updateDisplay() {
 		var inventory = this.gameManager.inventory;
 		var inventoryChanged = this.gameManager.inventoryChanged;
+		console.log(inventory);
 		// update plants
 		if( inventoryChanged ){
 			// destroy all plants
@@ -51,7 +59,7 @@ export default class DisplayPlants {
 			}
 			// create new plants
 			for (var i = 0; i < this.plantLocation.length; i++) {
-				if(i<this.plantLocation.length){
+				if(i < inventory.length){
 
 					var plant = this.scene.add.image(this.plantLocation[i][0], this.plantLocation[i][1], 'guapen');
 					this.fieldLocation.push(plant);
@@ -64,9 +72,9 @@ export default class DisplayPlants {
 
 	// look for inventory changes and update display 
 	update() {
-		console.log("update")
+		// console.log("update");
 		if (this.gameManager.inventoryChanged) {
-			console.log("update display");
+			// console.log("update display");
 			this.updateDisplay();
 		}
 	}

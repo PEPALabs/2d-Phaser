@@ -3,8 +3,9 @@
 
 /* START OF COMPILED CODE */
 
+import Phaser from "phaser";
 /* START-USER-IMPORTS */
-import Phaser,{ Physics } from 'phaser';
+import { Physics } from 'phaser';
 // import { publish} from '../event';
 import PubSub from 'pubsub-js';
 import EventDispatcher from '../EventDispatcher';

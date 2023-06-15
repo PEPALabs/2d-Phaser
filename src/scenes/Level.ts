@@ -9,7 +9,7 @@ import PushActionScript from "../script-nodes/PushActionScript";
 import Physics from "../components/Physics";
 import PlayerMovement from "../components/PlayerMovement";
 import DisplayPlants from "../components/DisplayPlants";
-import ScriptNode from "../script-nodes-basic/ScriptNode";
+import testPrefab from "../script-nodes/testPrefab";
 /* START-USER-IMPORTS */
 import EventDispatcher from "../EventDispatcher";
 import GameManager from "../GameManager";
@@ -59,7 +59,7 @@ export default class Level extends Phaser.Scene {
 		const keyboard_key_3 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
 		// fufuSuperDino
-		const fufuSuperDino = this.add.image(640, 257, "FufuSuperDino");
+		const fufuSuperDino = this.add.image(1153, 145, "FufuSuperDino");
 
 		// onPointerDownScript
 		const onPointerDownScript = new OnPointerDownScript(fufuSuperDino);
@@ -118,28 +118,34 @@ export default class Level extends Phaser.Scene {
 		// container_2
 		const container_2 = this.add.container(0, 0);
 
-		// field4
-		const field4 = this.add.rectangle(1100, 1400, 128, 128);
-		field4.isFilled = true;
-		container_2.add(field4);
-
-		// field3
-		const field3 = this.add.rectangle(850, 1400, 128, 128);
-		field3.isFilled = true;
-		container_2.add(field3);
+		// field1
+		const field1 = this.add.rectangle(850, 1200, 128, 128);
+		container_2.add(field1);
 
 		// field2
 		const field2 = this.add.rectangle(1100, 1200, 128, 128);
-		field2.isFilled = true;
 		container_2.add(field2);
 
-		// field1
-		const field1 = this.add.rectangle(850, 1200, 128, 128);
-		field1.isFilled = true;
-		container_2.add(field1);
+		// field3
+		const field3 = this.add.rectangle(850, 1400, 128, 128);
+		container_2.add(field3);
+
+		// field4
+		const field4 = this.add.rectangle(1100, 1400, 128, 128);
+		container_2.add(field4);
+
+		// text_1
+		const text_1 = this.add.text(873, 1077, "", {});
+		text_1.text = "Farm";
+		text_1.setStyle({ "color": "#e68d00ff", "fontSize": "64px", "stroke": "#ffffffff", "shadow.offsetX":2,"shadow.offsetY":2,"shadow.color": "#e55353ff", "shadow.stroke":true,"shadow.fill":true});
+		container_2.add(text_1);
 
 		// scriptnode_1
-		const scriptnode_1 = new ScriptNode(this);
+		new testPrefab(this);
+
+		// lists
+		const list = [field4, field3, field2, field1];
+		const list_1: Array<any> = [];
 
 		// pig (components)
 		new Physics(pig);
@@ -151,7 +157,11 @@ export default class Level extends Phaser.Scene {
 
 		this.pig = pig;
 		this.image_1 = image_1;
-		this.scriptnode_1 = scriptnode_1;
+		this.field1 = field1;
+		this.field2 = field2;
+		this.field3 = field3;
+		this.field4 = field4;
+		this.container_2 = container_2;
 		this.main1 = main1;
 		this.main = main;
 		this.main_1 = main_1;
@@ -159,13 +169,19 @@ export default class Level extends Phaser.Scene {
 		this.keyboard_key_1 = keyboard_key_1;
 		this.keyboard_key_2 = keyboard_key_2;
 		this.keyboard_key_3 = keyboard_key_3;
+		this.list = list;
+		this.list_1 = list_1;
 
 		this.events.emit("scene-awake");
 	}
 
 	private pig!: Phaser.Physics.Arcade.Sprite;
 	private image_1!: Phaser.Physics.Arcade.Image;
-	private scriptnode_1!: ScriptNode;
+	private field1!: Phaser.GameObjects.Rectangle;
+	private field2!: Phaser.GameObjects.Rectangle;
+	private field3!: Phaser.GameObjects.Rectangle;
+	private field4!: Phaser.GameObjects.Rectangle;
+	private container_2!: Phaser.GameObjects.Container;
 	private main1!: Phaser.Tilemaps.Tilemap;
 	private main!: Phaser.Tilemaps.Tilemap;
 	private main_1!: Phaser.Tilemaps.Tilemap;
@@ -173,17 +189,28 @@ export default class Level extends Phaser.Scene {
 	private keyboard_key_1!: Phaser.Input.Keyboard.Key;
 	private keyboard_key_2!: Phaser.Input.Keyboard.Key;
 	private keyboard_key_3!: Phaser.Input.Keyboard.Key;
+	public list!: Phaser.GameObjects.Rectangle[];
+	public list_1!: Array<any>;
 
 	/* START-USER-CODE */
 
 	// Write your code here
+	// private container_2!: Phaser.GameObjects.Container;
 	private emitter!: Phaser.Events.EventEmitter;
+	public updateGroup: Phaser.GameObjects.Group;
 	public shopText: boolean = false;
 	public gameManager: GameManager = GameManager.getInstance();
 
 	create() {
 
 		this.editorCreate();
+
+		// Create Group for updates
+		this.updateGroup = this.add.group([this.pig,this.image_1,this.field4,this.container_2],{runChildUpdate: true});
+		// this.updateGroup.runChildUpdate = true;
+		// this.updateGroup.add(this.pig);
+		// this.updateGroup.add(this.image_1);
+		// this.updateGroup.add(this.container_2);
 
 		// set camera
 		this.cameras.main.startFollow(this.pig);

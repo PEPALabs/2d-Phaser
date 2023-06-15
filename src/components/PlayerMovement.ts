@@ -3,12 +3,13 @@
 
 /* START OF COMPILED CODE */
 
+import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import { Physics } from 'phaser';
 // import { publish} from '../event';
 import PubSub from 'pubsub-js';
 import GameManager from '../GameManager';
-import Phaser from 'phaser';
+// import Phaser from 'phaser';
 /* END-USER-IMPORTS */
 
 export default class PlayerMovement {
@@ -30,7 +31,7 @@ export default class PlayerMovement {
 		//this.keyS = this.scene.input.keyboard.addKey('S');
 		//this.keyD = this.scene.input.keyboard.addKey('D');
 
-		this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
+		this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
 		/* END-USER-CTR-CODE */
 	}
 
