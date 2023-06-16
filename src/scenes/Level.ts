@@ -8,6 +8,7 @@ import OnPointerDownScript from "../script-nodes-basic/OnPointerDownScript";
 import PushActionScript from "../script-nodes/PushActionScript";
 import Physics from "../components/Physics";
 import PlayerMovement from "../components/PlayerMovement";
+import PigAnimation from "../components/PigAnimation";
 import DisplayPlants from "../components/DisplayPlants";
 import testPrefab from "../script-nodes/testPrefab";
 /* START-USER-IMPORTS */
@@ -24,6 +25,11 @@ export default class Level extends Phaser.Scene {
 		/* START-USER-CTR-CODE */
 		// Write your code here.
 		/* END-USER-CTR-CODE */
+	}
+
+	preload(): void {
+
+		this.load.pack("asset-pack", "assets/asset-pack.json");
 	}
 
 	editorCreate(): void {
@@ -151,6 +157,8 @@ export default class Level extends Phaser.Scene {
 		new Physics(pig);
 		const pigPlayerMovement = new PlayerMovement(pig);
 		pigPlayerMovement.velocity = 250;
+		const pigPigAnimation = new PigAnimation(pig);
+		pigPigAnimation.animationKey = "pig-walk";
 
 		// container_2 (components)
 		new DisplayPlants(container_2);
@@ -202,15 +210,20 @@ export default class Level extends Phaser.Scene {
 	public gameManager: GameManager = GameManager.getInstance();
 
 	create() {
-
+		//animation
+		this.load.animation("pig-walk", "assets/animations.json");
+		
+		// this.load.animation("pig-walk", "assets/animations.json");
 		this.editorCreate();
-
+		
 		// Create Group for updates
 		this.updateGroup = this.add.group([this.pig,this.image_1,this.field4,this.container_2],{runChildUpdate: true});
 		// this.updateGroup.runChildUpdate = true;
 		// this.updateGroup.add(this.pig);
 		// this.updateGroup.add(this.image_1);
 		// this.updateGroup.add(this.container_2);
+		
+		
 
 		// set camera
 		this.cameras.main.startFollow(this.pig);

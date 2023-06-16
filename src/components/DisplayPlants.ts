@@ -24,6 +24,11 @@ export default class DisplayPlants {
 		this.scene = scene;
 		this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
 		// this.gameObject.runChildUpdate = true;
+
+		for(var i = 0; i < this.gameObject.list.length; i++){
+			var child = this.gameObject.list[i] as Phaser.GameObjects.Image;
+			this.childLocation.push([child.x, child.y]);
+		}
 		/* END-USER-CTR-CODE */
 	}
 
@@ -38,6 +43,7 @@ export default class DisplayPlants {
 
 	// Write your code here.
 	public plantLocation: [number, number][] = [[850,1200],[1100,1200],[850,1400],[1100,1400]];
+	public childLocation: [number, number][] = [];
 	// public plantLocation: [number, number][] = [[0,0],[200,300],[850,1400],[1100,1400]];
 	public fieldLocation: GameObjects.GameObject[];
 	private scene: Phaser.Scene;
