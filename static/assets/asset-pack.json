@@ -15,6 +15,19 @@
                 "key": "pig-spritesheet"
             },
             {
+                "url": "assets/images/pig-spritesheet1.png",
+                "frameConfig": {
+                    "frameWidth": 796,
+                    "frameHeight": 1082,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "pig-spritesheet1"
+            },
+            {
                 "url": "assets/bundle1.png",
                 "frameConfig": {
                     "frameWidth": 32,
