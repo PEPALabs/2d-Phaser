@@ -14,6 +14,10 @@ import ShopUI from './ShopUI';
 
 import GameManager from '../GameManager';
 
+function Iframe(props) {
+    return (<div dangerouslySetInnerHTML={ {__html:  props.iframe?props.iframe:""}} />);
+  }
+
 function UI() {
     // TODO: add game event handler
 
@@ -22,9 +26,14 @@ function UI() {
     const [showLogin, setShowLogin] = useState(true);
     const [showShop, setShowShop] = useState(false);
     const [showInventory, setShowInventory] = useState(false);
+    const [showUniswap, setShowUniswap] = useState(false);
     const [login, setLogin] = useState(false);
     const [username, setUsername] = useState('');
     const [gameManager, setGameManager] = useState(GameManager.getInstance());
+    
+
+    //uniswap test iframe
+    const iframe = "<iframe src=\"https://app.uniswap.org/#/swap?outputCurrency=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359\" height=\"660px\" width=\"100%\" style=\"border: 0;margin: 0 auto;display: block;border-radius: 10px;max-width: 600px;min-width: 300px;\">";
 
     var token:string, token1:string = '';
 
@@ -125,7 +134,7 @@ function UI() {
                 <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
                     <button  onClick={(e)=>{setShowLogin(true);}} onMouseDown={(e)=>{e.stopPropagation()}} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
-                        {login? username:"Town"}
+                        {login? username:"Login"}
                     </button>
                 </li>
                 <li>
@@ -138,6 +147,11 @@ function UI() {
                         Home
                     </button>
                 </li>
+                <li>
+                    <button onClick={()=>{setShowUniswap(!showUniswap)}} onMouseDown={(e)=>{e.stopPropagation()}} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                        Uniswap
+                    </button>
+                </li>
                     <button onClick={handleInventory} onMouseDown={(e)=>{e.stopPropagation()}} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
                         Inventory
                     </button>
@@ -146,8 +160,12 @@ function UI() {
             </div>
         </nav>
         <div>
-
         
+        {showUniswap && 
+        <Iframe iframe={iframe} /> 
+        }
+
+
             {showDialogBox && (
                 <MessageBox
                     message={message}

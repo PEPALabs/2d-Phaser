@@ -3,6 +3,7 @@
         {
             "key": "walk",
             "type": "frame",
+            "startFrame": 0,
             "frames": [
                 {
                     "key": "pig-spritesheet",
@@ -68,7 +69,13 @@
             "frameRate": 24,
             "skipMissedFrames": true,
             "repeat": -1,
-            "showBeforeDelay": false
+            "showBeforeDelay": false,
+            "duration": 0,
+            "delay": 0,
+            "repeatDelay": 0,
+            "yoyo": false,
+            "showOnStart": false,
+            "hideOnComplete": false
         }
     ],
     "globalTimeScale": 1,

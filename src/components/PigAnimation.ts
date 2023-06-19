@@ -16,8 +16,8 @@ export default class PigAnimation {
 		/* START-USER-CTR-CODE */
 		// Write your code here.
 		this.gameObject.scene.events.once("update", ()=> {
-		
-			this.gameObject.play(this.animationKey);
+			if(Math.abs(this.gameObject.body.velocity.x) >0 && Math.abs(this.gameObject.body.velocity.y) >0)
+				this.gameObject.play(this.animationKey);
 		})
 		/* END-USER-CTR-CODE */
 	}
@@ -32,6 +32,8 @@ export default class PigAnimation {
 	/* START-USER-CODE */
 
 	// Write your code here.
+	update() {
+	}
 
 	/* END-USER-CODE */
 }

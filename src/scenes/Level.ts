@@ -30,6 +30,15 @@ export default class Level extends Phaser.Scene {
 	preload(): void {
 
 		this.load.pack("asset-pack", "assets/asset-pack.json");
+		// this.load.pack("animation-pack", "assets/animation/animation-pack.json");
+		// this.load.aseprite('king-spritesheet', "pig-spritesheet", "assets/animation/animations.json")
+		// this.load.spritesheet('ranger', 'assets/ranger_f.png',
+        // {frameWidth: 32, frameHeight: 36});
+		// this.load.animation("pig-walk", "assets/animations.json");
+		// this.load.spritesheet('pig-spritesheet', '/assets/animation/pig-spritesheet.png', { frameWidth: 128, frameHeight: 128 });
+
+		this.load.animation("walk", "assets/animation/animations.json");
+		
 	}
 
 	editorCreate(): void {
@@ -53,16 +62,16 @@ export default class Level extends Phaser.Scene {
 		main_1.addTilesetImage("AutoMap Rules", "guapen");
 
 		// keyboard_key
-		const keyboard_key = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+		const keyboard_key = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.W,false);
 
 		// keyboard_key_1
-		const keyboard_key_1 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+		const keyboard_key_1 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.A,false);
 
 		// keyboard_key_2
-		const keyboard_key_2 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+		const keyboard_key_2 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.S,false);
 
 		// keyboard_key_3
-		const keyboard_key_3 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+		const keyboard_key_3 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.D,false);
 
 		// fufuSuperDino
 		const fufuSuperDino = this.add.image(1153, 145, "FufuSuperDino");
@@ -158,7 +167,14 @@ export default class Level extends Phaser.Scene {
 		const pigPlayerMovement = new PlayerMovement(pig);
 		pigPlayerMovement.velocity = 250;
 		const pigPigAnimation = new PigAnimation(pig);
-		pigPigAnimation.animationKey = "pig-walk";
+		pigPigAnimation.animationKey = "walk";
+		pig.debugShowVelocity = true;
+
+		// const anim1 = this.add.sprite(0, 0, "pig");
+		// anim1.scaleX = 0.1;
+		// anim1.scaleY = 0.1;
+		// this.animPig = anim1;
+		// anim1.play("walk");
 
 		// container_2 (components)
 		new DisplayPlants(container_2);
@@ -204,6 +220,7 @@ export default class Level extends Phaser.Scene {
 
 	// Write your code here
 	// private container_2!: Phaser.GameObjects.Container;
+	private animPig!: Phaser.GameObjects.Sprite;
 	private emitter!: Phaser.Events.EventEmitter;
 	public updateGroup: Phaser.GameObjects.Group;
 	public shopText: boolean = false;
@@ -211,10 +228,33 @@ export default class Level extends Phaser.Scene {
 
 	create() {
 		//animation
-		this.load.animation("pig-walk", "assets/animations.json");
-		
-		// this.load.animation("pig-walk", "assets/animations.json");
+		// var frameNames4 = this.anims.generateFrameNames('walking', {
+		// 	start: 0, end: 6, zeroPad: 2,
+		// 	prefix: 'animation/pig-spritesheet', suffix: '.png'
+		// 	});
+		// this.load.animation("walk", "assets/animation/animations.json");	
+		// this.anims.createFromAseprite("king-spritesheet");
 		this.editorCreate();
+
+		// var data = this.cache.json.get('walk');
+		// console.log(data);
+		// var king = this.add.sprite(400, 300, "pig-spritesheet");
+		// king.setScale(0.1);
+		// king.anims.play({
+		// 	key: 'walk',
+		// 	repeat: -1
+		// })
+		// this.animPig.anims.play("walk")
+		// this.load.animation("pig-walk", "assets/animations.json");
+		// var king = this.add.sprite(400, 300, "king-spritesheet");
+		// king.anims.play({
+		// 	key: 'walk',
+		// 	repeat: -1
+		// 	})
+			
+		// this.load.animation("pig-walk", "animations");
+		// this.animPig.play("walk");
+		// this.animPig.play("pig-walk");
 		
 		// Create Group for updates
 		this.updateGroup = this.add.group([this.pig,this.image_1,this.field4,this.container_2],{runChildUpdate: true});
