@@ -104,18 +104,21 @@ export default class PlayerMovement {
 		}
 		if (this.cursors.left.isDown) {
 			this.gameObject.setVelocity(-this.velocity,0);
-			// this.gameObject.anims.play('left', true);
+			this.gameObject.anims.play({"key":'walk',"repeat":1}, true);
 		}
 		else if (this.cursors.right.isDown) {
 			this.gameObject.setVelocity(this.velocity,0);
+			this.gameObject.anims.play({"key":'walk',"repeat":1}, true);
 			// this.gameObject.anims.play('right', true);
 		}
 		else if (this.cursors.up.isDown) {
 			this.gameObject.setVelocity(0,-this.velocity);
+			this.gameObject.anims.play({"key":'walk',"repeat":1}, true);
 			// this.gameObject.anims.play('right', true);
 		}
 		else if (this.cursors.down.isDown) {
 			this.gameObject.setVelocity(0,this.velocity);
+			this.gameObject.anims.play({"key":'walk',"repeat":1}, true);
 			// this.gameObject.anims.play('right', true);
 		}
 		// todo: move to collision object 
@@ -130,6 +133,8 @@ export default class PlayerMovement {
 		// }
 		else {
 			this.gameObject.setVelocity(0,0);
+			this.gameObject.anims.play({"key":'walk',"repeat":1}, true);
+			this.gameObject.anims.pause();
 			// this.gameObject.anims.play('turn');
 		}
 	}

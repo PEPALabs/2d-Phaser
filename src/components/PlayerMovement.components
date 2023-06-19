@@ -61,6 +61,23 @@
             "baseClass": "",
             "gameObjectType": "Phaser.Physics.Arcade.Sprite",
             "properties": []
+        },
+        {
+            "name": "PigAnimation",
+            "baseClass": "",
+            "gameObjectType": "Phaser.Physics.Arcade.Sprite",
+            "properties": [
+                {
+                    "name": "animationKey",
+                    "label": "Animation Key",
+                    "tooltip": "The animation to start",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "string"
+                    }
+                }
+            ]
         }
     ],
     "meta": {

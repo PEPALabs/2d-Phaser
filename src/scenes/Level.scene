@@ -4,7 +4,9 @@
     "settings": {
         "exportClass": true,
         "autoImport": true,
-        "preloadPackFiles": [],
+        "preloadPackFiles": [
+            "Proj1/static/assets/asset-pack.json"
+        ],
         "createMethodName": "editorCreate",
         "sceneKey": "Level",
         "compilerOutputLanguage": "TYPE_SCRIPT",
@@ -137,9 +139,11 @@
             "scope": "CLASS",
             "components": [
                 "Physics",
-                "PlayerMovement"
+                "PlayerMovement",
+                "PigAnimation"
             ],
             "PlayerMovement.velocity": 250,
+            "PigAnimation.animationKey": "pig-walk",
             "texture": {
                 "key": "pig"
             },

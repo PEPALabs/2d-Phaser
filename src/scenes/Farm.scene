@@ -1,0 +1,69 @@
+{
+    "id": "c01ca79e-db39-4cbb-8648-2054f50e6a17",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "Farm",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Layer",
+            "id": "2bc73b27-c0db-471a-b7be-6d5122e136a5",
+            "label": "layer_1",
+            "scope": "CLASS",
+            "components": [],
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "5abd520a-5220-4944-a8cd-6d705f74fedd",
+                    "label": "map",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "_composite"
+                    },
+                    "scaleX": 2,
+                    "scaleY": 2,
+                    "originX": 0,
+                    "originY": 0,
+                    "list": []
+                }
+            ]
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "f50e954c-e831-469c-aeb3-bbe66a2f42e1",
+            "label": "player",
+            "scope": "CLASS",
+            "components": [
+                "PlayerMovement",
+                "Physics"
+            ],
+            "texture": {
+                "key": "pig"
+            },
+            "x": 819,
+            "y": 399,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "originX": 0,
+            "originY": 0,
+            "body.width": 1134,
+            "body.height": 1572,
+            "list": []
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 3
+    }
+}
