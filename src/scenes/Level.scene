@@ -4,6 +4,7 @@
     "settings": {
         "exportClass": true,
         "autoImport": true,
+        "preloadMethodName": "preload_all",
         "preloadPackFiles": [
             "Proj1/static/assets/asset-pack.json"
         ],
@@ -251,6 +252,21 @@
                     "list": []
                 }
             ]
+        },
+        {
+            "type": "Rectangle",
+            "id": "f854cf05-489e-4ff2-9d87-0b4255360bbe",
+            "label": "Shop",
+            "scope": "CLASS",
+            "components": [
+                "RectPhysics",
+                "OpenShop"
+            ],
+            "x": 315,
+            "y": 381,
+            "width": 500,
+            "height": 500,
+            "list": []
         },
         {
             "prefabId": "46239938-4ed4-4201-8fc6-4c848b0c5a5a",
