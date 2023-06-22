@@ -14,7 +14,7 @@ const SigninBox:React.FC<SigninProps> = ({ message, Signin }) => {
     // TODO: solve input speed slow issue
 
     return (
-    <div className="w-full h-full flex  justify-center items-center 
+    <div className="w-full h-full flex z-50 justify-center items-center 
     bg-stone-100 backdrop-brightness-75">
         <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
             <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">

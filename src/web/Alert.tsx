@@ -5,9 +5,9 @@ function Alert(){
 
 
     return (
-        <div>
+        
             <div
-            className="mb-3 inline-flex w-100 items-center rounded-lg bg-blue-400  px-6 py-5 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-base text-success-700"
+            className="mb-3  inline-flex w-100 items-center rounded-lg bg-blue-400  px-6 py-5 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-base text-success-700"
             role="alert">
             <span className="mr-2">
                 <svg
@@ -23,7 +23,7 @@ function Alert(){
             </span>
             Press "SPACE" to Open Shop
             </div>
-      </div>
+      
     )
 }
 
