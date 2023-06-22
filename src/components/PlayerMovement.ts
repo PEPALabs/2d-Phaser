@@ -64,40 +64,6 @@ export default class PlayerMovement {
 		var touching = (!body.touching.none) || body.embedded;
 		this.gameManager.values[this.textVariableName] = touching;
 
-		// check space key
-		this.spaceActivated = this.cursors.space.isDown && !this.spaceDown;
-		this.spaceDown = this.cursors.space.isDown
-
-		// var proximity = ("shopText" in this.gameManager.values)? this.gameManager.values["shopText"] : false;
-
-		if (touching) {
-			if (this.shopText == null)
-				this.shopText = this.scene.add.text(this.gameManager.values["shopLocation"][0]-300, this.gameManager.values["shopLocation"][1], 'Press SPACE to open shop', { fontSize: '32px' });
-
-			var shopOpen = (this.openVariableName in this.gameManager.values)? this.gameManager.values[this.openVariableName] : false;
-			if (shopOpen) {
-				PubSub.publish(this.shopMessage,"hello");
-			}
-			else {
-				PubSub.publish(this.stopMessage,"close");
-			}
-
-			if (this.spaceActivated) {
-				// set shop open status
-				shopOpen = !shopOpen;
-				this.gameManager.values[this.openVariableName] = shopOpen;
-			}
-		}
-		else{
-			if (this.shopText != null) {
-				this.shopText.destroy();
-				this.shopText = null;
-			}
-			this.gameManager.values[this.textVariableName] = false;
-			this.gameManager.values[this.openVariableName] = false;
-			PubSub.publish(this.stopMessage,"close");
-		}
-
 		// movement
 		if (!body){
 			return
