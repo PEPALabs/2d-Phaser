@@ -1,12 +1,12 @@
 import React from "react";
+import Alert from "./Alert";
 
 
-
-function Sidebar() {
+function Sidebar({showShopText}) {
 
     return (
     <>
-        <aside id="default-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+        <div id="default-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
             <div className="h-full px-3 pb-4 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <ul className="space-y-2 font-medium">
                     <li>
@@ -55,10 +55,16 @@ function Sidebar() {
                     </li>
                 </ul>
             </div>
-        </aside>
-
-        <div className="pt-20">
-            {/* <div className="p-4 border-0 border-gray-200 rounded-lg dark:border-gray-700"> */}
+        </div>
+{/* 
+        <div className="pt-20"> */}
+                
+            <div className="absolute justify-center z-10 pt-20 pl-64 flex border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
+                <div className="grid p-4 grid-cols-3 gap-4 mb-4 ">
+                    {showShopText && 
+                        <Alert/>
+                    }
+                </div>
                 {/* <div className="grid grid-cols-3 gap-4 mb-4">
                     <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
                         <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
@@ -104,8 +110,8 @@ function Sidebar() {
                         <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
                     </div>
                 </div> */}
-            {/* </div> */}
-        </div>
+            </div>
+        {/* </div> */}
     </>
     );
 }

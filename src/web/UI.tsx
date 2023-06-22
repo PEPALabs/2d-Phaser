@@ -12,6 +12,7 @@ import SigninBox from './Signin';
 import Shop from './Shop';
 import ShopUI from './ShopUI';
 import Sidebar from './Sidebar';
+import Alert from './Alert';
 
 import GameManager from '../GameManager';
 
@@ -26,6 +27,7 @@ function UI() {
     const [showDialogBox, setShowDialogBox] = useState(false);
     const [showLogin, setShowLogin] = useState(true);
     const [showShop, setShowShop] = useState(false);
+    const [showShopText, setShowShopText] = useState(false);
     const [showInventory, setShowInventory] = useState(false);
     const [showUniswap, setShowUniswap] = useState(false);
     const [login, setLogin] = useState(false);
@@ -37,6 +39,8 @@ function UI() {
     const iframe = "<iframe src=\"https://app.uniswap.org/#/swap?outputCurrency=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359\" height=\"660px\" width=\"100%\" style=\"border: 0;margin: 0 auto;display: block;border-radius: 10px;max-width: 600px;min-width: 300px;\">";
 
     var token:string, token1:string = '';
+    var tokenShopTextOn:string = '';
+    var tokenShopTextOff:string = '';
 
     const dialogBoxEventListener = ({ detail }:any) => {
         setMessage(detail.message);
@@ -49,6 +53,13 @@ function UI() {
     };
     const shopEventListener = (msg:string,data:any) => {
         setShowShop(true);
+    };
+    const shopTextEventListener = (msg:string,data:any) => {
+        setShowShopText(true);
+    };
+    const shopTextStopEventListener = (msg:string,data:any) => {
+        setShowShopText(false);
+        setShowShop(false);
     };
     const stopEventListener = (msg:string,data:any) => {
         setShowShop(false);
@@ -100,6 +111,8 @@ function UI() {
         window.addEventListener('end-login', loginEventListener);
         token = PubSub.subscribe('player:shop', shopEventListener);
         token1 = PubSub.subscribe('player:close', stopEventListener);
+        tokenShopTextOn = PubSub.subscribe('player:shopText', shopTextEventListener);
+        tokenShopTextOff = PubSub.subscribe('player:shopTextStop', shopTextStopEventListener);
 
         document.addEventListener("keydown", escFunction, false);
         // window.addEventListener('player:shop', shopEventListener);
@@ -111,6 +124,8 @@ function UI() {
             // window.removeEventListener('player:close', stopEventListener);
             PubSub.unsubscribe(token);
             PubSub.unsubscribe(token1);
+            PubSub.unsubscribe(tokenShopTextOn);
+            PubSub.unsubscribe(tokenShopTextOff);
 
             document.removeEventListener("keydown", escFunction, false);
         };
@@ -162,8 +177,11 @@ function UI() {
                 </div>
             </nav>
         
-            <Sidebar />
+            <Sidebar showShopText={showShopText}/>
             <div/>
+                
+        
+
                 {showUniswap && 
                 <Iframe iframe={iframe} /> 
                 }
@@ -200,6 +218,8 @@ function UI() {
                 <EthersContext />
                 <FuelApp /> */
                 }
+
+        
     </div>)
 }
 

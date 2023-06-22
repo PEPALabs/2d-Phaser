@@ -10,6 +10,8 @@ import Physics from "../components/Physics";
 import PlayerMovement from "../components/PlayerMovement";
 import PigAnimation from "../components/PigAnimation";
 import DisplayPlants from "../components/DisplayPlants";
+import RectPhysics from "../components/RectPhysics";
+import OpenShop from "../components/OpenShop";
 import testPrefab from "../script-nodes/testPrefab";
 /* START-USER-IMPORTS */
 import EventDispatcher from "../EventDispatcher";
@@ -27,18 +29,9 @@ export default class Level extends Phaser.Scene {
 		/* END-USER-CTR-CODE */
 	}
 
-	preload(): void {
+	preload_all(): void {
 
 		this.load.pack("asset-pack", "assets/asset-pack.json");
-		// this.load.pack("animation-pack", "assets/animation/animation-pack.json");
-		// this.load.aseprite('king-spritesheet', "pig-spritesheet", "assets/animation/animations.json")
-		// this.load.spritesheet('ranger', 'assets/ranger_f.png',
-        // {frameWidth: 32, frameHeight: 36});
-		// this.load.animation("pig-walk", "assets/animations.json");
-		// this.load.spritesheet('pig-spritesheet', '/assets/animation/pig-spritesheet.png', { frameWidth: 128, frameHeight: 128 });
-
-		this.load.animation("walk", "assets/animation/animations.json");
-		
 	}
 
 	editorCreate(): void {
@@ -62,16 +55,16 @@ export default class Level extends Phaser.Scene {
 		main_1.addTilesetImage("AutoMap Rules", "guapen");
 
 		// keyboard_key
-		const keyboard_key = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.W,false);
+		const keyboard_key = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.W);
 
 		// keyboard_key_1
-		const keyboard_key_1 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.A,false);
+		const keyboard_key_1 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.A);
 
 		// keyboard_key_2
-		const keyboard_key_2 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.S,false);
+		const keyboard_key_2 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.S);
 
 		// keyboard_key_3
-		const keyboard_key_3 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.D,false);
+		const keyboard_key_3 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
 		// fufuSuperDino
 		const fufuSuperDino = this.add.image(1153, 145, "FufuSuperDino");
@@ -155,6 +148,9 @@ export default class Level extends Phaser.Scene {
 		text_1.setStyle({ "color": "#e68d00ff", "fontSize": "64px", "stroke": "#ffffffff", "shadow.offsetX":2,"shadow.offsetY":2,"shadow.color": "#e55353ff", "shadow.stroke":true,"shadow.fill":true});
 		container_2.add(text_1);
 
+		// Shop
+		const shop = this.add.rectangle(315, 381, 500, 500);
+
 		// scriptnode_1
 		new testPrefab(this);
 
@@ -167,17 +163,14 @@ export default class Level extends Phaser.Scene {
 		const pigPlayerMovement = new PlayerMovement(pig);
 		pigPlayerMovement.velocity = 250;
 		const pigPigAnimation = new PigAnimation(pig);
-		pigPigAnimation.animationKey = "walk";
-		pig.debugShowVelocity = true;
-
-		// const anim1 = this.add.sprite(0, 0, "pig");
-		// anim1.scaleX = 0.1;
-		// anim1.scaleY = 0.1;
-		// this.animPig = anim1;
-		// anim1.play("walk");
+		pigPigAnimation.animationKey = "pig-walk";
 
 		// container_2 (components)
 		new DisplayPlants(container_2);
+
+		// shop (components)
+		new RectPhysics(shop);
+		new OpenShop(shop);
 
 		this.pig = pig;
 		this.image_1 = image_1;
@@ -186,6 +179,7 @@ export default class Level extends Phaser.Scene {
 		this.field3 = field3;
 		this.field4 = field4;
 		this.container_2 = container_2;
+		this.shop = shop;
 		this.main1 = main1;
 		this.main = main;
 		this.main_1 = main_1;
@@ -206,6 +200,7 @@ export default class Level extends Phaser.Scene {
 	private field3!: Phaser.GameObjects.Rectangle;
 	private field4!: Phaser.GameObjects.Rectangle;
 	private container_2!: Phaser.GameObjects.Container;
+	private shop!: Phaser.GameObjects.Rectangle;
 	private main1!: Phaser.Tilemaps.Tilemap;
 	private main!: Phaser.Tilemaps.Tilemap;
 	private main_1!: Phaser.Tilemaps.Tilemap;
@@ -226,13 +221,17 @@ export default class Level extends Phaser.Scene {
 	public shopText: boolean = false;
 	public gameManager: GameManager = GameManager.getInstance();
 
+	preload(): void {
+		this.preload_all();
+		this.load.animation("walk", "assets/animation/animations.json");
+	}
 	create() {
 		//animation
 		// var frameNames4 = this.anims.generateFrameNames('walking', {
 		// 	start: 0, end: 6, zeroPad: 2,
 		// 	prefix: 'animation/pig-spritesheet', suffix: '.png'
 		// 	});
-		// this.load.animation("walk", "assets/animation/animations.json");	
+
 		// this.anims.createFromAseprite("king-spritesheet");
 		this.editorCreate();
 
@@ -251,19 +250,19 @@ export default class Level extends Phaser.Scene {
 		// 	key: 'walk',
 		// 	repeat: -1
 		// 	})
-			
+
 		// this.load.animation("pig-walk", "animations");
 		// this.animPig.play("walk");
 		// this.animPig.play("pig-walk");
-		
+
 		// Create Group for updates
 		this.updateGroup = this.add.group([this.pig,this.image_1,this.field4,this.container_2],{runChildUpdate: true});
 		// this.updateGroup.runChildUpdate = true;
 		// this.updateGroup.add(this.pig);
 		// this.updateGroup.add(this.image_1);
 		// this.updateGroup.add(this.container_2);
-		
-		
+
+
 
 		// set camera
 		this.cameras.main.startFollow(this.pig);
@@ -275,7 +274,7 @@ export default class Level extends Phaser.Scene {
 		this.gameManager.values["shopLocation"] = [this.image_1.x,this.image_1.y];
 
 		// custom collision triggers
-		this.physics.add.overlap(this.pig, this.image_1, (e) => {
+		this.physics.add.overlap(this.pig, this.shop, (e) => {
 			this.gameManager.values["shopText"] = true;
 		});
 
