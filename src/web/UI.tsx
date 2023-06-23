@@ -16,9 +16,7 @@ import Alert from './Alert';
 
 import GameManager from '../GameManager';
 
-function Iframe(props) {
-    return (<div dangerouslySetInnerHTML={ {__html:  props.iframe?props.iframe:""}} />);
-  }
+
 
 function UI() {
     // TODO: add game event handler
@@ -35,9 +33,7 @@ function UI() {
     const [gameManager, setGameManager] = useState(GameManager.getInstance());
     
 
-    //uniswap test iframe
-    const iframe = "<iframe src=\"https://app.uniswap.org/#/swap?outputCurrency=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359\" height=\"660px\" width=\"100%\" style=\"border: 0;margin: 0 auto;display: block;border-radius: 10px;max-width: 600px;min-width: 300px;\">";
-
+    
     var token:string, token1:string = '';
     var tokenShopTextOn:string = '';
     var tokenShopTextOff:string = '';
@@ -91,7 +87,7 @@ function UI() {
         }
     }, ["no idea"]);
 
-    const dislogDone = useCallback(() => {
+    const dialogDone = useCallback(() => {
         const customEvent = new CustomEvent('end-dialog');
         window.dispatchEvent(customEvent);
 
@@ -134,8 +130,8 @@ function UI() {
 
     return (
     <div id="ui">
-            <nav className="fixed top-0 z-50 w-full h-20 bg-white border-gray-200 dark:bg-gray-900">
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between p-4">
+            <nav className="absolute justify-center fixed top-0 z-100 w-full h-20 bg-white border-gray-200 dark:bg-gray-900">
+                <div className="max-w-screen-xl flex flex-wrap items-center justify-between p-4 z-100">
                     <a href="https://flowbite.com/" className="flex items-center">
                         <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo" />
                         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">PEPA</span>
@@ -177,12 +173,12 @@ function UI() {
                 </div>
             </nav>
         
-            <Sidebar showShopText={showShopText}/>
+            <Sidebar showShopText={showShopText} showUniswap={showUniswap} showDialogBox={showDialogBox} showLogin={showLogin} showShop={showShop} showInventory={showInventory} message={message} dialogDone={dialogDone} loginDone={loginDone} username={username}/>
             <div/>
                 
         
 
-                {showUniswap && 
+                {/* {showUniswap && 
                 <Iframe iframe={iframe} /> 
                 }
 
@@ -213,7 +209,7 @@ function UI() {
                     // <Shop message={message}
                     // Signin={loginDone}/>
                 )
-                }
+                } */}
                 {/* 
                 <EthersContext />
                 <FuelApp /> */
