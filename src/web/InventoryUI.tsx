@@ -59,10 +59,10 @@ function InventoryUI() {
     <div
       ref={inventoryRef}
       onKeyDown={handleKeyPressed}
-      className="bg-zelda-darkGreen min-h-screen pt-32 font-calamity"
+      className="bg-zelda-darkGreen min-h-screen flex-1 font-calamity"
       tabIndex={0}
     >
-      <div className="container mx-auto flex flex-col xl:flex-row">
+      <div className="container mx-auto flex flex-col mt-32 xl:flex-row">
         {/* Left panel */}
           <div className="w-full xl:w-1/2">
               {/* expand the context to entire board */}
