@@ -4,7 +4,9 @@
     "settings": {
         "exportClass": true,
         "autoImport": true,
-        "preloadPackFiles": [],
+        "preloadPackFiles": [
+            "Proj1/static/assets/asset-pack.json"
+        ],
         "createMethodName": "editorCreate",
         "sceneKey": "Farm",
         "compilerOutputLanguage": "TYPE_SCRIPT",
@@ -45,6 +47,8 @@
                 "PlayerMovement",
                 "Physics"
             ],
+            "PlayerMovement.speed": 20,
+            "PlayerMovement.velocity": 250,
             "texture": {
                 "key": "pig"
             },

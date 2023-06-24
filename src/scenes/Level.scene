@@ -269,6 +269,24 @@
             "list": []
         },
         {
+            "type": "Rectangle",
+            "id": "afe78fec-c967-4bef-85fc-783e00dfcc61",
+            "label": "teleport",
+            "components": [
+                "TeleportScene"
+            ],
+            "TeleportScene.targetScene": "Farm",
+            "TeleportScene.player": "pig",
+            "x": 119,
+            "y": 822,
+            "scaleX": 1.7414754814814972,
+            "scaleY": -0.37750712996836255,
+            "isFilled": true,
+            "width": 128,
+            "height": 128,
+            "list": []
+        },
+        {
             "prefabId": "46239938-4ed4-4201-8fc6-4c848b0c5a5a",
             "id": "9632dffa-192c-4076-b1b7-7b79b3ad02c8",
             "unlock": [
@@ -278,6 +296,26 @@
             "label": "scriptnode_1",
             "components": [],
             "nestedPrefabs": [],
+            "list": []
+        },
+        {
+            "type": "Text",
+            "id": "5ab94346-0d2d-4743-9698-7e0fc91c3171",
+            "label": "text_2",
+            "components": [],
+            "x": 6,
+            "y": 734,
+            "scaleX": 0.6824655111496041,
+            "scaleY": 0.7869906513902267,
+            "text": "Teleport",
+            "fontSize": "64px",
+            "color": "#e68d00ff",
+            "stroke": "#ffffffff",
+            "shadow.offsetX": 2,
+            "shadow.offsetY": 2,
+            "shadow.stroke": true,
+            "shadow.fill": true,
+            "shadow.color": "#e55353ff",
             "list": []
         }
     ],

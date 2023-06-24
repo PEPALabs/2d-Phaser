@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function Alert(){
+function Alert({text}){
 
 
     return (
@@ -21,7 +21,7 @@ function Alert(){
                     clip-rule="evenodd" />
                 </svg>
             </span>
-            Press "SPACE" to Open Shop
+            {text}
             </div>
       
     )

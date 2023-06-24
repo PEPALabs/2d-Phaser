@@ -36,7 +36,7 @@
         {
             "name": "OpenShop",
             "baseClass": "",
-            "gameObjectType": "Phaser.Physics.Arcade.Sprite",
+            "gameObjectType": "Phaser.GameObjects.Rectangle",
             "properties": []
         },
         {
@@ -84,6 +84,40 @@
             "baseClass": "",
             "gameObjectType": "Phaser.GameObjects.Rectangle",
             "properties": []
+        },
+        {
+            "name": "Teleport",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Rectangle",
+            "properties": []
+        },
+        {
+            "name": "TeleportScene",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Rectangle",
+            "properties": [
+                {
+                    "name": "targetScene",
+                    "label": "targetScene",
+                    "tooltip": "Property 1",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "scene-key"
+                    }
+                },
+                {
+                    "name": "player",
+                    "label": "player",
+                    "tooltip": "player",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "object-var",
+                        "expressionType": "Phaser.GameObjects.GameObject"
+                    }
+                }
+            ]
         }
     ],
     "meta": {

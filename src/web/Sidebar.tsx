@@ -9,7 +9,7 @@ function Iframe(props) {
     return (<div dangerouslySetInnerHTML={ {__html:  props.iframe?props.iframe:""}} />);
   }
 
-function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,showInventory,message,dialogDone,loginDone,username}) {
+function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,showInventory,message,dialogDone,loginDone,username,teleport12}) {
 
     //uniswap test iframe
     const iframe = "<iframe src=\"https://app.uniswap.org/#/swap?outputCurrency=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359\" height=\"660px\" width=\"100%\" style=\"border: 0;margin: 0 auto;display: block;border-radius: 10px;max-width: 600px;min-width: 300px;\">";
@@ -165,13 +165,24 @@ function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,show
 {/* 
         <div className="pt-20"> */}
         <div className="absolute justify-center top-20 left-64 flex-1 w-full h-full flex border-0">
+
+            {/* alerts  */}
             <div className="absolute justify-center z-5 flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
                 <div className="grid p-4 grid-cols-3 gap-4 mb-4 ">
                     {showShopText && 
-                        <Alert/>
+                        <Alert text={"Press \"SPACE\" to Open Shop"}/>
+                    }
+                    {teleport12 && 
+                        <Alert text={"Press SPACE to teleport"} />
                     }
                 </div>
             </div>
+
+            {/* <div className="absolute justify-center z-5 flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
+                <div className="grid p-4 grid-cols-3 gap-4 mb-4 ">
+                    
+                </div>
+            </div> */}
 
             <div className="absolute justify-center w-full flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
                 {showUniswap && 

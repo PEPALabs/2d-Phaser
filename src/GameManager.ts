@@ -11,6 +11,7 @@ class GameManager {
         "shopOpen": false,
         "shopLocation" : [0,0],
         "touching":false,
+        "teleport":false,
     };
     public inventory: ItemType[] = [];
     public inventoryChanged: boolean = false;

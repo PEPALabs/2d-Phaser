@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import Phaser, { Game } from "phaser";
 import Level from "../scenes/Level";
+import Farm from "../scenes/Farm";
 import preloadAssetPackUrl from "../../static/assets/preload-asset-pack.json";
 import Preload from "../scenes/Preload";
 
@@ -39,7 +40,7 @@ function GameRoot() {
                 // autoCenter: Phaser.Scale.CENTER_BOTH,
             },
             // zoom: Phaser.Scale.MAX_ZOOM,
-            scene: [Boot, Preload, Level],
+            scene: [Boot, Preload, Level, Farm],
             physics: {
                 default: "arcade",
                 arcade: {

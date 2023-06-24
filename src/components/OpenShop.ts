@@ -10,6 +10,7 @@ import { Physics } from 'phaser';
 import PubSub from 'pubsub-js';
 import EventDispatcher from '../EventDispatcher';
 import Level from '../scenes/Level';
+import Farm from '../scenes/Farm';
 import GameManager from '../GameManager';
 /* END-USER-IMPORTS */
 
@@ -24,7 +25,7 @@ export default class OpenShop {
 		const scene = this.gameObject.scene;
 		this.scene = scene;
 		this.cursors = scene.input.keyboard.createCursorKeys();
-		
+
 		this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
 
 		/* END-USER-CTR-CODE */
@@ -63,9 +64,10 @@ export default class OpenShop {
 		// var proximity = ("shopText" in this.gameManager.values)? this.gameManager.values["shopText"] : false;
 
 		if (touching) {
+
 			if (this.shopText == null)
 				// this.shopText = this.scene.add.text(this.gameManager.values["shopLocation"][0]-300, this.gameManager.values["shopLocation"][1], 'Press SPACE to open shop', { fontSize: '32px' });
-				this.shopText = this.scene.add.text(this.gameObject.x-300, this.gameObject.y, 'Press SPACE to open shop', { fontSize: '32px' });
+				// this.shopText = this.scene.add.text(this.gameObject.x-300, this.gameObject.y, 'Press SPACE to open shop', { fontSize: '32px' });
 				PubSub.publish(this.shopTextMessage,"hello");
 
 			var shopOpen = (this.openVariableName in this.gameManager.values)? this.gameManager.values[this.openVariableName] : false;
@@ -80,6 +82,7 @@ export default class OpenShop {
 				// set shop open status
 				shopOpen = !shopOpen;
 				this.gameManager.values[this.openVariableName] = shopOpen;
+				this.scene.scene.start("Farm");
 			}
 		}
 		else{

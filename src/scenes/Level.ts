@@ -12,6 +12,7 @@ import PigAnimation from "../components/PigAnimation";
 import DisplayPlants from "../components/DisplayPlants";
 import RectPhysics from "../components/RectPhysics";
 import OpenShop from "../components/OpenShop";
+import TeleportScene from "../components/TeleportScene";
 import testPrefab from "../script-nodes/testPrefab";
 /* START-USER-IMPORTS */
 import EventDispatcher from "../EventDispatcher";
@@ -151,8 +152,21 @@ export default class Level extends Phaser.Scene {
 		// Shop
 		const shop = this.add.rectangle(315, 381, 500, 500);
 
+		// teleport
+		const teleport = this.add.rectangle(119, 822, 128, 128);
+		teleport.scaleX = 1.7414754814814972;
+		teleport.scaleY = -0.37750712996836255;
+		teleport.isFilled = true;
+
 		// scriptnode_1
 		new testPrefab(this);
+
+		// text_2
+		const text_2 = this.add.text(6, 734, "", {});
+		text_2.scaleX = 0.6824655111496041;
+		text_2.scaleY = 0.7869906513902267;
+		text_2.text = "Teleport";
+		text_2.setStyle({ "color": "#e68d00ff", "fontSize": "64px", "stroke": "#ffffffff", "shadow.offsetX":2,"shadow.offsetY":2,"shadow.color": "#e55353ff", "shadow.stroke":true,"shadow.fill":true});
 
 		// lists
 		const list = [field4, field3, field2, field1];
@@ -171,6 +185,11 @@ export default class Level extends Phaser.Scene {
 		// shop (components)
 		new RectPhysics(shop);
 		new OpenShop(shop);
+
+		// teleport (components)
+		const teleportTeleportScene = new TeleportScene(teleport);
+		teleportTeleportScene.targetScene = "Farm";
+		teleportTeleportScene.player = pig;
 
 		this.pig = pig;
 		this.image_1 = image_1;
@@ -277,6 +296,10 @@ export default class Level extends Phaser.Scene {
 		this.physics.add.overlap(this.pig, this.shop, (e) => {
 			this.gameManager.values["shopText"] = true;
 		});
+
+		// this.physics.add.overlap(this.pig, this.shop, (e) => {
+		// 	this.gameManager.values["teleport12"] = true;
+		// });
 
 
 	}

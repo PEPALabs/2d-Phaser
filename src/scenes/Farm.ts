@@ -19,6 +19,11 @@ export default class Farm extends Phaser.Scene {
 		/* END-USER-CTR-CODE */
 	}
 
+	preload(): void {
+
+		this.load.pack("asset-pack", "assets/asset-pack.json");
+	}
+
 	editorCreate(): void {
 
 		// layer_1
@@ -39,7 +44,9 @@ export default class Farm extends Phaser.Scene {
 		player.body.setSize(1134, 1572, false);
 
 		// player (components)
-		new PlayerMovement(player);
+		const playerPlayerMovement = new PlayerMovement(player);
+		playerPlayerMovement.speed = 20;
+		playerPlayerMovement.velocity = 250;
 		new Physics(player);
 
 		this.map = map;
@@ -60,6 +67,8 @@ export default class Farm extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
+
+		this.cameras.main.startFollow(this.player);
 	}
 
 	/* END-USER-CODE */
