@@ -45,7 +45,8 @@
             "scope": "CLASS",
             "components": [
                 "PlayerMovement",
-                "Physics"
+                "Physics",
+                "PigAnimation"
             ],
             "PlayerMovement.speed": 20,
             "PlayerMovement.velocity": 250,
@@ -60,6 +61,44 @@
             "originY": 0,
             "body.width": 1134,
             "body.height": 1572,
+            "list": []
+        },
+        {
+            "type": "Rectangle",
+            "id": "73633d49-ecc7-4a85-ba99-3f98bfc15f7f",
+            "label": "teleport",
+            "components": [
+                "TeleportScene"
+            ],
+            "TeleportScene.targetScene": "Level",
+            "TeleportScene.player": "player",
+            "x": 157,
+            "y": 465,
+            "scaleX": 1.463969011613163,
+            "scaleY": 1.3187915313412075,
+            "isFilled": true,
+            "width": 128,
+            "height": 128,
+            "list": []
+        },
+        {
+            "type": "Text",
+            "id": "6e197a71-7ff1-4e6e-ae9c-c4fe33c9806f",
+            "label": "text_2",
+            "components": [],
+            "x": 39,
+            "y": 310,
+            "scaleX": 0.7846903230519551,
+            "scaleY": 0.9548710435106904,
+            "text": "Teleport",
+            "fontSize": "64px",
+            "color": "#e68d00ff",
+            "stroke": "#ffffffff",
+            "shadow.offsetX": 2,
+            "shadow.offsetY": 2,
+            "shadow.stroke": true,
+            "shadow.fill": true,
+            "shadow.color": "#e55353ff",
             "list": []
         }
     ],

@@ -23,6 +23,7 @@ export default class TeleportScene {
 		this.cursors = scene.input.keyboard.createCursorKeys();
 		this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
 
+
 		/* END-USER-CTR-CODE */
 	}
 
@@ -37,6 +38,7 @@ export default class TeleportScene {
 	/* START-USER-CODE */
 	private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
 	private proximity: Boolean = false;
+	private textShown: Boolean = false;
 	private scene: Phaser.Scene;
 	// Write your code here.
 
@@ -44,17 +46,20 @@ export default class TeleportScene {
 		if(this.scene.physics.overlap(this.gameObject, this.player)){
 			// display text
 			if (!this.proximity) {
+				console.log("teleporting1");
 				this.proximity = true;
 				PubSub.publish("teleport12:text", "teleport");
 			}
 		}else {
 			if (this.proximity) {
+				console.log("teleporting2");
 				this.proximity = false;
 				PubSub.publish("teleport12:textStop", "text");
 			}
 		}
 
 		if(this.proximity && this.cursors.space.isDown){
+			console.log("teleporting3");
 			this.proximity = false;
 			PubSub.publish("teleport12:textStop", "text");
 			this.scene.scene.start(this.targetScene);

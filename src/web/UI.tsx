@@ -117,11 +117,11 @@ function UI() {
         window.addEventListener('end-login', loginEventListener);
         token = PubSub.subscribe('player:shop', shopEventListener);
         token1 = PubSub.subscribe('player:close', stopEventListener);
-        tokenShopTextOn = PubSub.subscribe('teleport12:text', shopTextEventListener);
-        tokenShopTextOff = PubSub.subscribe('teleport12:textStop', shopTextStopEventListener);
+        tokenShopTextOn = PubSub.subscribe('player:shopText', shopTextEventListener);
+        tokenShopTextOff = PubSub.subscribe('player:shopTextStop', shopTextStopEventListener);
 
-        tokenTeleport12On = PubSub.subscribe('player:teleport12', teleportEventListener);
-        tokenTeleport12Off = PubSub.subscribe('player:teleport12Stop', teleportStopEventListener);
+        tokenTeleport12On = PubSub.subscribe('teleport12:text', teleportEventListener);
+        tokenTeleport12Off = PubSub.subscribe('teleport12:textStop', teleportStopEventListener);
 
 
 

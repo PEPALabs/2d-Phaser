@@ -61,8 +61,6 @@ export default class PlayerMovement {
 	update() {
 		// check collide
 		const body = this.gameObject.body;
-		var touching = (!body.touching.none) || body.embedded;
-		this.gameManager.values[this.textVariableName] = touching;
 
 		// movement
 		if (!body){

@@ -104,6 +104,7 @@
                     "id": "244c819a-917a-487a-9b04-85bfe2e72061",
                     "label": "house_1",
                     "components": [],
+                    "x": -1,
                     "scaleX": 0.3,
                     "scaleY": 0.3,
                     "list": [],
@@ -148,8 +149,8 @@
             "texture": {
                 "key": "pig"
             },
-            "x": 167,
-            "y": 584,
+            "x": 390,
+            "y": 651,
             "scaleX": 0.1,
             "scaleY": 0.1,
             "body.width": 1134,
@@ -262,8 +263,9 @@
                 "RectPhysics",
                 "OpenShop"
             ],
-            "x": 315,
-            "y": 381,
+            "OpenShop.player": "pig",
+            "x": 320,
+            "y": 283,
             "width": 500,
             "height": 500,
             "list": []

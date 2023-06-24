@@ -98,7 +98,7 @@ export default class Level extends Phaser.Scene {
 		container_1.add(deco_1);
 
 		// house_1
-		const house_1 = main_1.createLayer("House", ["bundle2"], 0, 0);
+		const house_1 = main_1.createLayer("House", ["bundle2"], -1, 0);
 		house_1.scaleX = 0.3;
 		house_1.scaleY = 0.3;
 		container_1.add(house_1);
@@ -110,7 +110,7 @@ export default class Level extends Phaser.Scene {
 		container_1.add(houseFront_1);
 
 		// pig
-		const pig = this.physics.add.sprite(167, 584, "pig");
+		const pig = this.physics.add.sprite(390, 651, "pig");
 		pig.scaleX = 0.1;
 		pig.scaleY = 0.1;
 		pig.body.setSize(1134, 1572, false);
@@ -150,7 +150,7 @@ export default class Level extends Phaser.Scene {
 		container_2.add(text_1);
 
 		// Shop
-		const shop = this.add.rectangle(315, 381, 500, 500);
+		const shop = this.add.rectangle(320, 283, 500, 500);
 
 		// teleport
 		const teleport = this.add.rectangle(119, 822, 128, 128);
@@ -184,7 +184,8 @@ export default class Level extends Phaser.Scene {
 
 		// shop (components)
 		new RectPhysics(shop);
-		new OpenShop(shop);
+		const shopOpenShop = new OpenShop(shop);
+		shopOpenShop.player = pig;
 
 		// teleport (components)
 		const teleportTeleportScene = new TeleportScene(teleport);

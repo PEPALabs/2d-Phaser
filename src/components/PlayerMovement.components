@@ -37,7 +37,19 @@
             "name": "OpenShop",
             "baseClass": "",
             "gameObjectType": "Phaser.GameObjects.Rectangle",
-            "properties": []
+            "properties": [
+                {
+                    "name": "player",
+                    "label": "player",
+                    "tooltip": "player",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "object-var",
+                        "expressionType": "Phaser.GameObjects.GameObject"
+                    }
+                }
+            ]
         },
         {
             "name": "DisplayPlants",

@@ -168,15 +168,25 @@ function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,show
 
             {/* alerts  */}
             <div className="absolute justify-center z-5 flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
+                
+                <div className="grid p-4 grid-cols-3 gap-4 mb-4 ">
+                    {teleport12 && 
+                        <Alert text={"Press SPACE to teleport"} />
+                    }
+                    {showShopText && 
+                        <Alert text={"Press \"SPACE\" to Open Shop"}/>
+                    }
+                </div>
+            </div>
+            {/* <div className="absolute justify-center z-5 flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
+            
                 <div className="grid p-4 grid-cols-3 gap-4 mb-4 ">
                     {showShopText && 
                         <Alert text={"Press \"SPACE\" to Open Shop"}/>
                     }
-                    {teleport12 && 
-                        <Alert text={"Press SPACE to teleport"} />
-                    }
+                    
                 </div>
-            </div>
+            </div> */}
 
             {/* <div className="absolute justify-center z-5 flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
                 <div className="grid p-4 grid-cols-3 gap-4 mb-4 ">
