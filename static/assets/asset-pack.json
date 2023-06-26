@@ -48,6 +48,11 @@
                 "key": "main1"
             },
             {
+                "url": "assets/map-town.png",
+                "type": "image",
+                "key": "map-town"
+            },
+            {
                 "url": "assets/pig.png",
                 "type": "image",
                 "key": "pig"

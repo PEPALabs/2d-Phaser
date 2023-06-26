@@ -4,8 +4,6 @@
 /* START OF COMPILED CODE */
 
 import Phaser from "phaser";
-import OnPointerDownScript from "../script-nodes-basic/OnPointerDownScript";
-import PushActionScript from "../script-nodes/PushActionScript";
 import Physics from "../components/Physics";
 import PlayerMovement from "../components/PlayerMovement";
 import PigAnimation from "../components/PigAnimation";
@@ -67,62 +65,15 @@ export default class Level extends Phaser.Scene {
 		// keyboard_key_3
 		const keyboard_key_3 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
-		// fufuSuperDino
-		const fufuSuperDino = this.add.image(1153, 145, "FufuSuperDino");
-
-		// onPointerDownScript
-		const onPointerDownScript = new OnPointerDownScript(fufuSuperDino);
-
-		// pushAction
-		new PushActionScript(onPointerDownScript);
-
-		// text
-		const text = this.add.text(640, 468, "", {});
-		text.setOrigin(0.5, 0.5);
-		text.text = "Phaser 3 + Phaser Editor 2D\nWebpack + TypeScript";
-		text.setStyle({ "align": "center", "fontFamily": "Arial", "fontSize": "3em" });
-
-		// container_1
-		const container_1 = this.add.container(0, -3);
-
-		// land
-		const land = main1.createLayer("Land", ["bundle3"], 0, 0);
-		land.scaleX = 0.3;
-		land.scaleY = 0.3;
-		container_1.add(land);
-
-		// deco_1
-		const deco_1 = main.createLayer("Deco", ["bundle3"], 0, 0);
-		deco_1.scaleX = 0.3;
-		deco_1.scaleY = 0.3;
-		container_1.add(deco_1);
-
-		// house_1
-		const house_1 = main_1.createLayer("House", ["bundle2"], -1, 0);
-		house_1.scaleX = 0.3;
-		house_1.scaleY = 0.3;
-		container_1.add(house_1);
-
-		// houseFront_1
-		const houseFront_1 = main_1.createLayer("HouseFront", ["bundle2"], 0, 0);
-		houseFront_1.scaleX = 0.3;
-		houseFront_1.scaleY = 0.3;
-		container_1.add(houseFront_1);
+		// image_2
+		const image_2 = this.add.image(0, 0, "map-town");
+		image_2.setOrigin(0, 0);
 
 		// pig
-		const pig = this.physics.add.sprite(390, 651, "pig");
+		const pig = this.physics.add.sprite(1641, 1264, "pig");
 		pig.scaleX = 0.1;
 		pig.scaleY = 0.1;
 		pig.body.setSize(1134, 1572, false);
-
-		// image_1
-		const image_1 = this.physics.add.image(732, 256, "guapen");
-		image_1.body.moves = false;
-		image_1.body.allowGravity = false;
-		image_1.body.allowRotation = false;
-		image_1.body.pushable = false;
-		image_1.body.immovable = true;
-		image_1.body.setSize(208, 240, false);
 
 		// container_2
 		const container_2 = this.add.container(0, 0);
@@ -150,23 +101,23 @@ export default class Level extends Phaser.Scene {
 		container_2.add(text_1);
 
 		// Shop
-		const shop = this.add.rectangle(320, 283, 500, 500);
+		const shop = this.add.rectangle(2704, 2919, 500, 500);
 
 		// teleport
-		const teleport = this.add.rectangle(119, 822, 128, 128);
-		teleport.scaleX = 1.7414754814814972;
-		teleport.scaleY = -0.37750712996836255;
+		const teleport = this.add.rectangle(1373, 803, 128, 128);
+		teleport.scaleX = 1.703893624291244;
+		teleport.scaleY = 0.6944410750774918;
 		teleport.isFilled = true;
 
-		// scriptnode_1
-		new testPrefab(this);
-
 		// text_2
-		const text_2 = this.add.text(6, 734, "", {});
+		const text_2 = this.add.text(1264, 772, "", {});
 		text_2.scaleX = 0.6824655111496041;
 		text_2.scaleY = 0.7869906513902267;
 		text_2.text = "Teleport";
 		text_2.setStyle({ "color": "#e68d00ff", "fontSize": "64px", "stroke": "#ffffffff", "shadow.offsetX":2,"shadow.offsetY":2,"shadow.color": "#e55353ff", "shadow.stroke":true,"shadow.fill":true});
+
+		// scriptnode_1
+		new testPrefab(this);
 
 		// lists
 		const list = [field4, field3, field2, field1];
@@ -193,7 +144,6 @@ export default class Level extends Phaser.Scene {
 		teleportTeleportScene.player = pig;
 
 		this.pig = pig;
-		this.image_1 = image_1;
 		this.field1 = field1;
 		this.field2 = field2;
 		this.field3 = field3;
@@ -214,7 +164,6 @@ export default class Level extends Phaser.Scene {
 	}
 
 	private pig!: Phaser.Physics.Arcade.Sprite;
-	private image_1!: Phaser.Physics.Arcade.Image;
 	private field1!: Phaser.GameObjects.Rectangle;
 	private field2!: Phaser.GameObjects.Rectangle;
 	private field3!: Phaser.GameObjects.Rectangle;
@@ -276,7 +225,7 @@ export default class Level extends Phaser.Scene {
 		// this.animPig.play("pig-walk");
 
 		// Create Group for updates
-		this.updateGroup = this.add.group([this.pig,this.image_1,this.field4,this.container_2],{runChildUpdate: true});
+		// this.updateGroup = this.add.group([this.pig,this.image_1,this.field4,this.container_2],{runChildUpdate: true});
 		// this.updateGroup.runChildUpdate = true;
 		// this.updateGroup.add(this.pig);
 		// this.updateGroup.add(this.image_1);
@@ -291,7 +240,7 @@ export default class Level extends Phaser.Scene {
 		this.emitter = EventDispatcher.getInstance();
 
 		// set text initial location
-		this.gameManager.values["shopLocation"] = [this.image_1.x,this.image_1.y];
+		// this.gameManager.values["shopLocation"] = [this.image_1.x,this.image_1.y];
 
 		// custom collision triggers
 		this.physics.add.overlap(this.pig, this.shop, (e) => {

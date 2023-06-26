@@ -17,122 +17,15 @@
     "displayList": [
         {
             "type": "Image",
-            "id": "bb2d413c-02b3-404d-b1c0-cf46ce1e7f07",
-            "label": "fufuSuperDino",
+            "id": "946c881d-e531-4a51-89ff-fb630f59ab0f",
+            "label": "image_2",
             "components": [],
             "texture": {
-                "key": "FufuSuperDino"
+                "key": "map-town"
             },
-            "x": 1153,
-            "y": 145,
-            "list": [
-                {
-                    "prefabId": "a06ed60b-79f1-4444-bf35-89046f71f954",
-                    "id": "0eb8a724-16b2-4c55-8b33-1d41fc1b3663",
-                    "label": "onPointerDownScript",
-                    "components": [],
-                    "nestedPrefabs": [],
-                    "list": [
-                        {
-                            "prefabId": "0e39177a-6e19-4b56-a7c2-2360a2e41505",
-                            "id": "5d148849-dd2d-4bb7-b17d-a74ea5a8bd14",
-                            "label": "pushAction",
-                            "components": [],
-                            "nestedPrefabs": [],
-                            "list": []
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "type": "Text",
-            "id": "5c228da6-971a-4347-84e8-9f62464ba76d",
-            "label": "text",
-            "components": [],
-            "x": 640,
-            "y": 468,
-            "originX": 0.5,
-            "originY": 0.5,
-            "text": "Phaser 3 + Phaser Editor 2D\nWebpack + TypeScript",
-            "align": "center",
-            "fontFamily": "Arial",
-            "fontSize": "3em",
+            "originX": 0,
+            "originY": 0,
             "list": []
-        },
-        {
-            "type": "Container",
-            "id": "51ecf151-d86e-485c-83f7-642c0b325a90",
-            "label": "container_1",
-            "components": [],
-            "y": -3,
-            "list": [
-                {
-                    "type": "TilemapLayer",
-                    "id": "98efa328-24cf-4313-b02c-beb91657f46a",
-                    "label": "land",
-                    "components": [],
-                    "scaleX": 0.3,
-                    "scaleY": 0.3,
-                    "list": [],
-                    "tilemapId": "1bd77e54-d669-43c3-b3d4-766c25eabc5c",
-                    "layerName": "Land",
-                    "tilesets": [
-                        "bundle3",
-                        "bundle2",
-                        "AutoMap Rules"
-                    ]
-                },
-                {
-                    "type": "TilemapLayer",
-                    "id": "720196e0-d671-40fc-a898-d0b27f898ffb",
-                    "label": "deco_1",
-                    "components": [],
-                    "scaleX": 0.3,
-                    "scaleY": 0.3,
-                    "list": [],
-                    "tilemapId": "7f4ee8dd-4c12-4a6d-97aa-281e49103f60",
-                    "layerName": "Deco",
-                    "tilesets": [
-                        "bundle3",
-                        "bundle2",
-                        "AutoMap Rules"
-                    ]
-                },
-                {
-                    "type": "TilemapLayer",
-                    "id": "244c819a-917a-487a-9b04-85bfe2e72061",
-                    "label": "house_1",
-                    "components": [],
-                    "x": -1,
-                    "scaleX": 0.3,
-                    "scaleY": 0.3,
-                    "list": [],
-                    "tilemapId": "200b3430-19bf-4ce8-b58a-51cf9c5fd27e",
-                    "layerName": "House",
-                    "tilesets": [
-                        "bundle3",
-                        "bundle2",
-                        "AutoMap Rules"
-                    ]
-                },
-                {
-                    "type": "TilemapLayer",
-                    "id": "8f491a54-5dd0-40ce-a231-0304c830a53b",
-                    "label": "houseFront_1",
-                    "components": [],
-                    "scaleX": 0.3,
-                    "scaleY": 0.3,
-                    "list": [],
-                    "tilemapId": "200b3430-19bf-4ce8-b58a-51cf9c5fd27e",
-                    "layerName": "HouseFront",
-                    "tilesets": [
-                        "bundle3",
-                        "bundle2",
-                        "AutoMap Rules"
-                    ]
-                }
-            ]
         },
         {
             "type": "ArcadeSprite",
@@ -149,32 +42,12 @@
             "texture": {
                 "key": "pig"
             },
-            "x": 390,
-            "y": 651,
+            "x": 1641,
+            "y": 1264,
             "scaleX": 0.1,
             "scaleY": 0.1,
             "body.width": 1134,
             "body.height": 1572,
-            "list": []
-        },
-        {
-            "type": "ArcadeImage",
-            "id": "4107d512-6188-4071-8333-40e02bbba14d",
-            "label": "image_1",
-            "scope": "CLASS",
-            "components": [],
-            "texture": {
-                "key": "guapen"
-            },
-            "x": 732,
-            "y": 256,
-            "moves": false,
-            "allowGravity": false,
-            "allowRotation": false,
-            "pushable": false,
-            "immovable": true,
-            "body.width": 208,
-            "body.height": 240,
             "list": []
         },
         {
@@ -264,8 +137,8 @@
                 "OpenShop"
             ],
             "OpenShop.player": "pig",
-            "x": 320,
-            "y": 283,
+            "x": 2704,
+            "y": 2919,
             "width": 500,
             "height": 500,
             "list": []
@@ -279,13 +152,33 @@
             ],
             "TeleportScene.targetScene": "Farm",
             "TeleportScene.player": "pig",
-            "x": 119,
-            "y": 822,
-            "scaleX": 1.7414754814814972,
-            "scaleY": -0.37750712996836255,
+            "x": 1373,
+            "y": 803,
+            "scaleX": 1.703893624291244,
+            "scaleY": 0.6944410750774918,
             "isFilled": true,
             "width": 128,
             "height": 128,
+            "list": []
+        },
+        {
+            "type": "Text",
+            "id": "5ab94346-0d2d-4743-9698-7e0fc91c3171",
+            "label": "text_2",
+            "components": [],
+            "x": 1264,
+            "y": 772,
+            "scaleX": 0.6824655111496041,
+            "scaleY": 0.7869906513902267,
+            "text": "Teleport",
+            "fontSize": "64px",
+            "color": "#e68d00ff",
+            "stroke": "#ffffffff",
+            "shadow.offsetX": 2,
+            "shadow.offsetY": 2,
+            "shadow.stroke": true,
+            "shadow.fill": true,
+            "shadow.color": "#e55353ff",
             "list": []
         },
         {
@@ -298,26 +191,6 @@
             "label": "scriptnode_1",
             "components": [],
             "nestedPrefabs": [],
-            "list": []
-        },
-        {
-            "type": "Text",
-            "id": "5ab94346-0d2d-4743-9698-7e0fc91c3171",
-            "label": "text_2",
-            "components": [],
-            "x": 6,
-            "y": 734,
-            "scaleX": 0.6824655111496041,
-            "scaleY": 0.7869906513902267,
-            "text": "Teleport",
-            "fontSize": "64px",
-            "color": "#e68d00ff",
-            "stroke": "#ffffffff",
-            "shadow.offsetX": 2,
-            "shadow.offsetY": 2,
-            "shadow.stroke": true,
-            "shadow.fill": true,
-            "shadow.color": "#e55353ff",
             "list": []
         }
     ],
