@@ -6,6 +6,8 @@
 import Phaser from "phaser";
 import PlayerMovement from "../components/PlayerMovement";
 import Physics from "../components/Physics";
+import PigAnimation from "../components/PigAnimation";
+import TeleportScene from "../components/TeleportScene";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
@@ -17,6 +19,11 @@ export default class Farm extends Phaser.Scene {
 		/* START-USER-CTR-CODE */
 		// Write your code here.
 		/* END-USER-CTR-CODE */
+	}
+
+	preload(): void {
+
+		this.load.pack("asset-pack", "assets/asset-pack.json");
 	}
 
 	editorCreate(): void {
@@ -38,9 +45,30 @@ export default class Farm extends Phaser.Scene {
 		player.setOrigin(0, 0);
 		player.body.setSize(1134, 1572, false);
 
+		// teleport
+		const teleport = this.add.rectangle(157, 465, 128, 128);
+		teleport.scaleX = 1.463969011613163;
+		teleport.scaleY = 1.3187915313412075;
+		teleport.isFilled = true;
+
+		// text_2
+		const text_2 = this.add.text(39, 310, "", {});
+		text_2.scaleX = 0.7846903230519551;
+		text_2.scaleY = 0.9548710435106904;
+		text_2.text = "Teleport";
+		text_2.setStyle({ "color": "#e68d00ff", "fontSize": "64px", "stroke": "#ffffffff", "shadow.offsetX":2,"shadow.offsetY":2,"shadow.color": "#e55353ff", "shadow.stroke":true,"shadow.fill":true});
+
 		// player (components)
-		new PlayerMovement(player);
+		const playerPlayerMovement = new PlayerMovement(player);
+		playerPlayerMovement.speed = 20;
+		playerPlayerMovement.velocity = 250;
 		new Physics(player);
+		new PigAnimation(player);
+
+		// teleport (components)
+		const teleportTeleportScene = new TeleportScene(teleport);
+		teleportTeleportScene.targetScene = "Level";
+		teleportTeleportScene.player = player;
 
 		this.map = map;
 		this.layer_1 = layer_1;
@@ -60,6 +88,8 @@ export default class Farm extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
+
+		this.cameras.main.startFollow(this.player);
 	}
 
 	/* END-USER-CODE */

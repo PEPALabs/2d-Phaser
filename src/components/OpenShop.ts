@@ -10,6 +10,7 @@ import { Physics } from 'phaser';
 import PubSub from 'pubsub-js';
 import EventDispatcher from '../EventDispatcher';
 import Level from '../scenes/Level';
+import Farm from '../scenes/Farm';
 import GameManager from '../GameManager';
 /* END-USER-IMPORTS */
 
@@ -24,7 +25,7 @@ export default class OpenShop {
 		const scene = this.gameObject.scene;
 		this.scene = scene;
 		this.cursors = scene.input.keyboard.createCursorKeys();
-		
+
 		this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
 
 		/* END-USER-CTR-CODE */
@@ -35,12 +36,14 @@ export default class OpenShop {
 	}
 
 	private gameObject: Phaser.GameObjects.Rectangle;
+	public player!: Phaser.GameObjects.GameObject;
 
 	/* START-USER-CODE */
 	private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
 	private scene: Phaser.Scene;
 	private gameManager: GameManager = GameManager.getInstance();
 	private shopText: Phaser.GameObjects.Text = null;
+	private shopTextOn: boolean = false;
 
 	private spaceDown: boolean = false;
 	private spaceActivated: boolean = false;
@@ -54,7 +57,7 @@ export default class OpenShop {
 	update() {
 		// check collide
 		const body = this.gameObject.body;
-		var touching = this.gameManager.values[this.textVariableName];
+		// var touching = this.gameManager.values[this.textVariableName];
 
 		// check space key
 		this.spaceActivated = this.cursors.space.isDown && !this.spaceDown;
@@ -62,13 +65,19 @@ export default class OpenShop {
 
 		// var proximity = ("shopText" in this.gameManager.values)? this.gameManager.values["shopText"] : false;
 
-		if (touching) {
-			if (this.shopText == null)
-				// this.shopText = this.scene.add.text(this.gameManager.values["shopLocation"][0]-300, this.gameManager.values["shopLocation"][1], 'Press SPACE to open shop', { fontSize: '32px' });
-				this.shopText = this.scene.add.text(this.gameObject.x-300, this.gameObject.y, 'Press SPACE to open shop', { fontSize: '32px' });
-				PubSub.publish(this.shopTextMessage,"hello");
+		if (this.scene.physics.overlap(this.gameObject, this.player)) {
 
+			// if (this.shopText == null)
+			// 	// this.shopText = this.scene.add.text(this.gameManager.values["shopLocation"][0]-300, this.gameManager.values["shopLocation"][1], 'Press SPACE to open shop', { fontSize: '32px' });
+			// 	// this.shopText = this.scene.add.text(this.gameObject.x-300, this.gameObject.y, 'Press SPACE to open shop', { fontSize: '32px' });
+			// 	PubSub.publish(this.shopTextMessage,"hello");
+			if (!this.shopTextOn) {
+				console.log("shop text on")
+				PubSub.publish(this.shopTextMessage,"hello");
+				this.shopTextOn = true;
+			}
 			var shopOpen = (this.openVariableName in this.gameManager.values)? this.gameManager.values[this.openVariableName] : false;
+
 			if (shopOpen) {
 				PubSub.publish(this.shopMessage,"hello");
 			}
@@ -76,10 +85,12 @@ export default class OpenShop {
 				PubSub.publish(this.stopMessage,"close");
 			}
 
+
 			if (this.spaceActivated) {
 				// set shop open status
 				shopOpen = !shopOpen;
 				this.gameManager.values[this.openVariableName] = shopOpen;
+				
 			}
 		}
 		else{
@@ -87,6 +98,8 @@ export default class OpenShop {
 				this.shopText.destroy();
 				this.shopText = null;
 			}
+			console.log("shop text off")
+			this.shopTextOn = false;
 			this.gameManager.values[this.textVariableName] = false;
 			this.gameManager.values[this.openVariableName] = false;
 			PubSub.publish(this.stopMessage,"close");

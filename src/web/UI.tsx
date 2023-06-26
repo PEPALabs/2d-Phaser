@@ -28,6 +28,7 @@ function UI() {
     const [showShopText, setShowShopText] = useState(false);
     const [showInventory, setShowInventory] = useState(false);
     const [showUniswap, setShowUniswap] = useState(false);
+    const [showTeleport12, setShowTeleport12] = useState(false);
     const [login, setLogin] = useState(false);
     const [username, setUsername] = useState('');
     const [gameManager, setGameManager] = useState(GameManager.getInstance());
@@ -37,6 +38,8 @@ function UI() {
     var token:string, token1:string = '';
     var tokenShopTextOn:string = '';
     var tokenShopTextOff:string = '';
+    var tokenTeleport12On:string = '';
+    var tokenTeleport12Off:string = '';
 
     const dialogBoxEventListener = ({ detail }:any) => {
         setMessage(detail.message);
@@ -60,6 +63,13 @@ function UI() {
     const stopEventListener = (msg:string,data:any) => {
         setShowShop(false);
     };
+
+    const teleportEventListener = (msg:string,data:any) => {
+        setShowTeleport12(true);
+    }
+    const teleportStopEventListener = (msg:string,data:any) => {
+        setShowTeleport12(false);
+    }
 
     function escFunction(event:KeyboardEvent){
         if (event.key === "Escape") {
@@ -110,6 +120,11 @@ function UI() {
         tokenShopTextOn = PubSub.subscribe('player:shopText', shopTextEventListener);
         tokenShopTextOff = PubSub.subscribe('player:shopTextStop', shopTextStopEventListener);
 
+        tokenTeleport12On = PubSub.subscribe('teleport12:text', teleportEventListener);
+        tokenTeleport12Off = PubSub.subscribe('teleport12:textStop', teleportStopEventListener);
+
+
+
         document.addEventListener("keydown", escFunction, false);
         // window.addEventListener('player:shop', shopEventListener);
         // window.addEventListener('player:close', stopEventListener);
@@ -122,6 +137,8 @@ function UI() {
             PubSub.unsubscribe(token1);
             PubSub.unsubscribe(tokenShopTextOn);
             PubSub.unsubscribe(tokenShopTextOff);
+            PubSub.unsubscribe(tokenTeleport12On);
+            PubSub.unsubscribe(tokenTeleport12Off);
 
             document.removeEventListener("keydown", escFunction, false);
         };
@@ -173,7 +190,7 @@ function UI() {
                 </div>
             </nav>
         
-            <Sidebar showShopText={showShopText} showUniswap={showUniswap} showDialogBox={showDialogBox} showLogin={showLogin} showShop={showShop} showInventory={showInventory} message={message} dialogDone={dialogDone} loginDone={loginDone} username={username}/>
+            <Sidebar showShopText={showShopText} showUniswap={showUniswap} showDialogBox={showDialogBox} showLogin={showLogin} showShop={showShop} showInventory={showInventory} message={message} dialogDone={dialogDone} loginDone={loginDone} username={username} teleport12={showTeleport12}/>
             <div/>
                 
         
