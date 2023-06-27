@@ -16,6 +16,7 @@ export enum ItemsBonusType {
     ARMOR = "armor",
     GREAVE = "greave",
     HELM = "helm",
+    SEED = "seed",
   }
   
   export type ItemType = {
@@ -26,6 +27,8 @@ export enum ItemsBonusType {
     description: string;
     bonus?: ItemsBonusType;
     isNew?: boolean;
+    itemId?: number;
+    texture?: string;
   };
   
   export type ItemsPage = {
@@ -37,4 +40,11 @@ export enum ItemsBonusType {
   export type ItemsType = {
     [key: string]: ItemType[];
   };
+
+  export type PlantType = {
+    id: number;
+    name: string;
+    seedTexture: string;
+    plantTexture: string;
+  }
   

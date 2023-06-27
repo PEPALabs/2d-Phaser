@@ -1,0 +1,37 @@
+{
+    "id": "32c77594-c428-44d4-9a37-657989684462",
+    "sceneType": "PREFAB",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "ArcadeImage",
+            "id": "18902c48-aec2-4775-af17-f52c44ca0324",
+            "label": "Farmland",
+            "components": [
+                "FarmPlant"
+            ],
+            "texture": {
+                "key": "guapen"
+            },
+            "physicsType": 1,
+            "body.width": 208,
+            "body.height": 240
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 4
+    }
+}

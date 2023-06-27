@@ -1,6 +1,4 @@
-import Phaser from "phaser";
-
-export default class UserComponent {
+class UserComponent {
 
     /**
      * @param gameObject The entity.
@@ -46,19 +44,19 @@ export default class UserComponent {
 
     scene: Phaser.Scene;
 
-    protected awake() {
+    protected awake(): void {
         // override this
     }
 
-    protected start() {
+    protected start(): void {
         // override this
     }
 
-    protected update() {
+    protected update(): void {
         // override this
     }
 
-    protected destroy() {
+    protected destroy(): void {
         // override this
     }
 }
