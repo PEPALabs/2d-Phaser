@@ -20,7 +20,7 @@ function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,show
 
     return (
     <>
-        <div id="default-sidebar" className="absolute top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full sm:translate-x-0 bg-gray-50 dark:bg-gray-800" aria-label="Sidebar">
+        <div id="default-sidebar" className="absolute top-20 left-0 z-40 w-1/6 h-screen pt-0 transition-transform -translate-x-full sm:translate-x-0 bg-gray-50 dark:bg-gray-800" aria-label="Sidebar">
             <div className="flex flex-col px-3 pb-4 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <ul className="space-y-2 font-medium">
                     <li>
@@ -156,10 +156,10 @@ function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,show
         </div>
 {/* 
         <div className="pt-20"> */}
-        <div className="absolute justify-center top-20 left-64 flex-1 w-full h-full flex border-0">
+        <div className="relative justify-center w-5/6 top-20 flex border-0">
 
             {/* alerts  */}
-            <div className="absolute justify-center z-5 flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
+            <div className="relative justify-center z-5 flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
                 
                 <div className="grid p-4 grid-cols-3 gap-4 mb-4 ">
                     {teleport12 && 
@@ -200,7 +200,7 @@ function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,show
                     />
                 )}
             </div>
-            <div className="absolute justify-center w-full flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
+            <div className="absolute justify-center w-full border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
                 {showLogin && (
                     <SigninBox
                         message={message}
@@ -216,7 +216,7 @@ function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,show
                 )
                 }
             </div>
-            <div className="absolute justify-center w-full flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
+            <div className="relative justify-center flex w-full border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
                 {showInventory && (
                     <InventoryUI />
                     // <Shop message={message}
