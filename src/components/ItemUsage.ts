@@ -1,7 +1,7 @@
 
 // You can write more code here
-
-import { ItemType } from "../data/items.type";
+import UserComponent from "./UserComponent";
+import { ItemCategoriesType, ItemType } from "../data/items.type";
 
 /* START OF COMPILED CODE */
 
@@ -35,16 +35,19 @@ export default class ItemUsage extends UserComponent {
 	private item: ItemType = null;
 	private itemIcon: Phaser.GameObjects.Image = null;
 
+	get itemIconY(): number {
+		return this.gameObject.y - this.itemIconHeight / 2 - this.gameObject.displayHeight / 2 - 10;
+	}
+
 	public setItem(item: ItemType) {
 		if (this.itemIcon == null) {
-			const y = this.gameObject.y - this.itemIconHeight / 2 - this.gameObject.height / 2 - 10;
-			this.itemIcon = this.scene.add.image(this.gameObject.x, y, item.icon);
-			this.itemIcon.setSize(this.itemIconWidth, this.itemIconHeight);
+			this.itemIcon = this.scene.add.image(this.gameObject.x, this.itemIconY, item.icon);
 		}
 
 		this.item = item;
 		this.itemIcon.setTexture(item.texture);
 		this.itemIcon.setVisible(true);
+		this.itemIcon.setDisplaySize(this.itemIconWidth, this.itemIconHeight);
 	}
 
 	public getItem(): ItemType {
@@ -67,10 +70,22 @@ export default class ItemUsage extends UserComponent {
 		this.itemIcon?.setVisible(false);
 	}
 
-	protected update(): void {
+	protected override start(): void {
+		this.setItem({
+			name: "Wooden Shield",
+			category: ItemCategoriesType.SHIELD,
+			icon: "",
+			value: "2",
+			description: "",
+			itemId: 1,
+			texture: "guapen"
+		})
+	}
+
+	protected override update(): void {
 		if (this.itemIcon != null && this.itemIcon.visible) {
 			this.itemIcon.x = this.gameObject.x;
-			this.itemIcon.y = this.gameObject.y - this.itemIconHeight / 2 - this.gameObject.height / 2 - 10;
+			this.itemIcon.y = this.itemIconY;
 		}
 	}
 

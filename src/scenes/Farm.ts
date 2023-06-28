@@ -4,12 +4,12 @@
 /* START OF COMPILED CODE */
 
 import Phaser from "phaser";
+import Farmland from "../prefabs/Farmland";
 import PlayerMovement from "../components/PlayerMovement";
 import Physics from "../components/Physics";
 import PigAnimation from "../components/PigAnimation";
 import ItemUsage from "../components/ItemUsage";
 import TeleportScene from "../components/TeleportScene";
-import Farmland from "../prefabs/Farmland";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
@@ -40,11 +40,26 @@ export default class Farm extends Phaser.Scene {
 		map.setOrigin(0, 0);
 		layer_1.add(map);
 
+		// Farmlands
+		const farmlands = this.add.layer();
+
+		// Farmland
+		const farmland = new Farmland(this, 2297, 1470);
+		farmlands.add(farmland);
+
+		// Farmland_1
+		const farmland_1 = new Farmland(this, 2543, 1469);
+		farmlands.add(farmland_1);
+
+		// Farmland_2
+		const farmland_2 = new Farmland(this, 2784, 1472);
+		farmlands.add(farmland_2);
+
 		// player
-		const player = this.physics.add.sprite(819, 399, "pig");
+		const player = this.physics.add.sprite(832, 480, "pig");
+		player.name = "player";
 		player.scaleX = 0.1;
 		player.scaleY = 0.1;
-		player.setOrigin(0, 0);
 		player.body.setSize(1134, 1572, false);
 
 		// teleport
@@ -59,13 +74,6 @@ export default class Farm extends Phaser.Scene {
 		text_2.scaleY = 0.9548710435106904;
 		text_2.text = "Teleport";
 		text_2.setStyle({ "color": "#e68d00ff", "fontSize": "64px", "stroke": "#ffffffff", "shadow.offsetX":2,"shadow.offsetY":2,"shadow.color": "#e55353ff", "shadow.stroke":true,"shadow.fill":true});
-
-		// Farmlands
-		const farmlands = this.add.container(0, 0);
-
-		// Farmland
-		const farmland = new Farmland(this, 2399, 1561);
-		farmlands.add(farmland);
 
 		// player (components)
 		const playerPlayerMovement = new PlayerMovement(player);

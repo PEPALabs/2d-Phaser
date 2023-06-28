@@ -2,7 +2,6 @@
     "id": "c01ca79e-db39-4cbb-8648-2054f50e6a17",
     "sceneType": "SCENE",
     "settings": {
-        "snapEnabled": true,
         "snapWidth": 208,
         "snapHeight": 240,
         "exportClass": true,
@@ -39,9 +38,53 @@
             ]
         },
         {
+            "type": "Layer",
+            "id": "727c1343-3def-4d13-a68c-4df34f51fa0b",
+            "label": "Farmlands",
+            "list": [
+                {
+                    "prefabId": "32c77594-c428-44d4-9a37-657989684462",
+                    "id": "030affd0-868e-4ebc-9e27-d750e7030a25",
+                    "unlock": [
+                        "x",
+                        "y",
+                        "FarmPlant.player"
+                    ],
+                    "label": "Farmland",
+                    "x": 2297,
+                    "y": 1470
+                },
+                {
+                    "prefabId": "32c77594-c428-44d4-9a37-657989684462",
+                    "id": "6fea5823-eb65-4325-84de-b21ef74b85c2",
+                    "unlock": [
+                        "x",
+                        "y",
+                        "FarmPlant.player"
+                    ],
+                    "label": "Farmland_1",
+                    "x": 2543,
+                    "y": 1469
+                },
+                {
+                    "prefabId": "32c77594-c428-44d4-9a37-657989684462",
+                    "id": "23e48191-3cbd-416f-a917-3eae691972b2",
+                    "unlock": [
+                        "x",
+                        "y",
+                        "FarmPlant.player"
+                    ],
+                    "label": "Farmland_2",
+                    "x": 2784,
+                    "y": 1472
+                }
+            ]
+        },
+        {
             "type": "ArcadeSprite",
             "id": "f50e954c-e831-469c-aeb3-bbe66a2f42e1",
             "label": "player",
+            "useGameObjectName": true,
             "scope": "CLASS",
             "components": [
                 "PlayerMovement",
@@ -54,12 +97,10 @@
             "texture": {
                 "key": "pig"
             },
-            "x": 819,
-            "y": 399,
+            "x": 832,
+            "y": 480,
             "scaleX": 0.1,
             "scaleY": 0.1,
-            "originX": 0,
-            "originY": 0,
             "body.width": 1134,
             "body.height": 1572
         },
@@ -97,24 +138,6 @@
             "shadow.stroke": true,
             "shadow.fill": true,
             "shadow.color": "#e55353ff"
-        },
-        {
-            "type": "Container",
-            "id": "727c1343-3def-4d13-a68c-4df34f51fa0b",
-            "label": "Farmlands",
-            "list": [
-                {
-                    "prefabId": "32c77594-c428-44d4-9a37-657989684462",
-                    "id": "030affd0-868e-4ebc-9e27-d750e7030a25",
-                    "unlock": [
-                        "x",
-                        "y"
-                    ],
-                    "label": "Farmland",
-                    "x": 2399,
-                    "y": 1561
-                }
-            ]
         }
     ],
     "plainObjects": [],

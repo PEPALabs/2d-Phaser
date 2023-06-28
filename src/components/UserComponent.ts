@@ -1,4 +1,4 @@
-class UserComponent {
+export default class UserComponent {
 
     /**
      * @param gameObject The entity.

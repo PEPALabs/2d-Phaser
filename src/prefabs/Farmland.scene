@@ -2,6 +2,8 @@
     "id": "32c77594-c428-44d4-9a37-657989684462",
     "sceneType": "PREFAB",
     "settings": {
+        "snapWidth": 742,
+        "snapHeight": 256,
         "exportClass": true,
         "autoImport": true,
         "preloadMethodName": "",
@@ -13,18 +15,38 @@
     },
     "displayList": [
         {
-            "type": "ArcadeImage",
-            "id": "18902c48-aec2-4775-af17-f52c44ca0324",
-            "label": "Farmland",
+            "type": "Container",
+            "id": "7427d12a-3999-4e19-a5cf-64f3de3da33b",
+            "label": "container_2",
             "components": [
                 "FarmPlant"
             ],
-            "texture": {
-                "key": "guapen"
-            },
-            "physicsType": 1,
-            "body.width": 208,
-            "body.height": 240
+            "FarmPlant.actionButton": "actionButton",
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "18902c48-aec2-4775-af17-f52c44ca0324",
+                    "label": "PlantImage",
+                    "texture": {
+                        "key": "guapen"
+                    },
+                    "scaleX": 0.8,
+                    "scaleY": 0.8,
+                    "originX": 0,
+                    "originY": 0
+                },
+                {
+                    "prefabId": "4fe5bb49-6b0a-4bc1-b80a-2704651fba2b",
+                    "id": "d450f7d1-97fd-4f91-aacc-7edcb108b793",
+                    "unlock": [
+                        "x",
+                        "y"
+                    ],
+                    "label": "ActionButton",
+                    "x": 26,
+                    "y": 3
+                }
+            ]
         }
     ],
     "plainObjects": [],
@@ -33,5 +55,18 @@
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
         "version": 4
-    }
+    },
+    "prefabProperties": [
+        {
+            "name": "plantImage",
+            "label": "plantImage",
+            "tooltip": "plantImage",
+            "defValue": "",
+            "customDefinition": false,
+            "type": {
+                "id": "object-var",
+                "expressionType": "Phaser.GameObjects.Image"
+            }
+        }
+    ]
 }

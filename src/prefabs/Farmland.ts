@@ -5,29 +5,42 @@
 
 import Phaser from "phaser";
 import FarmPlant from "../components/FarmPlant";
+import Button from "./ui/Button";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
-export default interface Farmland {
+export default class Farmland extends Phaser.GameObjects.Container {
 
-	 body: Phaser.Physics.Arcade.StaticBody;
-}
+	constructor(scene: Phaser.Scene, x?: number, y?: number) {
+		super(scene, x ?? 0, y ?? 0);
 
-export default class Farmland extends Phaser.Physics.Arcade.Image {
+		// PlantImage
+		const plantImage = scene.add.image(0, 0, "guapen");
+		plantImage.scaleX = 0.8;
+		plantImage.scaleY = 0.8;
+		plantImage.setOrigin(0, 0);
+		this.add(plantImage);
 
-	constructor(scene: Phaser.Scene, x?: number, y?: number, texture?: string, frame?: number | string) {
-		super(scene, x ?? 0, y ?? 0, texture || "guapen", frame);
-
-		scene.physics.add.existing(this, true);
-		this.body.setSize(208, 240, false);
+		// ActionButton
+		const actionButton = new Button(scene, 26, 3);
+		this.add(actionButton);
 
 		// this (components)
-		new FarmPlant(this);
+		const thisFarmPlant = new FarmPlant(this);
+		thisFarmPlant.actionButton = actionButton;
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.
+		this.plantImage = plantImage;
+
+		scene.physics.add.existing(this)
+
+		const body = this.body as Phaser.Physics.Arcade.Body
+        body.setSize(plantImage.displayWidth, plantImage.displayHeight)
 		/* END-USER-CTR-CODE */
 	}
+
+	public plantImage!: Phaser.GameObjects.Image;
 
 	/* START-USER-CODE */
 

@@ -3,8 +3,20 @@
         {
             "name": "FarmPlant",
             "baseClass": "UserComponent",
-            "gameObjectType": "Phaser.Physics.Arcade.Image",
-            "properties": []
+            "gameObjectType": "Phaser.GameObjects.GameObject",
+            "properties": [
+                {
+                    "name": "actionButton",
+                    "label": "actionButton",
+                    "tooltip": "actionButton",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "object-var",
+                        "expressionType": "Button"
+                    }
+                }
+            ]
         }
     ],
     "meta": {

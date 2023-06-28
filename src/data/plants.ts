@@ -3,6 +3,6 @@ export default {
         id: 1,
         name: "Guapen",
         seedTexture: "guapen",
-        plantTexture: "guapen",
+        plantTexture: "FufuSuperDino",
     }
 }

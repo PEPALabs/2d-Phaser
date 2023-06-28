@@ -1,6 +1,12 @@
-import { PlantType } from "../data/items.type";
 
 // You can write more code here
+import UserComponent from "./UserComponent";
+import { PlantType } from "../data/items.type";
+import ItemUsage from "./ItemUsage";
+import Button from "../prefabs/ui/Button";
+import Farmland from "../prefabs/Farmland";
+import plants from "../data/plants";
+
 enum PlantState {
 	EMPTY,
 	PLANTING,
@@ -14,7 +20,7 @@ enum PlantState {
 
 export default class FarmPlant extends UserComponent {
 
-	constructor(gameObject: Phaser.Physics.Arcade.Image) {
+	constructor(gameObject: Farmland) {
 		super(gameObject);
 
 		this.gameObject = gameObject;
@@ -25,11 +31,12 @@ export default class FarmPlant extends UserComponent {
 		/* END-USER-CTR-CODE */
 	}
 
-	static getComponent(gameObject: Phaser.Physics.Arcade.Image): FarmPlant {
+	static getComponent(gameObject: Farmland): FarmPlant {
 		return (gameObject as any)["__FarmPlant"];
 	}
 
-	private gameObject: Phaser.Physics.Arcade.Image;
+	private gameObject: Farmland;
+	public actionButton!: Button;
 
 	/* START-USER-CODE */
 
@@ -38,8 +45,43 @@ export default class FarmPlant extends UserComponent {
 	public state: PlantState = PlantState.EMPTY;
 	private plant: PlantType = null;
 	private plantTime: number = 0;
+	private player: Phaser.Physics.Arcade.Sprite = null;
+	private readyTime: number = 5000;
 
-	public plantSeed(plant: PlantType) {
+	protected override start(): void {
+		this.player = this.scene.children.getByName("player") as Phaser.Physics.Arcade.Sprite;
+
+		this.actionButton.on('pointerdown', this.handleActionButton, this);
+
+		this.hideActionButton();
+
+		this.gameObject.plantImage.visible = false;
+	}
+
+	protected override update(): void {
+		if (this.state == PlantState.PLANTING) {
+			const time = this.scene.time.now - this.plantTime;
+			if (time > this.readyTime) {
+				this.state = PlantState.READY;
+				this.gameObject.plantImage.setTexture(this.plant.plantTexture);
+			}
+		}
+
+		if (this.state == PlantState.EMPTY || this.state == PlantState.READY) {
+			if (this.scene.physics.overlap(this.gameObject, this.player)) {
+				this.showActionButton();
+			}
+			else {
+				this.hideActionButton();
+			}
+		}
+	}
+
+	protected override destroy(): void {
+		this.actionButton.off('pointerdown', this.handleActionButton, this);
+	}
+
+	plantSeed(plant: PlantType) {
 		if (this.plant != null || this.state != PlantState.EMPTY) {
 			return
 		}
@@ -47,23 +89,61 @@ export default class FarmPlant extends UserComponent {
 		this.plant = plant;
 		this.state = PlantState.PLANTING;
 		this.plantTime = this.scene.time.now;
+
+		this.gameObject.plantImage.visible = true;
+		this.gameObject.plantImage.setTexture(plant.seedTexture);
+		
+		this.hideActionButton();
 	}
 
-	public gatherPlant() {
+	gatherPlant() {
 		if (this.state != PlantState.READY) {
 			return
 		}
 
 		this.state = PlantState.EMPTY;
 		this.plant = null;
+		this.gameObject.plantImage.visible = false;
 	}
 
-	protected update(): void {
-		if (this.state == PlantState.PLANTING) {
-			const time = this.scene.time.now - this.plantTime;
-			if (time > 10000) {
-				this.state = PlantState.READY;
+	showActionButton() {
+		this.actionButton.visible = true;
+		switch (this.state) {
+			case PlantState.EMPTY:
+				this.actionButton.setText("Plant");
+				break;
+			case PlantState.PLANTING:
+				this.actionButton.visible = false;
+				break;
+			case PlantState.READY:
+				this.actionButton.setText("Gather");
+				break;
+		}
+	}
+
+	hideActionButton() {
+		this.actionButton.visible = false;
+	}
+
+	handleActionButton() {
+		console.log("pointerdown action");
+
+		if (this.state == PlantState.EMPTY) {
+			const itemUsage = ItemUsage.getComponent(this.player);
+			const item = itemUsage?.getItem();
+			if (item == null) {
+				return;
 			}
+
+			const plant = plants[item.itemId];
+			console.log(plant);
+			if (plant != null) {
+				this.plantSeed(plant);
+				itemUsage.useItem();
+			}
+		}
+		else if (this.state == PlantState.READY) {
+			this.gatherPlant();
 		}
 	}
 
