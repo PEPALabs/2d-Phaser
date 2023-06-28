@@ -1,15 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import Alert from "./Alert";
 import InventoryUI from "./InventoryUI";
 import MessageBox from "./MessageBox";
 import SigninBox from "./Signin";
 import ShopUI from "./ShopUI";
+import Quests from "./widgets/Quests";
+import questData from "../data/questData";
 
 function Iframe(props) {
     return (<div dangerouslySetInnerHTML={ {__html:  props.iframe?props.iframe:""}} />);
   }
 
 function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,showInventory,message,dialogDone,loginDone,username,teleport12}) {
+
+    const [showQuest, setShowQuest] = useState(false);
 
     //uniswap test iframe
     const iframe = "<iframe src=\"https://app.uniswap.org/#/swap?outputCurrency=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359\" height=\"660px\" width=\"100%\" style=\"border: 0;margin: 0 auto;display: block;border-radius: 10px;max-width: 600px;min-width: 300px;\">";
@@ -34,9 +38,9 @@ function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,show
                     </li>
                     
                     <li>
-                        <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                        <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
-                        <span className="flex-1 ml-3 whitespace-nowrap">Products</span>
+                        <a href="#" onClick={(e)=>{setShowQuest(true);}} onMouseDown={(e)=>{e.stopPropagation()}} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+                            <span className="flex-1 ml-3 whitespace-nowrap">Quest Book</span>
                         </a>
                     </li>
                     <li>
@@ -215,6 +219,15 @@ function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,show
             <div className="absolute justify-center w-full flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
                 {showInventory && (
                     <InventoryUI />
+                    // <Shop message={message}
+                    // Signin={loginDone}/>
+                )
+                }
+            </div>
+
+            <div className="absolute justify-center w-full flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
+                {showQuest && (
+                    <Quests quests={questData} />
                     // <Shop message={message}
                     // Signin={loginDone}/>
                 )

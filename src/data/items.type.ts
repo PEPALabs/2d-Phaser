@@ -33,6 +33,15 @@ export enum ItemsBonusType {
     mainCategory: ItemsMainCategoriesType;
     page: number;
   };
+
+  export type QuestType = {
+    questName: string;
+    questCategory: ItemCategoriesType;
+    questDescription: string;
+    questTag: string; 
+    questLocation:string;
+    questStatus:string;
+  };
   
   export type ItemsType = {
     [key: string]: ItemType[];
