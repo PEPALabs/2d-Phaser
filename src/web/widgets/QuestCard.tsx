@@ -25,7 +25,7 @@ function QuestCard({questItem,questUpdate}) {
 
     return (
         // <div className="relative flex min-h-screen flex-col jus items-center justify-center overflow-hidden bg-gray-50 p-6 sm:py-12">
-            <div className="bg-white  shadow-xl shadow-gray-100 max-w-4xl flex flex-col sm:flex-row gap-3 sm:items-center  justify-between px-5 py-4 rounded-md">
+            <div className="bg-white  shadow-xl shadow-gray-100 max-w-full flex flex-col sm:flex-row gap-3 sm:items-center  justify-between px-5 py-4 rounded-md">
                 <div>
                     <span className="text-purple-800 text-sm">{questItem.questCategory}</span>
                     <h3 className="font-bold mt-px">{questItem.questName}</h3>
