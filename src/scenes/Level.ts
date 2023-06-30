@@ -16,6 +16,7 @@ import testPrefab from "../script-nodes/testPrefab";
 import EventDispatcher from "../EventDispatcher";
 import GameManager from "../GameManager";
 import PubSub from 'pubsub-js';
+import DisplayNavigation from "../components/DisplayNavigation";
 /* END-USER-IMPORTS */
 
 export default class Level extends Phaser.Scene {
@@ -190,6 +191,8 @@ export default class Level extends Phaser.Scene {
 	public shopText: boolean = false;
 	public gameManager: GameManager = GameManager.getInstance();
 
+	public image_3!: Phaser.GameObjects.Image;
+
 	preload(): void {
 		this.preload_all();
 		this.load.animation("walk", "assets/animation/animations.json");
@@ -203,6 +206,24 @@ export default class Level extends Phaser.Scene {
 
 		// this.anims.createFromAseprite("king-spritesheet");
 		this.editorCreate();
+
+
+		const image_3 = this.add.image(0, 0, "arrow");
+		image_3.setOrigin(0, 0);
+		const imageNavigation = new DisplayNavigation(image_3);
+		imageNavigation.player = this.pig;
+		imageNavigation.target = this.shop;
+
+		imageNavigation.itemList["1"] = this.shop;
+		imageNavigation.itemList["2"] = this.field1;
+
+		this.image_3 = image_3;
+
+		this.image_3.scaleX = 0.1;
+		this.image_3.scaleY = 0.1;
+
+
+
 
 		// var data = this.cache.json.get('walk');
 		// console.log(data);
