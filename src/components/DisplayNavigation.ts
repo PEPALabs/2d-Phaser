@@ -31,6 +31,8 @@ export default class DisplayNavigation {
 	private gameObject: Phaser.GameObjects.Image;
 
 	/* START-USER-CODE */
+	public itemList: {} = {};
+
 	public player!: Phaser.Physics.Arcade.Sprite;
 	public target!: Phaser.GameObjects.Rectangle;
 	private scene: Phaser.Scene;
@@ -38,12 +40,39 @@ export default class DisplayNavigation {
 	// Write your code here.
 
 	update() {
-		var angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, this.target.x, this.target.y);
-		var vector = new Phaser.Math.Vector2(this.radius, 0);
-		vector.setAngle(angle);
-		this.gameObject.x = this.player.body.x + vector.x;
-		this.gameObject.y = this.player.body.y + vector.y;
-		this.gameObject.rotation = angle;
+		var focusItem = localStorage.getItem("quest.focusedItem").valueOf();
+		// Note: always use a json parse
+		try{
+
+			focusItem = JSON.parse(focusItem);
+		}catch(e){
+			console.log(e);
+			focusItem = "";
+		}
+		//TODO: get a map of name->target
+		var target = this.target;
+		if (focusItem in this.itemList) {
+			this.gameObject.visible = true;
+			
+			// if(this.itemList[focusItem] === undefined){
+			// 	var target = this.itemList[focusItem];
+			// }else{
+			// 	var target = this.itemList[focusItem];
+			// }
+			target = this.itemList[focusItem]? this.itemList[focusItem] : this.target;
+
+			var angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, target.x, target.y);
+			var vector = new Phaser.Math.Vector2(this.radius, 0);
+			vector.setAngle(angle);
+			this.gameObject.x = this.player.body.x + vector.x;
+			this.gameObject.y = this.player.body.y + vector.y;
+			this.gameObject.rotation = angle;
+		}
+		else{
+			this.gameObject.visible = false;
+		}
+
+		
 	}
 	/* END-USER-CODE */
 }

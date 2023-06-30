@@ -214,6 +214,9 @@ export default class Level extends Phaser.Scene {
 		imageNavigation.player = this.pig;
 		imageNavigation.target = this.shop;
 
+		imageNavigation.itemList["1"] = this.shop;
+		imageNavigation.itemList["2"] = this.field1;
+
 		this.image_3 = image_3;
 
 		this.image_3.scaleX = 0.1;
