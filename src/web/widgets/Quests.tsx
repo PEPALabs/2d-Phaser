@@ -35,8 +35,8 @@ function Quests({quests}){
             setQuestItems(tmpQuests);
         }
     }
-    return (<div className="relative flex min-h-screen flex-col flex-1 jus items-center justify-center overflow-hidden bg-gray-50 p-6 sm:py-12">
-            {questItems.map((quest) => <QuestCard questItem={quest} questUpdate={updateQuests(quest)}/>)}
+    return (<div className="relative flex min-h-screen flex-col flex-1 jus items-center justify-center overflow-hidden gap-3 bg-gray-50 p-6 sm:py-12">
+                {questItems.map((quest) => <QuestCard key={quest.questId} questItem={quest} questUpdate={updateQuests(quest)}/>)}
             </div>)
 }
 
