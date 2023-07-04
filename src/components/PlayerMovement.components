@@ -130,6 +130,12 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "Component",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Image",
+            "properties": []
         }
     ],
     "meta": {

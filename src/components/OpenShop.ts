@@ -72,7 +72,7 @@ export default class OpenShop {
 			// 	// this.shopText = this.scene.add.text(this.gameObject.x-300, this.gameObject.y, 'Press SPACE to open shop', { fontSize: '32px' });
 			// 	PubSub.publish(this.shopTextMessage,"hello");
 			if (!this.shopTextOn) {
-				console.log("shop text on")
+				// console.log("shop text on")
 				PubSub.publish(this.shopTextMessage,"hello");
 				this.shopTextOn = true;
 			}
@@ -90,7 +90,7 @@ export default class OpenShop {
 				// set shop open status
 				shopOpen = !shopOpen;
 				this.gameManager.values[this.openVariableName] = shopOpen;
-				
+
 			}
 		}
 		else{
@@ -98,7 +98,7 @@ export default class OpenShop {
 				this.shopText.destroy();
 				this.shopText = null;
 			}
-			console.log("shop text off")
+			// console.log("shop text off")
 			this.shopTextOn = false;
 			this.gameManager.values[this.textVariableName] = false;
 			this.gameManager.values[this.openVariableName] = false;

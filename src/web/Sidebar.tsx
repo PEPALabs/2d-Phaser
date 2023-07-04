@@ -6,6 +6,7 @@ import SigninBox from "./Signin";
 import ShopUI from "./ShopUI";
 import Quests from "./widgets/Quests";
 import questData from "../data/questData";
+import ChatBox from "./widgets/ChatBox";
 
 function Iframe(props) {
     return (<div dangerouslySetInnerHTML={ {__html:  props.iframe?props.iframe:""}} />);
@@ -154,9 +155,15 @@ function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,show
                 </a>
             </div>
         </div>
+
+        
 {/* 
         <div className="pt-20"> */}
         <div className="absolute justify-center w-5/6 h-full top-20 left-1/4 border-0">
+
+            <div className="absolute justify-center w-full flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
+                <ChatBox />
+            </div>
 
             {/* alerts  */}
             <div className="absolute justify-center z-5 flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">

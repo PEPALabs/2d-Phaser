@@ -40,10 +40,9 @@ export default class DisplayNavigation {
 	// Write your code here.
 
 	update() {
-		var focusItem = localStorage.getItem("quest.focusedItem").valueOf();
+		var focusItem = localStorage.getItem("quest.focusedItem");
 		// Note: always use a json parse
 		try{
-
 			focusItem = JSON.parse(focusItem);
 		}catch(e){
 			console.log(e);
