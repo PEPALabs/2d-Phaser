@@ -6,20 +6,18 @@ import ChatMessage from "./ChatMessage"
 function ChatBox(){
     const [messages, setMessage] = useState(messageData);
     const [text, setText] = useState("");
-   const [username, setUsername] = useState("Test User");
+      const [username, setUsername] = useState("Test User");
 
-   const handleSend = (e) => {
-      e.preventDefault();
-      const newMessage = {
-         sender: username,
-         message: text
+      const handleSend = (e) => {
+         e.preventDefault();
+         const newMessage = {
+            sender: username,
+            message: text
+         }
+         setMessage([...messages, newMessage]);
+         // e.target.message.value = "";
+         setText("");
       }
-      setMessage([...messages, newMessage]);
-      // e.target.message.value = "";
-      setText("");
-   }
-    
-
     
     return (
     <div className="min-h-screen bg-indigo-50">
