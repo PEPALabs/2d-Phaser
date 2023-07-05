@@ -43,6 +43,11 @@ export enum ItemsBonusType {
     questLocation:string;
     questStatus:string;
   };
+
+  export type MessageType={
+    sender: string;
+    message: string;
+  }
   
   export type ItemsType = {
     [key: string]: ItemType[];
