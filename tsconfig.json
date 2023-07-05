@@ -17,12 +17,13 @@
         "outDir": "./dist",
 		"typeRoots": [
 			"node_modules/@types",
-			"node_module/phaser/types"
+			"node_module/phaser/types",
+			"node_modules/@fuel-wallet/types"
 		],
 		"types": [
 			"node",
 			"phaser",
-			"@fuel-wallet/sdk"
+			"chrome"
 		]
 	},
 	"include": [

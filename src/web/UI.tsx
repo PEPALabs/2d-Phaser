@@ -157,7 +157,7 @@ function UI() {
                         {/* <button onClick={handleClick} onMouseDown={(e)=>{e.stopPropagation()}} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
                             Connect Wallet
                         </button> */}
-                        <FuelApp />
+                        {/* <FuelApp /> */}
                     </div>
 
                     <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
