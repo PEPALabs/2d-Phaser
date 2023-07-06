@@ -182,6 +182,27 @@
             "list": []
         },
         {
+            "type": "ArcadeSprite",
+            "id": "e83bd5ed-1086-41ae-94ce-7bd61ca938f6",
+            "label": "NPC",
+            "scope": "CLASS",
+            "components": [
+                "DisplayText"
+            ],
+            "texture": {
+                "key": "fox"
+            },
+            "x": 1817,
+            "y": 1315,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "originX": 0.1,
+            "originY": 0.1,
+            "body.width": 1024,
+            "body.height": 1024,
+            "list": []
+        },
+        {
             "prefabId": "46239938-4ed4-4201-8fc6-4c848b0c5a5a",
             "id": "9632dffa-192c-4076-b1b7-7b79b3ad02c8",
             "unlock": [

@@ -132,9 +132,9 @@
             ]
         },
         {
-            "name": "Component",
+            "name": "DisplayText",
             "baseClass": "",
-            "gameObjectType": "Phaser.GameObjects.Image",
+            "gameObjectType": "Phaser.Physics.Arcade.Sprite",
             "properties": []
         }
     ],

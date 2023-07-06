@@ -11,6 +11,7 @@ import DisplayPlants from "../components/DisplayPlants";
 import RectPhysics from "../components/RectPhysics";
 import OpenShop from "../components/OpenShop";
 import TeleportScene from "../components/TeleportScene";
+import DisplayText from "../components/DisplayText";
 import testPrefab from "../script-nodes/testPrefab";
 /* START-USER-IMPORTS */
 import EventDispatcher from "../EventDispatcher";
@@ -117,6 +118,13 @@ export default class Level extends Phaser.Scene {
 		text_2.text = "Teleport";
 		text_2.setStyle({ "color": "#e68d00ff", "fontSize": "64px", "stroke": "#ffffffff", "shadow.offsetX":2,"shadow.offsetY":2,"shadow.color": "#e55353ff", "shadow.stroke":true,"shadow.fill":true});
 
+		// NPC
+		const nPC = this.physics.add.sprite(1817, 1315, "fox");
+		nPC.scaleX = 0.1;
+		nPC.scaleY = 0.1;
+		nPC.setOrigin(0.1, 0.1);
+		nPC.body.setSize(1024, 1024, false);
+
 		// scriptnode_1
 		new testPrefab(this);
 
@@ -144,6 +152,9 @@ export default class Level extends Phaser.Scene {
 		teleportTeleportScene.targetScene = "Farm";
 		teleportTeleportScene.player = pig;
 
+		// nPC (components)
+		new DisplayText(nPC);
+
 		this.pig = pig;
 		this.field1 = field1;
 		this.field2 = field2;
@@ -151,6 +162,7 @@ export default class Level extends Phaser.Scene {
 		this.field4 = field4;
 		this.container_2 = container_2;
 		this.shop = shop;
+		this.nPC = nPC;
 		this.main1 = main1;
 		this.main = main;
 		this.main_1 = main_1;
@@ -171,6 +183,7 @@ export default class Level extends Phaser.Scene {
 	private field4!: Phaser.GameObjects.Rectangle;
 	private container_2!: Phaser.GameObjects.Container;
 	private shop!: Phaser.GameObjects.Rectangle;
+	private nPC!: Phaser.Physics.Arcade.Sprite;
 	private main1!: Phaser.Tilemaps.Tilemap;
 	private main!: Phaser.Tilemaps.Tilemap;
 	private main_1!: Phaser.Tilemaps.Tilemap;
