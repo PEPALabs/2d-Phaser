@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Phaser, { Game } from "phaser";
 import Level from "../scenes/Level";
 import Farm from "../scenes/Farm";
-import preloadAssetPackUrl from "../../static/assets/preload-asset-pack.json";
 import Preload from "../scenes/Preload";
 
 function GameRoot() {
@@ -17,7 +16,7 @@ function GameRoot() {
     
         preload() {
     
-            this.load.pack("pack", preloadAssetPackUrl);
+            this.load.pack("pack", '/assets/preload-asset-pack.json');
         }
     
         create() {

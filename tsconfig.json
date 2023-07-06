@@ -1,32 +1,25 @@
 {
-	"compilerOptions": {
-		"target": "ESNext",
-		"module": "ESNext",
-		"strict": false,
-		"noEmit": false,
-		"jsx": "react",
-		"importHelpers": true,
-		"moduleResolution": "node",
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-		"sourceMap": true,
-		"baseUrl": "./src",
-		"paths": {
-		  "~/*": ["./*"]
-		},
-        "outDir": "./dist",
-		"typeRoots": [
-			"node_modules/@types",
-			// "node_module/phaser/types"
-		],
-		"types": [
-			"node",
-			// "phaser"
-			// "@fuel-wallet/sdk"
-		]
-	},
-	"include": [
-		"src/**/*",
-		"types/**/*"
-	]
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src", "src/static"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

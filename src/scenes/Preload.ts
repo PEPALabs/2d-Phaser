@@ -57,7 +57,7 @@ export default class Preload extends Phaser.Scene {
 
 		this.editorCreate();
 
-		this.load.pack("asset-pack", assetPackUrl);
+		this.load.pack("asset-pack", '/assets/asset-pack.json');
 	}
 
 	create() {
