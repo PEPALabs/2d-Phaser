@@ -6,6 +6,20 @@ import Level from "../scenes/Level";
 import Farm from "../scenes/Farm";
 import preloadAssetPackUrl from "../../static/assets/preload-asset-pack.json";
 import Preload from "../scenes/Preload";
+import UIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin.js';
+// var config = {
+//     // ...
+//     plugins: {
+//         scene: [{
+//             key: 'rexUI',
+//             plugin: UIPlugin,
+//             mapping: 'rexUI'
+//         },
+//         // ...
+//         ]
+//     }
+//     // ...
+// };
 
 function GameRoot() {
     // TODO: add game event dispatcher
@@ -46,7 +60,16 @@ function GameRoot() {
                 arcade: {
                     gravity: { y: 0 },
                 }
-            }
+            },
+            plugins: {
+                        scene: [{
+                            key: 'rexUI',
+                            plugin: UIPlugin,
+                            mapping: 'rexUI'
+                        },
+                        // ...
+                        ]
+                    }
             
         });
         game.scene.start("Boot");

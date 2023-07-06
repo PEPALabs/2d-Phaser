@@ -5,6 +5,10 @@
 
 import Phaser from "phaser";
 /* START-USER-IMPORTS */
+
+const COLOR_PRIMARY = 0x4e342e;
+const COLOR_LIGHT = 0x7b5e57;
+const COLOR_DARK = 0x260e04;
 /* END-USER-IMPORTS */
 
 export default class DisplayText {
@@ -32,18 +36,116 @@ export default class DisplayText {
 	private scene: Phaser.Scene;
 	private container: Phaser.GameObjects.Sprite;
 	private text: Phaser.GameObjects.Text;
+	private textBox: Phaser.GameObjects.GameObject;
 	// Write your code here.
+
+	getBBcodeText (scene, wrapWidth, fixedWidth, fixedHeight) {
+		return scene.rexUI.add.BBCodeText(0, 0, '', {
+			fixedWidth: fixedWidth,
+			fixedHeight: fixedHeight,
+	
+			fontSize: '20px',
+			wrap: {
+				mode: 'word',
+				width: wrapWidth
+			},
+			maxLines: 3
+		})
+	}
+
+	createTextBox (scene, x, y, config) {
+		const GetValue = Phaser.Utils.Objects.GetValue;
+		var wrapWidth = GetValue(config, 'wrapWidth', 0);
+		var fixedWidth = GetValue(config, 'fixedWidth', 0);
+		var fixedHeight = GetValue(config, 'fixedHeight', 0);
+		var titleText = GetValue(config, 'title', undefined);
+	
+		
+		var textBox = scene.rexUI.add.textBox({
+			x: x,
+			y: y,
+	
+			background: scene.rexUI.add.roundRectangle({ radius: 20, color: COLOR_PRIMARY, strokeColor: COLOR_LIGHT, strokeWidth: 2 }),
+	
+			icon: scene.rexUI.add.roundRectangle({ radius: 10, color: COLOR_DARK }),
+	
+			// text: getBuiltInText(scene, wrapWidth, fixedWidth, fixedHeight),
+			text: this.getBBcodeText(scene, wrapWidth, fixedWidth, fixedHeight),
+	
+			action: scene.add.image(0, 0).setTint(COLOR_LIGHT).setVisible(false),
+	
+			title: (titleText) ? scene.add.text(0, 0, titleText, { fontSize: '20px', }) : undefined,
+	
+			separator: (titleText) ? scene.rexUI.add.roundRectangle({ height: 3, color: COLOR_DARK }) : undefined,
+	
+			space: {
+				left: 20, right: 20, top: 20, bottom: 20,
+	
+				icon: 10, text: 10,
+	
+				separator: 6,
+			},
+	
+			align: {
+				title: 'center'
+			}
+		})
+			.setOrigin(0)
+			.layout();
+			console.log("test")
+		textBox
+			.setInteractive()
+			.on('pointerdown', function () {
+				var icon = this.getElement('action').setVisible(false);
+				this.resetChildVisibleState(icon);
+				if (this.isTyping) {
+					this.stop(true);
+				} else if (!this.isLastPage) {
+					this.typeNextPage();
+				} else {
+					// Next actions
+				}
+			}, textBox)
+			.on('pageend', function () {
+				if (this.isLastPage) {
+					return;
+				}
+	
+				var icon = this.getElement('action').setVisible(true);
+				this.resetChildVisibleState(icon);
+				icon.y -= 30;
+				var tween = scene.tweens.add({
+					targets: icon,
+					y: '+=30', // '+=100'
+					ease: 'Bounce', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+					duration: 500,
+					repeat: 0, // -1: infinity
+					yoyo: false
+				});
+			}, textBox)
+			.on('complete', function () {
+				console.log('all pages typing complete')
+			})
+		//.on('type', function () {
+		//})
+	
+		return textBox;
+	}
 
 	update (){
 		var showText = true; //TODO: chagne to a variable
-		var text = "hello"
-		if(showText){
-			this.container = this.scene.add.sprite(this.gameObject.x+20, this.gameObject.y+20,'container');    
-			this.container.setScale(0.3, 0.2);    
-			this.container.alpha = 0.8;    
-			this.container.visible = true;    
-			this.text = this.scene.add.text(this.gameObject.x+20, this.gameObject.y+20,text,{font: 'bold 20px Arial', color: '#FFFFFF'});    
-			this.text.setWordWrapWidth(580); //width of container
+		var text = "hello I am jack and I am the guide throughout your trip"
+		if(showText && this.textBox == null){
+			var textBox = this.createTextBox(this.scene, this.gameObject.x-30, this.gameObject.y-100, {
+				wrapWidth: 200,
+			}).start(text, 100);
+			this.textBox = textBox;
+			// this.container = this.scene.add.sprite(this.gameObject.x+20, this.gameObject.y+20,'container');    
+			// this.container.setScale(0.3, 0.2);    
+			// this.container.alpha = 0.8;    
+			// this.container.visible = true;    
+			// this.text = this.scene.add.text(this.gameObject.x+20, this.gameObject.y+20,text,{font: 'bold 20px Arial', color: '#FFFFFF'});    
+			// this.text.setWordWrapWidth(580); //width of container
 		// chat.inputEnabled = true;    
 		// chat.events.onInputDown.add(listener, this);    
 		// enemyFace = game.add.sprite(5,0,'face');    
