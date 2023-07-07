@@ -23,7 +23,8 @@
     "postcss-loader": "^7.3.0",
     "pubsub-js": "^1.9.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "zustand": "^4.3.9"
   },
   "devDependencies": {
     "@babel/core": "^7.21.8",

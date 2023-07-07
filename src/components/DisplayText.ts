@@ -5,7 +5,8 @@
 
 import Phaser from "phaser";
 /* START-USER-IMPORTS */
-
+import useMessageStore from "../store/MessageStore";
+import { useStore } from 'zustand';
 const COLOR_PRIMARY = 0x4e342e;
 const COLOR_LIGHT = 0x7b5e57;
 const COLOR_DARK = 0x260e04;
@@ -23,6 +24,10 @@ export default class DisplayText {
 		const scene = this.gameObject.scene;
 		this.scene = scene;
 		this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
+
+		this.messageStore  = useMessageStore;
+		this.messageStore.getState().setSender(this.sender);
+
 		/* END-USER-CTR-CODE */
 	}
 
@@ -31,19 +36,29 @@ export default class DisplayText {
 	}
 
 	private gameObject: Phaser.Physics.Arcade.Sprite;
+	public sender: string = "someone";
 
 	/* START-USER-CODE */
 	private scene: Phaser.Scene;
 	private container: Phaser.GameObjects.Sprite;
 	private text: Phaser.GameObjects.Text;
 	private textBox: Phaser.GameObjects.GameObject;
+	private displayText: string = "";
+	private messageStore;
 	// Write your code here.
+
+	getMessage() {
+		if(this.messageStore && this.sender in this.messageStore.message && this.messageStore.message[this.sender].length > 0) {
+			return this.messageStore.message[this.sender]
+		}
+		return "";
+	}
 
 	getBBcodeText (scene, wrapWidth, fixedWidth, fixedHeight) {
 		return scene.rexUI.add.BBCodeText(0, 0, '', {
 			fixedWidth: fixedWidth,
 			fixedHeight: fixedHeight,
-	
+
 			fontSize: '20px',
 			wrap: {
 				mode: 'word',
@@ -59,33 +74,33 @@ export default class DisplayText {
 		var fixedWidth = GetValue(config, 'fixedWidth', 0);
 		var fixedHeight = GetValue(config, 'fixedHeight', 0);
 		var titleText = GetValue(config, 'title', undefined);
-	
-		
+
+
 		var textBox = scene.rexUI.add.textBox({
 			x: x,
 			y: y,
-	
+
 			background: scene.rexUI.add.roundRectangle({ radius: 20, color: COLOR_PRIMARY, strokeColor: COLOR_LIGHT, strokeWidth: 2 }),
-	
+
 			icon: scene.rexUI.add.roundRectangle({ radius: 10, color: COLOR_DARK }),
-	
+
 			// text: getBuiltInText(scene, wrapWidth, fixedWidth, fixedHeight),
 			text: this.getBBcodeText(scene, wrapWidth, fixedWidth, fixedHeight),
-	
+
 			action: scene.add.image(0, 0).setTint(COLOR_LIGHT).setVisible(false),
-	
+
 			title: (titleText) ? scene.add.text(0, 0, titleText, { fontSize: '20px', }) : undefined,
-	
+
 			separator: (titleText) ? scene.rexUI.add.roundRectangle({ height: 3, color: COLOR_DARK }) : undefined,
-	
+
 			space: {
 				left: 20, right: 20, top: 20, bottom: 20,
-	
+
 				icon: 10, text: 10,
-	
+
 				separator: 6,
 			},
-	
+
 			align: {
 				title: 'center'
 			}
@@ -110,7 +125,7 @@ export default class DisplayText {
 				if (this.isLastPage) {
 					return;
 				}
-	
+
 				var icon = this.getElement('action').setVisible(true);
 				this.resetChildVisibleState(icon);
 				icon.y -= 30;
@@ -128,29 +143,28 @@ export default class DisplayText {
 			})
 		//.on('type', function () {
 		//})
-	
+
 		return textBox;
 	}
 
 	update (){
-		var showText = true; //TODO: chagne to a variable
-		var text = "hello I am jack and I am the guide throughout your trip"
-		if(showText && this.textBox == null){
-			var textBox = this.createTextBox(this.scene, this.gameObject.x-30, this.gameObject.y-100, {
-				wrapWidth: 200,
-			}).start(text, 100);
-			this.textBox = textBox;
-			// this.container = this.scene.add.sprite(this.gameObject.x+20, this.gameObject.y+20,'container');    
-			// this.container.setScale(0.3, 0.2);    
-			// this.container.alpha = 0.8;    
-			// this.container.visible = true;    
-			// this.text = this.scene.add.text(this.gameObject.x+20, this.gameObject.y+20,text,{font: 'bold 20px Arial', color: '#FFFFFF'});    
-			// this.text.setWordWrapWidth(580); //width of container
-		// chat.inputEnabled = true;    
-		// chat.events.onInputDown.add(listener, this);    
-		// enemyFace = game.add.sprite(5,0,'face');    
-		// enemyFace.scale.setTo(2,2.6);    
-		// container.addChild(enemyFace);
+
+		if(this.textBox == null){
+			this.messageStore.getState().addMessage(this.sender, "Hello my name is "+this.sender);
+		}
+		 //TODO: chagne to a variable
+		var text = this.getMessage();
+		var showText = text.length > 0;
+		if(showText){
+			if(text !== this.displayText){
+				this.textBox.destroy();
+			}else{
+				var textBox = this.createTextBox(this.scene, this.gameObject.x-30, this.gameObject.y-100, {
+					wrapWidth: 200,
+				}).start(text, 100);
+				this.textBox = textBox;
+			}
+
 		}
 	}
 		// container = this.scene.game.add.sprite(70, 580, 'container');    

@@ -135,7 +135,18 @@
             "name": "DisplayText",
             "baseClass": "",
             "gameObjectType": "Phaser.Physics.Arcade.Sprite",
-            "properties": []
+            "properties": [
+                {
+                    "name": "sender",
+                    "label": "sender",
+                    "tooltip": "sender",
+                    "defValue": "someone",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "string"
+                    }
+                }
+            ]
         }
     ],
     "meta": {
