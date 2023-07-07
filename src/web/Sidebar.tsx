@@ -20,7 +20,7 @@ function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,show
 
     return (
     <>
-        <div id="default-sidebar" className="absolute top-20 left-0 z-40 w-1/4 h-screen pt-0 transition-transform -translate-x-full sm:translate-x-0 bg-gray-50 dark:bg-gray-800" aria-label="Sidebar">
+        <div id="default-sidebar" className="absolute top-20 left-0 z-40 w-1/8 h-screen pt-0 transition-transform -translate-x-full sm:translate-x-0 bg-gray-50 dark:bg-gray-800" aria-label="Sidebar">
             <div className="flex flex-col px-3 pb-4 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <ul className="space-y-2 font-medium">
                     <li>
