@@ -1,27 +1,30 @@
 // src/App.jsx
-import React, { ReactElement } from 'react'
-import { useState } from 'react';
-// import './App.css'
+import React, { useState } from 'react'
+import { MantineProvider, AppShell } from '@mantine/core'
 
+import UI from './UI'
+import GameRoot from './Game'
+import SigninBox from './Signin'
 
-import UI from "./UI";
-import GameRoot from "./Game";
+function App() {
+  const [messages, setMessage] = useState('')
+  const [showDialogBox, setShowDialogBox] = useState(false)
+  const [showLogin, setShowLogin] = useState(true)
+  const [login, setLogin] = useState(false)
 
-function App(){
-    const [messages, setMessage] = useState('');
-    const [showDialogBox, setShowDialogBox] = useState(false);
-    const [showLogin, setShowLogin] = useState(true);
-    const [login, setLogin] = useState(false);
-    
-
-    
-	return <div className="App">
-        <UI />
+  return (
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{ defaultRadius: 'md' }}>
+      <AppShell header={<UI />}>
+        <SigninBox />
         <div id="game">
-            <GameRoot />
+          <GameRoot />
         </div>
-    </div>
+      </AppShell>
+    </MantineProvider>
+  )
 }
-
 
 export default App
