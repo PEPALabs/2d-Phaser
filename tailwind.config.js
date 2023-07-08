@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -16,6 +14,13 @@ module.exports = {
           lightYellow: "#FFFFBE",
           softYellow: "#f8f7d9",
         },
+        pepa: {
+          blue: "#C2DAFF",
+          pink: "#FFEBF3",
+          gold: "#FFCB46",
+          darkBlue: "#132A49",
+          textBlue: "#474FA2",
+        },
       },
       boxShadow: {
         yellow: "rgba(255, 255, 190, 0.4) 0px 0px 6px 2px",
@@ -26,5 +31,4 @@ module.exports = {
     margin: ["responsive", "even"],
   },
   plugins: [],
-}
-
+};
