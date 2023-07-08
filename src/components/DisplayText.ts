@@ -26,7 +26,10 @@ export default class DisplayText {
 		this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
 
 		this.messageStore  = useMessageStore;
-		this.messageStore.getState().setSender(this.sender);
+		this.messageStore.subscribe((store)=>{
+			this.textChanged = true;
+		});
+		// console.log("message", this.messageStore.getState().message);
 
 		/* END-USER-CTR-CODE */
 	}
@@ -36,7 +39,7 @@ export default class DisplayText {
 	}
 
 	private gameObject: Phaser.Physics.Arcade.Sprite;
-	public sender: string = "someone";
+	public sender: string = "Fox";
 
 	/* START-USER-CODE */
 	private scene: Phaser.Scene;
@@ -45,11 +48,15 @@ export default class DisplayText {
 	private textBox: Phaser.GameObjects.GameObject;
 	private displayText: string = "";
 	private messageStore;
+
+	//hook state
+	private textChanged: boolean = false;
 	// Write your code here.
 
 	getMessage() {
-		if(this.messageStore && this.sender in this.messageStore.message && this.messageStore.message[this.sender].length > 0) {
-			return this.messageStore.message[this.sender]
+		if(this.messageStore && this.sender in this.messageStore.getState().message && this.messageStore.getState().message[this.sender].length > 0) {
+			// console.log("sender",this.messageStore.getState().message[this.sender]);
+			return this.messageStore.getState().message[this.sender]
 		}
 		return "";
 	}
@@ -107,7 +114,6 @@ export default class DisplayText {
 		})
 			.setOrigin(0)
 			.layout();
-			console.log("test")
 		textBox
 			.setInteractive()
 			.on('pointerdown', function () {
@@ -149,20 +155,24 @@ export default class DisplayText {
 
 	update (){
 
-		if(this.textBox == null){
-			this.messageStore.getState().addMessage(this.sender, "Hello my name is "+this.sender);
-		}
+		// if(this.textBox == null){
+		// 	this.messageStore.getState().addMessage(this.sender, "Hello my name is "+this.sender);
+		// }
 		 //TODO: chagne to a variable
-		var text = this.getMessage();
-		var showText = text.length > 0;
+
+		// check if message store has changed
+		var showText = this.textChanged;
+		this.textChanged = false; // reset state
 		if(showText){
-			if(text !== this.displayText){
-				this.textBox.destroy();
-			}else{
+			var text = this.getMessage();
+			if(text !== this.displayText && text.length > 0){
+				// this.textBox.destroy();
+				// this.textBox.setActive(false);
 				var textBox = this.createTextBox(this.scene, this.gameObject.x-30, this.gameObject.y-100, {
 					wrapWidth: 200,
 				}).start(text, 100);
 				this.textBox = textBox;
+				this.displayText = text;
 			}
 
 		}

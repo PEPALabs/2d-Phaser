@@ -187,8 +187,12 @@
             "label": "NPC",
             "scope": "CLASS",
             "components": [
-                "DisplayText"
+                "DisplayText",
+                "TriggerText"
             ],
+            "TriggerText.sender": "Fox",
+            "TriggerText.player": "pig",
+            "TriggerText.message": "Welcome to PEPA Arcade!",
             "texture": {
                 "key": "fox"
             },

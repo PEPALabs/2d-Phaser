@@ -1,8 +1,9 @@
 import { create } from 'zustand'
 
 const useMessageStore = create((set) => ({
-  message: {},
-  addSender: (name) => set((state) => ({ message: { ...state.message, name: "" } })),
+  message: {
+    "jack": "hello",
+  },
     addMessage: (name, message) => set((state) => {
         if(name in state.message) 
         {
@@ -10,9 +11,8 @@ const useMessageStore = create((set) => ({
             temp.message[name] = message;
             return temp;
         }
-            return { message: { ...state.message, name: message } }
-        }
-    )
+        return { message: { ...state.message, [name]: message } }
+    })
 }))
 
 export default useMessageStore;

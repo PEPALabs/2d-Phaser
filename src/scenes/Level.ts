@@ -12,6 +12,7 @@ import RectPhysics from "../components/RectPhysics";
 import OpenShop from "../components/OpenShop";
 import TeleportScene from "../components/TeleportScene";
 import DisplayText from "../components/DisplayText";
+import TriggerText from "../components/TriggerText";
 import testPrefab from "../script-nodes/testPrefab";
 /* START-USER-IMPORTS */
 import EventDispatcher from "../EventDispatcher";
@@ -154,6 +155,10 @@ export default class Level extends Phaser.Scene {
 
 		// nPC (components)
 		new DisplayText(nPC);
+		const nPCTriggerText = new TriggerText(nPC);
+		nPCTriggerText.sender = "Fox";
+		nPCTriggerText.player = pig;
+		nPCTriggerText.message = "Welcome to PEPA Arcade!";
 
 		this.pig = pig;
 		this.field1 = field1;
