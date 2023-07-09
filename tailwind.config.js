@@ -16,10 +16,14 @@ module.exports = {
         },
         pepa: {
           blue: "#C2DAFF",
-          pink: "#FFEBF3",
+          lightPink: "#FFEBF3",
+          pink: "#FE619A",
+          darkPink: "#F14986",
           gold: "#FFCB46",
           darkBlue: "#132A49",
           textBlue: "#474FA2",
+          black: "#252525",
+          darkBlack: "#1B1C1E",
         },
       },
       boxShadow: {

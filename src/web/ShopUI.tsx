@@ -18,6 +18,7 @@ import {
 function ShopUI() {
   const [items, setItems] = useState(getItems());
   const [itemSelected, setItemSelected] = useState(0);
+  const [itemAmount, setItemAmount] = useState(0);
   const [isModalOpened, setIsModalOpened] = useState(false);
 
   const [isModalOpened1, setIsModalOpened1] = useState(false);
@@ -91,6 +92,16 @@ function ShopUI() {
     }
   };
 
+  const handleIncrement = (event: React.MouseEvent) => {
+    let currentAmount = itemAmount;
+    setItemAmount(currentAmount + 1);
+  };
+
+  const handleDecrement = (event: React.MouseEvent) => {
+    let currentAmount = itemAmount;
+    if (currentAmount > 0) setItemAmount(currentAmount - 1);
+  };
+
   useEffect(() => {
     if (inventoryRef.current) {
       inventoryRef.current.focus();
@@ -104,8 +115,16 @@ function ShopUI() {
       className="bg-pepa-blue min-h-screen flex-1 font-calamity p-10"
       tabIndex={0}
     >
-      <div className="container mx-auto flex mt-32 flex-col xl:flex-row">
-        <div className="flex flex-col justify-center w-full mx-auto xl:w-1/2 relative ">
+      <div className="flex flex-row w-full space-x-10 items-center">
+        <div className="flex flex-row items-center space-x-3 text-gray-700">
+          <img className="w-10 h-10" src="/assets/coin.png" />
+          <div>User Balance: 1000 ETH</div>
+        </div>
+
+        <div className="text-2xl text-gray-700">PEPA Shop</div>
+      </div>
+      <div className="container mx-auto flex mt-16 flex-col space-y-20">
+        <div className="flex flex-col items-center w-3/4 mx-auto relative">
           {/* <CategoriesMenu
             categorySelected={itemsPaginated[page].mainCategory}
             setPage={setPage}
@@ -128,7 +147,7 @@ function ShopUI() {
           /> */}
         </div>
 
-        <div className="flex flex-col items-center self-end xl:items-start w-full xl:w-1/2 my-6 xl:my-0">
+        <div className="flex flex-col items-center self-center w-3/4">
           {/* <img
             className="absolute hidden xl:block top-0 ml-48 z-0"
             src={linkImage}
@@ -143,33 +162,40 @@ function ShopUI() {
           )} */}
 
           {/* Add text component */}
-          <a href="#">
-            <img
-              className="rounded-t-lg"
-              src="/docs/images/blog/image-1.jpg"
-              alt=""
-            />
-          </a>
-          <div className="p-5">
-            <a href="#">
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">
-                Noteworthy technology acquisitions 2021
-              </h5>
-            </a>
-            <p className="mb-3 font-normal text-white dark:text-gray-400">
-              Here are the biggest enterprise technology acquisitions of 2021 so
-              far, in reverse chronological order.
-            </p>
-            <div className="flex mt-4 space-x-3 md:mt-6">
-              <a
-                href="#"
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          <div className="p-5 flex flex-row space-x-5 items-center">
+            <div className="custom-number-input w-32">
+              <label
+                htmlFor="custom-input-number"
+                className="w-full text-gray-700 text-base font-semibold"
               >
-                Use Item
-              </a>
+                Amount
+              </label>
+              <div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                <button
+                  onClick={handleDecrement}
+                  className=" bg-pepa-lightPink text-gray-600 hover:text-white hover:bg-pepa-pink h-full w-20 rounded-l cursor-pointer outline-none"
+                >
+                  <span className="m-auto text-2xl font-thin">-</span>
+                </button>
+                <input
+                  type="number"
+                  className="outline-none focus:outline-none text-center w-full bg-pepa-lightPink font-semibold text-base hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700"
+                  name="custom-input-number"
+                  value={itemAmount}
+                  onChange={(e) => setItemAmount}
+                ></input>
+                <button
+                  onClick={handleIncrement}
+                  className="bg-pepa-lightPink text-gray-600 hover:text-white hover:bg-pepa-pink h-full w-20 rounded-r cursor-pointer outline-none"
+                >
+                  <span className="m-auto text-2xl font-thin">+</span>
+                </button>
+              </div>
+            </div>
+            <div className="flex self-end">
               <a
                 href="#"
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="inline-flex items-center px-4 py-2 h-10 text-base font-medium text-center text-white bg-pepa-pink rounded-lg hover:bg-pepa-pink/80 focus:ring-3 focus:outline-none focus:ring-pepa-darkPink"
               >
                 Purchase
                 <svg

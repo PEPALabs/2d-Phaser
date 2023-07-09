@@ -81,7 +81,7 @@ export default () => {
       ref={modalRef}
       onKeyDown={handleKeyPressed}
       tabIndex={0}
-      className="w-32 bg-pepa-textBlue absolute top-0 left-0 z-50 mx-10 my-10 outline-none text-white rounded-xl"
+      className="w-32 absolute top-0 left-0 z-50 mx-10 my-10 outline-none text-white rounded-xl"
     >
       <div
         className="flex flex-col"
@@ -92,7 +92,7 @@ export default () => {
         <div
           className={cx(
             {
-              "shadow-yellow border-zelda-softYellow border":
+              "shadow-yellow border-zelda-softYellow border bg-pepa-darkBlue/90":
                 selectedOption === ModalOptions.EQUIP,
             },
             "flex justify-center px-6 py-4 relative rounded-t-xl bg-pepa-darkBlue"
@@ -105,7 +105,7 @@ export default () => {
         <div
           className={cx(
             {
-              "shadow-yellow border-zelda-softYellow border":
+              "shadow-yellow border-zelda-softYellow border bg-pepa-darkBlue/90":
                 selectedOption === ModalOptions.DROP,
             },
             "flex justify-center px-6 py-4 relative bg-pepa-darkBlue"
@@ -119,7 +119,7 @@ export default () => {
         <div
           className={cx(
             {
-              "shadow-yellow border-zelda-softYellow border":
+              "shadow-yellow border-zelda-softYellow border bg-pepa-darkBlue/90":
                 selectedOption === ModalOptions.ADD,
             },
             "flex justify-center px-6 py-4 relative bg-pepa-darkBlue"
@@ -133,7 +133,7 @@ export default () => {
         <div
           className={cx(
             {
-              "shadow-yellow border-zelda-softYellow border":
+              "shadow-yellow border-zelda-softYellow border bg-pepa-darkBlue/90":
                 selectedOption === ModalOptions.CANCEL,
             },
             "flex justify-center px-6 py-4 relative rounded-b-xl bg-pepa-darkBlue"

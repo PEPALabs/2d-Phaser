@@ -60,7 +60,7 @@ const Item: React.FC<Props> = ({
           "shadow-pepa-gold !border-pepa-gold border-2 rounded-md": isSelected,
           "zelda-background-item ": isEquipped,
         },
-        "relative w-20 h-20 bg-pepa-pink border border-pepa-textBlue rounded-md cursor-pointer"
+        "relative w-20 h-20 bg-pepa-lightPink border-2 border-pepa-textBlue/30 rounded-md cursor-pointer"
       )}
     >
       {isSelected && !isModalOpened1}
