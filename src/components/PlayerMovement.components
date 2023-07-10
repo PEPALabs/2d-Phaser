@@ -1,0 +1,198 @@
+{
+    "components": [
+        {
+            "name": "PlayerMovement",
+            "baseClass": "",
+            "gameObjectType": "Phaser.Physics.Arcade.Sprite",
+            "properties": [
+                {
+                    "name": "speed",
+                    "label": "speed",
+                    "tooltip": "speed",
+                    "defValue": 2,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                },
+                {
+                    "name": "velocity",
+                    "label": "velocity",
+                    "tooltip": "velocity",
+                    "defValue": 50,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Physics",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Image",
+            "properties": []
+        },
+        {
+            "name": "OpenShop",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Rectangle",
+            "properties": [
+                {
+                    "name": "player",
+                    "label": "player",
+                    "tooltip": "player",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "object-var",
+                        "expressionType": "Phaser.GameObjects.GameObject"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DisplayPlants",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Container",
+            "properties": [
+                {
+                    "name": "property1",
+                    "label": "Property 1",
+                    "tooltip": "Property 1",
+                    "defValue": 0,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "RandomComponent",
+            "baseClass": "",
+            "gameObjectType": "Phaser.Physics.Arcade.Sprite",
+            "properties": []
+        },
+        {
+            "name": "PigAnimation",
+            "baseClass": "",
+            "gameObjectType": "Phaser.Physics.Arcade.Sprite",
+            "properties": [
+                {
+                    "name": "animationKey",
+                    "label": "Animation Key",
+                    "tooltip": "The animation to start",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "string"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "RectPhysics",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Rectangle",
+            "properties": []
+        },
+        {
+            "name": "Teleport",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Rectangle",
+            "properties": []
+        },
+        {
+            "name": "TeleportScene",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Rectangle",
+            "properties": [
+                {
+                    "name": "targetScene",
+                    "label": "targetScene",
+                    "tooltip": "Property 1",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "scene-key"
+                    }
+                },
+                {
+                    "name": "player",
+                    "label": "player",
+                    "tooltip": "player",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "object-var",
+                        "expressionType": "Phaser.GameObjects.GameObject"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "DisplayText",
+            "baseClass": "",
+            "gameObjectType": "Phaser.Physics.Arcade.Sprite",
+            "properties": [
+                {
+                    "name": "sender",
+                    "label": "sender",
+                    "tooltip": "sender",
+                    "defValue": "someone",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "string"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "TriggerText",
+            "baseClass": "",
+            "gameObjectType": "Phaser.Physics.Arcade.Sprite",
+            "properties": [
+                {
+                    "name": "sender",
+                    "label": "sender",
+                    "tooltip": "sender",
+                    "defValue": "undefined",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "string"
+                    }
+                },
+                {
+                    "name": "player",
+                    "label": "player",
+                    "tooltip": "player",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "object-var",
+                        "expressionType": "Phaser.GameObjects.GameObject"
+                    }
+                },
+                {
+                    "name": "message",
+                    "label": "message",
+                    "tooltip": "message",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "string"
+                    }
+                }
+            ]
+        }
+    ],
+    "meta": {
+        "app": "Phaser Editor 2D - User Components Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.UserComponents"
+    },
+    "outputLang": "TYPE_SCRIPT",
+    "exportClass": true,
+    "autoImport": true
+}

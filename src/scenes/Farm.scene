@@ -1,0 +1,112 @@
+{
+    "id": "c01ca79e-db39-4cbb-8648-2054f50e6a17",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadPackFiles": [
+            "Proj1/static/assets/asset-pack.json"
+        ],
+        "createMethodName": "editorCreate",
+        "sceneKey": "Farm",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Layer",
+            "id": "2bc73b27-c0db-471a-b7be-6d5122e136a5",
+            "label": "layer_1",
+            "scope": "CLASS",
+            "components": [],
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "5abd520a-5220-4944-a8cd-6d705f74fedd",
+                    "label": "map",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "_composite"
+                    },
+                    "scaleX": 2,
+                    "scaleY": 2,
+                    "originX": 0,
+                    "originY": 0,
+                    "list": []
+                }
+            ]
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "f50e954c-e831-469c-aeb3-bbe66a2f42e1",
+            "label": "player",
+            "scope": "CLASS",
+            "components": [
+                "PlayerMovement",
+                "Physics",
+                "PigAnimation"
+            ],
+            "PlayerMovement.speed": 20,
+            "PlayerMovement.velocity": 250,
+            "texture": {
+                "key": "pig"
+            },
+            "x": 819,
+            "y": 399,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "originX": 0,
+            "originY": 0,
+            "body.width": 1134,
+            "body.height": 1572,
+            "list": []
+        },
+        {
+            "type": "Rectangle",
+            "id": "73633d49-ecc7-4a85-ba99-3f98bfc15f7f",
+            "label": "teleport",
+            "components": [
+                "TeleportScene"
+            ],
+            "TeleportScene.targetScene": "Level",
+            "TeleportScene.player": "player",
+            "x": 157,
+            "y": 465,
+            "scaleX": 1.463969011613163,
+            "scaleY": 1.3187915313412075,
+            "isFilled": true,
+            "width": 128,
+            "height": 128,
+            "list": []
+        },
+        {
+            "type": "Text",
+            "id": "6e197a71-7ff1-4e6e-ae9c-c4fe33c9806f",
+            "label": "text_2",
+            "components": [],
+            "x": 39,
+            "y": 310,
+            "scaleX": 0.7846903230519551,
+            "scaleY": 0.9548710435106904,
+            "text": "Teleport",
+            "fontSize": "64px",
+            "color": "#e68d00ff",
+            "stroke": "#ffffffff",
+            "shadow.offsetX": 2,
+            "shadow.offsetY": 2,
+            "shadow.stroke": true,
+            "shadow.fill": true,
+            "shadow.color": "#e55353ff",
+            "list": []
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 3
+    }
+}

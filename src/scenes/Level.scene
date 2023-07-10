@@ -4,7 +4,10 @@
     "settings": {
         "exportClass": true,
         "autoImport": true,
-        "preloadPackFiles": [],
+        "preloadMethodName": "preload_all",
+        "preloadPackFiles": [
+            "Proj1/static/assets/asset-pack.json"
+        ],
         "createMethodName": "editorCreate",
         "sceneKey": "Level",
         "compilerOutputLanguage": "TYPE_SCRIPT",
@@ -14,55 +17,414 @@
     "displayList": [
         {
             "type": "Image",
-            "id": "bb2d413c-02b3-404d-b1c0-cf46ce1e7f07",
-            "label": "fufuSuperDino",
+            "id": "946c881d-e531-4a51-89ff-fb630f59ab0f",
+            "label": "image_2",
             "components": [],
             "texture": {
-                "key": "FufuSuperDino"
+                "key": "map-town"
             },
-            "x": 640,
-            "y": 257,
+            "originX": 0,
+            "originY": 0,
+            "list": []
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "b71d5d03-0649-41d1-901d-4768b499bf92",
+            "label": "pig",
+            "scope": "CLASS",
+            "components": [
+                "Physics",
+                "PlayerMovement",
+                "PigAnimation"
+            ],
+            "PlayerMovement.velocity": 250,
+            "PigAnimation.animationKey": "pig-walk",
+            "texture": {
+                "key": "pig"
+            },
+            "x": 1641,
+            "y": 1264,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "body.width": 1134,
+            "body.height": 1572,
+            "list": []
+        },
+        {
+            "type": "Container",
+            "id": "2da29669-c68b-49f5-8f56-3d2b980d7fce",
+            "label": "container_2",
+            "scope": "CLASS",
+            "components": [
+                "DisplayPlants"
+            ],
             "list": [
                 {
-                    "prefabId": "a06ed60b-79f1-4444-bf35-89046f71f954",
-                    "id": "0eb8a724-16b2-4c55-8b33-1d41fc1b3663",
-                    "label": "onPointerDownScript",
+                    "type": "Rectangle",
+                    "id": "a5d62151-23c1-4cec-9621-aa70d2adc0f0",
+                    "label": "field1",
+                    "scope": "CLASS",
                     "components": [],
-                    "nestedPrefabs": [],
-                    "list": [
-                        {
-                            "prefabId": "0e39177a-6e19-4b56-a7c2-2360a2e41505",
-                            "id": "5d148849-dd2d-4bb7-b17d-a74ea5a8bd14",
-                            "label": "pushAction",
-                            "components": [],
-                            "nestedPrefabs": [],
-                            "list": []
-                        }
-                    ]
+                    "x": 850,
+                    "y": 1200,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "acabb6f4-02da-4776-a0fc-23c62f30c10c",
+                    "label": "field2",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 1100,
+                    "y": 1200,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "c68e1e5d-27f9-4718-8f1e-d7270b265dce",
+                    "label": "field3",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 850,
+                    "y": 1400,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "2d72962a-a0b9-48da-8bf8-8533ad06558e",
+                    "label": "field4",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 1100,
+                    "y": 1400,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Text",
+                    "id": "3a50ea7b-b5e7-4bbc-865c-eccb9b20bbe0",
+                    "label": "text_1",
+                    "components": [],
+                    "x": 873,
+                    "y": 1077,
+                    "text": "Farm",
+                    "fontSize": "64px",
+                    "color": "#e68d00ff",
+                    "stroke": "#ffffffff",
+                    "shadow.offsetX": 2,
+                    "shadow.offsetY": 2,
+                    "shadow.stroke": true,
+                    "shadow.fill": true,
+                    "shadow.color": "#e55353ff",
+                    "list": []
                 }
             ]
         },
         {
+            "type": "Rectangle",
+            "id": "f854cf05-489e-4ff2-9d87-0b4255360bbe",
+            "label": "Shop",
+            "scope": "CLASS",
+            "components": [
+                "RectPhysics",
+                "OpenShop"
+            ],
+            "OpenShop.player": "pig",
+            "x": 2704,
+            "y": 2919,
+            "width": 500,
+            "height": 500,
+            "list": []
+        },
+        {
+            "type": "Rectangle",
+            "id": "afe78fec-c967-4bef-85fc-783e00dfcc61",
+            "label": "teleport",
+            "components": [
+                "TeleportScene"
+            ],
+            "TeleportScene.targetScene": "Farm",
+            "TeleportScene.player": "pig",
+            "x": 1373,
+            "y": 803,
+            "scaleX": 1.703893624291244,
+            "scaleY": 0.6944410750774918,
+            "isFilled": true,
+            "width": 128,
+            "height": 128,
+            "list": []
+        },
+        {
             "type": "Text",
-            "id": "5c228da6-971a-4347-84e8-9f62464ba76d",
-            "label": "text",
+            "id": "5ab94346-0d2d-4743-9698-7e0fc91c3171",
+            "label": "text_2",
             "components": [],
-            "x": 640,
-            "y": 458,
-            "originX": 0.5,
-            "originY": 0.5,
-            "text": "Phaser 3 + Phaser Editor 2D\nWebpack + TypeScript",
-            "align": "center",
-            "fontFamily": "Arial",
-            "fontSize": "3em",
+            "x": 1264,
+            "y": 772,
+            "scaleX": 0.6824655111496041,
+            "scaleY": 0.7869906513902267,
+            "text": "Teleport",
+            "fontSize": "64px",
+            "color": "#e68d00ff",
+            "stroke": "#ffffffff",
+            "shadow.offsetX": 2,
+            "shadow.offsetY": 2,
+            "shadow.stroke": true,
+            "shadow.fill": true,
+            "shadow.color": "#e55353ff",
+            "list": []
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "e83bd5ed-1086-41ae-94ce-7bd61ca938f6",
+            "label": "NPC",
+            "scope": "CLASS",
+            "components": [
+                "DisplayText",
+                "TriggerText"
+            ],
+            "TriggerText.sender": "Fox",
+            "TriggerText.player": "pig",
+            "TriggerText.message": "Welcome to PEPA Arcade!",
+            "texture": {
+                "key": "fox"
+            },
+            "x": 1817,
+            "y": 1315,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "originX": 0.1,
+            "originY": 0.1,
+            "body.width": 1024,
+            "body.height": 1024,
+            "list": []
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "14d5948b-adb6-4eba-a953-8b7278115812",
+            "label": "ido_guide",
+            "components": [
+                "DisplayText",
+                "TriggerText"
+            ],
+            "DisplayText.sender": "ido",
+            "TriggerText.sender": "ido",
+            "TriggerText.player": "pig",
+            "TriggerText.message": "To the right is PEPA IDO building",
+            "texture": {
+                "key": "fox"
+            },
+            "x": 2499,
+            "y": 1168,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "body.width": 1118,
+            "body.height": 1572,
+            "list": []
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "8bf67da3-dc63-4790-af77-6d4b136f00df",
+            "label": "trading_fox",
+            "components": [
+                "DisplayText",
+                "TriggerText"
+            ],
+            "DisplayText.sender": "trading",
+            "TriggerText.sender": "trading",
+            "TriggerText.player": "pig",
+            "TriggerText.message": "This is the PEPA Trading Center.",
+            "texture": {
+                "key": "fox"
+            },
+            "x": 1858,
+            "y": 859,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "body.width": 1024,
+            "body.height": 1024,
+            "list": []
+        },
+        {
+            "prefabId": "46239938-4ed4-4201-8fc6-4c848b0c5a5a",
+            "id": "9632dffa-192c-4076-b1b7-7b79b3ad02c8",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "scriptnode_1",
+            "components": [],
+            "nestedPrefabs": [],
+            "list": []
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "4d17dc49-7953-4903-a86e-8fbb47f54857",
+            "label": "NPC_bank",
+            "scope": "CLASS",
+            "components": [
+                "DisplayText",
+                "TriggerText"
+            ],
+            "DisplayText.sender": "bank",
+            "TriggerText.sender": "bank",
+            "TriggerText.player": "pig",
+            "TriggerText.message": "PEPA Bank host PEPA Exchange services",
+            "texture": {
+                "key": "fox"
+            },
+            "x": 1695,
+            "y": 2762,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "originX": 0.1,
+            "originY": 0.1,
+            "body.width": 1024,
+            "body.height": 1024,
+            "list": []
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "7e17dba3-2fbc-4bcd-9a67-649559252d1a",
+            "label": "NPC_market",
+            "scope": "CLASS",
+            "components": [
+                "DisplayText",
+                "TriggerText"
+            ],
+            "DisplayText.sender": "market",
+            "TriggerText.sender": "market",
+            "TriggerText.player": "pig",
+            "TriggerText.message": "This is PEPA seeds Market",
+            "texture": {
+                "key": "fox"
+            },
+            "x": 2475,
+            "y": 3046,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "originX": 0.1,
+            "originY": 0.1,
+            "body.width": 1024,
+            "body.height": 1024,
             "list": []
         }
     ],
-    "plainObjects": [],
+    "plainObjects": [
+        {
+            "id": "1bd77e54-d669-43c3-b3d4-766c25eabc5c",
+            "type": "Tilemap",
+            "label": "main1",
+            "key": "main1",
+            "tilesets": [
+                {
+                    "name": "bundle3",
+                    "imageKey": "bundle2"
+                },
+                {
+                    "name": "bundle2",
+                    "imageKey": "bundle1"
+                },
+                {
+                    "name": "AutoMap Rules",
+                    "imageKey": "guapen"
+                }
+            ]
+        },
+        {
+            "id": "7f4ee8dd-4c12-4a6d-97aa-281e49103f60",
+            "type": "Tilemap",
+            "label": "main",
+            "key": "main1",
+            "tilesets": [
+                {
+                    "name": "bundle3",
+                    "imageKey": "bundle1"
+                },
+                {
+                    "name": "bundle2",
+                    "imageKey": "bundle2"
+                },
+                {
+                    "name": "AutoMap Rules",
+                    "imageKey": "guapen"
+                }
+            ]
+        },
+        {
+            "id": "200b3430-19bf-4ce8-b58a-51cf9c5fd27e",
+            "type": "Tilemap",
+            "label": "main_1",
+            "key": "main1",
+            "tilesets": [
+                {
+                    "name": "bundle3",
+                    "imageKey": "bundle2"
+                },
+                {
+                    "name": "bundle2",
+                    "imageKey": "bundle1"
+                },
+                {
+                    "name": "AutoMap Rules",
+                    "imageKey": "guapen"
+                }
+            ]
+        },
+        {
+            "id": "b987e7cf-a6a9-4271-899c-1f2a098e0af3",
+            "type": "Keyboard.Key",
+            "label": "keyboard_key",
+            "keyCode": "W"
+        },
+        {
+            "id": "3f9957ac-3b39-4196-a5df-d854267fa221",
+            "type": "Keyboard.Key",
+            "label": "keyboard_key_1",
+            "keyCode": "A"
+        },
+        {
+            "id": "1ad4b112-fdf2-4632-ae9c-e172a6512e40",
+            "type": "Keyboard.Key",
+            "label": "keyboard_key_2",
+            "keyCode": "S"
+        },
+        {
+            "id": "c4d86dd7-b49c-4b0b-aa4b-d6950c70d790",
+            "type": "Keyboard.Key",
+            "label": "keyboard_key_3",
+            "keyCode": "D"
+        }
+    ],
     "meta": {
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
         "version": 3
-    }
+    },
+    "lists": [
+        {
+            "id": "afb671f1-6605-4a5f-b012-3f96dbca4341",
+            "label": "list",
+            "objectIds": [
+                "2d72962a-a0b9-48da-8bf8-8533ad06558e",
+                "c68e1e5d-27f9-4718-8f1e-d7270b265dce",
+                "acabb6f4-02da-4776-a0fc-23c62f30c10c",
+                "a5d62151-23c1-4cec-9621-aa70d2adc0f0"
+            ],
+            "scope": "PUBLIC"
+        },
+        {
+            "id": "b7cbd2f6-b5c2-46e4-8af9-13250f7dafd2",
+            "label": "list_1",
+            "scope": "PUBLIC"
+        }
+    ]
 }

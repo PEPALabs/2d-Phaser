@@ -15,10 +15,12 @@ const chainIdToName = {
   42: "ETH Kovan",
   42161: "Arbitrum One"
 }
-function ConnectWallet() {
-  const { active, account, chainId, library, connector, activate, deactivate } = useWeb3React();
+function ConnectWallet () {
 
-  async function connect() {
+  const { active, account, chainId, library, connector, activate, deactivate } = useWeb3React();
+  
+
+  async function connect(event) {
     try {
       await activate(injected)
     } catch (ex) {
@@ -26,7 +28,7 @@ function ConnectWallet() {
     }
   }
 
-  async function disconnect() {
+  async function disconnect(event) {
     try {
       deactivate()
     } catch (ex) {
@@ -36,10 +38,10 @@ function ConnectWallet() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <button onClick={connect} className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800">Connect to MetaMask</button>
+      <button onClick={connect} onMouseDown={(e)=>{e.stopPropagation()}} className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800">Connect to MetaMask</button>
       {active ? <span>Connected with <b>{account}</b></span> : <span>Not connected</span>}
       {active ? <span>Chain <b>{chainIdToName[chainId]}</b></span> : <></>}
-      <button onClick={disconnect} className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800">Disconnect</button>
+      <button onClick={disconnect} onMouseDown={(e)=>{e.stopPropagation()}} className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800">Disconnect</button>
     </div>
   )
 }
