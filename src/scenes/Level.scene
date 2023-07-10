@@ -23,7 +23,6 @@
             "texture": {
                 "key": "map-town"
             },
-            "y": 1,
             "originX": 0,
             "originY": 0,
             "list": []
@@ -220,7 +219,7 @@
             "TriggerText.player": "pig",
             "TriggerText.message": "To the right is IDO building,  IDO launch on PEPA will announce here!",
             "texture": {
-                "key": "野人猪猪"
+                "key": "fox"
             },
             "x": 2499,
             "y": 1168,
@@ -303,7 +302,7 @@
             "DisplayText.sender": "market",
             "TriggerText.sender": "market",
             "TriggerText.player": "pig",
-            "TriggerText.message": "PEPA Bank host PEPA",
+            "TriggerText.message": "This is PEPA Market, players can buy seeds and useful equipments here.",
             "texture": {
                 "key": "fox"
             },

@@ -69,7 +69,7 @@ export default class Level extends Phaser.Scene {
 		const keyboard_key_3 = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
 		// image_2
-		const image_2 = this.add.image(0, 1, "map-town");
+		const image_2 = this.add.image(0, 0, "map-town");
 		image_2.setOrigin(0, 0);
 
 		// pig
@@ -127,7 +127,7 @@ export default class Level extends Phaser.Scene {
 		nPC.body.setSize(1024, 1024, false);
 
 		// ido_guide
-		const ido_guide = this.physics.add.sprite(2499, 1168, "野人猪猪");
+		const ido_guide = this.physics.add.sprite(2499, 1168, "fox");
 		ido_guide.scaleX = 0.1;
 		ido_guide.scaleY = 0.1;
 		ido_guide.body.setSize(1118, 1572, false);
@@ -216,7 +216,7 @@ export default class Level extends Phaser.Scene {
 		const nPC_marketTriggerText = new TriggerText(nPC_market);
 		nPC_marketTriggerText.sender = "market";
 		nPC_marketTriggerText.player = pig;
-		nPC_marketTriggerText.message = "PEPA Bank host PEPA";
+		nPC_marketTriggerText.message = "This is PEPA Market, players can buy seeds and useful equipments here.";
 
 		this.pig = pig;
 		this.field1 = field1;
