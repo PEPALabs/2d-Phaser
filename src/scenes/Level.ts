@@ -192,7 +192,7 @@ export default class Level extends Phaser.Scene {
 		const ido_guideTriggerText = new TriggerText(ido_guide);
 		ido_guideTriggerText.sender = "ido";
 		ido_guideTriggerText.player = pig;
-		ido_guideTriggerText.message = "To the right is IDO building,  IDO launch on PEPA will announce here!";
+		ido_guideTriggerText.message = "To the right is IDO building!";
 
 		// trading_fox (components)
 		const trading_foxDisplayText = new DisplayText(trading_fox);
@@ -200,7 +200,7 @@ export default class Level extends Phaser.Scene {
 		const trading_foxTriggerText = new TriggerText(trading_fox);
 		trading_foxTriggerText.sender = "trading";
 		trading_foxTriggerText.player = pig;
-		trading_foxTriggerText.message = "This is the PEPA Trading Center players experience gamified way of trading here.";
+		trading_foxTriggerText.message = "This is the PEPA Trading Center.";
 
 		// nPC_bank (components)
 		const nPC_bankDisplayText = new DisplayText(nPC_bank);
@@ -208,7 +208,7 @@ export default class Level extends Phaser.Scene {
 		const nPC_bankTriggerText = new TriggerText(nPC_bank);
 		nPC_bankTriggerText.sender = "bank";
 		nPC_bankTriggerText.player = pig;
-		nPC_bankTriggerText.message = "PEPA Bank host PEPA";
+		nPC_bankTriggerText.message = "PEPA Bank host PEPA Exchange services.";
 
 		// nPC_market (components)
 		const nPC_marketDisplayText = new DisplayText(nPC_market);
@@ -216,7 +216,7 @@ export default class Level extends Phaser.Scene {
 		const nPC_marketTriggerText = new TriggerText(nPC_market);
 		nPC_marketTriggerText.sender = "market";
 		nPC_marketTriggerText.player = pig;
-		nPC_marketTriggerText.message = "This is PEPA Market, players can buy seeds and useful equipments here.";
+		nPC_marketTriggerText.message = "This is PEPA Market.";
 
 		this.pig = pig;
 		this.field1 = field1;

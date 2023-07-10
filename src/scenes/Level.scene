@@ -217,7 +217,7 @@
             "DisplayText.sender": "ido",
             "TriggerText.sender": "ido",
             "TriggerText.player": "pig",
-            "TriggerText.message": "To the right is IDO building,  IDO launch on PEPA will announce here!",
+            "TriggerText.message": "To the right is PEPA IDO building",
             "texture": {
                 "key": "fox"
             },
@@ -240,7 +240,7 @@
             "DisplayText.sender": "trading",
             "TriggerText.sender": "trading",
             "TriggerText.player": "pig",
-            "TriggerText.message": "This is the PEPA Trading Center players experience gamified way of trading here.",
+            "TriggerText.message": "This is the PEPA Trading Center.",
             "texture": {
                 "key": "fox"
             },
@@ -276,7 +276,7 @@
             "DisplayText.sender": "bank",
             "TriggerText.sender": "bank",
             "TriggerText.player": "pig",
-            "TriggerText.message": "PEPA Bank host PEPA",
+            "TriggerText.message": "PEPA Bank host PEPA Exchange services",
             "texture": {
                 "key": "fox"
             },
@@ -302,7 +302,7 @@
             "DisplayText.sender": "market",
             "TriggerText.sender": "market",
             "TriggerText.player": "pig",
-            "TriggerText.message": "This is PEPA Market, players can buy seeds and useful equipments here.",
+            "TriggerText.message": "This is PEPA seeds Market",
             "texture": {
                 "key": "fox"
             },

@@ -66,12 +66,12 @@ export default class DisplayText {
 			fixedWidth: fixedWidth,
 			fixedHeight: fixedHeight,
 
-			fontSize: '20px',
+			fontSize: '15px',
 			wrap: {
 				mode: 'word',
 				width: wrapWidth
 			},
-			maxLines: 3
+			maxLines: 2
 		})
 	}
 
@@ -96,7 +96,7 @@ export default class DisplayText {
 
 			action: scene.add.image(0, 0).setTint(COLOR_LIGHT).setVisible(false),
 
-			title: (titleText) ? scene.add.text(0, 0, titleText, { fontSize: '20px', }) : undefined,
+			title: (titleText) ? scene.add.text(0, 0, titleText, { fontSize: '15px', }) : undefined,
 
 			separator: (titleText) ? scene.rexUI.add.roundRectangle({ height: 3, color: COLOR_DARK }) : undefined,
 
@@ -152,6 +152,9 @@ export default class DisplayText {
 
 		return textBox;
 	}
+	hideTextBox(scene, textBox){
+		scene.rexUI.hide(textBox);
+	}
 
 	update (){
 
@@ -166,17 +169,27 @@ export default class DisplayText {
 		if(showText){
 			var text = this.getMessage();
 			if(text !== this.displayText && text.length > 0){
+				if(this.textBox !== null){
+					this.hideTextBox(this.scene, this.textBox);
+				}
 				// this.textBox.destroy();
 				// this.textBox.setActive(false);
 				var textBox = this.createTextBox(this.scene, this.gameObject.x-30, this.gameObject.y-100, {
-					wrapWidth: 200,
-				}).start(text, 100);
+					wrapWidth: 300,
+				}).start(text, 50);
 				this.textBox = textBox;
 				this.displayText = text;
 			}
+			else if(text.length == 0 && text !== this.displayText){
+				this.hideTextBox(this.scene, this.textBox);
+				this.displayText = "";
+				this.textBox = null;
+			}
 
 		}
+
 	}
+
 		// container = this.scene.game.add.sprite(70, 580, 'container');    
 		// container.scale.setTo(0.3, 0.2);    
 		// container.alpha = 0.8;    
