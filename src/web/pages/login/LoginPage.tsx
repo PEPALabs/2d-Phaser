@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   Text,
   TextInput,
@@ -13,9 +14,8 @@ import {
   Box,
   Space
 } from '@mantine/core'
-import React from 'react'
 
-const SigninBox = () => {
+const LoginPage = () => {
   // TODO: add connect wallet to button here
 
   // TODO: solve input speed slow issue
@@ -55,4 +55,4 @@ const SigninBox = () => {
   )
 }
 
-export default SigninBox
+export default LoginPage

@@ -1,10 +1,9 @@
 // src/App.jsx
 import React, { useState } from 'react'
-import { MantineProvider, AppShell } from '@mantine/core'
-
-import UI from './UI'
-import GameRoot from './Game'
-import SigninBox from './Signin'
+import { MantineProvider } from '@mantine/core'
+import { Notifications } from '@mantine/notifications'
+import { RouterProvider } from 'react-router-dom'
+import router from './router'
 
 function App() {
   const [messages, setMessage] = useState('')
@@ -17,12 +16,8 @@ function App() {
       withGlobalStyles
       withNormalizeCSS
       theme={{ defaultRadius: 'md' }}>
-      <AppShell header={<UI />}>
-        <SigninBox />
-        <div id="game">
-          <GameRoot />
-        </div>
-      </AppShell>
+      <Notifications position="top-center" />
+      <RouterProvider router={router} />
     </MantineProvider>
   )
 }
