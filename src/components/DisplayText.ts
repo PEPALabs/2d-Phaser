@@ -7,9 +7,9 @@ import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import useMessageStore from "../store/MessageStore";
 import { useStore } from 'zustand';
-const COLOR_PRIMARY = 0x4e342e;
-const COLOR_LIGHT = 0x7b5e57;
-const COLOR_DARK = 0x260e04;
+const COLOR_PRIMARY = 0xfbb9b3; // 0xfcb5cd;// 0xfc9694;
+const COLOR_LIGHT = 0xfbb9b3;
+const COLOR_DARK = 0xfe6283;//0xe8735e;
 /* END-USER-IMPORTS */
 
 export default class DisplayText {
@@ -66,7 +66,7 @@ export default class DisplayText {
 			fixedWidth: fixedWidth,
 			fixedHeight: fixedHeight,
 
-			fontSize: '15px',
+			fontSize: '24px',
 			wrap: {
 				mode: 'word',
 				width: wrapWidth
@@ -96,7 +96,7 @@ export default class DisplayText {
 
 			action: scene.add.image(0, 0).setTint(COLOR_LIGHT).setVisible(false),
 
-			title: (titleText) ? scene.add.text(0, 0, titleText, { fontSize: '15px', }) : undefined,
+			title: (titleText) ? scene.add.text(0, 0, titleText, { fontSize: '24px', }) : undefined,
 
 			separator: (titleText) ? scene.rexUI.add.roundRectangle({ height: 3, color: COLOR_DARK }) : undefined,
 
@@ -174,7 +174,7 @@ export default class DisplayText {
 				}
 				// this.textBox.destroy();
 				// this.textBox.setActive(false);
-				var textBox = this.createTextBox(this.scene, this.gameObject.x-30, this.gameObject.y-100, {
+				var textBox = this.createTextBox(this.scene, this.gameObject.x-50, this.gameObject.y-150, {
 					wrapWidth: 300,
 				}).start(text, 50);
 				this.textBox = textBox;
