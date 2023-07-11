@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import Alert from "./Alert";
 import InventoryUI from "./InventoryUI";
 import MessageBox from "./MessageBox";
 import SigninBox from "./Signin";
 import ShopUI from "./ShopUI";
+import Quests from "./widgets/Quests";
+import questData from "../data/questData";
 
 function Iframe(props) {
     return (<div dangerouslySetInnerHTML={ {__html:  props.iframe?props.iframe:""}} />);
@@ -11,12 +13,14 @@ function Iframe(props) {
 
 function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,showInventory,message,dialogDone,loginDone,username,teleport12}) {
 
+    const [showQuest, setShowQuest] = useState(false);
+
     //uniswap test iframe
     const iframe = "<iframe src=\"https://app.uniswap.org/#/swap?outputCurrency=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359\" height=\"660px\" width=\"100%\" style=\"border: 0;margin: 0 auto;display: block;border-radius: 10px;max-width: 600px;min-width: 300px;\">";
 
     return (
     <>
-        <div id="default-sidebar" className="absolute top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full sm:translate-x-0 bg-gray-50 dark:bg-gray-800" aria-label="Sidebar">
+        <div id="default-sidebar" className="absolute top-20 left-0 z-40 w-1/4 h-screen pt-0 transition-transform -translate-x-full sm:translate-x-0 bg-gray-50 dark:bg-gray-800" aria-label="Sidebar">
             <div className="flex flex-col px-3 pb-4 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <ul className="space-y-2 font-medium">
                     <li>
@@ -34,9 +38,9 @@ function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,show
                     </li>
                     
                     <li>
-                        <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                        <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
-                        <span className="flex-1 ml-3 whitespace-nowrap">Products</span>
+                        <a href="#" onClick={(e)=>{setShowQuest(!showQuest);}} onMouseDown={(e)=>{e.stopPropagation()}} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+                            <span className="flex-1 ml-3 whitespace-nowrap">Quest Book</span>
                         </a>
                     </li>
                     <li>
@@ -152,7 +156,7 @@ function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,show
         </div>
 {/* 
         <div className="pt-20"> */}
-        <div className="absolute justify-center top-20 left-64 flex-1 w-full h-full flex border-0">
+        <div className="absolute justify-center w-5/6 h-full top-20 left-1/4 border-0">
 
             {/* alerts  */}
             <div className="absolute justify-center z-5 flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
@@ -196,7 +200,7 @@ function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,show
                     />
                 )}
             </div>
-            <div className="absolute justify-center w-full flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
+            <div className="absolute justify-center w-full border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
                 {showLogin && (
                     <SigninBox
                         message={message}
@@ -212,9 +216,18 @@ function Sidebar({showShopText,showUniswap,showDialogBox,showLogin,showShop,show
                 )
                 }
             </div>
-            <div className="absolute justify-center w-full flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
+            <div className="relative justify-center flex w-full border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
                 {showInventory && (
                     <InventoryUI />
+                    // <Shop message={message}
+                    // Signin={loginDone}/>
+                )
+                }
+            </div>
+
+            <div className="absolute justify-center w-full flex flex-1 border-0 border-gray-200 rounded-lg dark:border-gray-700 ">
+                {showQuest && (
+                    <Quests quests={questData} />
                     // <Shop message={message}
                     // Signin={loginDone}/>
                 )

@@ -66,7 +66,6 @@ export default class DisplayPlants {
 			// create new plants
 			for (var i = 0; i < this.plantLocation.length; i++) {
 				if(i < inventory.length){
-
 					var plant = this.scene.add.image(this.plantLocation[i][0], this.plantLocation[i][1], 'guapen');
 					this.fieldLocation.push(plant);
 				}

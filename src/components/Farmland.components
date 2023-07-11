@@ -2,7 +2,7 @@
     "components": [
         {
             "name": "FarmPlant",
-            "baseClass": "UserComponent",
+            "baseClass": "",
             "gameObjectType": "Phaser.GameObjects.GameObject",
             "properties": [
                 {
@@ -14,6 +14,53 @@
                     "type": {
                         "id": "object-var",
                         "expressionType": "Button"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Farm",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.GameObject",
+            "properties": [
+                {
+                    "name": "n_row",
+                    "label": "n_row",
+                    "tooltip": "n_row",
+                    "defValue": 2,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                },
+                {
+                    "name": "n_col",
+                    "label": "n_col",
+                    "tooltip": "n_col",
+                    "defValue": 1,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                },
+                {
+                    "name": "gap_h",
+                    "label": "gap_h",
+                    "tooltip": "gap_h",
+                    "defValue": 100,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                },
+                {
+                    "name": "gap_w",
+                    "label": "gap_w",
+                    "tooltip": "gap_w",
+                    "defValue": 50,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
                     }
                 }
             ]

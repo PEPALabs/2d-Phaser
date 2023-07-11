@@ -1,6 +1,5 @@
 
 // You can write more code here
-import UserComponent from "./UserComponent";
 import { PlantType } from "../data/items.type";
 import ItemUsage from "./ItemUsage";
 import Button from "../prefabs/ui/Button";
@@ -18,24 +17,23 @@ enum PlantState {
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
-export default class FarmPlant extends UserComponent {
+export default class FarmPlant {
 
-	constructor(gameObject: Farmland) {
-		super(gameObject);
-
+	constructor(gameObject: Phaser.GameObjects.GameObject) {
 		this.gameObject = gameObject;
 		(gameObject as any)["__FarmPlant"] = this;
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.
+		this.scene = this.gameObject.scene;
 		/* END-USER-CTR-CODE */
 	}
 
-	static getComponent(gameObject: Farmland): FarmPlant {
+	static getComponent(gameObject: Phaser.GameObjects.GameObject): FarmPlant {
 		return (gameObject as any)["__FarmPlant"];
 	}
 
-	private gameObject: Farmland;
+	private gameObject: Phaser.GameObjects.GameObject;
 	public actionButton!: Button;
 
 	/* START-USER-CODE */
@@ -47,23 +45,24 @@ export default class FarmPlant extends UserComponent {
 	private plantTime: number = 0;
 	private player: Phaser.Physics.Arcade.Sprite = null;
 	private readyTime: number = 5000;
+	private scene: Phaser.Scene;
 
-	protected override start(): void {
+	protected start(): void {
 		this.player = this.scene.children.getByName("player") as Phaser.Physics.Arcade.Sprite;
 
 		this.actionButton.on('pointerdown', this.handleActionButton, this);
 
 		this.hideActionButton();
 
-		this.gameObject.plantImage.visible = false;
+		// this.gameObject.plantImage.visible = false;
 	}
 
-	protected override update(): void {
+	protected update(): void {
 		if (this.state == PlantState.PLANTING) {
 			const time = this.scene.time.now - this.plantTime;
 			if (time > this.readyTime) {
 				this.state = PlantState.READY;
-				this.gameObject.plantImage.setTexture(this.plant.plantTexture);
+				// this.gameObject.plantImage.setTexture(this.plant.plantTexture);
 			}
 		}
 
@@ -77,7 +76,7 @@ export default class FarmPlant extends UserComponent {
 		}
 	}
 
-	protected override destroy(): void {
+	protected destroy(): void {
 		this.actionButton.off('pointerdown', this.handleActionButton, this);
 	}
 
@@ -90,9 +89,9 @@ export default class FarmPlant extends UserComponent {
 		this.state = PlantState.PLANTING;
 		this.plantTime = this.scene.time.now;
 
-		this.gameObject.plantImage.visible = true;
-		this.gameObject.plantImage.setTexture(plant.seedTexture);
-		
+		// this.gameObject.plantImage.visible = true;
+		// this.gameObject.plantImage.setTexture(plant.seedTexture);
+
 		this.hideActionButton();
 	}
 
@@ -103,7 +102,7 @@ export default class FarmPlant extends UserComponent {
 
 		this.state = PlantState.EMPTY;
 		this.plant = null;
-		this.gameObject.plantImage.visible = false;
+		// this.gameObject.plantImage.visible = false;
 	}
 
 	showActionButton() {
