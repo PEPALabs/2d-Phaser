@@ -21,19 +21,22 @@
             "id": "2bc73b27-c0db-471a-b7be-6d5122e136a5",
             "label": "layer_1",
             "scope": "CLASS",
+            "components": [],
             "list": [
                 {
                     "type": "Image",
                     "id": "5abd520a-5220-4944-a8cd-6d705f74fedd",
                     "label": "map",
                     "scope": "CLASS",
+                    "components": [],
                     "texture": {
                         "key": "_composite"
                     },
                     "scaleX": 2,
                     "scaleY": 2,
                     "originX": 0,
-                    "originY": 0
+                    "originY": 0,
+                    "list": []
                 }
             ]
         },
@@ -41,6 +44,7 @@
             "type": "Layer",
             "id": "727c1343-3def-4d13-a68c-4df34f51fa0b",
             "label": "Farmlands",
+            "components": [],
             "list": [
                 {
                     "prefabId": "32c77594-c428-44d4-9a37-657989684462",
@@ -51,8 +55,11 @@
                         "FarmPlant.player"
                     ],
                     "label": "Farmland",
-                    "x": 2297,
-                    "y": 1470
+                    "components": [],
+                    "x": 3143,
+                    "y": 1463,
+                    "nestedPrefabs": [],
+                    "list": []
                 },
                 {
                     "prefabId": "32c77594-c428-44d4-9a37-657989684462",
@@ -63,8 +70,11 @@
                         "FarmPlant.player"
                     ],
                     "label": "Farmland_1",
-                    "x": 2543,
-                    "y": 1469
+                    "components": [],
+                    "x": 3389,
+                    "y": 1462,
+                    "nestedPrefabs": [],
+                    "list": []
                 },
                 {
                     "prefabId": "32c77594-c428-44d4-9a37-657989684462",
@@ -75,8 +85,11 @@
                         "FarmPlant.player"
                     ],
                     "label": "Farmland_2",
-                    "x": 2784,
-                    "y": 1472
+                    "components": [],
+                    "x": 3630,
+                    "y": 1465,
+                    "nestedPrefabs": [],
+                    "list": []
                 }
             ]
         },
@@ -102,7 +115,8 @@
             "scaleX": 0.1,
             "scaleY": 0.1,
             "body.width": 1134,
-            "body.height": 1572
+            "body.height": 1572,
+            "list": []
         },
         {
             "type": "Rectangle",
@@ -119,12 +133,14 @@
             "scaleY": 1.3187915313412075,
             "isFilled": true,
             "width": 128,
-            "height": 128
+            "height": 128,
+            "list": []
         },
         {
             "type": "Text",
             "id": "6e197a71-7ff1-4e6e-ae9c-c4fe33c9806f",
             "label": "text_2",
+            "components": [],
             "x": 39,
             "y": 310,
             "scaleX": 0.7846903230519551,
@@ -137,7 +153,23 @@
             "shadow.offsetY": 2,
             "shadow.stroke": true,
             "shadow.fill": true,
-            "shadow.color": "#e55353ff"
+            "shadow.color": "#e55353ff",
+            "list": []
+        },
+        {
+            "type": "Container",
+            "id": "fb98b2e5-4ae5-456c-8153-be52cfc795c7",
+            "label": "farm",
+            "scope": "CLASS",
+            "components": [
+                "Farm",
+                "FarmContainer"
+            ],
+            "FarmContainer.gap_h": 207,
+            "FarmContainer.gap_w": 240,
+            "x": 2315,
+            "y": 2203,
+            "list": []
         }
     ],
     "plainObjects": [],
@@ -145,6 +177,6 @@
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 4
+        "version": 3
     }
 }

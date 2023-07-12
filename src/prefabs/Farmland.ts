@@ -13,7 +13,6 @@ export default class Farmland extends Phaser.GameObjects.Container {
 
 	constructor(scene: Phaser.Scene, x?: number, y?: number) {
 		super(scene, x ?? 0, y ?? 0);
-
 		// PlantImage
 		const plantImage = scene.add.image(0, 0, "guapen");
 		plantImage.scaleX = 0.8;
@@ -41,6 +40,7 @@ export default class Farmland extends Phaser.GameObjects.Container {
 	}
 
 	public plantImage!: Phaser.GameObjects.Image;
+	public id: string = "0";
 
 	/* START-USER-CODE */
 

@@ -27,13 +27,15 @@
                     "type": "Image",
                     "id": "18902c48-aec2-4775-af17-f52c44ca0324",
                     "label": "PlantImage",
+                    "components": [],
                     "texture": {
                         "key": "guapen"
                     },
                     "scaleX": 0.8,
                     "scaleY": 0.8,
                     "originX": 0,
-                    "originY": 0
+                    "originY": 0,
+                    "list": []
                 },
                 {
                     "prefabId": "4fe5bb49-6b0a-4bc1-b80a-2704651fba2b",
@@ -43,8 +45,11 @@
                         "y"
                     ],
                     "label": "ActionButton",
+                    "components": [],
                     "x": 26,
-                    "y": 3
+                    "y": 3,
+                    "nestedPrefabs": [],
+                    "list": []
                 }
             ]
         }
@@ -54,7 +59,7 @@
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 4
+        "version": 3
     },
     "prefabProperties": [
         {
@@ -66,6 +71,16 @@
             "type": {
                 "id": "object-var",
                 "expressionType": "Phaser.GameObjects.Image"
+            }
+        },
+        {
+            "name": "id",
+            "label": "id",
+            "tooltip": "id",
+            "defValue": "0",
+            "customDefinition": false,
+            "type": {
+                "id": "string"
             }
         }
     ]

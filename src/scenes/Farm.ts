@@ -10,6 +10,7 @@ import Physics from "../components/Physics";
 import PigAnimation from "../components/PigAnimation";
 import ItemUsage from "../components/ItemUsage";
 import TeleportScene from "../components/TeleportScene";
+import FarmContainer from "../components/FarmContainer";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
@@ -25,7 +26,7 @@ export default class Farm extends Phaser.Scene {
 
 	preload(): void {
 
-		this.load.pack("asset-pack", "static/assets/asset-pack.json");
+		this.load.pack("asset-pack", "assets/asset-pack.json");
 	}
 
 	editorCreate(): void {
@@ -44,15 +45,15 @@ export default class Farm extends Phaser.Scene {
 		const farmlands = this.add.layer();
 
 		// Farmland
-		const farmland = new Farmland(this, 2297, 1470);
+		const farmland = new Farmland(this, 3143, 1463);
 		farmlands.add(farmland);
 
 		// Farmland_1
-		const farmland_1 = new Farmland(this, 2543, 1469);
+		const farmland_1 = new Farmland(this, 3389, 1462);
 		farmlands.add(farmland_1);
 
 		// Farmland_2
-		const farmland_2 = new Farmland(this, 2784, 1472);
+		const farmland_2 = new Farmland(this, 3630, 1465);
 		farmlands.add(farmland_2);
 
 		// player
@@ -75,6 +76,9 @@ export default class Farm extends Phaser.Scene {
 		text_2.text = "Teleport";
 		text_2.setStyle({ "color": "#e68d00ff", "fontSize": "64px", "stroke": "#ffffffff", "shadow.offsetX":2,"shadow.offsetY":2,"shadow.color": "#e55353ff", "shadow.stroke":true,"shadow.fill":true});
 
+		// farm
+		const farm = this.add.container(2315, 2203);
+
 		// player (components)
 		const playerPlayerMovement = new PlayerMovement(player);
 		playerPlayerMovement.speed = 20;
@@ -88,9 +92,15 @@ export default class Farm extends Phaser.Scene {
 		teleportTeleportScene.targetScene = "Level";
 		teleportTeleportScene.player = player;
 
+		// farm (components)
+		const farmFarmContainer = new FarmContainer(farm);
+		farmFarmContainer.gap_h = 207;
+		farmFarmContainer.gap_w = 240;
+
 		this.map = map;
 		this.layer_1 = layer_1;
 		this.player = player;
+		this.farm = farm;
 
 		this.events.emit("scene-awake");
 	}
@@ -98,6 +108,7 @@ export default class Farm extends Phaser.Scene {
 	private map!: Phaser.GameObjects.Image;
 	private layer_1!: Phaser.GameObjects.Layer;
 	private player!: Phaser.Physics.Arcade.Sprite;
+	private farm!: Phaser.GameObjects.Container;
 
 	/* START-USER-CODE */
 

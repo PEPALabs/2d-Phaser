@@ -4,7 +4,7 @@ import { PlantType } from "../data/items.type";
 import ItemUsage from "./ItemUsage";
 import Button from "../prefabs/ui/Button";
 import Farmland from "../prefabs/Farmland";
-import plants from "../data/plants";
+import {plants} from "../data/plants";
 
 enum PlantState {
 	EMPTY,

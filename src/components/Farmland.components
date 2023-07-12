@@ -19,9 +19,9 @@
             ]
         },
         {
-            "name": "Farm",
+            "name": "FarmContainer",
             "baseClass": "",
-            "gameObjectType": "Phaser.GameObjects.GameObject",
+            "gameObjectType": "Phaser.GameObjects.Container",
             "properties": [
                 {
                     "name": "n_row",
@@ -37,7 +37,7 @@
                     "name": "n_col",
                     "label": "n_col",
                     "tooltip": "n_col",
-                    "defValue": 1,
+                    "defValue": 10,
                     "customDefinition": false,
                     "type": {
                         "id": "number"
@@ -64,6 +64,12 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "Plant",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Container",
+            "properties": []
         }
     ],
     "meta": {
