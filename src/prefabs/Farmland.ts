@@ -5,13 +5,14 @@
 
 import Phaser from "phaser";
 import FarmPlant from "../components/FarmPlant";
+import Plant from "../components/Plant";
 import Button from "./ui/Button";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
 export default class Farmland extends Phaser.GameObjects.Container {
 
-	constructor(scene: Phaser.Scene, x?: number, y?: number) {
+	constructor(scene: Phaser.Scene, x?: number, y?: number, id?: number) {
 		super(scene, x ?? 0, y ?? 0);
 		// PlantImage
 		const plantImage = scene.add.image(0, 0, "guapen");
@@ -25,8 +26,10 @@ export default class Farmland extends Phaser.GameObjects.Container {
 		this.add(actionButton);
 
 		// this (components)
-		const thisFarmPlant = new FarmPlant(this);
-		thisFarmPlant.actionButton = actionButton;
+		const thisFarmPlant = new Plant(this);
+		thisFarmPlant.displayImage = plantImage;
+		thisFarmPlant.ID = id
+		// thisFarmPlant.actionButton = actionButton;
 
 		/* START-USER-CTR-CODE */
 		// Write your code here.
@@ -40,7 +43,7 @@ export default class Farmland extends Phaser.GameObjects.Container {
 	}
 
 	public plantImage!: Phaser.GameObjects.Image;
-	public id: string = "0";
+	public id: number = 0;
 
 	/* START-USER-CODE */
 

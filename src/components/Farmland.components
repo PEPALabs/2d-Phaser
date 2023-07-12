@@ -69,7 +69,18 @@
             "name": "Plant",
             "baseClass": "",
             "gameObjectType": "Phaser.GameObjects.Container",
-            "properties": []
+            "properties": [
+                {
+                    "name": "displayImage",
+                    "label": "displayImage",
+                    "tooltip": "displayImage",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "object-var",
+                        "expressionType": "Phaser.GameObjects.Image"
+                    }
+                }]
         }
     ],
     "meta": {

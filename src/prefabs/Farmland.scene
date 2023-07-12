@@ -19,9 +19,9 @@
             "id": "7427d12a-3999-4e19-a5cf-64f3de3da33b",
             "label": "container_2",
             "components": [
-                "FarmPlant"
+                "Plant"
             ],
-            "FarmPlant.actionButton": "actionButton",
+            "Plant.displayImage": "guapen",
             "list": [
                 {
                     "type": "Image",

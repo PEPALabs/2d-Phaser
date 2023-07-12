@@ -4,6 +4,9 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
+import Phaser from "phaser";
+import {PlantState, PlantType} from "../data/plants";
+import usePlantStore from "../data/plantStore";
 /* END-USER-IMPORTS */
 
 export default class Plant {
@@ -24,13 +27,18 @@ export default class Plant {
 	}
 
 	private gameObject: Phaser.GameObjects.Container;
+	public displayImage!: Phaser.GameObjects.Image;
+
 
 	/* START-USER-CODE */
+	public ID: number = -1;
 	private scene: Phaser.Scene;
 	// TODO: use storage for plant time
 	private plantTime: number = 0;
-	private readyTime: number = 5000;
+	private readyTime: number = 30000;
 	private player: Phaser.Physics.Arcade.Sprite = null;
+	private plantState: PlantState = "PLANTING";
+	private plantStore = usePlantStore;
 	// Write your code here.
 
 	start(){
@@ -38,11 +46,26 @@ export default class Plant {
 		this.plantTime = this.scene.time.now;
 	}
 
-	
+
+	updateState(plant:PlantType){
+		if(this.plantState == "EMPTY"){
+			this.readyTime = plant.duration;
+			this.plantTime = this.scene.time.now;
+			this.plantState = "PLANTING";
+		}
+	}
+
+	getPlant(){
+		if(this.ID == -1) 
+			return null;
+		return this.plantStore.getState().plants[this.ID];
+	}
 
 	update() {
-		if (this.scene.time.now - this.plantTime > this.readyTime) {
+		if (this.plantState == "PLANTING" && this.scene.time.now - this.plantTime > this.readyTime) {
 			this.gameObject.setVisible(true);
+			this.displayImage.setTexture("arrow");
+			this.plantState = "READY";
 		}
 	}
 	/* END-USER-CODE */
