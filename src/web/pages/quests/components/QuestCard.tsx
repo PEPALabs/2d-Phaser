@@ -1,123 +1,80 @@
 import React from 'react'
+import {
+  Badge,
+  Title,
+  Text,
+  Group,
+  Stack,
+  Button,
+  Box,
+  Paper,
+  useMantineTheme,
+  UnstyledButton
+} from '@mantine/core'
+import {
+  IconArchive,
+  IconArrowRight,
+  IconCheck,
+  IconMapPin,
+  IconProgress
+} from '@tabler/icons-react'
 
-function QuestCard({ questItem, questUpdate }) {
+function QuestCard({ questItem, questUpdate, isActive, onClick }) {
+  const theme = useMantineTheme()
+
   return (
-    <>
-      <div>
-        <span className="text-purple-800 text-sm">
-          {questItem.questCategory}
-        </span>
-        <h3 className="font-bold mt-px">{questItem.questName}</h3>
-        <div className="flex items-center gap-3 mt-2">
-          <span className="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-sm">
-            {questItem.questTag}
-          </span>
-          <span className="text-slate-600 text-sm flex gap-1 items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-              />
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-            </svg>
-            {questItem.questLocation}
-          </span>
-        </div>
-      </div>
-      <div>
+    <Paper
+      withBorder
+      py="md"
+      px="lg"
+      radius="lg"
+      style={{ borderColor: isActive ? 'transparent' : undefined }}
+      sx={
+        isActive && {
+          ...theme.focusRingStyles.styles(theme)
+        }
+      }
+      onClick={onClick}>
+      <UnstyledButton component={Group} position="apart">
+        <Stack spacing="xs">
+          <Box>
+            <Text color={theme.primaryColor} size="sm">
+              {questItem.questCategory}
+            </Text>
+            <Title order={2}>{questItem.questName}</Title>
+          </Box>
+          <Group>
+            <Badge size="lg" className="normal-case">
+              {questItem.questTag}
+            </Badge>
+            <Button
+              variant="subtle"
+              color="gray"
+              leftIcon={<IconMapPin size="1rem" />}>
+              {questItem.questLocation}
+            </Button>
+          </Group>
+        </Stack>
         {questItem.questStatus === 'Completed' ? (
           // awaiting rewards
-          <button
-            onClick={questUpdate}
-            onMouseDown={e => {
-              e.stopPropagation()
-            }}
-            className="bg-purple-900 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center">
+          <Button onClick={questUpdate} rightIcon={<IconCheck size="1rem" />}>
             Take Rewards
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </button>
+          </Button>
         ) : questItem.questStatus === 'In Progress' ? (
-          <div className="bg-purple-900 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center">
-            In Progress
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </div>
+          <Button rightIcon={<IconProgress size="1rem" />}>In Progress</Button>
         ) : questItem.questStatus === 'Available' ? (
-          <button
+          <Button
             onClick={questUpdate}
-            onMouseDown={e => {
-              e.stopPropagation()
-            }}
-            className="bg-purple-900 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center">
+            rightIcon={<IconArrowRight size="1rem" />}>
             Start Quest
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </button>
+          </Button>
         ) : (
-          <div className="bg-grey-900 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center">
+          <Button color="gray" disabled rightIcon={<IconArchive size="1rem" />}>
             Archived
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </div>
+          </Button>
         )}
-      </div>
-    </>
+      </UnstyledButton>
+    </Paper>
   )
 }
 
