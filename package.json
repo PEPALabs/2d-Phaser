@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack serve --mode=development --stats-error-details --node-env development",
     "build": "webpack --mode=production --node-env production && phaser-asset-pack-hashing -r dist",
+    "format": "npx prettier . --write",
     "editor": "phasereditor2d-launcher -project . -port 1959",
     "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -51,6 +52,8 @@
     "phaser-asset-pack-hashing": "^1.0.5",
     "phasereditor2d-launcher": "^3.32.0",
     "postcss": "^8.4.23",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.0",
     "sass": "^1.62.1",
     "sass-loader": "^13.2.2",
     "style-loader": "^3.3.2",

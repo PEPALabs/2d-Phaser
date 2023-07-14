@@ -18,25 +18,25 @@ There are three groups of scripts: **Base**, **Triggers**, and **Actions**.
 
 Contain basic/abstract functionallity. Often, you will create prefab variants of them (extend them).
 
-* **ScriptNode** - the base class for all the scripts.
-* **SpriteScriptNode** - base prefab for script nodes accessing sprite objects.
-* **RootScriptNode** - a script node that registers itself into the game object and can be used as container of other scripts.
+- **ScriptNode** - the base class for all the scripts.
+- **SpriteScriptNode** - base prefab for script nodes accessing sprite objects.
+- **RootScriptNode** - a script node that registers itself into the game object and can be used as container of other scripts.
 
 ### Trigger scripts
 
 These scripts listen certain event. When the event is triggered, then execute the children, which are actions.
 
-* **OnEventScript** - registers to the given `eventEmitter` and listens the given `eventName` event.
-* **OnPointerDownScript** - listens the `pointerdown` event of the game object.
+- **OnEventScript** - registers to the given `eventEmitter` and listens the given `eventName` event.
+- **OnPointerDownScript** - listens the `pointerdown` event of the game object.
 
 ### Action scripts
 
 Actions are script that are executed manually or by other nodes, like triggers or other actions.
 
-* **CallbackActionScript** - executes the given `callback` expression.
-* **StartSceneActionScript** - starts the given `sceneKey` scene.
-* **ExecActionScript** - executes the given `targetAction`.
-* **EmitEventActionScript** - the given `eventEmitter` emits the given `eventName`.
+- **CallbackActionScript** - executes the given `callback` expression.
+- **StartSceneActionScript** - starts the given `sceneKey` scene.
+- **ExecActionScript** - executes the given `targetAction`.
+- **EmitEventActionScript** - the given `eventEmitter` emits the given `eventName`.
 
 ## ScriptNode
 
@@ -91,19 +91,19 @@ You can create variants of the **RootScriptNode** and use different keys.
 
 ## OnEventScript
 
-A trigger-like script node. It registers to the given `eventEmitter` and listens the given `eventName`. When the event is fired, it executes the children action nodes. 
+A trigger-like script node. It registers to the given `eventEmitter` and listens the given `eventName`. When the event is fired, it executes the children action nodes.
 
 You can create handy prefab variants for different events, like the `OnPointerDownScript` prefab.
 
 You can select an `eventEmitter` from the following list:
 
-* `game.events`
-* `scene.events`
-* `scene.loader`
-* `scene.input`
-* `scene.input.keyboard`
-* `scene.anims`
-* `gameObject` (by default)
+- `game.events`
+- `scene.events`
+- `scene.loader`
+- `scene.input`
+- `scene.input.keyboard`
+- `scene.anims`
+- `gameObject` (by default)
 
 ## OnPointerDownScript
 
@@ -137,10 +137,10 @@ An action like script. It calls the emit method of the given `eventEmitter` with
 
 Like in the **OnEventScript**, you can select an `eventEmitter` from a list:
 
-* `game.events`
-* `scene.events`
-* `scene.loader`
-* `scene.input`
-* `scene.input.keyboard`
-* `scene.anims`
-* `gameObject` (by default)
+- `game.events`
+- `scene.events`
+- `scene.loader`
+- `scene.input`
+- `scene.input.keyboard`
+- `scene.anims`
+- `gameObject` (by default)
