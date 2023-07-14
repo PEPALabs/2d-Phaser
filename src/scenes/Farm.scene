@@ -165,6 +165,8 @@
                 "Farm",
                 "FarmContainer"
             ],
+            "FarmContainer.n_row": 3,
+            "FarmContainer.n_col": 3,
             "FarmContainer.gap_h": 207,
             "FarmContainer.gap_w": 240,
             "x": 2315,

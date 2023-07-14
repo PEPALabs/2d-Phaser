@@ -7,7 +7,6 @@ import Phaser from "phaser";
 import Physics from "../components/Physics";
 import PlayerMovement from "../components/PlayerMovement";
 import PigAnimation from "../components/PigAnimation";
-import DisplayPlants from "../components/DisplayPlants";
 import RectPhysics from "../components/RectPhysics";
 import OpenShop from "../components/OpenShop";
 import TeleportScene from "../components/TeleportScene";
@@ -76,31 +75,6 @@ export default class Level extends Phaser.Scene {
 		pig.scaleY = 0.1;
 		pig.body.setSize(1134, 1572, false);
 
-		// container_2
-		const container_2 = this.add.container(0, 0);
-
-		// field1
-		const field1 = this.add.rectangle(850, 1200, 128, 128);
-		container_2.add(field1);
-
-		// field2
-		const field2 = this.add.rectangle(1100, 1200, 128, 128);
-		container_2.add(field2);
-
-		// field3
-		const field3 = this.add.rectangle(850, 1400, 128, 128);
-		container_2.add(field3);
-
-		// field4
-		const field4 = this.add.rectangle(1100, 1400, 128, 128);
-		container_2.add(field4);
-
-		// text_1
-		const text_1 = this.add.text(873, 1077, "", {});
-		text_1.text = "Farm";
-		text_1.setStyle({ "color": "#e68d00ff", "fontSize": "64px", "stroke": "#ffffffff", "shadow.offsetX":2,"shadow.offsetY":2,"shadow.color": "#e55353ff", "shadow.stroke":true,"shadow.fill":true});
-		container_2.add(text_1);
-
 		// Shop
 		const shop = this.add.rectangle(2704, 2919, 500, 500);
 
@@ -121,7 +95,7 @@ export default class Level extends Phaser.Scene {
 		new testPrefab(this);
 
 		// lists
-		const list = [field4, field3, field2, field1];
+		const list: Array<any> = [];
 		const list_1: Array<any> = [];
 
 		// pig (components)
@@ -130,9 +104,6 @@ export default class Level extends Phaser.Scene {
 		pigPlayerMovement.velocity = 250;
 		const pigPigAnimation = new PigAnimation(pig);
 		pigPigAnimation.animationKey = "pig-walk";
-
-		// container_2 (components)
-		new DisplayPlants(container_2);
 
 		// shop (components)
 		new RectPhysics(shop);
@@ -145,11 +116,6 @@ export default class Level extends Phaser.Scene {
 		teleportTeleportScene.player = pig;
 
 		this.pig = pig;
-		this.field1 = field1;
-		this.field2 = field2;
-		this.field3 = field3;
-		this.field4 = field4;
-		this.container_2 = container_2;
 		this.shop = shop;
 		this.main1 = main1;
 		this.main = main;
@@ -165,11 +131,6 @@ export default class Level extends Phaser.Scene {
 	}
 
 	private pig!: Phaser.Physics.Arcade.Sprite;
-	private field1!: Phaser.GameObjects.Rectangle;
-	private field2!: Phaser.GameObjects.Rectangle;
-	private field3!: Phaser.GameObjects.Rectangle;
-	private field4!: Phaser.GameObjects.Rectangle;
-	private container_2!: Phaser.GameObjects.Container;
 	private shop!: Phaser.GameObjects.Rectangle;
 	private main1!: Phaser.Tilemaps.Tilemap;
 	private main!: Phaser.Tilemaps.Tilemap;
@@ -178,7 +139,7 @@ export default class Level extends Phaser.Scene {
 	private keyboard_key_1!: Phaser.Input.Keyboard.Key;
 	private keyboard_key_2!: Phaser.Input.Keyboard.Key;
 	private keyboard_key_3!: Phaser.Input.Keyboard.Key;
-	public list!: Phaser.GameObjects.Rectangle[];
+	public list!: Array<any>;
 	public list_1!: Array<any>;
 
 	/* START-USER-CODE */
@@ -214,8 +175,9 @@ export default class Level extends Phaser.Scene {
 		imageNavigation.player = this.pig;
 		imageNavigation.target = this.shop;
 
+		// TODO： add list of quest navigation to prefab/storage
 		imageNavigation.itemList["1"] = this.shop;
-		imageNavigation.itemList["2"] = this.field1;
+		imageNavigation.itemList["2"] = this.shop;
 
 		this.image_3 = image_3;
 

@@ -6,6 +6,7 @@
 /* START-USER-IMPORTS */
 import Farmland from "../prefabs/Farmland"
 import {plants, plantData, PlantState, PlantType} from "../data/plants"
+import usePlantStore from "../data/plantStore";
 /* END-USER-IMPORTS */
 
 export default class FarmContainer {
@@ -17,7 +18,10 @@ export default class FarmContainer {
 		/* START-USER-CTR-CODE */
 		// Write your code here.
 		this.scene = this.gameObject.scene;
+		
+		// this.scene.events.on(Phaser.Scenes.Events.START, this.start, this);
 		this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
+		this.start();
 		/* END-USER-CTR-CODE */
 	}
 
@@ -38,21 +42,31 @@ export default class FarmContainer {
 	private plantsChanged: boolean = true;
 	// Write your code here.
 
+	start(){
+		usePlantStore.getState().populateId(this.n_row*this.n_col);
+		for(var i=0; i <this.plantData.length; i ++){
+			usePlantStore.getState().updatePlant(this.plantData[i],String(i));
+		}
+		
+		console.log("plants1",usePlantStore.getState().plants);
+	}
+
 
 	public displayPlants(){
-		console.log(this.plantData);
 		// update plants
 		if( this.plantsChanged ){
 			var start_x = this.gameObject.x;
 			var start_y = this.gameObject.y;
+			const plantStore = usePlantStore.getState().plants;
 			for (var i = 0; i < this.plantData.length; i++) {
 				var row = Math.floor(i / this.n_row);
 				var col = i % this.n_row;
 				var x = col * this.gap_w;
 				var y = row * this.gap_h;
-				var farm = new Farmland(this.scene, x, y, i);
+
+				var farm = new Farmland(this.scene, x, y, String(i));
 				this.gameObject.add(farm);
-				var image = farm.plantImage;
+				// var image = farm.plantImage;
 			}
 		}
 		this.plantsChanged = false;

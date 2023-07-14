@@ -80,7 +80,19 @@
                         "id": "object-var",
                         "expressionType": "Phaser.GameObjects.Image"
                     }
-                }]
+                },
+                {
+                    "name": "actionButton",
+                    "label": "actionButton",
+                    "tooltip": "actionButton",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "object-var",
+                        "expressionType": "Phaser.GameObjects.GameObject"
+                    }
+                }
+            ]
         }
     ],
     "meta": {

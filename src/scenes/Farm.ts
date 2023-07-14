@@ -94,6 +94,8 @@ export default class Farm extends Phaser.Scene {
 
 		// farm (components)
 		const farmFarmContainer = new FarmContainer(farm);
+		farmFarmContainer.n_row = 3;
+		farmFarmContainer.n_col = 3;
 		farmFarmContainer.gap_h = 207;
 		farmFarmContainer.gap_w = 240;
 
