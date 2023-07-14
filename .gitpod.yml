@@ -15,6 +15,6 @@ ports:
     name: Phaser Editor 2D
     description: The Phaser Editor 2D Core server. Open it for edit the game's scenes.
   - port: 8080
-    onOpen: notify 
+    onOpen: notify
     name: Play game
     description: Open it for testing the game.

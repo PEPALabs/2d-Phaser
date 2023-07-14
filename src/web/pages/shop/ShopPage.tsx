@@ -101,10 +101,10 @@ function ShopPage() {
     <div
       ref={inventoryRef}
       onKeyDown={handleKeyPressed}
-      className="bg-zelda-darkGreen h-full flex-1 font-calamity"
+      className="font-calamity h-full flex-1 bg-zelda-darkGreen"
       tabIndex={0}>
       <div className="container mx-auto flex flex-col xl:flex-row">
-        <div className="flex flex-col justify-center w-full  mx-auto xl:w-1/2 relative ">
+        <div className="relative mx-auto flex w-full  flex-col justify-center xl:w-1/2 ">
           {/* <CategoriesMenu
             categorySelected={itemsPaginated[page].mainCategory}
             setPage={setPage}
@@ -127,7 +127,7 @@ function ShopPage() {
           /> */}
         </div>
 
-        <div className="flex flex-col items-center self-end xl:items-start w-full xl:w-1/2 my-6 xl:my-0">
+        <div className="my-6 flex w-full flex-col items-center self-end xl:my-0 xl:w-1/2 xl:items-start">
           {/* <img
             className="absolute hidden xl:block top-0 ml-48 z-0"
             src={linkImage}
@@ -159,19 +159,19 @@ function ShopPage() {
               Here are the biggest enterprise technology acquisitions of 2021 so
               far, in reverse chronological order.
             </p>
-            <div className="flex mt-4 space-x-3 md:mt-6">
+            <div className="mt-4 flex space-x-3 md:mt-6">
               <a
                 href="#"
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 Use Item
               </a>
               <a
                 href="#"
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 Purchase
                 <svg
                   aria-hidden="true"
-                  className="w-4 h-4 ml-2 -mr-1"
+                  className="-mr-1 ml-2 h-4 w-4"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg">
