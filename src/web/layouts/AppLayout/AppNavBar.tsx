@@ -26,7 +26,8 @@ const navList = [
   {
     color: 'blue',
     text: 'Dashboard',
-    icon: IconDashboard
+    icon: IconDashboard,
+    path: '/resources'
   },
   {
     color: 'green',
