@@ -1,12 +1,11 @@
-import React, { ReactElement } from 'react'
-import { useState } from 'react'
+import React from 'react'
 
 type MessageProps = {
   message: any
   onDone: Function
 }
 
-const MessageBox: React.FC<MessageProps> = ({ message, onDone }) => {
+const MessageBox: React.FC<MessageProps> = ({ message }) => {
   return (
     <div id="message" className="max-w-sm overflow-hidden rounded shadow-lg">
       <div className="px-6 py-4">

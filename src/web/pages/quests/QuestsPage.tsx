@@ -2,7 +2,6 @@ import React from 'react'
 import { Center, Container, Stack } from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
 import QuestCard from './components/QuestCard'
-import { QuestType } from '../../../data/items.type'
 import quests from '../../../data/questData'
 
 // TODO: Add quest sorting

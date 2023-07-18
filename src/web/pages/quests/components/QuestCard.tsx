@@ -18,8 +18,21 @@ import {
   IconMapPin,
   IconProgress
 } from '@tabler/icons-react'
+import { type QuestType } from '../../../../data/items.type'
 
-function QuestCard({ questItem, questUpdate, isActive, onClick }) {
+interface QuestCardProps {
+  questItem: QuestType
+  questUpdate: () => void
+  isActive: boolean
+  onClick: () => void
+}
+
+function QuestCard({
+  questItem,
+  questUpdate,
+  isActive,
+  onClick
+}: QuestCardProps) {
   const theme = useMantineTheme()
 
   return (

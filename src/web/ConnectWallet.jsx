@@ -1,8 +1,7 @@
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { useWeb3React } from '@web3-react/core'
 
-import React, { ReactElement } from 'react'
-import { useState, useEffect, useCallback } from 'react'
+import React from 'react'
 
 const injected = new InjectedConnector({
   supportedChainIds: [1, 3, 4, 5, 42, 42161]

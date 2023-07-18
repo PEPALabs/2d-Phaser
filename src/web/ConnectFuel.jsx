@@ -1,5 +1,5 @@
 import { BN, Provider, Wallet } from 'fuels'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function App() {
   const [balance, setBalance] = useState(0)
@@ -11,7 +11,7 @@ function App() {
     myWallet.getBalances().then(data => {
       setBalance(new BN(data[0].amount).toNumber())
     })
-  }, [])
+  }, [myWallet])
 
   return <div>My Balance: {balance}</div>
 }

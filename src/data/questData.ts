@@ -3,7 +3,7 @@ import { QuestType } from './items.type'
 const PUBLIC_URL = 'http://localhost:8080/'
 const DEFAULT_IMAGE_URL = PUBLIC_URL + 'assts/guapen.png'
 // Quest status: Available (not taken) -> In Progress (taken, not complete) -> completed (complete, rewards available) -> Archived(reward taken)
-export default [
+const quests: QuestType[] = [
   {
     questId: '1',
     questName: 'quest1',
@@ -45,3 +45,5 @@ export default [
     questImage: DEFAULT_IMAGE_URL
   }
 ]
+
+export default quests
