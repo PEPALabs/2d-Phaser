@@ -80,15 +80,17 @@ export default class DisplayPlants {
     this.gameManager.inventoryChanged = false
   }
 
-  // look for inventory changes and update display
-  update() {
-    // console.log("update");
-    if (this.gameManager.inventoryChanged) {
-      // console.log("update display");
-      this.updateDisplay()
-    }
-  }
-  /* END-USER-CODE */
+
+
+	// look for inventory changes and update display 
+	update() {
+		// console.log("update");
+		if (this.gameManager.inventoryChanged) {
+			// console.log("update display");
+			this.updateDisplay();
+		}
+	}
+	/* END-USER-CODE */
 }
 
 /* END OF COMPILED CODE */

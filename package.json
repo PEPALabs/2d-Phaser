@@ -20,7 +20,7 @@
     "@mantine/core": "^6.0.16",
     "@mantine/hooks": "^6.0.16",
     "@mantine/notifications": "^6.0.16",
-    "@tabler/icons-react": "^2.24.0",
+    "@tabler/icons-react": "^2.25.0",
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
     "ethers": "^6.3.0",

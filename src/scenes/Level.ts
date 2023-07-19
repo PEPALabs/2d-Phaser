@@ -2,15 +2,14 @@
 
 /* START OF COMPILED CODE */
 
-import Phaser from 'phaser'
-import Physics from '../components/Physics'
-import PlayerMovement from '../components/PlayerMovement'
-import PigAnimation from '../components/PigAnimation'
-import DisplayPlants from '../components/DisplayPlants'
-import RectPhysics from '../components/RectPhysics'
-import OpenShop from '../components/OpenShop'
-import TeleportScene from '../components/TeleportScene'
-import testPrefab from '../script-nodes/testPrefab'
+import Phaser from "phaser";
+import Physics from "../components/Physics";
+import PlayerMovement from "../components/PlayerMovement";
+import PigAnimation from "../components/PigAnimation";
+import RectPhysics from "../components/RectPhysics";
+import OpenShop from "../components/OpenShop";
+import TeleportScene from "../components/TeleportScene";
+import testPrefab from "../script-nodes/testPrefab";
 /* START-USER-IMPORTS */
 import EventDispatcher from '../EventDispatcher'
 import GameManager from '../GameManager'
@@ -154,7 +153,7 @@ export default class Level extends Phaser.Scene {
     pigPigAnimation.animationKey = 'pig-walk'
 
     // container_2 (components)
-    new DisplayPlants(container_2)
+    // new DisplayPlants(container_2)
 
     // shop (components)
     new RectPhysics(shop)
@@ -259,9 +258,9 @@ export default class Level extends Phaser.Scene {
     // 	repeat: -1
     // 	})
 
-    // this.load.animation("pig-walk", "animations");
-    // this.animPig.play("walk");
-    // this.animPig.play("pig-walk");
+		// TODO： add list of quest navigation to prefab/storage
+		imageNavigation.itemList["1"] = this.shop;
+		imageNavigation.itemList["2"] = this.shop;
 
     // Create Group for updates
     // this.updateGroup = this.add.group([this.pig,this.image_1,this.field4,this.container_2],{runChildUpdate: true});

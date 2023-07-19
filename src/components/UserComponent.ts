@@ -38,19 +38,19 @@ export default class UserComponent {
 
   scene: Phaser.Scene
 
-  protected awake() {
-    // override this
-  }
+    protected awake(): void {
+        // override this
+    }
 
-  protected start() {
-    // override this
-  }
+    protected start(): void {
+        // override this
+    }
 
-  protected update() {
-    // override this
-  }
+    protected update(): void {
+        // override this
+    }
 
-  protected destroy() {
-    // override this
-  }
+    protected destroy(): void {
+        // override this
+    }
 }

@@ -13,6 +13,7 @@ import UniswapPage from '../pages/uniswap/UniswapPage'
 import InventoryPage from '../pages/inventory/InventoryPage'
 import GamePage from '../pages/game/GamePage'
 import QuestsPage from '../pages/quests/QuestsPage'
+import ResourcePage from '../pages/resource/ResourcePage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
       <Route path="uniswap" element={<UniswapPage />} />
       <Route path="inventory" element={<InventoryPage />} />
       <Route path="quests" element={<QuestsPage />} />
+      <Route path="resources" element={<ResourcePage />} />
     </Route>
   )
 )

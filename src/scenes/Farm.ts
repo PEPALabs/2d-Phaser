@@ -2,11 +2,14 @@
 
 /* START OF COMPILED CODE */
 
-import Phaser from 'phaser'
-import PlayerMovement from '../components/PlayerMovement'
-import Physics from '../components/Physics'
-import PigAnimation from '../components/PigAnimation'
-import TeleportScene from '../components/TeleportScene'
+import Phaser from "phaser";
+import Farmland from "../prefabs/Farmland";
+import PlayerMovement from "../components/PlayerMovement";
+import Physics from "../components/Physics";
+import PigAnimation from "../components/PigAnimation";
+import ItemUsage from "../components/ItemUsage";
+import TeleportScene from "../components/TeleportScene";
+import FarmContainer from "../components/FarmContainer";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
@@ -63,12 +66,34 @@ export default class Farm extends Phaser.Scene {
       'shadow.fill': true
     })
 
-    // player (components)
-    const playerPlayerMovement = new PlayerMovement(player)
-    playerPlayerMovement.speed = 20
-    playerPlayerMovement.velocity = 250
-    new Physics(player)
-    new PigAnimation(player)
+		// Farmlands
+		const farmlands = this.add.layer();
+
+		// Farmland
+		const farmland = new Farmland(this, 3143, 1463);
+		farmlands.add(farmland);
+
+		// Farmland_1
+		const farmland_1 = new Farmland(this, 3389, 1462);
+		farmlands.add(farmland_1);
+
+		// Farmland_2
+		const farmland_2 = new Farmland(this, 3630, 1465);
+		farmlands.add(farmland_2);
+
+
+		// farm
+		const farm = this.add.container(2315, 2203);
+
+    // farm (components)
+		const farmFarmContainer = new FarmContainer(farm);
+		farmFarmContainer.n_row = 3;
+		farmFarmContainer.n_col = 3;
+		farmFarmContainer.gap_h = 207;
+		farmFarmContainer.gap_w = 240;
+
+		
+
 
     // teleport (components)
     const teleportTeleportScene = new TeleportScene(teleport)
@@ -79,17 +104,32 @@ export default class Farm extends Phaser.Scene {
     this.layer_1 = layer_1
     this.player = player
 
+
+		// player (components)
+		const playerPlayerMovement = new PlayerMovement(player);
+		playerPlayerMovement.speed = 20;
+		playerPlayerMovement.velocity = 250;
+		new Physics(player);
+		new PigAnimation(player);
+		new ItemUsage(player);
+
+    this.map = map;
+		this.layer_1 = layer_1;
+		this.player = player;
+		this.farm = farm;
+    
     this.events.emit('scene-awake')
   }
 
   private map!: Phaser.GameObjects.Image
   private layer_1!: Phaser.GameObjects.Layer
   private player!: Phaser.Physics.Arcade.Sprite
+  
 
   /* START-USER-CODE */
 
   // Write your code here
-
+	private farm!: Phaser.GameObjects.Container;
   create() {
     this.editorCreate()
 

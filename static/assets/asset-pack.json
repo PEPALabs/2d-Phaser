@@ -1,100 +1,105 @@
 {
-  "section1": {
-    "files": [
-      {
-        "url": "assets/map-town/_composite.png",
-        "type": "image",
-        "key": "_composite"
-      },
-      {
-        "url": "assets/bundle1.png",
-        "frameConfig": {
-          "frameWidth": 32,
-          "frameHeight": 32,
-          "startFrame": 0,
-          "endFrame": -1,
-          "spacing": 0,
-          "margin": 0
-        },
-        "type": "spritesheet",
-        "key": "bundle1"
-      },
-      {
-        "url": "assets/bundle2.png",
-        "frameConfig": {
-          "frameWidth": 32,
-          "frameHeight": 32,
-          "startFrame": 0,
-          "endFrame": -1,
-          "spacing": 0,
-          "margin": 0
-        },
-        "type": "spritesheet",
-        "key": "bundle2"
-      },
-      {
-        "url": "assets/arrow.png",
-        "type": "image",
-        "key": "arrow"
-      },
-      {
-        "url": "assets/FufuSuperDino.png",
-        "type": "image",
-        "key": "FufuSuperDino"
-      },
-      {
-        "url": "assets/tile/main.json",
-        "type": "tilemapTiledJSON",
-        "key": "main"
-      },
-      {
-        "url": "assets/main1.json",
-        "type": "tilemapTiledJSON",
-        "key": "main1"
-      },
-      {
-        "url": "assets/map-town.png",
-        "type": "image",
-        "key": "map-town"
-      },
-      {
-        "url": "assets/pig.png",
-        "type": "image",
-        "key": "pig"
-      },
-      {
-        "url": "assets/animation/pig-spritesheet.png",
-        "frameConfig": {
-          "frameWidth": 1097,
-          "frameHeight": 1200,
-          "startFrame": 0,
-          "endFrame": -1,
-          "spacing": 0,
-          "margin": 0
-        },
-        "type": "spritesheet",
-        "key": "pig-spritesheet"
-      },
-      {
-        "url": "assets/images/spritesheet.png",
-        "frameConfig": {
-          "frameWidth": 796,
-          "frameHeight": 1082,
-          "startFrame": 0,
-          "endFrame": -1,
-          "spacing": 0,
-          "margin": 0
-        },
-        "type": "spritesheet",
-        "key": "pig-spritesheet1"
-      }
-    ]
-  },
-  "meta": {
-    "app": "Phaser Editor 2D - Asset Pack Editor",
-    "contentType": "phasereditor2d.pack.core.AssetContentType",
-    "url": "https://phasereditor2d.com",
-    "version": 2,
-    "showAllFilesInBlocks": false
-  }
+    "section1": {
+        "files": [
+            {
+                "url": "assets/map-town/_composite.png",
+                "type": "image",
+                "key": "_composite"
+            },
+            {
+                "url": "assets/bundle1.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "bundle1"
+            },
+            {
+                "url": "assets/bundle2.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "bundle2"
+            },
+            {
+                "url": "assets/images/Button_Green.png",
+                "type": "image",
+                "key": "Button_Green"
+            },
+            {
+                "url": "assets/arrow.png",
+                "type": "image",
+                "key": "arrow"
+            },
+            {
+                "url": "assets/FufuSuperDino.png",
+                "type": "image",
+                "key": "FufuSuperDino"
+            },
+            {
+                "url": "assets/tile/main.json",
+                "type": "tilemapTiledJSON",
+                "key": "main"
+            },
+            {
+                "url": "assets/main1.json",
+                "type": "tilemapTiledJSON",
+                "key": "main1"
+            },
+            {
+                "url": "assets/map-town.png",
+                "type": "image",
+                "key": "map-town"
+            },
+            {
+                "url": "assets/pig.png",
+                "type": "image",
+                "key": "pig"
+            },
+            {
+                "url": "assets/animation/pig-spritesheet.png",
+                "frameConfig": {
+                    "frameWidth": 1097,
+                    "frameHeight": 1200,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "pig-spritesheet"
+            },
+            {
+                "url": "assets/images/spritesheet.png",
+                "frameConfig": {
+                    "frameWidth": 796,
+                    "frameHeight": 1082,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "pig-spritesheet1"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false
+    }
 }

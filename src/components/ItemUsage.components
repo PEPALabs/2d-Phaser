@@ -1,0 +1,38 @@
+{
+    "components": [
+        {
+            "name": "ItemUsage",
+            "baseClass": "UserComponent",
+            "gameObjectType": "Phaser.Physics.Arcade.Sprite",
+            "properties": [
+                {
+                    "name": "itemIconWidth",
+                    "label": "itemIconWidth",
+                    "tooltip": "Item icon width",
+                    "defValue": 50,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                },
+                {
+                    "name": "itemIconHeight",
+                    "label": "itemIconHeight",
+                    "tooltip": "Item icon height",
+                    "defValue": 50,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                }
+            ]
+        }
+    ],
+    "meta": {
+        "app": "Phaser Editor 2D - User Components Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.UserComponents"
+    },
+    "outputLang": "TYPE_SCRIPT",
+    "exportClass": true
+}
