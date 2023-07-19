@@ -1,0 +1,32 @@
+import React from 'react'
+import ResourceSection from '../ResourceSection'
+import { ScrollArea, Stack } from '@mantine/core'
+import PlantCard from './PlantCard'
+import usePlantStore from '../../../../../data/plantStore'
+
+const PlantList = () => {
+  const { plants } = usePlantStore()
+
+  const plantData = Object.entries(plants)
+    .map(item => {
+      if (item[1]) {
+        return item[1]
+      }
+    })
+    .filter(item => item !== undefined)
+  console.log(plantData, plants)
+
+  return (
+    <ResourceSection name="Plants">
+      <ScrollArea h={420}>
+        <Stack>
+          {plantData.map((plant, index) => (
+            <PlantCard key={index} plant={plant} />
+          ))}
+        </Stack>
+      </ScrollArea>
+    </ResourceSection>
+  )
+}
+
+export default PlantList
