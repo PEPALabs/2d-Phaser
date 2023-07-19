@@ -4,8 +4,7 @@
 
 import Phaser from 'phaser'
 /* START-USER-IMPORTS */
-import { Physics } from 'phaser'
-// import { publish} from '../event';
+import { Physics } from "phaser";
 import PubSub from 'pubsub-js'
 import React from 'react'
 import { Kbd } from '@mantine/core'

@@ -10,16 +10,16 @@ import { getItems } from '../utils/getItems'
 enum ModalOptions {
   EQUIP = 0,
   DROP = 1,
-  CANCEL = 2,
-  ADD = 3
+  ADD = 2,
+  CANCEL = 3,
 }
 
 export default () => {
   const { closeModal, equipItem, dropItem, itemSelected } =
-    useContext(ItemsContext)
-  const [selectedOption, setSelectedOption] = useState(ModalOptions.EQUIP)
-  const modalRef = useRef<HTMLDivElement>(null)
-  const [gameManager, setGameManager] = useState(GameManager.getInstance())
+    useContext(ItemsContext);
+  const [selectedOption, setSelectedOption] = useState(ModalOptions.EQUIP);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const [gameManager, setGameManager] = useState(GameManager.getInstance());
 
   // TODO: add items to context
   const [items, setItems] = useState(getItems())
@@ -28,11 +28,11 @@ export default () => {
 
   const addToInventoryAndClose = () => {
     if (closeModal && gameManager) {
-      GameManager.addItem(gameManager, items[itemSelected])
-      console.log('added item', items[itemSelected])
-      closeModal()
+      GameManager.addItem(gameManager, items[itemSelected]);
+      console.log("added item", items[itemSelected]);
+      closeModal();
     }
-  }
+  };
 
   const equipAndClose = () => {
     if (closeModal && equipItem) {
@@ -49,26 +49,26 @@ export default () => {
   }
 
   const handleKeyPressed = (event: React.KeyboardEvent) => {
-    event.stopPropagation()
-    if (event.key === 'ArrowUp') {
-      setSelectedOption(Math.max(selectedOption - 1, 0))
-    } else if (event.key === 'ArrowDown') {
-      setSelectedOption(Math.min(selectedOption + 1, 2))
-    } else if (event.key === 'Enter') {
+    event.stopPropagation();
+    if (event.key === "ArrowUp") {
+      setSelectedOption(Math.max(selectedOption - 1, 0));
+    } else if (event.key === "ArrowDown") {
+      setSelectedOption(Math.min(selectedOption + 1, 3));
+    } else if (event.key === "Enter") {
       switch (selectedOption) {
         case ModalOptions.EQUIP:
-          equipAndClose()
-          break
+          equipAndClose();
+          break;
         case ModalOptions.DROP:
-          dropAndClose()
-          break
+          dropAndClose();
+          break;
         default:
-          closeModal && closeModal()
-          break
+          closeModal && closeModal();
+          break;
       }
-      closeModal && closeModal()
+      closeModal && closeModal();
     }
-  }
+  };
 
   useEffect(() => {
     if (modalRef.current) {
@@ -81,31 +81,33 @@ export default () => {
       ref={modalRef}
       onKeyDown={handleKeyPressed}
       tabIndex={0}
-      className="bg-zelda-bgModal absolute left-0 top-0 z-50 mx-6 my-6 w-32 border border-zelda-darkGray text-white outline-none">
+      className="w-32 absolute top-0 left-0 z-50 mx-10 my-10 outline-none text-white rounded-xl"
+    >
       <div
-        className="flex flex-col p-4"
+        className="flex flex-col"
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-headline">
         <div
           className={cx(
             {
-              'border-2 border-zelda-softYellow shadow-yellow':
-                selectedOption === ModalOptions.EQUIP
+              "shadow-yellow border-zelda-softYellow border bg-pepa-darkBlue/90":
+                selectedOption === ModalOptions.EQUIP,
             },
-            'relative mb-4 flex justify-center border border-zelda-darkGray px-6 py-2'
+            "flex justify-center px-6 py-4 relative rounded-t-xl bg-pepa-darkBlue"
           )}
-          onClick={equipAndClose}>
+          onClick={equipAndClose}
+        >
           {selectedOption === ModalOptions.EQUIP}
           Equip
         </div>
         <div
           className={cx(
             {
-              'border-2 border-zelda-softYellow shadow-yellow':
-                selectedOption === ModalOptions.DROP
+              "shadow-yellow border-zelda-softYellow border bg-pepa-darkBlue/90":
+                selectedOption === ModalOptions.DROP,
             },
-            'relative mb-4 flex justify-center border border-zelda-darkGray px-6 py-2'
+            "flex justify-center px-6 py-4 relative bg-pepa-darkBlue"
           )}
           onClick={dropAndClose}>
           {selectedOption === ModalOptions.DROP}
@@ -115,10 +117,10 @@ export default () => {
         <div
           className={cx(
             {
-              'border-2 border-zelda-softYellow shadow-yellow':
-                selectedOption === ModalOptions.ADD
+              "shadow-yellow border-zelda-softYellow border bg-pepa-darkBlue/90":
+                selectedOption === ModalOptions.ADD,
             },
-            'relative mb-4 flex justify-center border border-zelda-darkGray px-6 py-2'
+            "flex justify-center px-6 py-4 relative bg-pepa-darkBlue"
           )}
           onClick={addToInventoryAndClose}>
           {selectedOption === ModalOptions.ADD}
@@ -128,16 +130,17 @@ export default () => {
         <div
           className={cx(
             {
-              'border-2 border-zelda-softYellow shadow-yellow':
-                selectedOption === ModalOptions.CANCEL
+              "shadow-yellow border-zelda-softYellow border bg-pepa-darkBlue/90":
+                selectedOption === ModalOptions.CANCEL,
             },
-            'relative flex justify-center border border-zelda-darkGray px-6 py-2'
+            "flex justify-center px-6 py-4 relative rounded-b-xl bg-pepa-darkBlue"
           )}
-          onClick={closeModal}>
+          onClick={closeModal}
+        >
           {selectedOption === ModalOptions.CANCEL}
           Cancel
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

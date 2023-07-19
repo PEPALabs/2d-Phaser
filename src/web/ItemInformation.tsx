@@ -5,31 +5,34 @@ import cx from 'classnames'
 import { ItemType } from '../data/items.type'
 
 type Props = {
-  item: ItemType
-}
+  item: ItemType;
+};
 
 const ItemInformation: React.FC<Props> = ({ item }) => (
   <div
     className={cx(
-      'relative z-10 w-full max-w-xs md:max-w-lg',
-      'px-6 py-4 text-sm text-white md:mx-4',
-      'border border-zelda-darkGray bg-zelda-bgBlackTransparent'
-    )}>
-    <div className="mb-2 border-b border-zelda-darkGray pb-2 text-lg font-bold">
-      {item.name}
-    </div>
-    <div className="min-h-24">
-      <div className="overflow-hidden leading-5">
-        <div className="mb-2 flex items-center">
-          {/* <CategoryIcon type={item.category} /> */}
-          <div className="border border-zelda-lightGray px-3 py-2 text-lg">
-            {item.value}
-          </div>
+      "relative w-11/12 z-10",
+      "text-white text-sm py-6 px-8",
+      "bg-pepa-black/70 border border-zelda-darkGray rounded-xl"
+    )}
+  >
+    <div className="w-full text-2xl mb-2 pb-2 border-zelda-darkGray border-b flex items-center flex-row">
+      <div className="font-bold flex-1">{item.name}</div>
+      <div className="flex space-x-2 text-lg items-center justify-end">
+        {/* <CategoryIcon type={item.category} /> */}
+        <div>In Stock:</div>
+        <div className="py-1 px-2 border-2 rounded-lg border-pepa-gold">
+          {item.value}
         </div>
+      </div>
+    </div>
+
+    <div className="min-h-24">
+      <div className="overflow-hidden leading-5 mt-4 text-base">
         <div>{item.description}</div>
       </div>
     </div>
   </div>
 )
 
-export default ItemInformation
+export default ItemInformation;

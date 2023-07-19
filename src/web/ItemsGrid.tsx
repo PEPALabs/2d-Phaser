@@ -7,7 +7,7 @@ type Props = {
 }
 
 const ItemsGrid: React.FC<Props> = ({ items }) => (
-  <div className="grid grid-cols-3 gap-6 md:grid-cols-5">
+  <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6">
     {items.map((item, index) => (
       <Item
         key={`${item.name}-${index}`}
@@ -22,4 +22,4 @@ const ItemsGrid: React.FC<Props> = ({ items }) => (
   </div>
 )
 
-export default ItemsGrid
+export default ItemsGrid;

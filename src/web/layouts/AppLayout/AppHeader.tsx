@@ -27,7 +27,7 @@ const AppHeader = () => {
           {headerNavList.map(navItem => (
             <NavLink key={navItem.to} to={navItem.to}>
               {({ isActive }) => (
-                <Button variant={isActive ? 'filled' : 'light'}>
+                <Button variant={isActive ? 'outline' : 'light'}>
                   {navItem.name}
                 </Button>
               )}
