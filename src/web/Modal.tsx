@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
-import cx from "classnames";
+import React, { useState, useRef, useEffect, useContext } from 'react'
+import cx from 'classnames'
 // import TrianglesBox from "./TrianglesBox";
-import useClickOutside from "../hooks/useClickOutside";
-import ItemsContext from "./ItemsContext";
+import useClickOutside from '../hooks/useClickOutside'
+import ItemsContext from './ItemsContext'
 
-import GameManager from "../GameManager";
-import { Game } from "phaser";
-import { getItems } from "../utils/getItems";
+import GameManager from '../GameManager'
+import { Game } from 'phaser'
+import { getItems } from '../utils/getItems'
 enum ModalOptions {
   EQUIP = 0,
   DROP = 1,
@@ -22,9 +22,9 @@ export default () => {
   const [gameManager, setGameManager] = useState(GameManager.getInstance());
 
   // TODO: add items to context
-  const [items, setItems] = useState(getItems());
+  const [items, setItems] = useState(getItems())
 
-  useClickOutside(modalRef, closeModal);
+  useClickOutside(modalRef, closeModal)
 
   const addToInventoryAndClose = () => {
     if (closeModal && gameManager) {
@@ -36,17 +36,17 @@ export default () => {
 
   const equipAndClose = () => {
     if (closeModal && equipItem) {
-      equipItem();
-      closeModal();
+      equipItem()
+      closeModal()
     }
-  };
+  }
 
   const dropAndClose = () => {
     if (closeModal && dropItem) {
-      dropItem();
-      closeModal();
+      dropItem()
+      closeModal()
     }
-  };
+  }
 
   const handleKeyPressed = (event: React.KeyboardEvent) => {
     event.stopPropagation();
@@ -72,9 +72,9 @@ export default () => {
 
   useEffect(() => {
     if (modalRef.current) {
-      modalRef.current.focus();
+      modalRef.current.focus()
     }
-  }, []);
+  }, [])
 
   return (
     <div
@@ -87,8 +87,7 @@ export default () => {
         className="flex flex-col"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="modal-headline"
-      >
+        aria-labelledby="modal-headline">
         <div
           className={cx(
             {
@@ -110,8 +109,7 @@ export default () => {
             },
             "flex justify-center px-6 py-4 relative bg-pepa-darkBlue"
           )}
-          onClick={dropAndClose}
-        >
+          onClick={dropAndClose}>
           {selectedOption === ModalOptions.DROP}
           Drop
         </div>
@@ -124,8 +122,7 @@ export default () => {
             },
             "flex justify-center px-6 py-4 relative bg-pepa-darkBlue"
           )}
-          onClick={addToInventoryAndClose}
-        >
+          onClick={addToInventoryAndClose}>
           {selectedOption === ModalOptions.ADD}
           Add
         </div>

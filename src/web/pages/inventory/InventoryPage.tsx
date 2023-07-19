@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import ItemsGrid from "./ItemsGrid";
-import { getItems, getInventoryItems, emptyItem } from "../utils/getItems";
-import ItemsContext from "./ItemsContext";
-import { ItemType } from "../data/items.type";
-import ItemInformation from "./ItemInformation";
+import ItemsGrid from "../../ItemsGrid";
+import { getItems, getInventoryItems } from "../../../utils/getItems";
+import ItemsContext from "../../ItemsContext";
+import ItemInformation from "../../ItemInformation";
 import {
   goUp,
   goLeft,
@@ -11,67 +10,25 @@ import {
   getMatrixPositionFromIndex,
   goDown,
   getIndexFromMaxtrixPosition,
-} from "../utils/keyboardNavigation";
+} from "../../../utils/keyboardNavigation";
+
+import GameManager from "../../../GameManager";
 
 // import linkImage from "./assets/bg.png";
 
-function ShopUI() {
-  const [items, setItems] = useState(getItems());
+function InventoryUI() {
+  const gameManager = GameManager.getInstance();
+  const items = getItems();
   const [itemSelected, setItemSelected] = useState(0);
   const [itemAmount, setItemAmount] = useState(0);
-  const [isModalOpened, setIsModalOpened] = useState(false);
-
-  const [isModalOpened1, setIsModalOpened1] = useState(false);
-  const [itemsEquipped, setItemsEquipped] = useState<{
-    [key: string]: ItemType;
-  }>({});
-  const isSelectedItemNotEmpty = items[itemSelected].name !== "";
-  const inventoryRef = useRef<HTMLDivElement>(null);
-
-  const closeModal = () => {
-    setIsModalOpened(false);
-    if (inventoryRef.current) {
-      inventoryRef.current.focus();
-    }
-  };
-
-  const equipItem = () => {
-    const itemSelectedData = items[itemSelected];
-    setItemsEquipped({
-      ...itemsEquipped,
-      [itemSelectedData.category]: itemSelectedData,
-    });
-    // playAction();
-  };
-
-  const dropItem = () => {
-    const newItems = [...items];
-    newItems.splice(itemSelected, 1);
-    newItems.push(emptyItem);
-    setItems(newItems);
-    // setItemsPaginated(newItemsPaginated);
-    // playAction();
-  };
-  //   setItemSelected: React.Dispatch<React.SetStateAction<number>>;
-  //   setIsModalOpened: React.Dispatch<React.SetStateAction<boolean>>;
-  //   itemSelected: number;
-  //   isModalOpened: boolean;
-  //   closeModal: () => void;
-  //   equipItem: () => void;
-  //   dropItem: () => void;
-  //   itemsEquipped:
   const contextState = {
     setItemSelected,
-    setIsModalOpened,
-    setIsModalOpened1,
     itemSelected,
-    isModalOpened,
-    isModalOpened1,
-    closeModal,
-    equipItem,
-    dropItem,
-    itemsEquipped,
   };
+  const [inventoryItems, setInventoryItems] = useState(
+    getInventoryItems(gameManager.inventory)
+  );
+  const inventoryRef = useRef<HTMLDivElement>(null);
 
   const handleKeyPressed = (event: React.KeyboardEvent) => {
     let newItemSelected = null;
@@ -84,8 +41,6 @@ function ShopUI() {
       newItemSelected = goLeft(positionItemSelected);
     } else if (event.key === "ArrowRight") {
       newItemSelected = goRight(positionItemSelected);
-    } else if (event.key === "Enter") {
-      setIsModalOpened(!isModalOpened);
     }
     if (newItemSelected) {
       setItemSelected(getIndexFromMaxtrixPosition(newItemSelected));
@@ -106,6 +61,8 @@ function ShopUI() {
     if (inventoryRef.current) {
       inventoryRef.current.focus();
     }
+    setInventoryItems(getInventoryItems(gameManager.inventory));
+    console.log("inventoryItems", gameManager.inventory);
   }, []);
 
   return (
@@ -121,47 +78,24 @@ function ShopUI() {
           <div>User Balance: 1000 ETH</div>
         </div>
 
-        <div className="text-2xl text-gray-700">PEPA Shop</div>
+        <div className="text-2xl text-gray-700">Inventory</div>
       </div>
       <div className="container mx-auto flex mt-16 flex-col space-y-20">
+        {/* Left panel */}
         <div className="flex flex-col items-center w-3/4 mx-auto relative">
-          {/* <CategoriesMenu
-            categorySelected={itemsPaginated[page].mainCategory}
-            setPage={setPage}
-          /> */}
+          {/* expand the context to entire board */}
           <ItemsContext.Provider value={contextState}>
             <div className="flex">
-              {/* <ItemsGrid direction={direction} page={page} items={items} /> */}
-              <ItemsGrid items={items} />
+              <ItemsGrid items={inventoryItems} />
             </div>
           </ItemsContext.Provider>
-          {/* <NavigationArrow
-            currentPage={page}
-            setPage={setPage}
-            variant={NavigationArrowVariant.LEFT}
-          />
-          <NavigationArrow
-            currentPage={page}
-            setPage={setPage}
-            variant={NavigationArrowVariant.RIGHT}
-          /> */}
         </div>
-
+        {/*Right panel */}
         <div className="flex flex-col items-center self-center w-3/4">
-          {/* <img
-            className="absolute hidden xl:block top-0 ml-48 z-0"
-            src={linkImage}
-            alt="link"
-          /> */}
-          {isSelectedItemNotEmpty && (
-            <ItemInformation item={items[itemSelected]} />
+          {inventoryItems[itemSelected].name && (
+            <ItemInformation item={inventoryItems[itemSelected]} />
           )}
 
-          {/* {items[itemSelected].name && (
-                <ItemInformation item={items[itemSelected]} />
-          )} */}
-
-          {/* Add text component */}
           <div className="p-5 flex flex-row space-x-5 items-center">
             <div className="custom-number-input w-32">
               <label
@@ -197,7 +131,7 @@ function ShopUI() {
                 href="#"
                 className="inline-flex items-center px-4 py-2 h-10 text-base font-medium text-center text-white bg-pepa-pink rounded-lg hover:bg-pepa-pink/80 focus:ring-3 focus:outline-none focus:ring-pepa-darkPink"
               >
-                Purchase
+                Use
                 <svg
                   aria-hidden="true"
                   className="w-4 h-4 ml-2 -mr-1"
@@ -213,6 +147,32 @@ function ShopUI() {
                 </svg>
               </a>
             </div>
+            <div className="flex self-end items-center">
+              <a
+                href="#"
+                className="inline-flex items-center px-4 py-2 h-10 text-base font-medium text-center text-white bg-pepa-pink rounded-lg hover:bg-pepa-pink/80 focus:ring-3 focus:outline-none focus:ring-pepa-darkPink"
+              >
+                Drop
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="ml-2 -mr-1"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+                    fill="white"
+                  ></path>
+                  <path
+                    fillRule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                    fill="white"
+                  ></path>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -220,4 +180,4 @@ function ShopUI() {
   );
 }
 
-export default ShopUI;
+export default InventoryUI;

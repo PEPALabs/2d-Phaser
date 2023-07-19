@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import ItemsContext from "./ItemsContext";
-import Modal from "./Modal";
-import cx from "classnames";
+import React, { useContext } from 'react'
+import ItemsContext from './ItemsContext'
+import Modal from './Modal'
+import cx from 'classnames'
 // import BonusIcon from "./BonusIcon";
-import { ItemCategoriesType, ItemsBonusType } from "../data/items.type";
+import { ItemCategoriesType, ItemsBonusType } from '../data/items.type'
 
 type Props = {
   name: string;

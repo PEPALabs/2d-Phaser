@@ -1,8 +1,8 @@
-import React from "react";
-import cx from "classnames";
+import React from 'react'
+import cx from 'classnames'
 
 // import CategoryIcon from "./CategoryIcon";
-import { ItemType } from "../data/items.type";
+import { ItemType } from '../data/items.type'
 
 type Props = {
   item: ItemType;
@@ -33,6 +33,6 @@ const ItemInformation: React.FC<Props> = ({ item }) => (
       </div>
     </div>
   </div>
-);
+)
 
 export default ItemInformation;

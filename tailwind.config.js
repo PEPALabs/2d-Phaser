@@ -27,12 +27,12 @@ module.exports = {
         },
       },
       boxShadow: {
-        yellow: "rgba(255, 255, 190, 0.4) 0px 0px 6px 2px",
-      },
-    },
+        yellow: 'rgba(255, 255, 190, 0.4) 0px 0px 6px 2px'
+      }
+    }
   },
   variants: {
-    margin: ["responsive", "even"],
+    margin: ['responsive', 'even']
   },
   plugins: [],
 };

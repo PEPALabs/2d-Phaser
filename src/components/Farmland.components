@@ -1,0 +1,105 @@
+{
+    "components": [
+        {
+            "name": "FarmPlant",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.GameObject",
+            "properties": [
+                {
+                    "name": "actionButton",
+                    "label": "actionButton",
+                    "tooltip": "actionButton",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "object-var",
+                        "expressionType": "Button"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "FarmContainer",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Container",
+            "properties": [
+                {
+                    "name": "n_row",
+                    "label": "n_row",
+                    "tooltip": "n_row",
+                    "defValue": 2,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                },
+                {
+                    "name": "n_col",
+                    "label": "n_col",
+                    "tooltip": "n_col",
+                    "defValue": 10,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                },
+                {
+                    "name": "gap_h",
+                    "label": "gap_h",
+                    "tooltip": "gap_h",
+                    "defValue": 100,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                },
+                {
+                    "name": "gap_w",
+                    "label": "gap_w",
+                    "tooltip": "gap_w",
+                    "defValue": 50,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Plant",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Container",
+            "properties": [
+                {
+                    "name": "displayImage",
+                    "label": "displayImage",
+                    "tooltip": "displayImage",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "object-var",
+                        "expressionType": "Phaser.GameObjects.Image"
+                    }
+                },
+                {
+                    "name": "actionButton",
+                    "label": "actionButton",
+                    "tooltip": "actionButton",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "object-var",
+                        "expressionType": "Phaser.GameObjects.GameObject"
+                    }
+                }
+            ]
+        }
+    ],
+    "meta": {
+        "app": "Phaser Editor 2D - User Components Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.UserComponents"
+    },
+    "outputLang": "TYPE_SCRIPT",
+    "exportClass": true
+}

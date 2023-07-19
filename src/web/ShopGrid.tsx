@@ -1,10 +1,10 @@
-import React from "react";
-import Item from "./Item";
-import { ItemType } from "../data/items.type";
+import React from 'react'
+import Item from './Item'
+import { ItemType } from '../data/items.type'
 
 type Props = {
-  items: ItemType[];
-};
+  items: ItemType[]
+}
 
 const ShopGrid: React.FC<Props> = ({ items }) => (
   <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
@@ -20,6 +20,6 @@ const ShopGrid: React.FC<Props> = ({ items }) => (
       />
     ))}
   </div>
-);
+)
 
 export default ShopGrid;

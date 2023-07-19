@@ -1,0 +1,94 @@
+import React from 'react'
+import {
+  Badge,
+  Title,
+  Text,
+  Group,
+  Stack,
+  Button,
+  Box,
+  Paper,
+  useMantineTheme,
+  UnstyledButton
+} from '@mantine/core'
+import {
+  IconArchive,
+  IconArrowRight,
+  IconCheck,
+  IconMapPin,
+  IconProgress
+} from '@tabler/icons-react'
+import { type QuestType } from '../../../../data/items.type'
+
+interface QuestCardProps {
+  questItem: QuestType
+  questUpdate: () => void
+  isActive: boolean
+  onClick: () => void
+}
+
+function QuestCard({
+  questItem,
+  questUpdate,
+  isActive,
+  onClick
+}: QuestCardProps) {
+  const theme = useMantineTheme()
+
+  return (
+    <Paper
+      withBorder
+      py="md"
+      px="lg"
+      radius="lg"
+      style={{ borderColor: isActive ? 'transparent' : undefined }}
+      sx={
+        isActive && {
+          ...theme.focusRingStyles.styles(theme)
+        }
+      }
+      onClick={onClick}>
+      <UnstyledButton component={Group} position="apart">
+        <Stack spacing="xs">
+          <Box>
+            <Text color={theme.primaryColor} size="sm">
+              {questItem.questCategory}
+            </Text>
+            <Title order={2}>{questItem.questName}</Title>
+          </Box>
+          <Group>
+            <Badge size="lg" className="normal-case">
+              {questItem.questTag}
+            </Badge>
+            <Button
+              variant="subtle"
+              color="gray"
+              leftIcon={<IconMapPin size="1rem" />}>
+              {questItem.questLocation}
+            </Button>
+          </Group>
+        </Stack>
+        {questItem.questStatus === 'Completed' ? (
+          // awaiting rewards
+          <Button onClick={questUpdate} rightIcon={<IconCheck size="1rem" />}>
+            Take Rewards
+          </Button>
+        ) : questItem.questStatus === 'In Progress' ? (
+          <Button rightIcon={<IconProgress size="1rem" />}>In Progress</Button>
+        ) : questItem.questStatus === 'Available' ? (
+          <Button
+            onClick={questUpdate}
+            rightIcon={<IconArrowRight size="1rem" />}>
+            Start Quest
+          </Button>
+        ) : (
+          <Button color="gray" disabled rightIcon={<IconArchive size="1rem" />}>
+            Archived
+          </Button>
+        )}
+      </UnstyledButton>
+    </Paper>
+  )
+}
+
+export default QuestCard
