@@ -1,97 +1,90 @@
-
 // You can write more code here
 
 /* START OF COMPILED CODE */
 
-import ScriptNode from "./ScriptNode";
-import Phaser from "phaser";
+import ScriptNode from './ScriptNode'
+import Phaser from 'phaser'
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
 export default class OnEventScript extends ScriptNode {
+  constructor(
+    parent: ScriptNode | Phaser.GameObjects.GameObject | Phaser.Scene
+  ) {
+    super(parent)
 
-	constructor(parent: ScriptNode | Phaser.GameObjects.GameObject | Phaser.Scene) {
-		super(parent);
+    /* START-USER-CTR-CODE */
+    /* END-USER-CTR-CODE */
+  }
 
-		/* START-USER-CTR-CODE */
-		/* END-USER-CTR-CODE */
-	}
+  public eventName: string = ''
+  public eventEmitter:
+    | 'game.events'
+    | 'scene.events'
+    | 'scene.loader'
+    | 'scene.input'
+    | 'scene.input.keyboard'
+    | 'scene.anims'
+    | 'gameObject' = 'gameObject'
+  public once: boolean = false
 
-	public eventName: string = "";
-	public eventEmitter: "game.events"|"scene.events"|"scene.loader"|"scene.input"|"scene.input.keyboard"|"scene.anims"|"gameObject" = "gameObject";
-	public once: boolean = false;
+  /* START-USER-CODE */
 
-	/* START-USER-CODE */
+  awake() {
+    let emitter: Phaser.Events.EventEmitter | null | undefined
 
-	awake() {
+    switch (this.eventEmitter) {
+      case 'game.events':
+        emitter = this.scene.game.events
+        break
 
-		let emitter: Phaser.Events.EventEmitter | null | undefined;
+      case 'scene.events':
+        emitter = this.scene.events
+        break
 
-		switch (this.eventEmitter) {
-			case "game.events":
+      case 'scene.loader':
+        emitter = this.scene.load
+        break
 
-				emitter = this.scene.game.events;
-				break;
+      case 'scene.input':
+        emitter = this.scene.input
+        break
 
-			case "scene.events":
+      case 'scene.input.keyboard':
+        emitter = this.scene.input.keyboard
+        break
 
-				emitter = this.scene.events;
-				break;
+      case 'scene.anims':
+        emitter = this.scene.anims
+        break
 
-			case "scene.loader":
+      case 'gameObject':
+        emitter = this.gameObject
+        break
+    }
 
-				emitter = this.scene.load;
-				break;
+    if (emitter) {
+      if (this.once) {
+        emitter.once(this.eventName, this.executeChildren, this)
+      } else {
+        emitter.on(this.eventName, this.executeChildren, this)
+      }
 
-			case "scene.input":
+      switch (this.eventEmitter) {
+        case 'scene.anims':
+        case 'scene.events':
+        case 'scene.input':
+        case 'scene.input.keyboard':
+        case 'scene.loader':
+          this.scene.events.on(Phaser.Scenes.Events.SHUTDOWN, () => {
+            emitter?.off(this.eventName, this.executeChildren, this)
+          })
+          break
+      }
+    }
+  }
 
-				emitter = this.scene.input;
-				break;
-
-			case "scene.input.keyboard":
-
-				emitter = this.scene.input.keyboard;
-				break;
-
-			case "scene.anims":
-
-				emitter = this.scene.anims;
-				break;
-
-			case "gameObject":
-
-				emitter = this.gameObject;
-				break;
-		}
-
-		if (emitter) {
-
-			if (this.once) {
-
-				emitter.once(this.eventName, this.executeChildren, this);
-
-			} else {
-
-				emitter.on(this.eventName, this.executeChildren, this);
-			}
-
-			switch (this.eventEmitter) {
-				case "scene.anims":
-				case "scene.events":
-				case "scene.input":
-				case "scene.input.keyboard":
-				case "scene.loader":
-
-					this.scene.events.on(Phaser.Scenes.Events.SHUTDOWN, () => {
-
-						emitter?.off(this.eventName, this.executeChildren, this);
-					});
-					break;
-			}
-		}
-	}
-
-	/* END-USER-CODE */
+  /* END-USER-CODE */
 }
 
 /* END OF COMPILED CODE */

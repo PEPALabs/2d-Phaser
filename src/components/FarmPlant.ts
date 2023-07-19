@@ -1,6 +1,6 @@
 
 // You can write more code here
-import { PlantType } from "../data/items.type";
+import { PlantType } from "../data/plants";
 import ItemUsage from "./ItemUsage";
 import Button from "../prefabs/ui/Button";
 import Farmland from "../prefabs/Farmland";
@@ -134,7 +134,7 @@ export default class FarmPlant {
 				return;
 			}
 
-			const plant = plants[item.itemId];
+			const plant = plants[item.name];
 			console.log(plant);
 			if (plant != null) {
 				this.plantSeed(plant);

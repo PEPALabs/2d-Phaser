@@ -84,8 +84,8 @@ export default class ItemUsage extends UserComponent {
 
 	protected override update(): void {
 		if (this.itemIcon != null && this.itemIcon.visible) {
-			this.itemIcon.x = this.gameObject.x;
-			this.itemIcon.y = this.itemIconY;
+			this.itemIcon.x = this.gameObject.x+30;
+			this.itemIcon.y = this.itemIconY+35;
 		}
 	}
 
