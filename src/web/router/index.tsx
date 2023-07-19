@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 
 import AppLayout from '../layouts/AppLayout'
+import ErrorPage from '../pages/error/ErrorPage'
 import LoginPage from '../pages/login/LoginPage'
 import ShopPage from '../pages/shop/ShopPage'
 import UniswapPage from '../pages/uniswap/UniswapPage'
@@ -16,7 +17,7 @@ import QuestsPage from '../pages/quests/QuestsPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<AppLayout />}>
+    <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
       <Route index element={<Navigate to="/login" />} />
       <Route path="login" element={<LoginPage />} />
       <Route path="shop" element={<ShopPage />} />
