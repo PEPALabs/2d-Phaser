@@ -93,6 +93,7 @@ export default class OpenShop {
         router.navigate('/shop')
       }
 
+
       if (this.spaceActivated) {
         // set shop open status
         shopOpen = !shopOpen

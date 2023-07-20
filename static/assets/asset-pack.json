@@ -7,6 +7,11 @@
                 "key": "_composite"
             },
             {
+                "url": "assets/arrow.png",
+                "type": "image",
+                "key": "arrow"
+            },
+            {
                 "url": "assets/bundle1.png",
                 "frameConfig": {
                     "frameWidth": 32,
@@ -92,6 +97,11 @@
                 },
                 "type": "spritesheet",
                 "key": "pig-spritesheet1"
+            },
+            {
+                "url": "assets/images/狐狸NPC.png",
+                "type": "image",
+                "key": "fox"
             }
         ]
     },
