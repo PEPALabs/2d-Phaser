@@ -153,18 +153,18 @@ function ShopUI() {
                     <div className="relative mt-1 flex h-10 w-full flex-row rounded-lg bg-transparent">
                       <button
                         onClick={handleDecrement}
-                        className=" h-full w-20 cursor-pointer rounded-l bg-pepa-lightPink text-gray-600 outline-none hover:bg-pepa-pink hover:text-white">
+                        className="h-full w-20 cursor-pointer rounded-l border-0 bg-pepa-lightPink text-gray-600 outline-none hover:bg-pepa-pink hover:text-white">
                         <span className="m-auto text-2xl font-thin">-</span>
                       </button>
                       <input
                         type="number"
-                        className="md:text-basecursor-default flex w-full items-center bg-pepa-lightPink text-center text-base font-semibold text-gray-700  outline-none hover:text-black focus:text-black focus:outline-none"
+                        className="md:text-basecursor-default flex w-full items-center border-0 bg-pepa-lightPink text-center text-base font-semibold text-gray-700 outline-none hover:text-black focus:text-black focus:outline-none"
                         name="custom-input-number"
                         value={itemAmount}
                         onChange={e => setItemAmount}></input>
                       <button
                         onClick={handleIncrement}
-                        className="h-full w-20 cursor-pointer rounded-r bg-pepa-lightPink text-gray-600 outline-none hover:bg-pepa-pink hover:text-white">
+                        className="h-full w-20 cursor-pointer rounded-r border-0 bg-pepa-lightPink text-gray-600 outline-none hover:bg-pepa-pink hover:text-white">
                         <span className="m-auto text-2xl font-thin">+</span>
                       </button>
                     </div>
