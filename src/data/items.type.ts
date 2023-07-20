@@ -46,6 +46,11 @@ export enum ItemsBonusType {
     questLocation: string
     questStatus: string
     questImage: string
+  };
+
+  export type MessageType={
+    sender: string;
+    message: string;
   }
   
   export type ItemsType = {
