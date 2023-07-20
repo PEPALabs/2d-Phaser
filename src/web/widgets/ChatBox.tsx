@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
 import {
-  Affix,
-  rem,
-  Card,
-  Text,
   Stack,
   ScrollArea,
   TextInput,
   Group,
   ActionIcon,
-  useMantineTheme
+  useMantineTheme,
+  Navbar,
+  Title
 } from '@mantine/core'
 
 import messageData from '../../data/messageData'
@@ -35,39 +33,31 @@ function ChatBox() {
   }
 
   return (
-    <Affix position={{ bottom: rem(320), right: rem(60) }}>
-      <Card className="max-w-sm w-96" withBorder shadow="sm">
-        <Card.Section withBorder inheritPadding py="xs">
-          <Text fw="bold">Chat History</Text>
-        </Card.Section>
-        <Card.Section inheritPadding>
-          <ScrollArea className="h-96">
-            <Stack spacing="lg" py="md">
-              {messages.map((message, index) => (
-                <ChatMessage key={index} message={message} />
-              ))}
-            </Stack>
-          </ScrollArea>
-        </Card.Section>
-        <Card.Section inheritPadding pb="xs">
-          <Group spacing="xs">
-            <TextInput
-              className="grow"
-              placeholder="Type something..."
-              value={text}
-              onChange={e => setText(e.currentTarget.value)}
-            />
-            <ActionIcon
-              variant="filled"
-              size="lg"
-              color={theme.primaryColor}
-              onClick={handleSend}>
-              <IconSend size="1.3rem" />
-            </ActionIcon>
-          </Group>
-        </Card.Section>
-      </Card>
-    </Affix>
+    <>
+      <Title order={3}>Chat History</Title>
+      <Navbar.Section grow component={ScrollArea}>
+        <Stack spacing="lg">
+          {messages.map((message, index) => (
+            <ChatMessage key={index} message={message} />
+          ))}
+        </Stack>
+      </Navbar.Section>
+      <Group spacing="xs">
+        <TextInput
+          className="grow"
+          placeholder="Type something..."
+          value={text}
+          onChange={e => setText(e.currentTarget.value)}
+        />
+        <ActionIcon
+          variant="filled"
+          size="lg"
+          color={theme.primaryColor}
+          onClick={handleSend}>
+          <IconSend size="1.3rem" />
+        </ActionIcon>
+      </Group>
+    </>
   )
 }
 export default ChatBox

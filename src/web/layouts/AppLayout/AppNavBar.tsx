@@ -4,11 +4,7 @@ import {
   Text,
   NavLink,
   ThemeIcon,
-  Stack,
   Divider,
-  Title,
-  SimpleGrid,
-  Button,
   Avatar,
   Group,
   Box
@@ -20,7 +16,8 @@ import {
   IconShoppingBag,
   IconUserUp
 } from '@tabler/icons-react'
-import { Link } from 'react-router-dom'
+import { Link, useMatch } from 'react-router-dom'
+import ChatBox from '../../widgets/ChatBox'
 
 const navList = [
   {
@@ -52,42 +49,9 @@ const navList = [
   }
 ]
 
-const resources = [
-  {
-    name: 'PEPA',
-    count: 0
-  },
-  {
-    name: 'Gold',
-    count: 0
-  },
-  {
-    name: 'Level',
-    count: 1
-  },
-  {
-    name: 'Worker',
-    count: 0
-  },
-  {
-    name: 'Wood',
-    count: 0
-  },
-  {
-    name: 'Stone',
-    count: 0
-  },
-  {
-    name: 'Iron',
-    count: 0
-  },
-  {
-    name: 'Water',
-    count: 0
-  }
-]
-
 const AppNavBar = () => {
+  const match = useMatch({ path: 'login' })
+
   return (
     <Navbar width={{ base: 300 }} p="xs" className="gap-y-4">
       <Navbar.Section>
@@ -106,21 +70,7 @@ const AppNavBar = () => {
         ))}
       </Navbar.Section>
       <Divider />
-      <Navbar.Section grow>
-        <Stack px="xs">
-          <Title order={3}>Dashboard</Title>
-          <SimpleGrid cols={2}>
-            {resources.map(resource => (
-              <Button
-                key={resource.name}
-                variant="default"
-                rightIcon={<Text color="blue">{resource.count}</Text>}>
-                {resource.name}
-              </Button>
-            ))}
-          </SimpleGrid>
-        </Stack>
-      </Navbar.Section>
+      {match ? <Navbar.Section grow>{null}</Navbar.Section> : <ChatBox />}
       <Divider />
       <Navbar.Section>
         <Group p="xs">
