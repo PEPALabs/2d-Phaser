@@ -38,6 +38,16 @@
                 "key": "bundle2"
             },
             {
+                "url": "assets/images/Button_Green.png",
+                "type": "image",
+                "key": "Button_Green"
+            },
+            {
+                "url": "assets/arrow.png",
+                "type": "image",
+                "key": "arrow"
+            },
+            {
                 "url": "assets/FufuSuperDino.png",
                 "type": "image",
                 "key": "FufuSuperDino"

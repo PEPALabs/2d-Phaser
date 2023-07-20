@@ -2,6 +2,8 @@
     "id": "c01ca79e-db39-4cbb-8648-2054f50e6a17",
     "sceneType": "SCENE",
     "settings": {
+        "snapWidth": 208,
+        "snapHeight": 240,
         "exportClass": true,
         "autoImport": true,
         "preloadPackFiles": [
@@ -39,26 +41,79 @@
             ]
         },
         {
+            "type": "Layer",
+            "id": "727c1343-3def-4d13-a68c-4df34f51fa0b",
+            "label": "Farmlands",
+            "components": [],
+            "list": [
+                {
+                    "prefabId": "32c77594-c428-44d4-9a37-657989684462",
+                    "id": "030affd0-868e-4ebc-9e27-d750e7030a25",
+                    "unlock": [
+                        "x",
+                        "y",
+                        "FarmPlant.player"
+                    ],
+                    "label": "Farmland",
+                    "components": [],
+                    "x": 3143,
+                    "y": 1463,
+                    "nestedPrefabs": [],
+                    "list": []
+                },
+                {
+                    "prefabId": "32c77594-c428-44d4-9a37-657989684462",
+                    "id": "6fea5823-eb65-4325-84de-b21ef74b85c2",
+                    "unlock": [
+                        "x",
+                        "y",
+                        "FarmPlant.player"
+                    ],
+                    "label": "Farmland_1",
+                    "components": [],
+                    "x": 3389,
+                    "y": 1462,
+                    "nestedPrefabs": [],
+                    "list": []
+                },
+                {
+                    "prefabId": "32c77594-c428-44d4-9a37-657989684462",
+                    "id": "23e48191-3cbd-416f-a917-3eae691972b2",
+                    "unlock": [
+                        "x",
+                        "y",
+                        "FarmPlant.player"
+                    ],
+                    "label": "Farmland_2",
+                    "components": [],
+                    "x": 3630,
+                    "y": 1465,
+                    "nestedPrefabs": [],
+                    "list": []
+                }
+            ]
+        },
+        {
             "type": "ArcadeSprite",
             "id": "f50e954c-e831-469c-aeb3-bbe66a2f42e1",
             "label": "player",
+            "useGameObjectName": true,
             "scope": "CLASS",
             "components": [
                 "PlayerMovement",
                 "Physics",
-                "PigAnimation"
+                "PigAnimation",
+                "ItemUsage"
             ],
             "PlayerMovement.speed": 20,
             "PlayerMovement.velocity": 250,
             "texture": {
                 "key": "pig"
             },
-            "x": 819,
-            "y": 399,
+            "x": 832,
+            "y": 480,
             "scaleX": 0.1,
             "scaleY": 0.1,
-            "originX": 0,
-            "originY": 0,
             "body.width": 1134,
             "body.height": 1572,
             "list": []
@@ -99,6 +154,23 @@
             "shadow.stroke": true,
             "shadow.fill": true,
             "shadow.color": "#e55353ff",
+            "list": []
+        },
+        {
+            "type": "Container",
+            "id": "fb98b2e5-4ae5-456c-8153-be52cfc795c7",
+            "label": "farm",
+            "scope": "CLASS",
+            "components": [
+                "Farm",
+                "FarmContainer"
+            ],
+            "FarmContainer.n_row": 3,
+            "FarmContainer.n_col": 3,
+            "FarmContainer.gap_h": 207,
+            "FarmContainer.gap_w": 240,
+            "x": 2315,
+            "y": 2203,
             "list": []
         }
     ],

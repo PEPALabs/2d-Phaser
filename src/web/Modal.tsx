@@ -1,130 +1,128 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
-import cx from "classnames";
+import React, { useState, useRef, useEffect, useContext } from 'react'
+import cx from 'classnames'
 // import TrianglesBox from "./TrianglesBox";
-import useClickOutside from "../hooks/useClickOutside";
-import ItemsContext from "./ItemsContext";
+import useClickOutside from '../hooks/useClickOutside'
+import ItemsContext from './ItemsContext'
 
-import GameManager from "../GameManager";
-import { Game } from "phaser";
-import { getItems } from "../utils/getItems";
+import GameManager from '../GameManager'
+import { Game } from 'phaser'
+import { getItems } from '../utils/getItems'
 enum ModalOptions {
   EQUIP = 0,
   DROP = 1,
-  CANCEL = 2,
-  ADD = 3,
+  ADD = 2,
+  CANCEL = 3,
 }
 
 export default () => {
-  const { closeModal, equipItem, dropItem, itemSelected } = useContext(ItemsContext);
+  const { closeModal, equipItem, dropItem, itemSelected } =
+    useContext(ItemsContext);
   const [selectedOption, setSelectedOption] = useState(ModalOptions.EQUIP);
   const modalRef = useRef<HTMLDivElement>(null);
   const [gameManager, setGameManager] = useState(GameManager.getInstance());
 
   // TODO: add items to context
-  const [items, setItems] = useState(getItems());
+  const [items, setItems] = useState(getItems())
 
-  useClickOutside(modalRef, closeModal);
+  useClickOutside(modalRef, closeModal)
 
   const addToInventoryAndClose = () => {
     if (closeModal && gameManager) {
-      GameManager.addItem(gameManager,items[itemSelected]);
+      GameManager.addItem(gameManager, items[itemSelected]);
       console.log("added item", items[itemSelected]);
       closeModal();
     }
-  }
+  };
 
   const equipAndClose = () => {
     if (closeModal && equipItem) {
-      equipItem();
-      closeModal();
+      equipItem()
+      closeModal()
     }
-  };
+  }
 
   const dropAndClose = () => {
     if (closeModal && dropItem) {
-      dropItem();
-      closeModal();
+      dropItem()
+      closeModal()
     }
-  };
+  }
 
   const handleKeyPressed = (event: React.KeyboardEvent) => {
     event.stopPropagation();
     if (event.key === "ArrowUp") {
       setSelectedOption(Math.max(selectedOption - 1, 0));
     } else if (event.key === "ArrowDown") {
-      setSelectedOption(Math.min(selectedOption + 1, 2));
+      setSelectedOption(Math.min(selectedOption + 1, 3));
     } else if (event.key === "Enter") {
-        switch (selectedOption) {
-          case ModalOptions.EQUIP:
-            equipAndClose();
-            break;
-          case ModalOptions.DROP:
-            dropAndClose();
-            break;
-          default:
-            closeModal && closeModal();
-            break;
-        }
-        closeModal && closeModal();
+      switch (selectedOption) {
+        case ModalOptions.EQUIP:
+          equipAndClose();
+          break;
+        case ModalOptions.DROP:
+          dropAndClose();
+          break;
+        default:
+          closeModal && closeModal();
+          break;
       }
+      closeModal && closeModal();
+    }
   };
 
   useEffect(() => {
     if (modalRef.current) {
-      modalRef.current.focus();
+      modalRef.current.focus()
     }
-  }, []);
+  }, [])
 
   return (
     <div
       ref={modalRef}
       onKeyDown={handleKeyPressed}
       tabIndex={0}
-      className="border border-zelda-darkGray w-32 bg-zelda-bgModal absolute top-0 left-0 z-50 mx-6 my-6 outline-none text-white"
+      className="w-32 absolute top-0 left-0 z-50 mx-10 my-10 outline-none text-white rounded-xl"
     >
       <div
-        className="flex flex-col p-4"
+        className="flex flex-col"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="modal-headline"
-      >
+        aria-labelledby="modal-headline">
         <div
           className={cx(
             {
-              "shadow-yellow border-zelda-softYellow border-2":
+              "shadow-yellow border-zelda-softYellow border bg-pepa-darkBlue/90":
                 selectedOption === ModalOptions.EQUIP,
             },
-            "flex justify-center px-6 py-2 relative border border-zelda-darkGray mb-4"
+            "flex justify-center px-6 py-4 relative rounded-t-xl bg-pepa-darkBlue"
           )}
           onClick={equipAndClose}
         >
-          {selectedOption === ModalOptions.EQUIP }
+          {selectedOption === ModalOptions.EQUIP}
           Equip
         </div>
         <div
           className={cx(
             {
-              "shadow-yellow border-zelda-softYellow border-2":
+              "shadow-yellow border-zelda-softYellow border bg-pepa-darkBlue/90":
                 selectedOption === ModalOptions.DROP,
             },
-            "flex justify-center px-6 py-2 relative border border-zelda-darkGray mb-4"
+            "flex justify-center px-6 py-4 relative bg-pepa-darkBlue"
           )}
-          onClick={dropAndClose}
-        >
+          onClick={dropAndClose}>
           {selectedOption === ModalOptions.DROP}
           Drop
         </div>
-            {/* add item to inventory */}
+        {/* add item to inventory */}
         <div
           className={cx(
             {
-              "shadow-yellow border-zelda-softYellow border-2":
+              "shadow-yellow border-zelda-softYellow border bg-pepa-darkBlue/90":
                 selectedOption === ModalOptions.ADD,
             },
-            "flex justify-center px-6 py-2 relative border border-zelda-darkGray mb-4"
+            "flex justify-center px-6 py-4 relative bg-pepa-darkBlue"
           )}
-          onClick={addToInventoryAndClose}
-        >
+          onClick={addToInventoryAndClose}>
           {selectedOption === ModalOptions.ADD}
           Add
         </div>
@@ -132,14 +130,14 @@ export default () => {
         <div
           className={cx(
             {
-              "shadow-yellow border-zelda-softYellow border-2":
+              "shadow-yellow border-zelda-softYellow border bg-pepa-darkBlue/90":
                 selectedOption === ModalOptions.CANCEL,
             },
-            "flex justify-center px-6 py-2 relative border border-zelda-darkGray"
+            "flex justify-center px-6 py-4 relative rounded-b-xl bg-pepa-darkBlue"
           )}
           onClick={closeModal}
         >
-          {selectedOption === ModalOptions.CANCEL }
+          {selectedOption === ModalOptions.CANCEL}
           Cancel
         </div>
       </div>

@@ -1,38 +1,38 @@
 {
-    "section1": {
-        "files": [
-            {
-                "url": "assets/images/pig.png",
-                "type": "image",
-                "key": "pig"
-            },
-            {
-                "url": "assets/images/侦探猪猪.png",
-                "type": "image",
-                "key": "侦探猪猪"
-            },
-            {
-                "url": "assets/images/狐狸NPC.png",
-                "type": "image",
-                "key": "狐狸NPC"
-            },
-            {
-                "url": "assets/images/猫猪.png",
-                "type": "image",
-                "key": "猫猪"
-            },
-            {
-                "url": "assets/images/野人猪猪.png",
-                "type": "image",
-                "key": "野人猪猪"
-            }
-        ]
-    },
-    "meta": {
-        "app": "Phaser Editor 2D - Asset Pack Editor",
-        "contentType": "phasereditor2d.pack.core.AssetContentType",
-        "url": "https://phasereditor2d.com",
-        "version": 2,
-        "showAllFilesInBlocks": false
-    }
+  "section1": {
+    "files": [
+      {
+        "url": "assets/images/pig.png",
+        "type": "image",
+        "key": "pig"
+      },
+      {
+        "url": "assets/images/侦探猪猪.png",
+        "type": "image",
+        "key": "侦探猪猪"
+      },
+      {
+        "url": "assets/images/狐狸NPC.png",
+        "type": "image",
+        "key": "狐狸NPC"
+      },
+      {
+        "url": "assets/images/猫猪.png",
+        "type": "image",
+        "key": "猫猪"
+      },
+      {
+        "url": "assets/images/野人猪猪.png",
+        "type": "image",
+        "key": "野人猪猪"
+      }
+    ]
+  },
+  "meta": {
+    "app": "Phaser Editor 2D - Asset Pack Editor",
+    "contentType": "phasereditor2d.pack.core.AssetContentType",
+    "url": "https://phasereditor2d.com",
+    "version": 2,
+    "showAllFilesInBlocks": false
+  }
 }

@@ -1,7 +1,5 @@
 {
-    "plugins": [],
-    "skip": [
-        "dist"
-    ],
-    "playUrl": "http://localhost:8080"
+  "plugins": [],
+  "skip": ["dist"],
+  "playUrl": "http://localhost:8080"
 }

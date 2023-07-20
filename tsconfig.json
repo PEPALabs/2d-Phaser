@@ -1,32 +1,29 @@
 {
-	"compilerOptions": {
-		"target": "ESNext",
-		"module": "ESNext",
-		"strict": false,
-		"noEmit": false,
-		"jsx": "react",
-		"importHelpers": true,
-		"moduleResolution": "node",
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-		"sourceMap": true,
-		"baseUrl": "./src",
-		"paths": {
-		  "~/*": ["./*"]
-		},
-        "outDir": "./dist",
-		"typeRoots": [
-			"node_modules/@types",
-			// "node_module/phaser/types"
-		],
-		"types": [
-			"node",
-			// "phaser"
-			// "@fuel-wallet/sdk"
-		]
-	},
-	"include": [
-		"src/**/*",
-		"types/**/*"
-	]
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "strict": false,
+    "noEmit": false,
+    "jsx": "react",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": ["./*"]
+    },
+    "outDir": "./dist",
+    "typeRoots": [
+      "node_modules/@types"
+      // "node_module/phaser/types"
+    ],
+    "types": [
+      "node"
+      // "phaser"
+      // "@fuel-wallet/sdk"
+    ]
+  },
+  "include": ["src/**/*", "types/**/*"]
 }

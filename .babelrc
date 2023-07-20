@@ -1,12 +1,7 @@
 {
-    "presets":[
-    [
-      "@babel/env"
-    ],
+  "presets": [
+    ["@babel/env"],
     "@babel/preset-react",
-    [
-        "@babel/preset-typescript", 
-        {"allowNamespaces": true}
-    ]
+    ["@babel/preset-typescript", { "allowNamespaces": true }]
   ]
 }

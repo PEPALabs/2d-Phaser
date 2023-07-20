@@ -1,0 +1,81 @@
+{
+    "id": "4fe5bb49-6b0a-4bc1-b80a-2704651fba2b",
+    "sceneType": "PREFAB",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "94dd1322-31ca-4a90-81af-59c8855b6567",
+            "label": "Button",
+            "hitArea.shape": "RECTANGLE",
+            "hitArea.width": 111.3,
+            "hitArea.height": 51.2,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "92440d3e-cef2-42db-9da3-51963fa12ed8",
+                    "label": "image",
+                    "texture": {
+                        "key": "Button_Green"
+                    },
+                    "scaleX": 0.15,
+                    "scaleY": 0.2,
+                    "originX": 0,
+                    "originY": 0
+                },
+                {
+                    "type": "Text",
+                    "id": "270c60d2-814d-4bf3-b2ce-64c16c5db1a2",
+                    "label": "text",
+                    "x": 57,
+                    "y": 25,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "Plant",
+                    "align": "center",
+                    "fontSize": "25px"
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 4
+    },
+    "prefabProperties": [
+        {
+            "name": "image",
+            "label": "image",
+            "tooltip": "image",
+            "defValue": "",
+            "customDefinition": false,
+            "type": {
+                "id": "object-var",
+                "expressionType": "Phaser.GameObjects.Image"
+            }
+        },
+        {
+            "name": "text",
+            "label": "text",
+            "tooltip": "text",
+            "defValue": "",
+            "customDefinition": false,
+            "type": {
+                "id": "object-var",
+                "expressionType": "Phaser.GameObjects.Text"
+            }
+        }
+    ]
+}
