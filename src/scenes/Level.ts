@@ -9,6 +9,8 @@ import PigAnimation from "../components/PigAnimation";
 import RectPhysics from "../components/RectPhysics";
 import OpenShop from "../components/OpenShop";
 import TeleportScene from "../components/TeleportScene";
+import DisplayText from "../components/DisplayText";
+import TriggerText from "../components/TriggerText";
 import testPrefab from "../script-nodes/testPrefab";
 /* START-USER-IMPORTS */
 import EventDispatcher from '../EventDispatcher'
