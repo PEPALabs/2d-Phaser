@@ -130,6 +130,61 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "DisplayText",
+            "baseClass": "",
+            "gameObjectType": "Phaser.Physics.Arcade.Sprite",
+            "properties": [
+                {
+                    "name": "sender",
+                    "label": "sender",
+                    "tooltip": "sender",
+                    "defValue": "someone",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "string"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "TriggerText",
+            "baseClass": "",
+            "gameObjectType": "Phaser.Physics.Arcade.Sprite",
+            "properties": [
+                {
+                    "name": "sender",
+                    "label": "sender",
+                    "tooltip": "sender",
+                    "defValue": "undefined",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "string"
+                    }
+                },
+                {
+                    "name": "player",
+                    "label": "player",
+                    "tooltip": "player",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "object-var",
+                        "expressionType": "Phaser.GameObjects.GameObject"
+                    }
+                },
+                {
+                    "name": "message",
+                    "label": "message",
+                    "tooltip": "message",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "string"
+                    }
+                }
+            ]
         }
     ],
     "meta": {
