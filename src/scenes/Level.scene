@@ -105,6 +105,77 @@
             "list": []
         },
         {
+            "type": "ArcadeSprite",
+            "id": "e83bd5ed-1086-41ae-94ce-7bd61ca938f6",
+            "label": "NPC",
+            "scope": "CLASS",
+            "components": [
+                "DisplayText",
+                "TriggerText"
+            ],
+            "TriggerText.sender": "Fox",
+            "TriggerText.player": "pig",
+            "TriggerText.message": "Welcome to PEPA Arcade!",
+            "texture": {
+                "key": "fox"
+            },
+            "x": 1817,
+            "y": 1315,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "originX": 0.1,
+            "originY": 0.1,
+            "body.width": 1024,
+            "body.height": 1024,
+            "list": []
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "14d5948b-adb6-4eba-a953-8b7278115812",
+            "label": "ido_guide",
+            "components": [
+                "DisplayText",
+                "TriggerText"
+            ],
+            "DisplayText.sender": "ido",
+            "TriggerText.sender": "ido",
+            "TriggerText.player": "pig",
+            "TriggerText.message": "To the right is PEPA IDO building",
+            "texture": {
+                "key": "fox"
+            },
+            "x": 2499,
+            "y": 1168,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "body.width": 1118,
+            "body.height": 1572,
+            "list": []
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "8bf67da3-dc63-4790-af77-6d4b136f00df",
+            "label": "trading_fox",
+            "components": [
+                "DisplayText",
+                "TriggerText"
+            ],
+            "DisplayText.sender": "trading",
+            "TriggerText.sender": "trading",
+            "TriggerText.player": "pig",
+            "TriggerText.message": "This is the PEPA Trading Center.",
+            "texture": {
+                "key": "fox"
+            },
+            "x": 1858,
+            "y": 859,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "body.width": 1024,
+            "body.height": 1024,
+            "list": []
+        },
+        {
             "prefabId": "46239938-4ed4-4201-8fc6-4c848b0c5a5a",
             "id": "9632dffa-192c-4076-b1b7-7b79b3ad02c8",
             "unlock": [
@@ -114,6 +185,58 @@
             "label": "scriptnode_1",
             "components": [],
             "nestedPrefabs": [],
+            "list": []
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "4d17dc49-7953-4903-a86e-8fbb47f54857",
+            "label": "NPC_bank",
+            "scope": "CLASS",
+            "components": [
+                "DisplayText",
+                "TriggerText"
+            ],
+            "DisplayText.sender": "bank",
+            "TriggerText.sender": "bank",
+            "TriggerText.player": "pig",
+            "TriggerText.message": "PEPA Bank host PEPA Exchange services",
+            "texture": {
+                "key": "fox"
+            },
+            "x": 1695,
+            "y": 2762,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "originX": 0.1,
+            "originY": 0.1,
+            "body.width": 1024,
+            "body.height": 1024,
+            "list": []
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "7e17dba3-2fbc-4bcd-9a67-649559252d1a",
+            "label": "NPC_market",
+            "scope": "CLASS",
+            "components": [
+                "DisplayText",
+                "TriggerText"
+            ],
+            "DisplayText.sender": "market",
+            "TriggerText.sender": "market",
+            "TriggerText.player": "pig",
+            "TriggerText.message": "This is PEPA seeds Market",
+            "texture": {
+                "key": "fox"
+            },
+            "x": 2475,
+            "y": 3046,
+            "scaleX": 0.1,
+            "scaleY": 0.1,
+            "originX": 0.1,
+            "originY": 0.1,
+            "body.width": 1024,
+            "body.height": 1024,
             "list": []
         }
     ],
