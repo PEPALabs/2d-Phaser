@@ -29,6 +29,7 @@ export enum ItemsBonusType {
     isNew?: boolean;
     itemId?: number;
     texture?: string;
+    price?: number
   };
   
   export type ItemsPage = {
