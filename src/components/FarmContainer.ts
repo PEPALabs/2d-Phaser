@@ -64,7 +64,7 @@ export default class FarmContainer {
 				var x = col * this.gap_w;
 				var y = row * this.gap_h;
 
-				var farm = new Farmland(this.scene, x, y, String(i));
+				var farm = new Farmland(this.scene, x, y);
 				this.gameObject.add(farm);
 				// var image = farm.plantImage;
 			}

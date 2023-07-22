@@ -12,6 +12,11 @@
                 "key": "arrow"
             },
             {
+                "url": "assets/arrow.png",
+                "type": "image",
+                "key": "arrow"
+            },
+            {
                 "url": "assets/bundle1.png",
                 "frameConfig": {
                     "frameWidth": 32,
@@ -43,9 +48,9 @@
                 "key": "Button_Green"
             },
             {
-                "url": "assets/arrow.png",
+                "url": "assets/images/狐狸NPC.png",
                 "type": "image",
-                "key": "arrow"
+                "key": "fox"
             },
             {
                 "url": "assets/FufuSuperDino.png",
@@ -99,9 +104,9 @@
                 "key": "pig-spritesheet1"
             },
             {
-                "url": "assets/images/狐狸NPC.png",
+                "url": "assets/Plant.png",
                 "type": "image",
-                "key": "fox"
+                "key": "Plant"
             }
         ]
     },
