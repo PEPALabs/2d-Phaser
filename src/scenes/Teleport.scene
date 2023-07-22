@@ -1,0 +1,108 @@
+{
+    "id": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+    "sceneType": "PREFAB",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "369fa9f6-5bfc-4412-92da-eb8068024b28",
+            "label": "container_1",
+            "components": [],
+            "list": [
+                {
+                    "type": "Rectangle",
+                    "id": "73633d49-ecc7-4a85-ba99-3f98bfc15f7f",
+                    "label": "teleport",
+                    "components": [
+                        "TeleportScene"
+                    ],
+                    "TeleportScene.targetScene": "\"farm\"",
+                    "x": 127,
+                    "y": 154,
+                    "scaleX": 1.463969011613163,
+                    "scaleY": 1.3187915313412075,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Text",
+                    "id": "6e197a71-7ff1-4e6e-ae9c-c4fe33c9806f",
+                    "label": "text_2",
+                    "components": [],
+                    "x": 132,
+                    "y": 38,
+                    "scaleX": 0.7846903230519551,
+                    "scaleY": 0.9548710435106904,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "Teleport",
+                    "fontSize": "64px",
+                    "color": "#e68d00ff",
+                    "stroke": "#ffffffff",
+                    "shadow.offsetX": 2,
+                    "shadow.offsetY": 2,
+                    "shadow.stroke": true,
+                    "shadow.fill": true,
+                    "shadow.color": "#e55353ff",
+                    "list": []
+                },
+                {
+                    "type": "Image",
+                    "id": "a5e6bfee-74cf-417d-9966-e5e5b3a1adf7",
+                    "label": "image_1",
+                    "components": [],
+                    "texture": {
+                        "key": "portal3"
+                    },
+                    "x": 133,
+                    "y": 157,
+                    "scaleX": 0.20266957347219328,
+                    "scaleY": 0.20995682810742133,
+                    "list": []
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 3
+    },
+    "prefabProperties": [
+        {
+            "name": "teleportScene",
+            "label": "teleportScene",
+            "tooltip": "teleportScene",
+            "defValue": "Farm",
+            "customDefinition": false,
+            "type": {
+                "id": "string"
+            }
+        },
+        {
+            "name": "player",
+            "label": "player",
+            "tooltip": "player",
+            "defValue": "",
+            "customDefinition": false,
+            "type": {
+                "id": "object-var",
+                "expressionType": "Phaser.GameObjects.GameObject"
+            }
+        }
+    ]
+}
