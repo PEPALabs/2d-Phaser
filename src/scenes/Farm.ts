@@ -32,8 +32,8 @@ export default class Farm extends Phaser.Scene {
 
     // map
     const map = this.add.image(0, 0, '_composite')
-    map.scaleX = 2
-    map.scaleY = 2
+    map.scaleX = 1
+    map.scaleY = 1
     map.setOrigin(0, 0)
     layer_1.add(map)
 
