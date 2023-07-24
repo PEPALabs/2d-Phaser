@@ -29,6 +29,7 @@ export enum ItemsBonusType {
     isNew?: boolean;
     itemId?: number;
     texture?: string;
+    price?: number
   };
   
   export type ItemsPage = {
@@ -46,6 +47,11 @@ export enum ItemsBonusType {
     questLocation: string
     questStatus: string
     questImage: string
+  };
+
+  export type MessageType={
+    sender: string;
+    message: string;
   }
   
   export type ItemsType = {

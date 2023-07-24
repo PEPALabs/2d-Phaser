@@ -30,7 +30,7 @@
         {
             "type": "ArcadeSprite",
             "id": "b71d5d03-0649-41d1-901d-4768b499bf92",
-            "label": "pig",
+            "label": "player",
             "scope": "CLASS",
             "components": [
                 "Physics",
@@ -59,49 +59,11 @@
                 "RectPhysics",
                 "OpenShop"
             ],
-            "OpenShop.player": "pig",
+            "OpenShop.player": "player",
             "x": 2704,
             "y": 2919,
             "width": 500,
             "height": 500,
-            "list": []
-        },
-        {
-            "type": "Rectangle",
-            "id": "afe78fec-c967-4bef-85fc-783e00dfcc61",
-            "label": "teleport",
-            "components": [
-                "TeleportScene"
-            ],
-            "TeleportScene.targetScene": "Farm",
-            "TeleportScene.player": "pig",
-            "x": 1373,
-            "y": 803,
-            "scaleX": 1.703893624291244,
-            "scaleY": 0.6944410750774918,
-            "isFilled": true,
-            "width": 128,
-            "height": 128,
-            "list": []
-        },
-        {
-            "type": "Text",
-            "id": "5ab94346-0d2d-4743-9698-7e0fc91c3171",
-            "label": "text_2",
-            "components": [],
-            "x": 1264,
-            "y": 772,
-            "scaleX": 0.6824655111496041,
-            "scaleY": 0.7869906513902267,
-            "text": "Teleport",
-            "fontSize": "64px",
-            "color": "#e68d00ff",
-            "stroke": "#ffffffff",
-            "shadow.offsetX": 2,
-            "shadow.offsetY": 2,
-            "shadow.stroke": true,
-            "shadow.fill": true,
-            "shadow.color": "#e55353ff",
             "list": []
         },
         {
@@ -114,7 +76,7 @@
                 "TriggerText"
             ],
             "TriggerText.sender": "Fox",
-            "TriggerText.player": "pig",
+            "TriggerText.player": "player",
             "TriggerText.message": "Welcome to PEPA Arcade!",
             "texture": {
                 "key": "fox"
@@ -139,7 +101,7 @@
             ],
             "DisplayText.sender": "ido",
             "TriggerText.sender": "ido",
-            "TriggerText.player": "pig",
+            "TriggerText.player": "player",
             "TriggerText.message": "To the right is PEPA IDO building",
             "texture": {
                 "key": "fox"
@@ -162,7 +124,7 @@
             ],
             "DisplayText.sender": "trading",
             "TriggerText.sender": "trading",
-            "TriggerText.player": "pig",
+            "TriggerText.player": "player",
             "TriggerText.message": "This is the PEPA Trading Center.",
             "texture": {
                 "key": "fox"
@@ -176,18 +138,6 @@
             "list": []
         },
         {
-            "prefabId": "46239938-4ed4-4201-8fc6-4c848b0c5a5a",
-            "id": "9632dffa-192c-4076-b1b7-7b79b3ad02c8",
-            "unlock": [
-                "x",
-                "y"
-            ],
-            "label": "scriptnode_1",
-            "components": [],
-            "nestedPrefabs": [],
-            "list": []
-        },
-        {
             "type": "ArcadeSprite",
             "id": "4d17dc49-7953-4903-a86e-8fbb47f54857",
             "label": "NPC_bank",
@@ -198,7 +148,7 @@
             ],
             "DisplayText.sender": "bank",
             "TriggerText.sender": "bank",
-            "TriggerText.player": "pig",
+            "TriggerText.player": "player",
             "TriggerText.message": "PEPA Bank host PEPA Exchange services",
             "texture": {
                 "key": "fox"
@@ -224,7 +174,7 @@
             ],
             "DisplayText.sender": "market",
             "TriggerText.sender": "market",
-            "TriggerText.player": "pig",
+            "TriggerText.player": "player",
             "TriggerText.message": "This is PEPA seeds Market",
             "texture": {
                 "key": "fox"
@@ -237,6 +187,34 @@
             "originY": 0.1,
             "body.width": 1024,
             "body.height": 1024,
+            "list": []
+        },
+        {
+            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+            "id": "657d4991-341c-42b5-b9ec-13bbd949d7ab",
+            "unlock": [
+                "x",
+                "y",
+                "player"
+            ],
+            "label": "teleport",
+            "player": "player",
+            "components": [],
+            "x": 1251,
+            "y": 1101,
+            "nestedPrefabs": [],
+            "list": []
+        },
+        {
+            "prefabId": "46239938-4ed4-4201-8fc6-4c848b0c5a5a",
+            "id": "9632dffa-192c-4076-b1b7-7b79b3ad02c8",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "scriptnode_1",
+            "components": [],
+            "nestedPrefabs": [],
             "list": []
         }
     ],

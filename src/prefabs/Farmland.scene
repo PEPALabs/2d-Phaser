@@ -21,7 +21,6 @@
             "components": [
                 "Plant"
             ],
-            "Plant.displayImage": "guapen",
             "list": [
                 {
                     "type": "Image",
@@ -29,10 +28,10 @@
                     "label": "PlantImage",
                     "components": [],
                     "texture": {
-                        "key": "guapen"
+                        "key": "Plant"
                     },
-                    "scaleX": 0.8,
-                    "scaleY": 0.8,
+                    "scaleX": 0.30664062043069856,
+                    "scaleY": 0.345703119848622,
                     "originX": 0,
                     "originY": 0,
                     "list": []
