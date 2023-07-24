@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   Alert,
   Stack,
@@ -7,14 +7,15 @@ import {
   Group,
   NumberInputHandlers,
   ActionIcon,
-  Box,
   Button,
   NumberInput,
-  rem
+  rem,
+  Divider
 } from '@mantine/core'
 import { type ItemType } from '../../../../data/items.type'
 import { IconMinus, IconPlus, IconCoin } from '@tabler/icons-react'
 import useShopStore from '../stores/useShopStore'
+import ShoppingBarSection from './ShoppingBarSection'
 
 interface ShoppingBarProps {
   product: ItemType
@@ -23,46 +24,41 @@ interface ShoppingBarProps {
 const ShoppingBar = ({ product }: ShoppingBarProps) => {
   const [count, setCount] = useState(() => (product.value === '' ? 0 : 1))
 
+  useEffect(() => {
+    setCount(product.value === '' ? 0 : 1)
+  }, [product])
+
   const purchase = useShopStore(state => state.purchase)
 
   const handlers = useRef<NumberInputHandlers>()
 
   return (
-    <Alert
-      className="w-full max-w-[80%]"
-      title={<Title order={3}>{product.name}</Title>}
-      color="blue">
+    <Alert className="w-full" my="xs" color="blue">
       <Stack>
+        <Title color="blue" order={3}>
+          {product.name}
+        </Title>
         <Text size="md">{product.description}</Text>
-        <Group spacing="xl" position="right" align="flex-end">
-          <Box>
-            <Text>In Stock</Text>
-            <Text color="yellow" size={26} fw="bold">
-              {product.value}
-            </Text>
-          </Box>
-          <Box>
-            <Text>Price</Text>
-            <Text color="yellow" size={26} fw="bold">
-              {product.price * count}
-            </Text>
-          </Box>
-          <Box>
-            <Text>Amount</Text>
+        <Divider />
+        <Stack>
+          <ShoppingBarSection name="In Stock">
+            {product.value}
+          </ShoppingBarSection>
+          <ShoppingBarSection name="Price">{product.price}</ShoppingBarSection>
+          <ShoppingBarSection name="Amount">
             <Group spacing={4} align="center">
               <ActionIcon
                 variant="default"
-                size={42}
+                size={36}
                 onClick={() => handlers.current.decrement()}>
                 <IconMinus size="1rem" />
               </ActionIcon>
               <NumberInput
                 hideControls
                 styles={{
-                  input: { width: rem(64), textAlign: 'center' }
+                  input: { width: rem(54), textAlign: 'center' }
                 }}
                 handlersRef={handlers}
-                size="md"
                 min={0}
                 max={+product.value}
                 value={count}
@@ -72,17 +68,19 @@ const ShoppingBar = ({ product }: ShoppingBarProps) => {
               />
               <ActionIcon
                 variant="default"
-                size={42}
+                size={36}
                 onClick={() => {
                   handlers.current.increment()
                 }}>
                 <IconPlus size="1rem" />
               </ActionIcon>
             </Group>
-          </Box>
-
+          </ShoppingBarSection>
+          <ShoppingBarSection name="Total">
+            {product.price * count}
+          </ShoppingBarSection>
           <Button
-            size="md"
+            className="self-end"
             rightIcon={<IconCoin />}
             disabled={count === 0 || +product.value === 0}
             onClick={() => {
@@ -90,7 +88,7 @@ const ShoppingBar = ({ product }: ShoppingBarProps) => {
             }}>
             Purchase
           </Button>
-        </Group>
+        </Stack>
       </Stack>
     </Alert>
   )

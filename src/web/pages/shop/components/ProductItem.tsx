@@ -9,8 +9,8 @@ import {
   useMantineTheme
 } from '@mantine/core'
 import { useFocusable } from '@noriginmedia/norigin-spatial-navigation'
-import { type ItemType } from '../../../../data/items.type'
 import { IconMoneybag } from '@tabler/icons-react'
+import { type ItemType } from '../../../../data/items.type'
 import useShopStore from '../stores/useShopStore'
 
 interface ProductItemProps {
@@ -47,10 +47,7 @@ const ProductItem = ({ product, index }: ProductItemProps) => {
         onClick={() => focusSelf()}>
         <Card.Section pt="xs" px="xs">
           <Image
-            width={80}
-            height={80}
-            withPlaceholder
-            placeholder={<></>}
+            className="aspect-square"
             src={product.icon}
             alt={product.name}
           />
