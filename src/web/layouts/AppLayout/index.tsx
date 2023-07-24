@@ -9,7 +9,11 @@ const AppLayout = () => {
   useGameEvent()
 
   return (
-    <AppShell header={<AppHeader />} navbar={<AppNavBar />} padding={0}>
+    <AppShell
+      header={<AppHeader />}
+      navbar={<AppNavBar />}
+      padding={0}
+      styles={{ main: { maxHeight: '100vh' } }}>
       <Outlet />
     </AppShell>
   )
