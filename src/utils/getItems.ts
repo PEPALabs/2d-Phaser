@@ -15,7 +15,7 @@ export const emptyItem = {
 
 export const getItems = (
   category = ItemsMainCategoriesType.WEAPONS,
-  itemsPerPage = 19
+  itemsPerPage = 21
 ): ItemType[] => {
   const itemsGrid = items[category].concat(
     new Array(itemsPerPage - items[category].length).fill(emptyItem)

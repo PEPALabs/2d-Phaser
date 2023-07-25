@@ -2,22 +2,22 @@ import { create } from 'zustand'
 import { type ItemType } from '../../../../data/items.type'
 import { getItems } from '../../../../utils/getItems'
 
-interface ShopStoreState {
+interface InventoryStoreState {
   products: ItemType[]
   balance: number
   index: number
   setIndex: (newIndex: number) => void
-  purchase: (count: number) => void
+  updateAmount: (count: number) => void
 }
 
-const useShopStore = create<ShopStoreState>()(set => ({
+const useInventoryStore = create<InventoryStoreState>()(set => ({
   products: getItems(),
   balance: 1000,
   index: 0,
   setIndex: newIndex => {
     set({ index: newIndex })
   },
-  purchase(count) {
+  updateAmount(count) {
     set(state => {
       const products = [...state.products]
 
@@ -25,9 +25,9 @@ const useShopStore = create<ShopStoreState>()(set => ({
 
       product.value = (+product.value - count).toString()
 
-      return { balance: state.balance - product.price * count, products }
+      return { products }
     })
   }
 }))
 
-export default useShopStore
+export default useInventoryStore

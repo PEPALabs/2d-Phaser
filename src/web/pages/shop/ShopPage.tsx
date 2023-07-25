@@ -29,7 +29,7 @@ function ShopUI() {
 
   const index = useShopStore(state => state.index)
 
-  const amount = useShopStore(state => state.amount)
+  const balance = useShopStore(state => state.balance)
 
   const selectedProduct = categorizedProducts[index]
 
@@ -44,7 +44,7 @@ function ShopUI() {
               </Title>
               <Group spacing="sm">
                 <Image width={36} height={36} src="/assets/coin.png" />
-                <Text>User Balance: {amount} ETH</Text>
+                <Text>User Balance: {balance} ETH</Text>
               </Group>
             </Group>
             <ProductCategoryTabs />
