@@ -2,11 +2,11 @@ import React from 'react'
 import { Center, Container, Stack } from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
 import QuestCard from './components/QuestCard'
-import quests from '../../../data/questData'
+import useGameStore, { questActions } from '../../../data/useGameStore'
 
 // TODO: Add quest sorting
 function QuestsPage() {
-  const [questItems, setQuestItems] = React.useState(quests)
+  const questItems = useGameStore(state => state.quests)
 
   const [focusedItem, setFocusedItem] = useLocalStorage({
     key: 'quest.focusedItem',
@@ -40,18 +40,7 @@ function QuestsPage() {
 
   function updateQuests(quest) {
     return () => {
-      if (quest.questStatus === 'Available') quest.questStatus = 'In Progress'
-      else if (quest.questStatus === 'In Progress')
-        quest.questStatus = 'Completed'
-      else if (quest.questStatus === 'Completed') quest.questStatus = 'Archived'
-      else return
-      var tmpQuests = [...questItems]
-      for (var i = 0; i < tmpQuests.length; i++) {
-        if (tmpQuests[i].questId == quest.questId) {
-          tmpQuests[i] = quest
-        }
-      }
-      setQuestItems(tmpQuests)
+      questActions.updateQuests(quest.questId)
     }
   }
   return (

@@ -26,6 +26,7 @@
     "@web3-react/injected-connector": "^6.0.7",
     "ethers": "^6.3.0",
     "fuels": "^0.43.0",
+    "immer": "^10.0.2",
     "phaser": "^3.60.0",
     "phaser3-rex-plugins": "^1.60.3",
     "postcss-loader": "^7.3.0",

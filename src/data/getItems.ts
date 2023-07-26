@@ -1,9 +1,9 @@
-import items from '../data/items'
+import items from './items'
 import {
   ItemType,
   ItemsMainCategoriesType,
   ItemCategoriesType
-} from '../data/items.type'
+} from './items.type'
 
 export const emptyItem = {
   name: '',

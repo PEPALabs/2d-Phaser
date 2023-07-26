@@ -10,12 +10,13 @@ import {
   Title
 } from '@mantine/core'
 
-import messageData from '../../data/messageData'
 import ChatMessage from './ChatMessage'
 import { IconSend } from '@tabler/icons-react'
+import useGameStore, { messageActions } from '../../data/useGameStore'
 
 function ChatBox() {
-  const [messages, setMessage] = useState(messageData)
+  const messages = useGameStore(state => state.messages)
+
   const [text, setText] = useState('')
   const [username, setUsername] = useState('Test User')
 
@@ -27,7 +28,7 @@ function ChatBox() {
       sender: username,
       message: text
     }
-    setMessage([...messages, newMessage])
+    messageActions.addMessage(newMessage)
     // e.target.message.value = "";
     setText('')
   }

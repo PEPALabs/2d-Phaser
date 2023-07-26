@@ -14,11 +14,14 @@ import {
   Box,
   Space
 } from '@mantine/core'
+import { useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
   // TODO: add connect wallet to button here
 
   // TODO: solve input speed slow issue
+
+  const navigate = useNavigate()
 
   return (
     <Container size={420}>
@@ -31,7 +34,13 @@ const LoginPage = () => {
             Sign up
           </Text>
         </Anchor>
-        <Box component="form" mt="xl">
+        <Box
+          component="form"
+          mt="xl"
+          onSubmit={event => {
+            event.preventDefault()
+            navigate('/home')
+          }}>
           <Stack>
             <TextInput placeholder="Your email" label="Email" withAsterisk />
             <PasswordInput
@@ -47,7 +56,9 @@ const LoginPage = () => {
                 Forgot password?
               </Anchor>
             </Group>
-            <Button fullWidth>Login</Button>
+            <Button type="submit" fullWidth>
+              Login
+            </Button>
           </Stack>
         </Box>
       </Paper>

@@ -16,22 +16,23 @@ import useInventoryStore from './stores/useInventoryStore'
 import InventoryBar from './components/InventoryBar'
 import ProductCategoryTabs from './components/ProductCategoryTabs'
 import useProductCategory from './hooks/useProductCategory'
+import useGameStore from '../../../data/useGameStore'
 
 // import linkImage from "./assets/bg.png";
 
 function InventoryUI() {
   const { category } = useProductCategory()
 
-  const products = useInventoryStore(state => state.products)
+  const products = useGameStore(state => state.inventories.products)
 
   const categorizedProducts =
     category === 'all'
       ? products
       : products.filter(product => product.category === category)
 
-  const index = useInventoryStore(state => state.index)
+  const index = useGameStore(state => state.inventories.index)
 
-  const balance = useInventoryStore(state => state.balance)
+  const balance = useGameStore(state => state.inventories.balance)
 
   const selectedProduct = categorizedProducts[index]
 

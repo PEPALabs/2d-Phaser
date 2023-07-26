@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { type ItemType } from '../../../../data/items.type'
-import { getItems } from '../../../../utils/getItems'
+import { getItems } from '../../../../data/getItems'
 
 interface InventoryStoreState {
   products: ItemType[]

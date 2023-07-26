@@ -10,26 +10,24 @@ import {
   Image
 } from '@mantine/core'
 import { match } from 'ts-pattern'
-import { type PlantType } from '../../../../../data/plants'
-import usePlantStore from '../../../../../data/plantStore'
+import { type PlantType } from '../../../../../data/items.type'
+import { plantActions } from '../../../../../data/useGameStore'
 
 interface PlantCardProps {
   plant: PlantType
 }
 
 const PlantCard = ({ plant }: PlantCardProps) => {
-  const { removePlant, updatePlant } = usePlantStore()
-
   const onClickPlant = () => {
     console.log('Planting')
     const tmpPlant: PlantType = { ...plant }
     tmpPlant.state = 'PLANTING'
-    updatePlant(tmpPlant, plant.id)
+    plantActions.updatePlant(tmpPlant, plant.id)
   }
 
   const onClickHarvest = () => {
     console.log('Harvesting')
-    removePlant(plant, plant.id)
+    plantActions.removePlant(plant.id)
   }
 
   return (

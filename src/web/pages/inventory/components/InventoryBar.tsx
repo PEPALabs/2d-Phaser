@@ -19,8 +19,8 @@ import {
   IconTrash,
   IconArrowRight
 } from '@tabler/icons-react'
-import useInventoryStore from '../stores/useInventoryStore'
 import InventoryBarSection from './InventoryBarSection'
+import { inventoryActions } from '../../../../data/useGameStore'
 
 interface InventoryBarProps {
   product: ItemType
@@ -32,8 +32,6 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
   useEffect(() => {
     setCount(product.value === '' ? 0 : 1)
   }, [product])
-
-  const updateAmount = useInventoryStore(state => state.updateAmount)
 
   const handlers = useRef<NumberInputHandlers>()
 
@@ -84,7 +82,7 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
               rightIcon={<IconArrowRight />}
               disabled={count === 0 || +product.value === 0}
               onClick={() => {
-                updateAmount(count)
+                inventoryActions.updateAmount(count)
               }}>
               Use
             </Button>
@@ -93,7 +91,7 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
               rightIcon={<IconTrash />}
               disabled={count === 0 || +product.value === 0}
               onClick={() => {
-                updateAmount(count)
+                inventoryActions.updateAmount(count)
               }}>
               Drop
             </Button>

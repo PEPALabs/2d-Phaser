@@ -62,9 +62,14 @@ export type ItemsType = {
   [key: string]: ItemType[]
 }
 
+export type PlantState = 'EMPTY' | 'PLANTING' | 'READY'
+
 export type PlantType = {
   id: number
   name: string
+  description: string
+  state: PlantState
+  duration: number // in ms
   seedTexture: string
   plantTexture: string
 }
