@@ -12,24 +12,24 @@ import {
   Center
 } from '@mantine/core'
 import ProductList from './components/ProductList'
-import useShopStore from './stores/useShopStore'
 import ShoppingBar from './components/ShoppingBar'
 import ProductCategoryTabs from './components/ProductCategoryTabs'
 import useProductCategory from './hooks/useProductCategory'
+import useGameStore from '../../../data/useGameStore'
 
 function ShopUI() {
   const { category } = useProductCategory()
 
-  const products = useShopStore(state => state.products)
+  const products = useGameStore(state => state.shop.products)
 
   const categorizedProducts =
     category === 'all'
       ? products
       : products.filter(product => product.category === category)
 
-  const index = useShopStore(state => state.index)
+  const index = useGameStore(state => state.shop.index)
 
-  const amount = useShopStore(state => state.amount)
+  const balance = useGameStore(state => state.shop.balance)
 
   const selectedProduct = categorizedProducts[index]
 
@@ -44,7 +44,7 @@ function ShopUI() {
               </Title>
               <Group spacing="sm">
                 <Image width={36} height={36} src="/assets/coin.png" />
-                <Text>User Balance: {amount} ETH</Text>
+                <Text>User Balance: {balance} ETH</Text>
               </Group>
             </Group>
             <ProductCategoryTabs />

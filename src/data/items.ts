@@ -1,7 +1,7 @@
 import { ItemCategoriesType, ItemsMainCategoriesType } from './items.type'
 
 const PUBLIC_URL = 'http://localhost:8080/'
-export default {
+const items= {
   [ItemsMainCategoriesType.WEAPONS]: [
     {
       name: 'Tree Branch',
@@ -51,3 +51,5 @@ export default {
     }
   ]
 }
+
+export default items

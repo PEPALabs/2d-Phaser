@@ -8,8 +8,8 @@ import FarmPlant from "../components/FarmPlant";
 import Plant from "../components/Plant";
 import Button from "./ui/Button";
 /* START-USER-IMPORTS */
-import usePlantStore from "../data/plantStore";
-import {PlantType} from "../data/plants";
+import useGameStore from "../data/useGameStore";
+import {PlantType} from "../data/items.type";
 /* END-USER-IMPORTS */
 
 export default class Farmland extends Phaser.GameObjects.Container {
@@ -28,7 +28,7 @@ export default class Farmland extends Phaser.GameObjects.Container {
 		this.add(actionButton);
 		// if(usePlantStore.getState().plants[id] != null)
 		actionButton.on("pointerdown", () => {
-			const plant:PlantType = this.plantStore.getState().plants[id];
+			const plant:PlantType = this.gameStore.getState().plants[id];
 
 			if(plant){
 				const plantComponent = Plant.getComponent(this);
@@ -64,11 +64,11 @@ export default class Farmland extends Phaser.GameObjects.Container {
 	public id: number = 0;
 
 	/* START-USER-CODE */
-	private plantStore = usePlantStore;
+	private gameStore = useGameStore;
 
 	onPointerClick(id:string){
-		const plant:PlantType = this.plantStore.getState().plants[id];
-		console.log("pointerdown action",id, plant,usePlantStore.getState().plants);
+		const plant:PlantType = this.gameStore.getState().plants[id];
+		console.log("pointerdown action",id, plant,useGameStore.getState().plants);
 
 		if (plant.state == "READY") {
 			console.log("harvesting");

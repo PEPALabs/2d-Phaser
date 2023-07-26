@@ -11,7 +11,7 @@ import {
 import { useFocusable } from '@noriginmedia/norigin-spatial-navigation'
 import { IconMoneybag } from '@tabler/icons-react'
 import { type ItemType } from '../../../../data/items.type'
-import useShopStore from '../stores/useShopStore'
+import { shopAtions } from '../../../../data/useGameStore'
 
 interface ProductItemProps {
   product: ItemType
@@ -23,13 +23,11 @@ const ProductItem = ({ product, index }: ProductItemProps) => {
 
   const theme = useMantineTheme()
 
-  const setIndex = useShopStore(state => state.setIndex)
-
   useEffect(() => {
     if (focused) {
-      setIndex(index)
+      shopAtions.setIndex(index)
     }
-  }, [focused, index, setIndex])
+  }, [focused, index])
 
   return (
     <Indicator

@@ -1,6 +1,6 @@
 
 // You can write more code here
-import { PlantType } from "../data/plants";
+import { PlantType } from "../data/items.type";
 import ItemUsage from "./ItemUsage";
 import Button from "../prefabs/ui/Button";
 import Farmland from "../prefabs/Farmland";

@@ -2,10 +2,10 @@ import React from 'react'
 import ResourceSection from '../ResourceSection'
 import { ScrollArea, Stack } from '@mantine/core'
 import PlantCard from './PlantCard'
-import usePlantStore from '../../../../../data/plantStore'
+import useGameStore from '../../../../../data/useGameStore'
 
 const PlantList = () => {
-  const { plants } = usePlantStore()
+  const plants = useGameStore(state => state.plants)
 
   const plantData = Object.entries(plants)
     .map(item => {

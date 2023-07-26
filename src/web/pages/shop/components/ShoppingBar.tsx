@@ -14,7 +14,7 @@ import {
 } from '@mantine/core'
 import { type ItemType } from '../../../../data/items.type'
 import { IconMinus, IconPlus, IconCoin } from '@tabler/icons-react'
-import useShopStore from '../stores/useShopStore'
+import { shopAtions } from '../../../../data/useGameStore'
 import ShoppingBarSection from './ShoppingBarSection'
 
 interface ShoppingBarProps {
@@ -27,8 +27,6 @@ const ShoppingBar = ({ product }: ShoppingBarProps) => {
   useEffect(() => {
     setCount(product.value === '' ? 0 : 1)
   }, [product])
-
-  const purchase = useShopStore(state => state.purchase)
 
   const handlers = useRef<NumberInputHandlers>()
 
@@ -84,7 +82,7 @@ const ShoppingBar = ({ product }: ShoppingBarProps) => {
             rightIcon={<IconCoin />}
             disabled={count === 0 || +product.value === 0}
             onClick={() => {
-              purchase(count)
+              shopAtions.purchase(count)
             }}>
             Purchase
           </Button>
