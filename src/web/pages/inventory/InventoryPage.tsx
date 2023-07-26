@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import ItemsGrid from '../../ItemsGrid'
-import { getItems, getInventoryItems } from '../../../utils/getItems'
+import { getItems, getInventoryItems } from '../../../data/getItems'
 import ItemsContext from '../../ItemsContext'
 import ItemInformation from '../../ItemInformation'
 import {
@@ -14,6 +14,7 @@ import {
 
 import GameManager from '../../../GameManager'
 import { Container, Center, AspectRatio } from '@mantine/core'
+import useGameStore, { inventoryActions } from '../../../data/useGameStore'
 
 // import linkImage from "./assets/bg.png";
 
@@ -26,9 +27,7 @@ function InventoryUI() {
     setItemSelected,
     itemSelected
   }
-  const [inventoryItems, setInventoryItems] = useState(
-    getInventoryItems(gameManager.inventory)
-  )
+  const inventoryItems = useGameStore(state => state.inventories)
   const inventoryRef = useRef<HTMLDivElement>(null)
 
   const handleKeyPressed = (event: React.KeyboardEvent) => {
@@ -62,7 +61,7 @@ function InventoryUI() {
     if (inventoryRef.current) {
       inventoryRef.current.focus()
     }
-    setInventoryItems(getInventoryItems(gameManager.inventory))
+    inventoryActions.updateInventories(getInventoryItems(gameManager.inventory))
     console.log('inventoryItems', gameManager.inventory)
   }, [])
 

@@ -5,8 +5,9 @@
 
 /* START-USER-IMPORTS */
 import Farmland from "../prefabs/Farmland"
-import {plants, plantData, PlantState, PlantType} from "../data/plants"
-import usePlantStore from "../data/plantStore";
+import { plantData } from "../data/plants"
+import { type PlantType }from '../data/items.type'
+import useGameStore, { plantActions } from "../data/useGameStore";
 /* END-USER-IMPORTS */
 
 export default class FarmContainer {
@@ -43,12 +44,12 @@ export default class FarmContainer {
 	// Write your code here.
 
 	start(){
-		usePlantStore.getState().populateId(this.n_row*this.n_col);
+		plantActions.populateId(this.n_row*this.n_col);
 		for(var i=0; i <this.plantData.length; i ++){
-			usePlantStore.getState().updatePlant(this.plantData[i],String(i));
+			plantActions.updatePlant(this.plantData[i],String(i));
 		}
 		
-		console.log("plants1",usePlantStore.getState().plants);
+		console.log("plants1",useGameStore.getState().plants);
 	}
 
 
@@ -57,7 +58,7 @@ export default class FarmContainer {
 		if( this.plantsChanged ){
 			var start_x = this.gameObject.x;
 			var start_y = this.gameObject.y;
-			const plantStore = usePlantStore.getState().plants;
+			const plantStore = useGameStore.getState().plants;
 			for (var i = 0; i < this.plantData.length; i++) {
 				var row = Math.floor(i / this.n_row);
 				var col = i % this.n_row;

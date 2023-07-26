@@ -5,8 +5,8 @@
 
 /* START-USER-IMPORTS */
 import Phaser from "phaser";
-import {PlantState, PlantType} from "../data/plants";
-import usePlantStore from "../data/plantStore";
+import {PlantState, PlantType} from "../data/items.type";
+import useGameStore, { plantActions } from "../data/useGameStore";
 /* END-USER-IMPORTS */
 
 export default class Plant {
@@ -43,12 +43,12 @@ export default class Plant {
 	private readyTime: number = 30000;
 	private player: Phaser.Physics.Arcade.Sprite = null;
 	private plantState: PlantState = "PLANTING";
-	private plantStore = usePlantStore;
+	private gameStore = useGameStore;
 	private validPlant: boolean = false;
 	// Write your code here.
 
 	protected start(){
-		this.validPlant = this.plantStore.getState().plants[this.ID] != null;
+		this.validPlant = this.gameStore.getState().plants[this.ID] != null;
 		this.player = this.scene.children.getByName("player") as Phaser.Physics.Arcade.Sprite;
 		this.plantTime = this.scene.time.now;
 		this.actionButton.on('pointerdown', this.handleActionButton);
@@ -89,7 +89,7 @@ export default class Plant {
 	getPlant(){
 		if(this.ID.length == 0) 
 			return null;
-		return this.plantStore.getState().plants[this.ID];
+		return this.gameStore.getState().plants[this.ID];
 	}
 
 	showActionButton() {
@@ -128,7 +128,7 @@ export default class Plant {
 			//Plant new plant
 			var tmpPlant = plant;
 			tmpPlant.state = "PLANTING";
-			this.plantStore.getState().updatePlant(tmpPlant, this.ID);
+			plantActions.updatePlant(tmpPlant, this.ID);
 
 			this.plantTime = this.scene.time.now;
 			this.readyTime = tmpPlant.duration;
@@ -140,7 +140,7 @@ export default class Plant {
 			// Remove plant and add resource to backpack
 			this.gameObject.setVisible(false);
 			this.plantState = "EMPTY";
-			this.plantStore.getState().removePlant(null,this.ID);
+			plantActions.removePlant(this.ID);
 			this.validPlant = false;
 		}
 	}
@@ -148,7 +148,7 @@ export default class Plant {
 	harvest(){
 		this.gameObject.setVisible(false);
 		this.plantState = "EMPTY";
-		this.plantStore.getState().removePlant(null,this.ID);
+		plantActions.removePlant(this.ID);
 		this.validPlant = false;
 		// Add resource to backpack
 	}
