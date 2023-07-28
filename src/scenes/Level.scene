@@ -35,10 +35,12 @@
             "components": [
                 "Physics",
                 "PlayerMovement",
-                "PigAnimation"
+                "PigAnimation",
+                "DisplayText"
             ],
             "PlayerMovement.velocity": 250,
             "PigAnimation.animationKey": "pig-walk",
+            "DisplayText.sender": "player",
             "texture": {
                 "key": "pig"
             },
