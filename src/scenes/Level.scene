@@ -35,10 +35,12 @@
             "components": [
                 "Physics",
                 "PlayerMovement",
-                "PigAnimation"
+                "PigAnimation",
+                "DisplayText"
             ],
             "PlayerMovement.velocity": 250,
             "PigAnimation.animationKey": "pig-walk",
+            "DisplayText.sender": "player",
             "texture": {
                 "key": "pig"
             },
@@ -62,7 +64,7 @@
             "OpenShop.player": "pig",
             "x": 2704,
             "y": 2919,
-            "width": 500,
+                      "width": 500,
             "height": 500,
             "list": []
         },
