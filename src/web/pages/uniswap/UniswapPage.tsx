@@ -1,15 +1,70 @@
 import React from 'react'
-import { Center, AspectRatio, Container } from '@mantine/core'
-
-const iframeSrc =
-  'https://app.uniswap.org/#/swap?outputCurrency=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359'
+import {
+  Center,
+  AspectRatio,
+  Container,
+  Card,
+  Button,
+  Stack,
+  Tabs,
+  Space,
+  Group,
+  ActionIcon,
+  Flex
+} from '@mantine/core'
+import TokenNumberInput from './components/TokenNumberInput'
+import SettingsButton from './components/SettingsButton'
+import { IconArrowDown } from '@tabler/icons-react'
+import { useDisclosure } from '@mantine/hooks'
+import PepaLogo from './components/PepaLogo'
 
 const UniswapPage = () => {
+  const [opened, handlers] = useDisclosure(false)
+
   return (
-    <Container className=" h-full" size="xl">
+    <Container className="h-full" size="xl">
       <Center className="h-full">
-        <AspectRatio className="w-full" ratio={16 / 9}>
-          <iframe className="border-0" src={iframeSrc} />
+        <AspectRatio
+          className="relative w-full"
+          ratio={16 / 9}
+          bg="radial-gradient(100% 100% at 50% 0%, rgba(255, 184, 226, 0.51) 0%, rgba(255, 255, 255, 0) 100%), rgb(255, 255, 255)">
+          <PepaLogo />
+          <Center>
+            <Card withBorder>
+              <Tabs color="pink" defaultValue="swap">
+                <Group position="apart">
+                  <Tabs.List>
+                    <Tabs.Tab value="swap">Swap</Tabs.Tab>
+                    <Tabs.Tab value="buy">Buy</Tabs.Tab>
+                  </Tabs.List>
+                  <SettingsButton />
+                </Group>
+                <Space h={24} />
+                <Tabs.Panel value="swap">
+                  <Flex direction={opened ? 'column-reverse' : 'column'}>
+                    <TokenNumberInput />
+                    <ActionIcon
+                      variant="light"
+                      size="lg"
+                      className="z-10 -my-3 mx-auto border-4 border-white"
+                      onClick={handlers.toggle}>
+                      <IconArrowDown />
+                    </ActionIcon>
+                    <TokenNumberInput />
+                  </Flex>
+                  <Button
+                    variant="light"
+                    mt="xs"
+                    color="pink"
+                    fullWidth
+                    size="xl">
+                    Connect Wallet
+                  </Button>
+                </Tabs.Panel>
+                <Tabs.Panel value="buy">{null}</Tabs.Panel>
+              </Tabs>
+            </Card>
+          </Center>
         </AspectRatio>
       </Center>
     </Container>
