@@ -11,7 +11,7 @@ import {
 import { useFocusable } from '@noriginmedia/norigin-spatial-navigation'
 import { IconMoneybag } from '@tabler/icons-react'
 import { type ItemType } from '../../../../data/items.type'
-import { shopActions } from '../../../../data/useGameStore'
+import { inventoryActions } from '../../../../data/useGameStore'
 
 interface ProductItemProps {
   product: ItemType
@@ -21,11 +21,9 @@ interface ProductItemProps {
 const ProductItem = ({ product, index }: ProductItemProps) => {
   const { ref, focused, focusSelf } = useFocusable()
 
-  const theme = useMantineTheme()
-
   useEffect(() => {
     if (focused) {
-      shopActions.setIndex(index)
+      inventoryActions.setIndex(index)
     }
   }, [focused, index])
 
@@ -43,22 +41,12 @@ const ProductItem = ({ product, index }: ProductItemProps) => {
           focused ? 'scale-110 shadow-lg outline-pepa-gold' : 'outline-gray-200'
         )}
         onClick={() => focusSelf()}>
-        <Card.Section pt="xs" px="xs">
+        <Card.Section p="xs">
           <Image
             className="aspect-square"
             src={product.icon}
             alt={product.name}
           />
-        </Card.Section>
-        <Card.Section pt="xs" px="xs" h={36}>
-          {product.price && (
-            <Flex align="center">
-              <IconMoneybag size="1rem" color={theme.colors.orange[6]} />
-              <Text span fw="bold" color="orange">
-                {product.price}
-              </Text>
-            </Flex>
-          )}
         </Card.Section>
       </Card>
     </Indicator>

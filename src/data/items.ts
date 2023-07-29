@@ -5,7 +5,7 @@ const items= {
   [ItemsMainCategoriesType.WEAPONS]: [
     {
       name: 'Tree Branch',
-      category: ItemCategoriesType.WEAPON,
+      category: ItemCategoriesType.BUILDINGS,
       icon: PUBLIC_URL + 'items/weapons/BotW_Tree_Branch_Icon.png',
       value: '2',
       isNew: true,
@@ -15,7 +15,7 @@ const items= {
     },
     {
       name: 'Ancient Short Sword',
-      category: ItemCategoriesType.WEAPON,
+      category: ItemCategoriesType.EQUIPMENTS,
       icon: PUBLIC_URL + 'items/weapons/BotW_Ancient_Short_Sword_Icon.png',
       value: '40',
       description:
@@ -24,7 +24,7 @@ const items= {
     },
     {
       name: 'Random Item',
-      category: ItemCategoriesType.WEAPON,
+      category: ItemCategoriesType.PLANTS,
       icon: PUBLIC_URL + 'assets/guapen.png',
       value: '1',
       description: 'A random item that is not in the game.',

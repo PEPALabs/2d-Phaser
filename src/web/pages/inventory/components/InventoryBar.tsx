@@ -13,15 +13,20 @@ import {
   Divider
 } from '@mantine/core'
 import { type ItemType } from '../../../../data/items.type'
-import { IconMinus, IconPlus, IconCoin } from '@tabler/icons-react'
-import { shopActions } from '../../../../data/useGameStore'
-import ShoppingBarSection from './ShoppingBarSection'
+import {
+  IconMinus,
+  IconPlus,
+  IconTrash,
+  IconArrowRight
+} from '@tabler/icons-react'
+import InventoryBarSection from './InventoryBarSection'
+import { inventoryActions } from '../../../../data/useGameStore'
 
-interface ShoppingBarProps {
+interface InventoryBarProps {
   product: ItemType
 }
 
-const ShoppingBar = ({ product }: ShoppingBarProps) => {
+const InventoryBar = ({ product }: InventoryBarProps) => {
   const [count, setCount] = useState(() => (product.value === '' ? 0 : 1))
 
   useEffect(() => {
@@ -39,11 +44,8 @@ const ShoppingBar = ({ product }: ShoppingBarProps) => {
         <Text size="md">{product.description}</Text>
         <Divider />
         <Stack>
-          <ShoppingBarSection name="In Stock">
-            {product.value}
-          </ShoppingBarSection>
-          <ShoppingBarSection name="Price">{product.price}</ShoppingBarSection>
-          <ShoppingBarSection name="Amount">
+          <InventoryBarSection name="Owns">{product.value}</InventoryBarSection>
+          <InventoryBarSection name="Amount">
             <Group spacing={4} align="center">
               <ActionIcon
                 variant="default"
@@ -73,23 +75,31 @@ const ShoppingBar = ({ product }: ShoppingBarProps) => {
                 <IconPlus size="1rem" />
               </ActionIcon>
             </Group>
-          </ShoppingBarSection>
-          <ShoppingBarSection name="Total">
-            {product.price * count}
-          </ShoppingBarSection>
-          <Button
-            className="self-end"
-            rightIcon={<IconCoin />}
-            disabled={count === 0 || +product.value === 0}
-            onClick={() => {
-              shopActions.purchase(count)
-            }}>
-            Purchase
-          </Button>
+          </InventoryBarSection>
+          <div className="flex space-x-1 self-end">
+            <Button
+              className="self-end bg-pepa-pink hover:bg-pepa-darkPink focus:outline-none focus:ring-pepa-darkPink"
+              rightIcon={<IconArrowRight />}
+              disabled={count === 0 || +product.value === 0}
+              onClick={() => {
+                inventoryActions.updateAmount(count)
+              }}>
+              Use
+            </Button>
+            <Button
+              className="self-end bg-pepa-pink hover:bg-pepa-darkPink focus:outline-none focus:ring-pepa-darkPink"
+              rightIcon={<IconTrash />}
+              disabled={count === 0 || +product.value === 0}
+              onClick={() => {
+                inventoryActions.updateAmount(count)
+              }}>
+              Drop
+            </Button>
+          </div>
         </Stack>
       </Stack>
     </Alert>
   )
 }
 
-export default ShoppingBar
+export default InventoryBar

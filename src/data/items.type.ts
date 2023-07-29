@@ -16,7 +16,11 @@ export enum ItemCategoriesType {
   ARMOR = 'armor',
   GREAVE = 'greave',
   HELM = 'helm',
-  SEED = 'seed'
+  SEED = 'seed',
+  PLANTS = 'plants',
+  EQUIPMENTS = 'equipments',
+  BUILDINGS = 'buildings',
+  ACCESSORY = 'accessory'
 }
 
 export type ItemType = {

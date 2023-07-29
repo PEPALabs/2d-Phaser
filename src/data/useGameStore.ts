@@ -12,7 +12,7 @@ interface GameState {
   time: Date
   plants: Record<number, PlantType>
   quests: QuestType[]
-  inventories: ItemType[]
+  inventories: { products: ItemType[]; balance: number; index: number }
   messages: MessageType[]
   shop: { products: ItemType[]; balance: number; index: number }
 }
@@ -24,14 +24,14 @@ const useGameStore = create(
       time: new Date(),
       plants: {},
       quests,
-      inventories: getInventoryItems(GameManager.getInstance().inventory),
+      inventories: { products: getItems(), balance: 1000, index: 0 },
       messages: messageData,
       shop: { products: getItems(), balance: 1000, index: 0 }
     }))
   )
 )
 
-export const shopAtions = {
+export const shopActions = {
   setIndex(newIndex: number) {
     useGameStore.setState(state => {
       state.shop.index = newIndex
@@ -97,7 +97,19 @@ export const plantActions = {
 export const inventoryActions = {
   updateInventories(inventories: ItemType[]) {
     useGameStore.setState(state => {
-      state.inventories = inventories
+      state.inventories.products = inventories
+    })
+  },
+  setIndex(newIndex: number) {
+    useGameStore.setState(state => {
+      state.inventories.index = newIndex
+    })
+  },
+  updateAmount(count: number) {
+    useGameStore.setState(state => {
+      const product = state.inventories.products[state.inventories.index]
+
+      product.value = (+product.value - count).toString()
     })
   }
 }
