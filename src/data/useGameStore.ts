@@ -18,15 +18,17 @@ interface GameState {
 }
 
 const useGameStore = create(
-  immer<GameState>(() => ({
-    playerID: Date.now().toString(),
-    time: new Date(),
-    plants: {},
-    quests,
-    inventories: { products: getItems(), balance: 1000, index: 0 },
-    messages: messageData,
-    shop: { products: getItems(), balance: 1000, index: 0 }
-  }))
+  subscribeWithSelector(
+    immer<GameState>(() => ({
+      playerID: Date.now().toString(),
+      time: new Date(),
+      plants: {},
+      quests,
+      inventories: { products: getItems(), balance: 1000, index: 0 },
+      messages: messageData,
+      shop: { products: getItems(), balance: 1000, index: 0 }
+    }))
+  )
 )
 
 export const shopActions = {
