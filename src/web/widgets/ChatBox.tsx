@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   Stack,
   ScrollArea,
@@ -18,7 +18,16 @@ function ChatBox() {
   const messages = useGameStore(state => state.messages)
 
   const [text, setText] = useState('')
-  const [username, setUsername] = useState('Test User')
+  const [username, setUsername] = useState('player')
+
+  const viewportRef = useRef<HTMLDivElement>()
+
+  useEffect(() => {
+    viewportRef.current.scrollTo({
+      top: viewportRef.current.scrollHeight,
+      behavior: 'smooth'
+    })
+  }, [messages])
 
   const theme = useMantineTheme()
 
@@ -36,11 +45,13 @@ function ChatBox() {
   return (
     <>
       <Title order={3}>Chat History</Title>
-      <Navbar.Section grow component={ScrollArea}>
+      <Navbar.Section grow component={ScrollArea} viewportRef={viewportRef}>
         <Stack spacing="lg">
-          {messages.map((message, index) => (
-            <ChatMessage key={index} message={message} />
-          ))}
+          {messages
+            .filter(item => item.message.trim() !== '')
+            .map((message, index) => (
+              <ChatMessage key={index} message={message} />
+            ))}
         </Stack>
       </Navbar.Section>
       <Group spacing="xs">

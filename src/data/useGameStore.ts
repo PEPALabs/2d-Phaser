@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
+import { subscribeWithSelector } from 'zustand/middleware'
 import type { QuestType, PlantType, MessageType, ItemType } from './items.type'
 import quests from './questData'
 import messageData from './messageData'
