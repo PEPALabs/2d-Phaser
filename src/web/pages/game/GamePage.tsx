@@ -5,8 +5,7 @@ import Level from '../../../scenes/Level'
 import Farm from '../../../scenes/Farm'
 import preloadAssetPackUrl from '../../../../static/assets/preload-asset-pack.json'
 import Preload from '../../../scenes/Preload'
-import UIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin.js';
-
+import UIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin.js'
 
 // TODO: add game event dispatcher
 class Boot extends Phaser.Scene {
@@ -42,25 +41,31 @@ const game = new Phaser.Game({
     }
   },
   plugins: {
-    scene: [{
+    scene: [
+      {
         key: 'rexUI',
         plugin: UIPlugin,
         mapping: 'rexUI'
-    },
-    // ...
+      }
     ]
-}
+  }
 })
+
+game.input.keyboard.enabled = false
 
 function GamePage() {
   const gameContainerRef = useRef<HTMLDivElement>()
 
   useEffect(() => {
+    game.input.keyboard.enabled = true
+
     game.scale.parent = gameContainerRef.current
 
     Phaser.DOM.AddToDOM(game.canvas, game.scale.parent)
 
     return () => {
+      game.input.keyboard.enabled = false
+
       game.scale.parent = null
     }
   }, [])
