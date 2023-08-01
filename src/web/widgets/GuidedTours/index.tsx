@@ -2,6 +2,7 @@ import React, { MouseEvent, useState } from 'react'
 import Joyride, { type CallBackProps, STATUS } from 'react-joyride'
 import { Button } from '@mantine/core'
 import getSteps from './getSteps'
+import JoyrideTooltip from './JoyrideTooltip'
 
 const GuidedTours = () => {
   const [steps] = useState(() => getSteps())
@@ -34,6 +35,7 @@ const GuidedTours = () => {
         showSkipButton
         run={isRun}
         steps={steps}
+        tooltipComponent={JoyrideTooltip}
         styles={{
           options: {
             zIndex: 10000
