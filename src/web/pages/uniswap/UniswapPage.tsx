@@ -10,19 +10,30 @@ import {
   Space,
   Group,
   ActionIcon,
-  Flex
+  Flex,
+  Drawer
 } from '@mantine/core'
 import TokenNumberInput from './components/TokenNumberInput'
 import SettingsButton from './components/SettingsButton'
 import { IconArrowDown } from '@tabler/icons-react'
 import { useDisclosure } from '@mantine/hooks'
 import PepaLogo from './components/PepaLogo'
+import ConnectWalletDrawerContent from './components/ConnectWalletDrawerContent'
 
 const UniswapPage = () => {
   const [opened, handlers] = useDisclosure(false)
 
+  const [drawerOpened, drawerHandlers] = useDisclosure(false)
+
   return (
     <Container className="h-full" size="xl">
+      <Drawer
+        opened={drawerOpened}
+        onClose={drawerHandlers.close}
+        position="right"
+        size="sm">
+        <ConnectWalletDrawerContent />
+      </Drawer>
       <Center className="h-full">
         <AspectRatio
           className="relative w-full"
@@ -57,7 +68,8 @@ const UniswapPage = () => {
                     mt="xs"
                     color="pink"
                     fullWidth
-                    size="xl">
+                    size="xl"
+                    onClick={drawerHandlers.open}>
                     Connect Wallet
                   </Button>
                 </Tabs.Panel>
