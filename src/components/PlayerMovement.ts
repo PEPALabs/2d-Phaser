@@ -69,9 +69,11 @@ export default class PlayerMovement {
     if (this.cursors.left.isDown) {
       this.gameObject.setVelocity(-this.velocity, 0)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
+      this.gameObject.flipX = false // Flip the sprite to face left
     } else if (this.cursors.right.isDown) {
       this.gameObject.setVelocity(this.velocity, 0)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
+      this.gameObject.flipX = true // Reset the flipX property to face right
       // this.gameObject.anims.play('right', true);
     } else if (this.cursors.up.isDown) {
       this.gameObject.setVelocity(0, -this.velocity)
