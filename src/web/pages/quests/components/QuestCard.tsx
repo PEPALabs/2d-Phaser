@@ -47,7 +47,7 @@ function QuestCard({
           ...theme.focusRingStyles.styles(theme)
         }
       }
-      className="mb-10 last:mb-0"
+      className="mb-10 ml-2 mr-5 first:mt-3 last:mb-3"
       onClick={onClick}>
       <UnstyledButton component={Group} position="apart">
         <Stack spacing="xs">

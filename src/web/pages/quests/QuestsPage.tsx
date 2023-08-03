@@ -79,7 +79,7 @@ function QuestsPage() {
             <QuestCategoryTabs />
             <Stack className="h-full w-full overflow-hidden">
               {categorizedQuests.length > 0 && (
-                <ScrollArea className="px-6 py-2">
+                <ScrollArea>
                   {categorizedQuests.map(quest => (
                     <QuestCard
                       key={quest.questId}
