@@ -1,6 +1,18 @@
 import React from 'react'
-import { Center, Container, Stack } from '@mantine/core'
+import {
+  Text,
+  Group,
+  Stack,
+  Title,
+  Container,
+  Image,
+  Grid,
+  ScrollArea,
+  AspectRatio,
+  Center
+} from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
+import QuestCategoryTabs from './components/QuestCategoryTabs'
 import QuestCard from './components/QuestCard'
 import useGameStore, { questActions } from '../../../data/useGameStore'
 
@@ -44,19 +56,35 @@ function QuestsPage() {
     }
   }
   return (
-    <Container className="h-full" size="lg">
+    <Container className="h-full" size="xl">
       <Center className="h-full">
-        <Stack className="w-full">
-          {questItems.map(quest => (
-            <QuestCard
-              key={quest.questId}
-              questItem={quest}
-              questUpdate={updateQuests(quest)}
-              isActive={focusedItem === quest.questId}
-              onClick={focusQuest(quest)}
-            />
-          ))}
-        </Stack>
+        <AspectRatio className="w-full bg-pepa-blue" ratio={16 / 9}>
+          <Stack className="h-full overflow-hidden" p="xl">
+            <Group className="w-full" position="apart">
+              <Title order={2} color="blue">
+                PEPA Quest Book
+              </Title>
+              <Group spacing="sm">
+                <Image width={36} height={36} src="/assets/coin.png" />
+                <Text>User Balance: 1000 ETH</Text>
+              </Group>
+            </Group>
+            <QuestCategoryTabs />
+            <Stack className="w-full">
+              <ScrollArea h={500} className="px-10 py-2">
+                {questItems.map(quest => (
+                  <QuestCard
+                    key={quest.questId}
+                    questItem={quest}
+                    questUpdate={updateQuests(quest)}
+                    isActive={focusedItem === quest.questId}
+                    onClick={focusQuest(quest)}
+                  />
+                ))}
+              </ScrollArea>
+            </Stack>
+          </Stack>
+        </AspectRatio>
       </Center>
     </Container>
   )
