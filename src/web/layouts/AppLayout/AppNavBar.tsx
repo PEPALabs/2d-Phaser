@@ -18,13 +18,15 @@ import {
 } from '@tabler/icons-react'
 import { Link, useMatch } from 'react-router-dom'
 import ChatBox from '../../widgets/ChatBox'
+import { TargetId } from '../../../web/widgets/GuidedTours/getSteps'
 
 const navList = [
   {
     color: 'blue',
     text: 'Dashboard',
     icon: IconDashboard,
-    path: '/resources'
+    path: '/resources',
+    id: TargetId.Resources
   },
   {
     color: 'green',
@@ -66,6 +68,7 @@ const AppNavBar = () => {
                 <navItem.icon size="1rem" />
               </ThemeIcon>
             }
+            id={navItem.id}
           />
         ))}
       </Navbar.Section>
