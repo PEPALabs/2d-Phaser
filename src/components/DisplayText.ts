@@ -5,8 +5,8 @@
 import Phaser from 'phaser'
 /* START-USER-IMPORTS */
 import useGameStore from '../data/useGameStore'
-const COLOR_PRIMARY = 0xfbb9b3 // 0xfcb5cd;// 0xfc9694;
-const COLOR_LIGHT = 0xfbb9b3
+const COLOR_PRIMARY = 0xffffff // 0xfcb5cd;// 0xfc9694;
+const COLOR_LIGHT = 0x228be6
 const COLOR_DARK = 0xfe6283 //0xe8735e;
 /* END-USER-IMPORTS */
 
@@ -63,8 +63,9 @@ export default class DisplayText {
     return scene.rexUI.add.BBCodeText(0, 0, '', {
       fixedWidth: fixedWidth,
       fixedHeight: fixedHeight,
-
-      fontSize: '24px',
+      color: 0x228be6,
+      fontFamily: 'Arial',
+      fontSize: '22px',
       wrap: {
         mode: 'word',
         width: wrapWidth
@@ -92,8 +93,6 @@ export default class DisplayText {
           strokeWidth: 2
         }),
 
-        icon: scene.rexUI.add.roundRectangle({ radius: 10, color: COLOR_DARK }),
-
         // text: getBuiltInText(scene, wrapWidth, fixedWidth, fixedHeight),
         text: this.getBBcodeText(scene, wrapWidth, fixedWidth, fixedHeight),
 
@@ -108,10 +107,10 @@ export default class DisplayText {
           : undefined,
 
         space: {
-          left: 20,
-          right: 20,
-          top: 20,
-          bottom: 20,
+          left: 18,
+          right: 18,
+          top: 10,
+          bottom: 10,
 
           icon: 10,
           text: 10,
