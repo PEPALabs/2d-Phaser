@@ -15,10 +15,17 @@ import { useLocalStorage } from '@mantine/hooks'
 import QuestCategoryTabs from './components/QuestCategoryTabs'
 import QuestCard from './components/QuestCard'
 import useGameStore, { questActions } from '../../../data/useGameStore'
+import useQuestCategory from './hooks/useQuestCategory'
 
 // TODO: Add quest sorting
 function QuestsPage() {
   const questItems = useGameStore(state => state.quests)
+  const { category } = useQuestCategory()
+
+  const categorizedQuests =
+    category === 'all'
+      ? questItems
+      : questItems.filter(quest => quest.questCategory === category)
 
   const [focusedItem, setFocusedItem] = useLocalStorage({
     key: 'quest.focusedItem',
@@ -70,18 +77,20 @@ function QuestsPage() {
               </Group>
             </Group>
             <QuestCategoryTabs />
-            <Stack className="w-full">
-              <ScrollArea h={500} className="px-10 py-2">
-                {questItems.map(quest => (
-                  <QuestCard
-                    key={quest.questId}
-                    questItem={quest}
-                    questUpdate={updateQuests(quest)}
-                    isActive={focusedItem === quest.questId}
-                    onClick={focusQuest(quest)}
-                  />
-                ))}
-              </ScrollArea>
+            <Stack className="h-full w-full overflow-hidden">
+              {categorizedQuests.length > 0 && (
+                <ScrollArea className="px-6 py-2">
+                  {categorizedQuests.map(quest => (
+                    <QuestCard
+                      key={quest.questId}
+                      questItem={quest}
+                      questUpdate={updateQuests(quest)}
+                      isActive={focusedItem === quest.questId}
+                      onClick={focusQuest(quest)}
+                    />
+                  ))}
+                </ScrollArea>
+              )}
             </Stack>
           </Stack>
         </AspectRatio>

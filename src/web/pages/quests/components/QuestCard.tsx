@@ -53,7 +53,7 @@ function QuestCard({
         <Stack spacing="xs">
           <Box>
             <Text color={theme.primaryColor} size="sm">
-              {questItem.questCategory}
+              {questItem.questTag}
             </Text>
             <Title order={2}>{questItem.questName}</Title>
           </Box>
