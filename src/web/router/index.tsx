@@ -15,18 +15,21 @@ import InventoryPage from '../pages/inventory/InventoryPage'
 import GamePage from '../pages/game/GamePage'
 import QuestsPage from '../pages/quests/QuestsPage'
 import ResourcePage from '../pages/resource/ResourcePage'
+import GameLayout from '../layouts/GameLayout'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
       <Route index element={<Navigate to="/login" />} />
       <Route path="login" element={<LoginPage />} />
-      <Route path="shop" element={<ShopPage />} />
-      <Route path="home" element={<GamePage />} />
-      <Route path="uniswap" element={<UniswapPage />} />
-      <Route path="inventory" element={<InventoryPage />} />
-      <Route path="quests" element={<QuestsPage />} />
-      <Route path="resources" element={<ResourcePage />} />
+      <Route element={<GameLayout />}>
+        <Route path="shop" element={<ShopPage />} />
+        <Route path="home" element={<GamePage />} />
+        <Route path="uniswap" element={<UniswapPage />} />
+        <Route path="inventory" element={<InventoryPage />} />
+        <Route path="quests" element={<QuestsPage />} />
+        <Route path="resources" element={<ResourcePage />} />
+      </Route>
     </Route>
   )
 )
