@@ -11,7 +11,9 @@ const ResourceSection = ({
 }: PropsWithChildren<ResourceSectionProps>) => {
   return (
     <Stack spacing="xs">
-      <Title order={3}>{name}</Title>
+      <Title className="font-JotiOne tracking-wide text-black/70" order={3}>
+        {name}
+      </Title>
       <Paper
         p="xl"
         className="transition-shadow"

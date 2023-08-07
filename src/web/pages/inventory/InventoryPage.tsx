@@ -30,7 +30,9 @@ function InventoryUI() {
         <ProductCategoryTabs />
         <Group spacing="sm">
           <Image width={36} height={36} src="/assets/coin.png" />
-          <Text>User Balance: {balance} ETH</Text>
+          <Text className="font-bold tracking-wider">
+            User Balance: {balance} ETH
+          </Text>
         </Group>
       </Group>
       <Grid className="h-full overflow-hidden">

@@ -16,20 +16,21 @@ const AppHeader = () => {
   return (
     <Header height={64} px="xl">
       <Group align="center" className="h-full max-w-screen-xl">
-        <Anchor href="https://flowbite.com">
+        <Anchor className="hover:no-underline">
           <Group align="center" spacing="xs">
-            <Avatar
-              src="https://flowbite.com/docs/images/logo.svg"
-              alt="Flowbite Logo"
-            />
-            <Title order={2}>PEPA</Title>
+            <Avatar src="/assets/images/pepa.png" className="h-full w-16" />
+            <Title className="font-title text-pepa-pink" order={2}>
+              PEPA
+            </Title>
           </Group>
         </Anchor>
         <Group spacing="xl" position="center" className="grow">
           {headerNavList.map(navItem => (
             <NavLink key={navItem.to} to={navItem.to} id={navItem.id}>
               {({ isActive }) => (
-                <Button variant={isActive ? 'outline' : 'light'}>
+                <Button
+                  variant={isActive ? 'outline' : 'light'}
+                  className="tracking-wider">
                   {navItem.name}
                 </Button>
               )}

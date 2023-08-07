@@ -65,7 +65,9 @@ function QuestsPage() {
         <QuestCategoryTabs />
         <Group spacing="sm">
           <Image width={36} height={36} src="/assets/coin.png" />
-          <Text>User Balance: 1000 ETH</Text>
+          <Text className="font-bold tracking-wider">
+            User Balance: 1000 ETH
+          </Text>
         </Group>
       </Group>
       <Stack className="h-full w-full overflow-hidden">

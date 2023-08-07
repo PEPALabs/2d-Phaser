@@ -79,7 +79,7 @@ const AppNavBar = () => {
         <Group p="xs">
           <Avatar color="blue" />
           <Box>
-            <Text size="sm" weight={500}>
+            <Text size="md" weight={500} className="font-JotiOne">
               HelloWorld
             </Text>
             <Text color="dimmed" size="xs">

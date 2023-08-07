@@ -10,7 +10,10 @@ const PepaLogo = () => {
         width="auto"
         styles={{ caption: { marginTop: 0 } }}
         caption={
-          <Text className="text-pepa-textBlue" size="lg" fw="bold">
+          <Text
+            className="font-title text-2xl text-pepa-textBlue"
+            size="lg"
+            fw="bold">
             PEPA
           </Text>
         }

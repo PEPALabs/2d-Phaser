@@ -39,7 +39,11 @@ function App() {
       <MantineProvider
         withGlobalStyles
         withNormalizeCSS
-        theme={{ defaultRadius: 'md', colors: { second } }}>
+        theme={{
+          fontFamily: 'Comic Neue, cursive',
+          defaultRadius: 'md',
+          colors: { second }
+        }}>
         <Notifications position="top-center" />
         <RouterProvider router={router} />
       </MantineProvider>

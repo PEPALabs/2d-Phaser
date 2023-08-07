@@ -50,7 +50,7 @@ function QuestCard({
       className="mb-10 ml-2 mr-5 first:mt-3 last:mb-3"
       onClick={onClick}>
       <UnstyledButton component={Group} position="apart">
-        <Stack spacing="xs">
+        <Stack spacing="xs" className="tracking-wider">
           <Box>
             <Text color={theme.primaryColor} size="sm">
               {questItem.questTag}
@@ -58,10 +58,11 @@ function QuestCard({
             <Title order={2}>{questItem.questName}</Title>
           </Box>
           <Group>
-            <Badge size="lg" className="normal-case">
+            <Badge size="lg" className="normal-case tracking-wider">
               {questItem.questTag}
             </Badge>
             <Button
+              className="tracking-wider"
               variant="subtle"
               color="gray"
               leftIcon={<IconMapPin size="1rem" />}>
@@ -71,19 +72,31 @@ function QuestCard({
         </Stack>
         {questItem.questStatus === 'Completed' ? (
           // awaiting rewards
-          <Button onClick={questUpdate} rightIcon={<IconCheck size="1rem" />}>
+          <Button
+            onClick={questUpdate}
+            rightIcon={<IconCheck size="1rem" />}
+            className="tracking-wider">
             Take Rewards
           </Button>
         ) : questItem.questStatus === 'In Progress' ? (
-          <Button rightIcon={<IconProgress size="1rem" />}>In Progress</Button>
+          <Button
+            rightIcon={<IconProgress size="1rem" />}
+            className="tracking-wider">
+            In Progress
+          </Button>
         ) : questItem.questStatus === 'Available' ? (
           <Button
             onClick={questUpdate}
-            rightIcon={<IconArrowRight size="1rem" />}>
+            rightIcon={<IconArrowRight size="1rem" />}
+            className="tracking-wider">
             Start Quest
           </Button>
         ) : (
-          <Button color="gray" disabled rightIcon={<IconArchive size="1rem" />}>
+          <Button
+            className="tracking-wider"
+            color="gray"
+            disabled
+            rightIcon={<IconArchive size="1rem" />}>
             Archived
           </Button>
         )}

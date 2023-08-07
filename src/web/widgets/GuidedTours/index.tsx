@@ -42,7 +42,9 @@ const GuidedTours = () => {
           }
         }}
       />
-      <Button onClick={handleClickStart}>Guided tours</Button>
+      <Button onClick={handleClickStart} className="tracking-wider">
+        Guided tours
+      </Button>
     </>
   )
 }

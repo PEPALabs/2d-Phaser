@@ -27,7 +27,10 @@ const ProductCategoryTabs = () => {
       }}>
       <Tabs.List>
         {productCategoryTabs.map(tab => (
-          <Tabs.Tab key={tab.name} value={tab.value}>
+          <Tabs.Tab
+            key={tab.name}
+            value={tab.value}
+            className="font-bold tracking-wider">
             {tab.name}
           </Tabs.Tab>
         ))}

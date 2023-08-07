@@ -47,7 +47,9 @@ const GameLayout = () => {
               <Stack>
                 <SimpleGrid cols={3} className="w-full">
                   <Box />
-                  <Title className="justify-self-center" color="second">
+                  <Title
+                    className="justify-self-center font-title"
+                    color="second">
                     {pageTitle}
                   </Title>
                   <CloseButton
