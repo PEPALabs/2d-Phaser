@@ -3,13 +3,10 @@ import {
   Text,
   Group,
   Stack,
-  Title,
-  Container,
   Image,
-  Grid,
   ScrollArea,
   AspectRatio,
-  Center
+  Title
 } from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
 import QuestCategoryTabs from './components/QuestCategoryTabs'
@@ -63,35 +60,30 @@ function QuestsPage() {
     }
   }
   return (
-    <AspectRatio className="w-full bg-pepa-blue" ratio={16 / 9}>
-      <Stack className="h-full overflow-hidden" p="xl">
-        <Group className="w-11/12" position="apart">
-          <Title order={2} color="blue">
-            PEPA Quest Book
-          </Title>
-          <Group spacing="sm">
-            <Image width={36} height={36} src="/assets/coin.png" />
-            <Text>User Balance: 1000 ETH</Text>
-          </Group>
-        </Group>
+    <Stack className="w-full overflow-hidden">
+      <Group className="w-full" position="apart">
         <QuestCategoryTabs />
-        <Stack className="h-full w-full overflow-hidden">
-          {categorizedQuests.length > 0 && (
-            <ScrollArea>
-              {categorizedQuests.map(quest => (
-                <QuestCard
-                  key={quest.questId}
-                  questItem={quest}
-                  questUpdate={updateQuests(quest)}
-                  isActive={focusedItem === quest.questId}
-                  onClick={focusQuest(quest)}
-                />
-              ))}
-            </ScrollArea>
-          )}
-        </Stack>
+        <Group spacing="sm">
+          <Image width={36} height={36} src="/assets/coin.png" />
+          <Text>User Balance: 1000 ETH</Text>
+        </Group>
+      </Group>
+      <Stack className="h-full w-full overflow-hidden">
+        {categorizedQuests.length > 0 && (
+          <ScrollArea>
+            {categorizedQuests.map(quest => (
+              <QuestCard
+                key={quest.questId}
+                questItem={quest}
+                questUpdate={updateQuests(quest)}
+                isActive={focusedItem === quest.questId}
+                onClick={focusQuest(quest)}
+              />
+            ))}
+          </ScrollArea>
+        )}
       </Stack>
-    </AspectRatio>
+    </Stack>
   )
 }
 

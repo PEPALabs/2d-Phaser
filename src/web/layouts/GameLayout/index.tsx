@@ -1,9 +1,31 @@
 import React from 'react'
-import { Box, Center, CloseButton, Container, Paper } from '@mantine/core'
-import { Outlet, useNavigate } from 'react-router-dom'
+import {
+  AspectRatio,
+  Box,
+  Center,
+  CloseButton,
+  Container,
+  Paper,
+  SimpleGrid,
+  Stack,
+  Title
+} from '@mantine/core'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import GameCanvas from '../../widgets/GameCanvas'
 
+const pageTitles = {
+  '/shop': 'PEPA Shop',
+  '/uniswap': 'Uniswap',
+  '/inventory': 'PEPA Inventory',
+  '/quests': 'PEPA Quest Book',
+  '/resources': 'PEPA Dashboard'
+}
+
 const GameLayout = () => {
+  const location = useLocation()
+
+  const pageTitle = pageTitles[location.pathname]
+
   const navigate = useNavigate()
 
   const handleGoBack = () => {
@@ -15,17 +37,31 @@ const GameLayout = () => {
       <GameCanvas />
       <Center className="relative h-full">
         <GameCanvas />
-        <Box className="absolute w-11/12">
-          <Paper className="relative overflow-hidden" shadow="lg">
-            <CloseButton
-              className="absolute right-4 top-4 z-10"
-              color="blue"
-              size="lg"
-              onClick={handleGoBack}
-            />
-            <Outlet />
+        {pageTitle && (
+          <Paper
+            className="absolute w-11/12 overflow-hidden border border-amber-700 bg-cover bg-center"
+            bg="radial-gradient(rgb(229, 195, 158), rgb(232, 196, 156))"
+            p="lg"
+            shadow="lg">
+            <AspectRatio className="w-full" ratio={16 / 9}>
+              <Stack>
+                <SimpleGrid cols={3} className="w-full">
+                  <Box />
+                  <Title className="justify-self-center" color="second">
+                    {pageTitle}
+                  </Title>
+                  <CloseButton
+                    className="self-center justify-self-end"
+                    color="second"
+                    size="lg"
+                    onClick={handleGoBack}
+                  />
+                </SimpleGrid>
+                <Outlet />
+              </Stack>
+            </AspectRatio>
           </Paper>
-        </Box>
+        )}
       </Center>
     </Container>
   )

@@ -2,16 +2,15 @@ import React from 'react'
 import {
   Center,
   AspectRatio,
-  Container,
   Card,
   Button,
-  Stack,
   Tabs,
   Space,
   Group,
   ActionIcon,
   Flex,
-  Drawer
+  Drawer,
+  Stack
 } from '@mantine/core'
 import TokenNumberInput from './components/TokenNumberInput'
 import SettingsButton from './components/SettingsButton'
@@ -35,12 +34,11 @@ const UniswapPage = () => {
         <ConnectWalletDrawerContent />
       </Drawer>
 
-      <AspectRatio
-        className="relative w-full"
-        ratio={16 / 9}
+      <Stack
+        className="relative h-full w-full"
         bg="radial-gradient(100% 100% at 50% 0%, rgba(255, 184, 226, 0.51) 0%, rgba(255, 255, 255, 0) 100%), rgb(255, 255, 255)">
         <PepaLogo />
-        <Center>
+        <Center className="h-full">
           <Card withBorder>
             <Tabs color="pink" defaultValue="swap">
               <Group position="apart">
@@ -77,7 +75,7 @@ const UniswapPage = () => {
             </Tabs>
           </Card>
         </Center>
-      </AspectRatio>
+      </Stack>
     </>
   )
 }
