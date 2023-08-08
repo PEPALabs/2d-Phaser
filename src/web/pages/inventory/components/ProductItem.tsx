@@ -37,7 +37,7 @@ const ProductItem = ({ product, index }: ProductItemProps) => {
       <Card
         ref={ref}
         className={clsx(
-          'overflow-hidden outline outline-2 transition-all',
+          'overflow-hidden bg-white/70 outline outline-2 transition-all',
           focused ? 'scale-110 shadow-lg outline-pepa-gold' : 'outline-gray-200'
         )}
         onClick={() => focusSelf()}>

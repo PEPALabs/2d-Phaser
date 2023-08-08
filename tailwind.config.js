@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
@@ -35,5 +37,15 @@ module.exports = {
   variants: {
     margin: ['responsive', 'even']
   },
-  plugins: []
+  plugins: [
+    plugin(({ addComponents }) => {
+      addComponents({
+        '.border-image-primary': {
+          borderImage: 'url(../assets/images/background-border.png)',
+          borderImageSlice: '70 fill',
+          borderWidth: '1rem'
+        }
+      })
+    })
+  ]
 }

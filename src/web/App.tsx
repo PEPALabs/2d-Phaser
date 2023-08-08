@@ -12,7 +12,7 @@ init({})
 
 const getLibrary = provider => new Web3Provider(provider)
 
-type ExtendedCustomColors = 'second' | DefaultMantineColor
+type ExtendedCustomColors = 'primary' | DefaultMantineColor
 
 declare module '@mantine/core' {
   export interface MantineThemeColorsOverride {
@@ -20,7 +20,7 @@ declare module '@mantine/core' {
   }
 }
 
-const second: Tuple<string, 10> = [
+const primary: Tuple<string, 10> = [
   '#FBF5EE',
   '#F3E9DD',
   '#E8D0B5',
@@ -39,7 +39,11 @@ function App() {
       <MantineProvider
         withGlobalStyles
         withNormalizeCSS
-        theme={{ defaultRadius: 'md', colors: { second } }}>
+        theme={{
+          defaultRadius: 'xs',
+          primaryColor: 'primary',
+          colors: { primary }
+        }}>
         <Notifications position="top-center" />
         <RouterProvider router={router} />
       </MantineProvider>

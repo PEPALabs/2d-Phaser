@@ -36,9 +36,12 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
   const handlers = useRef<NumberInputHandlers>()
 
   return (
-    <Alert className="w-full" my="xs" color="blue">
+    <Alert
+      className="border-image-primary w-full bg-transparent"
+      my="xs"
+      color="primary">
       <Stack>
-        <Title color="blue" order={3}>
+        <Title color="primary" order={3}>
           {product.name}
         </Title>
         <Text size="md">{product.description}</Text>

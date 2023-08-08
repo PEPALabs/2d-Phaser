@@ -1,5 +1,5 @@
 import React, { type PropsWithChildren } from 'react'
-import { Paper, Stack, Title } from '@mantine/core'
+import { Box, Stack, Title } from '@mantine/core'
 
 interface ResourceSectionProps {
   name: string
@@ -11,15 +11,12 @@ const ResourceSection = ({
 }: PropsWithChildren<ResourceSectionProps>) => {
   return (
     <Stack spacing="xs">
-      <Title order={3}>{name}</Title>
-      <Paper
-        p="xl"
-        className="transition-shadow"
-        withBorder
-        shadow="sm"
-        sx={theme => ({ ...theme.fn.hover({ boxShadow: theme.shadows.xl }) })}>
+      <Title color="primary" order={3}>
+        {name}
+      </Title>
+      <Box p="xl" className="border-image-primary">
         {children}
-      </Paper>
+      </Box>
     </Stack>
   )
 }

@@ -25,7 +25,7 @@ function InventoryUI() {
   const selectedProduct = categorizedProducts[index]
 
   return (
-    <Stack className="h-full overflow-hidden">
+    <Stack className="h-full w-full overflow-hidden">
       <Group className="w-full" position="apart">
         <ProductCategoryTabs />
         <Group spacing="sm">
