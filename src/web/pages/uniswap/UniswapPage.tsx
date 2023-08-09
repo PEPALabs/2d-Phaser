@@ -18,6 +18,7 @@ import { IconArrowDown } from '@tabler/icons-react'
 import { useDisclosure } from '@mantine/hooks'
 import PepaLogo from './components/PepaLogo'
 import ConnectWalletDrawerContent from './components/ConnectWalletDrawerContent'
+import { SwapWidget } from '@uniswap/widgets'
 
 const UniswapPage = () => {
   const [opened, handlers] = useDisclosure(false)
@@ -51,7 +52,7 @@ const UniswapPage = () => {
               <Space h={24} />
               <Tabs.Panel value="swap">
                 <Flex direction={opened ? 'column-reverse' : 'column'}>
-                  <TokenNumberInput />
+                  {/* <TokenNumberInput />
                   <ActionIcon
                     variant="light"
                     size="lg"
@@ -59,7 +60,8 @@ const UniswapPage = () => {
                     onClick={handlers.toggle}>
                     <IconArrowDown />
                   </ActionIcon>
-                  <TokenNumberInput />
+                  <TokenNumberInput /> */}
+                  <SwapWidget />
                 </Flex>
                 <Button
                   variant="light"
