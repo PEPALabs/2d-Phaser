@@ -44,6 +44,11 @@ module.exports = {
           borderImage: 'url(../assets/images/background-border.png)',
           borderImageSlice: '70 fill',
           borderWidth: '1rem'
+        },
+        '.border-image-second': {
+          borderImage: 'url(../assets/images/background-border2.png)',
+          borderImageSlice: '20 fill',
+          borderWidth: '0.5rem'
         }
       })
     })

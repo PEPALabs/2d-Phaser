@@ -79,9 +79,8 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
               </ActionIcon>
             </Group>
           </InventoryBarSection>
-          <div className="flex space-x-1 self-end">
+          <Group position="apart">
             <Button
-              className="self-end bg-pepa-pink hover:bg-pepa-darkPink focus:outline-none focus:ring-pepa-darkPink"
               rightIcon={<IconArrowRight />}
               disabled={count === 0 || +product.value === 0}
               onClick={() => {
@@ -90,7 +89,6 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
               Use
             </Button>
             <Button
-              className="self-end bg-pepa-pink hover:bg-pepa-darkPink focus:outline-none focus:ring-pepa-darkPink"
               rightIcon={<IconTrash />}
               disabled={count === 0 || +product.value === 0}
               onClick={() => {
@@ -98,7 +96,7 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
               }}>
               Drop
             </Button>
-          </div>
+          </Group>
         </Stack>
       </Stack>
     </Alert>

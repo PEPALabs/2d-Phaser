@@ -19,6 +19,7 @@ import {
 import { Link, useMatch } from 'react-router-dom'
 import ChatBox from '../../widgets/ChatBox'
 import { TargetId } from '../../../web/widgets/GuidedTours/getSteps'
+import NabBarParchmentBackground from './NabBarParchmentBackground'
 
 const navList = [
   {
@@ -55,7 +56,8 @@ const AppNavBar = () => {
   const match = useMatch({ path: 'login' })
 
   return (
-    <Navbar width={{ base: 300 }} p="xs" className="gap-y-4">
+    <Navbar width={{ base: 300 }} withBorder={false} p="xs" className="gap-y-4">
+      <NabBarParchmentBackground />
       <Navbar.Section>
         {navList.map(navItem => (
           <NavLink
@@ -72,19 +74,17 @@ const AppNavBar = () => {
           />
         ))}
       </Navbar.Section>
-      <Divider />
+      <Divider color="primary" size="sm" />
       {match ? <Navbar.Section grow>{null}</Navbar.Section> : <ChatBox />}
-      <Divider />
+      <Divider color="primary" size="sm" />
       <Navbar.Section>
         <Group p="xs">
-          <Avatar color="blue" />
+          <Avatar color="primary" />
           <Box>
             <Text size="sm" weight={500}>
               HelloWorld
             </Text>
-            <Text color="dimmed" size="xs">
-              helloworld@gmail.com
-            </Text>
+            <Text size="xs">helloworld@gmail.com</Text>
           </Box>
         </Group>
       </Navbar.Section>
