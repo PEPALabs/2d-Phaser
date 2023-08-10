@@ -7,7 +7,8 @@ import {
   Divider,
   Avatar,
   Group,
-  Box
+  Box,
+  Stack
 } from '@mantine/core'
 import {
   IconDashboard,
@@ -63,20 +64,27 @@ const AppNavBar = () => {
       className="gap-y-4 bg-transparent">
       <NabBarParchmentBackground />
       <Navbar.Section>
-        {navList.map(navItem => (
-          <NavLink
-            key={navItem.text}
-            component={Link}
-            to={navItem.path}
-            label={<Text size="md">{navItem.text}</Text>}
-            icon={
-              <ThemeIcon color={navItem.color} variant="light">
-                <navItem.icon size="1rem" />
-              </ThemeIcon>
-            }
-            id={navItem.id}
-          />
-        ))}
+        <Stack spacing="xs">
+          {navList.map(navItem => (
+            <Box
+              key={navItem.text}
+              className="border-image-third transition-transform hover:scale-105">
+              <NavLink
+                className="hover:bg-transparent"
+                py={4}
+                component={Link}
+                to={navItem.path}
+                label={<Text size="md">{navItem.text}</Text>}
+                icon={
+                  <ThemeIcon color={navItem.color} variant="light">
+                    <navItem.icon size="1rem" />
+                  </ThemeIcon>
+                }
+                id={navItem.id}
+              />
+            </Box>
+          ))}
+        </Stack>
       </Navbar.Section>
       <Divider color="primary" size="sm" />
       {match ? <Navbar.Section grow>{null}</Navbar.Section> : <ChatBox />}

@@ -24,13 +24,17 @@ function ShopUI() {
 
   return (
     <Stack className="h-full w-full overflow-hidden">
-      <Group className="w-full" position="apart">
-        <ProductCategoryTabs />
-        <Group spacing="sm">
-          <Image width={36} height={36} src="/assets/coin.png" />
-          <Text>User Balance: {balance} ETH</Text>
-        </Group>
-      </Group>
+      <Grid className="w-full" align="center" gutter={0}>
+        <Grid.Col span={9}>
+          <ProductCategoryTabs />
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <Group position="center" spacing="sm">
+            <Image width={36} height={36} src="/assets/coin.png" />
+            <Text size="lg">{balance} ETH</Text>
+          </Group>
+        </Grid.Col>
+      </Grid>
       <Grid className="h-full overflow-hidden">
         <Grid.Col className="h-full" span={9}>
           {categorizedProducts.length > 0 && (
