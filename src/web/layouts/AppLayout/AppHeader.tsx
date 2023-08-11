@@ -6,7 +6,8 @@ import {
   Avatar,
   Title,
   Button,
-  BackgroundImage
+  BackgroundImage,
+  Image
 } from '@mantine/core'
 import { NavLink } from 'react-router-dom'
 import GuidedTours from '../../../web/widgets/GuidedTours'
@@ -28,11 +29,12 @@ const AppHeader = () => {
         src="/assets/images/heroTop-shadow.png"
         px="xl">
         <Group align="center" className="h-full max-w-screen-xl">
-          <Anchor href="https://flowbite.com">
-            <Group align="center" spacing="xs">
-              <Avatar
-                src="https://flowbite.com/docs/images/logo.svg"
-                alt="Flowbite Logo"
+          <Anchor href="/">
+            <Group align="center" spacing="xs" noWrap>
+              <Image
+                src="/assets/images/pepa.png"
+                alt="PEPA Logo"
+                height={40}
               />
               <Title order={2}>PEPA</Title>
             </Group>
