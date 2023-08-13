@@ -5,13 +5,13 @@ import {
   Center,
   CloseButton,
   Container,
-  Paper,
   SimpleGrid,
   Stack,
   Title
 } from '@mantine/core'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import GameCanvas from '../../widgets/GameCanvas'
+import ParchmentBackground from './ParchmentBackground'
 
 const pageTitles = {
   '/shop': 'PEPA Shop',
@@ -33,36 +33,33 @@ const GameLayout = () => {
   }
 
   return (
-    <Container className="h-full" size="xl">
+    <Container className="h-full max-w-screen-2xl">
       <GameCanvas />
       <Center className="relative h-full">
         <GameCanvas />
         {pageTitle && (
-          <Paper
-            className="absolute w-11/12 overflow-hidden border border-amber-700 bg-cover bg-center"
-            bg="radial-gradient(rgb(229, 195, 158), rgb(232, 196, 156))"
-            p="lg"
-            shadow="lg">
-            <AspectRatio className="w-full" ratio={16 / 9}>
-              <Stack>
-                <SimpleGrid cols={3} className="w-full">
-                  <Box />
-                  <Title
-                    className="justify-self-center font-title"
-                    color="second">
-                    {pageTitle}
-                  </Title>
-                  <CloseButton
-                    className="self-center justify-self-end"
-                    color="second"
-                    size="lg"
-                    onClick={handleGoBack}
-                  />
-                </SimpleGrid>
-                <Outlet />
-              </Stack>
-            </AspectRatio>
-          </Paper>
+          <>
+            <Box className="absolute w-11/12 overflow-hidden" p="lg">
+              <ParchmentBackground />
+              <AspectRatio className="w-full" ratio={16 / 9}>
+                <Stack className="!justify-start">
+                  <SimpleGrid cols={3} className="w-full">
+                    <Box />
+                    <Title className="justify-self-center" color="primary">
+                      {pageTitle}
+                    </Title>
+                    <CloseButton
+                      className="self-center justify-self-end"
+                      color="primary"
+                      size="lg"
+                      onClick={handleGoBack}
+                    />
+                  </SimpleGrid>
+                  <Outlet />
+                </Stack>
+              </AspectRatio>
+            </Box>
+          </>
         )}
       </Center>
     </Container>

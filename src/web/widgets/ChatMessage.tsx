@@ -12,7 +12,7 @@ interface ChatMessageProps {
 function ChatMessage({ message }: ChatMessageProps) {
   return (
     <Group align="flex-start" noWrap spacing="xs">
-      <Avatar color="blue" radius="xl">
+      <Avatar color="primary" radius="xl">
         <IconUser />
       </Avatar>
       <Box>

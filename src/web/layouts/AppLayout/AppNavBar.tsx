@@ -7,7 +7,8 @@ import {
   Divider,
   Avatar,
   Group,
-  Box
+  Box,
+  Stack
 } from '@mantine/core'
 import {
   IconDashboard,
@@ -19,6 +20,7 @@ import {
 import { Link, useMatch } from 'react-router-dom'
 import ChatBox from '../../widgets/ChatBox'
 import { TargetId } from '../../../web/widgets/GuidedTours/getSteps'
+import NabBarParchmentBackground from './NabBarParchmentBackground'
 
 const navList = [
   {
@@ -55,36 +57,46 @@ const AppNavBar = () => {
   const match = useMatch({ path: 'login' })
 
   return (
-    <Navbar width={{ base: 300 }} p="xs" className="gap-y-4">
+    <Navbar
+      width={{ base: 300 }}
+      withBorder={false}
+      p="xs"
+      className="gap-y-4 bg-transparent">
+      <NabBarParchmentBackground />
       <Navbar.Section>
-        {navList.map(navItem => (
-          <NavLink
-            key={navItem.text}
-            component={Link}
-            to={navItem.path}
-            label={<Text size="md">{navItem.text}</Text>}
-            icon={
-              <ThemeIcon color={navItem.color} variant="light">
-                <navItem.icon size="1rem" />
-              </ThemeIcon>
-            }
-            id={navItem.id}
-          />
-        ))}
+        <Stack spacing="xs">
+          {navList.map(navItem => (
+            <Box
+              key={navItem.text}
+              className="border-image-third transition-transform hover:scale-105">
+              <NavLink
+                className="hover:bg-transparent"
+                py={4}
+                component={Link}
+                to={navItem.path}
+                label={<Text size="md">{navItem.text}</Text>}
+                icon={
+                  <ThemeIcon color={navItem.color} variant="light">
+                    <navItem.icon size="1rem" />
+                  </ThemeIcon>
+                }
+                id={navItem.id}
+              />
+            </Box>
+          ))}
+        </Stack>
       </Navbar.Section>
-      <Divider />
+      <Divider color="primary" size="sm" />
       {match ? <Navbar.Section grow>{null}</Navbar.Section> : <ChatBox />}
-      <Divider />
+      <Divider color="primary" size="sm" />
       <Navbar.Section>
         <Group p="xs">
-          <Avatar color="blue" />
+          <Avatar color="primary" />
           <Box>
             <Text size="md" weight={500} className="font-JotiOne">
               HelloWorld
             </Text>
-            <Text color="dimmed" size="xs">
-              helloworld@gmail.com
-            </Text>
+            <Text size="xs">helloworld@gmail.com</Text>
           </Box>
         </Group>
       </Navbar.Section>
