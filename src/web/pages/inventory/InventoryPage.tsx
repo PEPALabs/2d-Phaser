@@ -1,18 +1,6 @@
 import React from 'react'
-import {
-  Text,
-  Group,
-  Stack,
-  Title,
-  Container,
-  Image,
-  Grid,
-  ScrollArea,
-  AspectRatio,
-  Center
-} from '@mantine/core'
+import { Text, Group, Stack, Image, Grid, ScrollArea } from '@mantine/core'
 import ProductList from './components/ProductList'
-import useInventoryStore from './stores/useInventoryStore'
 import InventoryBar from './components/InventoryBar'
 import ProductCategoryTabs from './components/ProductCategoryTabs'
 import useProductCategory from './hooks/useProductCategory'
@@ -37,34 +25,33 @@ function InventoryUI() {
   const selectedProduct = categorizedProducts[index]
 
   return (
-    <AspectRatio className="w-full bg-pepa-blue" ratio={16 / 9}>
-      <Stack className="h-full overflow-hidden" p="xl">
-        <Group className="w-11/12" position="apart">
-          <Title order={2} color="blue">
-            PEPA Inventory
-          </Title>
-          <Group spacing="sm">
+    <Stack className="h-full w-full overflow-hidden">
+      <Grid className="w-full" align="center" gutter={0}>
+        <Grid.Col span={9}>
+          <ProductCategoryTabs />
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <Group position="center" spacing="sm">
             <Image width={36} height={36} src="/assets/coin.png" />
-            <Text>User Balance: {balance} ETH</Text>
+            <Text size="lg">{balance} ETH</Text>
           </Group>
-        </Group>
-        <ProductCategoryTabs />
-        <Grid className="h-full overflow-hidden">
-          <Grid.Col className="h-full" span={9}>
-            {categorizedProducts.length > 0 && (
-              <ScrollArea className="h-full">
-                <ProductList products={categorizedProducts} />
-              </ScrollArea>
-            )}
-          </Grid.Col>
-          <Grid.Col span={3}>
-            {selectedProduct && selectedProduct.name && (
-              <InventoryBar product={selectedProduct} />
-            )}
-          </Grid.Col>
-        </Grid>
-      </Stack>
-    </AspectRatio>
+        </Grid.Col>
+      </Grid>
+      <Grid className="h-full overflow-hidden">
+        <Grid.Col className="h-full" span={9}>
+          {categorizedProducts.length > 0 && (
+            <ScrollArea className="h-full">
+              <ProductList products={categorizedProducts} />
+            </ScrollArea>
+          )}
+        </Grid.Col>
+        <Grid.Col span={3}>
+          {selectedProduct && selectedProduct.name && (
+            <InventoryBar product={selectedProduct} />
+          )}
+        </Grid.Col>
+      </Grid>
+    </Stack>
   )
 }
 

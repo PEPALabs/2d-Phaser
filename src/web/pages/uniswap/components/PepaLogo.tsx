@@ -3,7 +3,7 @@ import React from 'react'
 
 const PepaLogo = () => {
   return (
-    <Box className="absolute !items-start !justify-end " pt="xl" pr={64}>
+    <Box className="absolute right-0" pt="xl" pr={64}>
       <Image
         src="/assets/images/pepa.png"
         height={48}

@@ -27,10 +27,10 @@ const LoginPage = () => {
     <Container size={420}>
       <Space h={100} />
       <Paper p="xl" radius="md" w={400}>
-        <Title color="blue">Welcome to PEPA</Title>
+        <Title color="primary">Welcome to PEPA</Title>
         <Anchor size="xs" color="dimmed">
           Don't have an account?{' '}
-          <Text span color="blue">
+          <Text span color="primary">
             Sign up
           </Text>
         </Anchor>

@@ -31,9 +31,9 @@ const ShoppingBar = ({ product }: ShoppingBarProps) => {
   const handlers = useRef<NumberInputHandlers>()
 
   return (
-    <Alert className="w-full" my="xs" color="blue">
+    <Alert className="w-full border-image-primary bg-transparent" my="xs" color="primary">
       <Stack>
-        <Title color="blue" order={3}>
+        <Title color="primary" order={3}>
           {product.name}
         </Title>
         <Text size="md">{product.description}</Text>

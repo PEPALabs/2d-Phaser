@@ -38,8 +38,6 @@ function QuestCard({
   return (
     <Paper
       withBorder
-      py="md"
-      px="lg"
       radius="lg"
       style={{ borderColor: isActive ? 'transparent' : undefined }}
       sx={
@@ -47,9 +45,14 @@ function QuestCard({
           ...theme.focusRingStyles.styles(theme)
         }
       }
-      className="mb-10 ml-2 mr-5 first:mt-3 last:mb-3"
+      className="mb-10 ml-2 mr-5 overflow-hidden first:mt-3 last:mb-3"
       onClick={onClick}>
-      <UnstyledButton component={Group} position="apart">
+      <UnstyledButton
+        className="border-image-second"
+        py="md"
+        px="lg"
+        component={Group}
+        position="apart">
         <Stack spacing="xs">
           <Box>
             <Text color={theme.primaryColor} size="sm">
@@ -63,7 +66,7 @@ function QuestCard({
             </Badge>
             <Button
               variant="subtle"
-              color="gray"
+              color="dark"
               leftIcon={<IconMapPin size="1rem" />}>
               {questItem.questLocation}
             </Button>

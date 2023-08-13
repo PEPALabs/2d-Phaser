@@ -20,6 +20,7 @@ const ProductCategoryTabs = () => {
 
   return (
     <Tabs
+      className="border-image-primary"
       variant="pills"
       value={category}
       onTabChange={value => {

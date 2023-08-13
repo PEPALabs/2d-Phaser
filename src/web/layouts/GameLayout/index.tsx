@@ -1,9 +1,31 @@
 import React from 'react'
-import { Box, Center, CloseButton, Container, Paper } from '@mantine/core'
-import { Outlet, useNavigate } from 'react-router-dom'
+import {
+  AspectRatio,
+  Box,
+  Center,
+  CloseButton,
+  Container,
+  SimpleGrid,
+  Stack,
+  Title
+} from '@mantine/core'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import GameCanvas from '../../widgets/GameCanvas'
+import ParchmentBackground from './ParchmentBackground'
+
+const pageTitles = {
+  '/shop': 'PEPA Shop',
+  '/uniswap': 'Uniswap',
+  '/inventory': 'PEPA Inventory',
+  '/quests': 'PEPA Quest Book',
+  '/resources': 'PEPA Dashboard'
+}
 
 const GameLayout = () => {
+  const location = useLocation()
+
+  const pageTitle = pageTitles[location.pathname]
+
   const navigate = useNavigate()
 
   const handleGoBack = () => {
@@ -11,21 +33,34 @@ const GameLayout = () => {
   }
 
   return (
-    <Container className="h-full" size="xl">
+    <Container className="h-full max-w-screen-2xl">
       <GameCanvas />
       <Center className="relative h-full">
         <GameCanvas />
-        <Box className="absolute w-11/12">
-          <Paper className="relative overflow-hidden" shadow="lg">
-            <CloseButton
-              className="absolute right-4 top-4 z-10"
-              color="blue"
-              size="lg"
-              onClick={handleGoBack}
-            />
-            <Outlet />
-          </Paper>
-        </Box>
+        {pageTitle && (
+          <>
+            <Box className="absolute w-11/12 overflow-hidden" p="lg">
+              <ParchmentBackground />
+              <AspectRatio className="w-full" ratio={16 / 9}>
+                <Stack className="!justify-start">
+                  <SimpleGrid cols={3} className="w-full">
+                    <Box />
+                    <Title className="justify-self-center" color="primary">
+                      {pageTitle}
+                    </Title>
+                    <CloseButton
+                      className="self-center justify-self-end"
+                      color="primary"
+                      size="lg"
+                      onClick={handleGoBack}
+                    />
+                  </SimpleGrid>
+                  <Outlet />
+                </Stack>
+              </AspectRatio>
+            </Box>
+          </>
+        )}
       </Center>
     </Container>
   )
