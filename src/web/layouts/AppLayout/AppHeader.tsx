@@ -6,7 +6,8 @@ import {
   Avatar,
   Title,
   Button,
-  BackgroundImage
+  BackgroundImage,
+  Image
 } from '@mantine/core'
 import { NavLink } from 'react-router-dom'
 import GuidedTours from '../../../web/widgets/GuidedTours'
