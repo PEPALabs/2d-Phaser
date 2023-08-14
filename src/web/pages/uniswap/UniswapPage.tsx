@@ -10,6 +10,12 @@ const theme: Theme = {
   fontFamily: '"Comic Neue"'
 }
 
+const css = `
+.uniswap [color='container'] > div > div:nth-child(3) {
+  position: relative;
+}
+`
+
 const UniswapPage = () => {
   const web3React = useWeb3React()
 
@@ -26,6 +32,7 @@ const UniswapPage = () => {
 
   return (
     <>
+      <style>{css}</style>
       <Stack
         className="relative h-full w-full"
         bg="radial-gradient(100% 100% at 50% 0%, rgba(255, 184, 226, 0.51) 0%, rgba(255, 255, 255, 0) 100%), rgb(255, 255, 255)">
@@ -41,13 +48,15 @@ const UniswapPage = () => {
               </Group>
               <Space h={16} />
               <Tabs.Panel value="swap">
-                <SwapWidget
-                  width="100%"
-                  className="mx-auto"
-                  provider={web3React.library}
-                  onConnectWalletClick={onConnectClick}
-                  theme={theme}
-                />
+                <div className="uniswap">
+                  <SwapWidget
+                    width="100%"
+                    className="mx-auto"
+                    provider={web3React.library}
+                    onConnectWalletClick={onConnectClick}
+                    theme={theme}
+                  />
+                </div>
               </Tabs.Panel>
               <Tabs.Panel value="buy">{null}</Tabs.Panel>
             </Tabs>

@@ -31,7 +31,7 @@ const PlantCard = ({ plant }: PlantCardProps) => {
   }
 
   return (
-    <Card withBorder>
+    <Card className="border-image-second border-solid">
       <Flex justify="space-between" align="center">
         <Group spacing="xs" noWrap>
           <Image width={80} height={80} src={null} withPlaceholder />
@@ -39,9 +39,7 @@ const PlantCard = ({ plant }: PlantCardProps) => {
             <Title order={5} className="tracking-wider">
               {plant.name}
             </Title>
-            <Text size="sm" color="dimmed">
-              {plant.description}
-            </Text>
+            <Text size="sm">{plant.description}</Text>
           </Stack>
         </Group>
         <Flex className="basis-24" justify="flex-end">

@@ -12,6 +12,7 @@ const AppLayout = () => {
     <AppShell
       header={<AppHeader />}
       navbar={<AppNavBar />}
+      bg="url(/assets/images/main-background.png)"
       padding={0}
       styles={{ main: { maxHeight: '100vh' } }}>
       <Outlet />

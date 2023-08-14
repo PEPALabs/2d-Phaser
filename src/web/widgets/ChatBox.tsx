@@ -44,8 +44,14 @@ function ChatBox() {
 
   return (
     <>
-      <Title order={3}>Chat History</Title>
-      <Navbar.Section grow component={ScrollArea} viewportRef={viewportRef}>
+      <Title color="primary" order={3}>
+        Chat History
+      </Title>
+      <Navbar.Section
+        className="border-image-primary border-solid"
+        grow
+        component={ScrollArea}
+        viewportRef={viewportRef}>
         <Stack spacing="lg">
           {messages
             .filter(item => item.message.trim() !== '')
