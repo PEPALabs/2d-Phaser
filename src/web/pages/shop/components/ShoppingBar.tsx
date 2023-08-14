@@ -31,7 +31,10 @@ const ShoppingBar = ({ product }: ShoppingBarProps) => {
   const handlers = useRef<NumberInputHandlers>()
 
   return (
-    <Alert className="w-full border-image-primary bg-transparent" my="xs" color="primary">
+    <Alert
+      className="border-image-primary w-full border-solid bg-transparent"
+      my="xs"
+      color="primary">
       <Stack>
         <Title color="primary" order={3}>
           {product.name}

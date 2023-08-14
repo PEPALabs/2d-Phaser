@@ -68,7 +68,7 @@ const AppNavBar = () => {
           {navList.map(navItem => (
             <Box
               key={navItem.text}
-              className="border-image-third transition-transform hover:scale-105">
+              className="border-image-third border-solid transition-transform hover:scale-105">
               <NavLink
                 className="hover:bg-transparent"
                 py={4}

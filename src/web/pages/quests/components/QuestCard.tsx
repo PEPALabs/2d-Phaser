@@ -48,7 +48,7 @@ function QuestCard({
       className="mb-10 ml-2 mr-5 overflow-hidden first:mt-3 last:mb-3"
       onClick={onClick}>
       <UnstyledButton
-        className="border-image-second"
+        className="border-image-second border-solid"
         py="md"
         px="lg"
         component={Group}

@@ -37,7 +37,7 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
 
   return (
     <Alert
-      className="border-image-primary w-full bg-transparent"
+      className="border-image-primary w-full border-solid bg-transparent"
       my="xs"
       color="primary">
       <Stack>

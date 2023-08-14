@@ -31,7 +31,7 @@ const PlantCard = ({ plant }: PlantCardProps) => {
   }
 
   return (
-    <Card className="border-image-second">
+    <Card className="border-image-second border-solid">
       <Flex justify="space-between" align="center">
         <Group spacing="xs" noWrap>
           <Image width={80} height={80} src={null} withPlaceholder />
