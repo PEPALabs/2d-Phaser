@@ -31,7 +31,9 @@ function ShopUI() {
         <Grid.Col span={3}>
           <Group position="center" spacing="sm">
             <Image width={36} height={36} src="/assets/coin.png" />
-            <Text size="lg">{balance} ETH</Text>
+            <Text size="lg" className="font-bold tracking-wider">
+              {balance} ETH
+            </Text>
           </Group>
         </Grid.Col>
       </Grid>
