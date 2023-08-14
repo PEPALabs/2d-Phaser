@@ -6,6 +6,15 @@ module.exports = {
   corePlugins: { preflight: false },
   theme: {
     extend: {
+      fontFamily: {
+        normalText: ['Comic Neue', 'cursive'],
+        Chewy: ['Chewy', 'cursive'],
+        JotiOne: ['Joti One', 'cursive'],
+        Kranky: ['Kranky', 'cursive'],
+        LakkiReddy: ['Lakki Reddy', 'cursive'],
+        Mansalva: ['Mansalva', 'cursive'],
+        title: ['Rampart One', 'cursive']
+      },
       colors: {
         zelda: {
           bgBlackTransparent: 'rgba(0, 0, 0, 0.5)',

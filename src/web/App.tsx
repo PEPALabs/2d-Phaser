@@ -40,6 +40,7 @@ function App() {
         withGlobalStyles
         withNormalizeCSS
         theme={{
+          fontFamily: 'Comic Neue, cursive',
           defaultRadius: 'xs',
           primaryColor: 'primary',
           colors: { primary }

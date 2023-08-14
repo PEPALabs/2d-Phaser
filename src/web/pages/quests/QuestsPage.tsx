@@ -1,5 +1,13 @@
 import React from 'react'
-import { Text, Group, Stack, Image, ScrollArea } from '@mantine/core'
+import {
+  Text,
+  Group,
+  Stack,
+  Image,
+  ScrollArea,
+  AspectRatio,
+  Title
+} from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
 import QuestCategoryTabs from './components/QuestCategoryTabs'
 import QuestCard from './components/QuestCard'
@@ -57,7 +65,9 @@ function QuestsPage() {
         <QuestCategoryTabs />
         <Group spacing="sm">
           <Image width={36} height={36} src="/assets/coin.png" />
-          <Text>User Balance: 1000 ETH</Text>
+          <Text className="font-bold tracking-wider">
+            User Balance: 1000 ETH
+          </Text>
         </Group>
       </Group>
       <Stack className="h-full w-full overflow-hidden">

@@ -68,7 +68,7 @@ const AppNavBar = () => {
           {navList.map(navItem => (
             <Box
               key={navItem.text}
-              className="border-image-third transition-transform hover:scale-105">
+              className="border-image-third border-solid transition-transform hover:scale-105">
               <NavLink
                 className="hover:bg-transparent"
                 py={4}
@@ -93,7 +93,7 @@ const AppNavBar = () => {
         <Group p="xs">
           <Avatar color="primary" />
           <Box>
-            <Text size="sm" weight={500}>
+            <Text size="md" weight={500} className="font-JotiOne">
               HelloWorld
             </Text>
             <Text size="xs">helloworld@gmail.com</Text>

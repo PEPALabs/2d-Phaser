@@ -11,10 +11,13 @@ const ResourceSection = ({
 }: PropsWithChildren<ResourceSectionProps>) => {
   return (
     <Stack spacing="xs">
-      <Title color="primary" order={3}>
+      <Title
+        color="primary"
+        order={3}
+        className="font-JotiOne tracking-wide text-black/70">
         {name}
       </Title>
-      <Box p="xl" className="border-image-primary">
+      <Box p="xl" className="border-image-primary border-solid">
         {children}
       </Box>
     </Stack>

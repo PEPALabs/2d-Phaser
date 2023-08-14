@@ -29,14 +29,12 @@ const AppHeader = () => {
         src="/assets/images/heroTop-shadow.png"
         px="xl">
         <Group align="center" className="h-full max-w-screen-xl">
-          <Anchor href="/">
-            <Group align="center" spacing="xs" noWrap>
-              <Image
-                src="/assets/images/pepa.png"
-                alt="PEPA Logo"
-                height={40}
-              />
-              <Title order={2}>PEPA</Title>
+          <Anchor className="hover:no-underline">
+            <Group align="center" spacing="xs">
+              <Avatar src="/assets/images/pepa.png" className="h-full w-16" />
+              <Title className="font-title text-pepa-pink" order={2}>
+                PEPA
+              </Title>
             </Group>
           </Anchor>
           <Group spacing="xl" position="center" className="grow">

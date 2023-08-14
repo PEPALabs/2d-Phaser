@@ -48,7 +48,7 @@ function ChatBox() {
         Chat History
       </Title>
       <Navbar.Section
-        className="border-image-primary"
+        className="border-image-primary border-solid"
         grow
         component={ScrollArea}
         viewportRef={viewportRef}>
