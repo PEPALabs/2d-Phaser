@@ -3,3 +3,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Fix 'jumping scrollbar' issue */
+html {
+  width: 100vw;
+  overflow-x: hidden;
+}

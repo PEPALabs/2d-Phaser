@@ -73,7 +73,7 @@ const AppNavBar = () => {
                 className="hover:bg-transparent"
                 py={4}
                 component={Link}
-                to={navItem.path}
+                to={navItem.path ?? '/login'}
                 label={<Text size="md">{navItem.text}</Text>}
                 icon={
                   <ThemeIcon color={navItem.color} variant="light">

@@ -6,8 +6,7 @@ import {
   Avatar,
   Title,
   Button,
-  BackgroundImage,
-  Image
+  BackgroundImage
 } from '@mantine/core'
 import { NavLink } from 'react-router-dom'
 import GuidedTours from '../../../web/widgets/GuidedTours'
@@ -28,27 +27,29 @@ const AppHeader = () => {
         className="h-full"
         src="/assets/images/heroTop-shadow.png"
         px="xl">
-        <Group align="center" className="h-full max-w-screen-xl">
-          <Anchor className="hover:no-underline">
-            <Group align="center" spacing="xs">
-              <Avatar src="/assets/images/pepa.png" className="h-full w-16" />
-              <Title className="font-title text-pepa-pink" order={2}>
-                PEPA
-              </Title>
+        <Group className="h-full" position="apart" noWrap>
+          <Group align="center" className="h-full grow-[0.5]" noWrap>
+            <Anchor className="hover:no-underline">
+              <Group align="center" spacing="xs" noWrap>
+                <Avatar src="/assets/images/pepa.png" className="h-full w-16" />
+                <Title className="font-title text-pepa-pink" order={2}>
+                  PEPA
+                </Title>
+              </Group>
+            </Anchor>
+            <Group spacing="xl" position="center" className="grow" noWrap>
+              {headerNavList.map(navItem => (
+                <NavLink key={navItem.to} to={navItem.to} id={navItem.id}>
+                  {({ isActive }) => (
+                    <Button variant={isActive ? 'filled' : 'light'}>
+                      {navItem.name}
+                    </Button>
+                  )}
+                </NavLink>
+              ))}
             </Group>
-          </Anchor>
-          <Group spacing="xl" position="center" className="grow">
-            {headerNavList.map(navItem => (
-              <NavLink key={navItem.to} to={navItem.to} id={navItem.id}>
-                {({ isActive }) => (
-                  <Button variant={isActive ? 'filled' : 'light'}>
-                    {navItem.name}
-                  </Button>
-                )}
-              </NavLink>
-            ))}
-            <GuidedTours />
           </Group>
+          <GuidedTours />
         </Group>
       </BackgroundImage>
     </Header>

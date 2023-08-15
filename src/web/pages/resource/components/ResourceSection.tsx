@@ -13,7 +13,7 @@ const ResourceSection = ({
     <Stack spacing="xs">
       <Title
         color="primary"
-        order={3}
+        order={2}
         className="font-JotiOne tracking-wide text-black/70">
         {name}
       </Title>

@@ -8,7 +8,10 @@ import PlantList from './components/PlantList'
 const ResourcePage = () => {
   return (
     <Center className="h-full">
-      <Group className="gap-10" align="flex-start">
+      <Group
+        className="border-image-primary gap-10 border-solid"
+        align="flex-start"
+        p="md">
         <Stack className="gap-10">
           <UserProfile />
           <ResourceList />
