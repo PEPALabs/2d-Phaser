@@ -63,6 +63,11 @@ module.exports = {
           borderImage: 'url(../assets/images/background-border3.png)',
           borderImageSlice: '40 fill',
           borderWidth: '0.5rem'
+        },
+        '.border-image-dialog': {
+          borderImage: 'url(../assets/images/dialog-borderbox.png)',
+          borderImageSlice: '40 fill',
+          borderWidth: '0.5rem'
         }
       })
     })
