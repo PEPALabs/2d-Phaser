@@ -12,6 +12,11 @@
                 "key": "arrow"
             },
             {
+                "url": "assets/arrow.png",
+                "type": "image",
+                "key": "arrow"
+            },
+            {
                 "url": "assets/bundle1.png",
                 "frameConfig": {
                     "frameWidth": 32,
@@ -43,9 +48,9 @@
                 "key": "Button_Green"
             },
             {
-                "url": "assets/arrow.png",
+                "url": "assets/images/狐狸NPC.png",
                 "type": "image",
-                "key": "arrow"
+                "key": "fox"
             },
             {
                 "url": "assets/FufuSuperDino.png",
@@ -99,9 +104,40 @@
                 "key": "pig-spritesheet1"
             },
             {
-                "url": "assets/images/狐狸NPC.png",
+                "url": "assets/Plant.png",
                 "type": "image",
-                "key": "fox"
+                "key": "Plant"
+            },
+            {
+                "url": "assets/portal2-scaled.png",
+                "frameConfig": {
+                    "frameWidth": 600,
+                    "frameHeight": 600,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "portal2-scaled"
+            },
+            {
+                "url": "assets/portal3.png",
+                "type": "image",
+                "key": "portal3"
+            },
+            {
+                "url": "assets/portalRings2.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "portalRings2"
             }
         ]
     },

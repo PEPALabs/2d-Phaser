@@ -24,8 +24,8 @@ const items= {
     },
     {
       name: 'Random Item',
-      category: ItemCategoriesType.PLANTS,
-      icon: PUBLIC_URL + 'assets/guapen.png',
+      category: ItemCategoriesType.WEAPON,
+      icon: PUBLIC_URL + 'items/shields/BotW_Wooden_Shield_Icon.png',
       value: '1',
       description: 'A random item that is not in the game.',
       price: 300

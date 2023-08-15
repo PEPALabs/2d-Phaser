@@ -47,7 +47,15 @@ export default class Plant {
 	private validPlant: boolean = false;
 	// Write your code here.
 
-	protected start(){
+	// protected start(){
+	// 	this.initialize()
+	// }
+
+	// onCollide(){
+
+	// }
+
+	public initialize(){
 		this.validPlant = this.gameStore.getState().plants[this.ID] != null;
 		this.player = this.scene.children.getByName("player") as Phaser.Physics.Arcade.Sprite;
 		this.plantTime = this.scene.time.now;
@@ -55,10 +63,6 @@ export default class Plant {
 		this.showActionButton();
 		console.log("plant start", this.plantState, this.ID);
 	}
-
-	// onCollide(){
-
-	// }
 
 
 	startState(){
@@ -71,11 +75,11 @@ export default class Plant {
 					this.displayImage.setTexture(null);
 					break;
 				case "PLANTING":
-					this.displayImage.setTexture("guapen");
+					this.displayImage.setTexture("Plant");
 					this.actionButton.setActive(false);
 					break;
 				case "READY":	
-					this.displayImage.setTexture("guapen");
+					this.displayImage.setTexture("Plant");
 					this.actionButton.setActive(true);
 					break;
 			}
