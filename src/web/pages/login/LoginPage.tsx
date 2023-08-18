@@ -14,14 +14,14 @@ import {
   Box,
   Space
 } from '@mantine/core'
-import { useNavigate } from 'react-router-dom'
+import useLoginForm from './useLoginForm'
 
 const LoginPage = () => {
   // TODO: add connect wallet to button here
 
   // TODO: solve input speed slow issue
 
-  const navigate = useNavigate()
+  const { form, handleSubmit, isPending } = useLoginForm()
 
   return (
     <Container size={420}>
@@ -29,34 +29,34 @@ const LoginPage = () => {
       <Paper p="xl" radius="md" w={400}>
         <Title color="primary">Welcome to PEPA</Title>
         <Anchor size="xs" color="dimmed">
-          Don't have an account?{' '}
+          Do not have an account yet?{' '}
           <Text span color="primary">
             Sign up
           </Text>
         </Anchor>
-        <Box
-          component="form"
-          mt="xl"
-          onSubmit={event => {
-            event.preventDefault()
-            navigate('/home')
-          }}>
+        <Box component="form" mt="xl" onSubmit={handleSubmit}>
           <Stack>
-            <TextInput placeholder="Your email" label="Email" withAsterisk />
+            <TextInput
+              placeholder="Your email"
+              label="Email"
+              withAsterisk
+              {...form.getInputProps('email')}
+            />
             <PasswordInput
               placeholder="Your password"
               label="Password"
               withAsterisk
+              {...form.getInputProps('password')}
             />
           </Stack>
           <Stack mt="xl">
             <Group position="apart">
-              <Checkbox label="Remember me" />
+              <Checkbox label="Remember me" defaultChecked />
               <Anchor component="button" size="sm">
                 Forgot password?
               </Anchor>
             </Group>
-            <Button type="submit" fullWidth>
+            <Button type="submit" fullWidth loading={isPending}>
               Login
             </Button>
           </Stack>
