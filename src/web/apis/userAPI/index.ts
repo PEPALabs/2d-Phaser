@@ -5,6 +5,9 @@ const userAPI = {
   login: () => ({
     mutationFn: (params: LoginDTO) =>
       httpClient.post('login', { json: params }).json<LoginData>()
+  }),
+  logout: () => ({
+    mutationFn: () => httpClient.get('logout').json()
   })
 }
 

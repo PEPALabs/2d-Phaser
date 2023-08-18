@@ -1,6 +1,7 @@
 import ky from 'ky'
 import { notifications } from '@mantine/notifications'
 import env from '../shared/env'
+import useAuthStore from '../shared/useAuthStore'
 
 interface APIResponse {
   code: number
@@ -12,6 +13,15 @@ const httpClient = ky.create({
   prefixUrl: env.BASE_API_PATH,
   retry: 0,
   hooks: {
+    beforeRequest: [
+      request => {
+        const authState = useAuthStore.getState()
+
+        if (authState.token) {
+          request.headers.set('Authorization', `Bearer ${authState.token}`)
+        }
+      }
+    ],
     afterResponse: [
       async (_request, _options, response) => {
         const json: APIResponse = await response.json()

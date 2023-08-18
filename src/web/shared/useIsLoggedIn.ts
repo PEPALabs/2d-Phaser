@@ -1,9 +1,9 @@
 import useAuthStore from './useAuthStore'
 
 const useIsLoggedIn = () => {
-  const accessToken = useAuthStore(state => state.token)
+  const token = useAuthStore(state => state.token)
 
-  return !!accessToken
+  return !!token
 }
 
 export default useIsLoggedIn
