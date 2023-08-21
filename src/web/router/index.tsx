@@ -2,6 +2,7 @@ import React from 'react'
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
   Route
 } from 'react-router-dom'
 
@@ -20,6 +21,7 @@ import RequireAuthLayout from '../layouts/RequireAuthLayout'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
+      <Route index element={<Navigate to="/home" replace />} />
       <Route path="login" element={<LoginPage />} />
       <Route element={<RequireAuthLayout />}>
         <Route element={<GameLayout />}>

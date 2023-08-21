@@ -11,9 +11,9 @@ import {
 import { NavLink } from 'react-router-dom'
 import GuidedTours from '../../../web/widgets/GuidedTours'
 import { TargetId } from '../../widgets/GuidedTours/getSteps'
+import useIsLoggedIn from '../../shared/useIsLoggedIn'
 
 const headerNavList = [
-  { name: 'Login', to: 'login' },
   { name: 'Shop', to: 'shop', id: TargetId.Shop },
   { name: 'Home', to: 'home', id: TargetId.Game },
   { name: 'Uniswap', to: 'uniswap', id: TargetId.Uniswap },
@@ -21,6 +21,8 @@ const headerNavList = [
 ]
 
 const AppHeader = () => {
+  const isLoggedIn = useIsLoggedIn()
+
   return (
     <Header height={64} className="bg-transparent" withBorder={false}>
       <BackgroundImage
@@ -37,19 +39,22 @@ const AppHeader = () => {
                 </Title>
               </Group>
             </Anchor>
-            <Group spacing="xl" position="center" className="grow" noWrap>
-              {headerNavList.map(navItem => (
-                <NavLink key={navItem.to} to={navItem.to} id={navItem.id}>
-                  {({ isActive }) => (
-                    <Button variant={isActive ? 'filled' : 'light'}>
-                      {navItem.name}
-                    </Button>
-                  )}
-                </NavLink>
-              ))}
-            </Group>
+
+            {isLoggedIn && (
+              <Group spacing="xl" position="center" className="grow" noWrap>
+                {headerNavList.map(navItem => (
+                  <NavLink key={navItem.to} to={navItem.to} id={navItem.id}>
+                    {({ isActive }) => (
+                      <Button variant={isActive ? 'filled' : 'light'}>
+                        {navItem.name}
+                      </Button>
+                    )}
+                  </NavLink>
+                ))}
+              </Group>
+            )}
           </Group>
-          <GuidedTours />
+          {isLoggedIn && <GuidedTours />}
         </Group>
       </BackgroundImage>
     </Header>
