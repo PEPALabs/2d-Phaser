@@ -5,6 +5,7 @@ import { RouterProvider } from 'react-router-dom'
 import { init } from '@noriginmedia/norigin-spatial-navigation'
 import { Web3ReactProvider } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import router from './router'
 
@@ -33,6 +34,8 @@ const primary: Tuple<string, 10> = [
   '#8F591F'
 ]
 
+const queryClient = new QueryClient()
+
 function App() {
   return (
     <Web3ReactProvider getLibrary={getLibrary}>
@@ -46,7 +49,9 @@ function App() {
           colors: { primary }
         }}>
         <Notifications position="top-center" />
-        <RouterProvider router={router} />
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
       </MantineProvider>
     </Web3ReactProvider>
   )

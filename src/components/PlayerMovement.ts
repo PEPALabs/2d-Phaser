@@ -23,6 +23,10 @@ export default class PlayerMovement {
     const scene = this.gameObject.scene
     this.scene = scene
     this.cursors = scene.input.keyboard.createCursorKeys()
+    this.keyW = this.scene.input.keyboard.addKey('W')
+    this.keyA = this.scene.input.keyboard.addKey('A')
+    this.keyS = this.scene.input.keyboard.addKey('S')
+    this.keyD = this.scene.input.keyboard.addKey('D')
 
     //this.keyW = this.scene.input.keyboard.addKey('W');
     //this.keyA = this.scene.input.keyboard.addKey('A');
@@ -45,6 +49,10 @@ export default class PlayerMovement {
 
   /* START-USER-CODE */
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys
+  private keyW: Phaser.Input.Keyboard.Key
+  private keyA: Phaser.Input.Keyboard.Key
+  private keyS: Phaser.Input.Keyboard.Key
+  private keyD: Phaser.Input.Keyboard.Key
   private scene: Phaser.Scene
   private gameManager: GameManager = GameManager.getInstance()
   private shopText: Phaser.GameObjects.Text = null
@@ -66,20 +74,20 @@ export default class PlayerMovement {
     if (!body) {
       return
     }
-    if (this.cursors.left.isDown) {
+    if (this.cursors.left.isDown || this.keyA.isDown) {
       this.gameObject.setVelocity(-this.velocity, 0)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
       this.gameObject.flipX = false // Flip the sprite to face left
-    } else if (this.cursors.right.isDown) {
+    } else if (this.cursors.right.isDown || this.keyD.isDown) {
       this.gameObject.setVelocity(this.velocity, 0)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
       this.gameObject.flipX = true // Reset the flipX property to face right
       // this.gameObject.anims.play('right', true);
-    } else if (this.cursors.up.isDown) {
+    } else if (this.cursors.up.isDown || this.keyW.isDown) {
       this.gameObject.setVelocity(0, -this.velocity)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
       // this.gameObject.anims.play('right', true);
-    } else if (this.cursors.down.isDown) {
+    } else if (this.cursors.down.isDown || this.keyS.isDown) {
       this.gameObject.setVelocity(0, this.velocity)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
       // this.gameObject.anims.play('right', true);

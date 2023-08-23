@@ -8,19 +8,24 @@ import {
   Avatar,
   Group,
   Box,
-  Stack
+  Stack,
+  ActionIcon
 } from '@mantine/core'
 import {
   IconDashboard,
   IconInbox,
   IconLogin,
+  IconLogout,
   IconShoppingBag,
   IconUserUp
 } from '@tabler/icons-react'
-import { Link, useMatch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useMutation } from '@tanstack/react-query'
 import ChatBox from '../../widgets/ChatBox'
 import { TargetId } from '../../../web/widgets/GuidedTours/getSteps'
 import NabBarParchmentBackground from './NabBarParchmentBackground'
+import userAPI from '../../apis/userAPI'
+import useAuthStore from '../../shared/useAuthStore'
 
 const navList = [
   {
@@ -54,7 +59,12 @@ const navList = [
 ]
 
 const AppNavBar = () => {
-  const match = useMatch({ path: 'login' })
+  const logoutMutation = useMutation({
+    ...userAPI.logout(),
+    onSettled() {
+      useAuthStore.setState({ token: null })
+    }
+  })
 
   return (
     <Navbar
@@ -73,7 +83,7 @@ const AppNavBar = () => {
                 className="hover:bg-transparent"
                 py={4}
                 component={Link}
-                to={navItem.path}
+                to={navItem.path ?? '/login'}
                 label={<Text size="md">{navItem.text}</Text>}
                 icon={
                   <ThemeIcon color={navItem.color} variant="light">
@@ -87,17 +97,29 @@ const AppNavBar = () => {
         </Stack>
       </Navbar.Section>
       <Divider color="primary" size="sm" />
-      {match ? <Navbar.Section grow>{null}</Navbar.Section> : <ChatBox />}
+      <ChatBox />
       <Divider color="primary" size="sm" />
       <Navbar.Section>
-        <Group p="xs">
-          <Avatar color="primary" />
-          <Box>
-            <Text size="md" weight={500} className="font-JotiOne">
-              HelloWorld
-            </Text>
-            <Text size="xs">helloworld@gmail.com</Text>
-          </Box>
+        <Group p="xs" position="apart">
+          <Group>
+            <Avatar color="primary" />
+            <Box>
+              <Text size="md" weight={500} className="font-JotiOne">
+                HelloWorld
+              </Text>
+              <Text size="xs">helloworld@gmail.com</Text>
+            </Box>
+          </Group>
+          <ActionIcon
+            variant="filled"
+            size="lg"
+            color="primary"
+            disabled={logoutMutation.isPending}
+            onClick={() => {
+              logoutMutation.mutate()
+            }}>
+            <IconLogout size="1.3rem" />
+          </ActionIcon>
         </Group>
       </Navbar.Section>
     </Navbar>
