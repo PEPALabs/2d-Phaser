@@ -63,6 +63,14 @@ module.exports = {
           borderImage: 'url(../assets/images/background-border3.png)',
           borderImageSlice: '40 fill',
           borderWidth: '0.5rem'
+        },
+        '.drop-shadow-map-area': {
+          filter:
+            'drop-shadow(2px 2px 0px white) drop-shadow(-2px -2px 0px white)' //Apply a white border to the image
+        },
+        '.drop-shadow-map-area-active': {
+          filter:
+            'drop-shadow(2px 2px 0px white) drop-shadow(-2px -2px 0px white) drop-shadow(0 0 20px white)'
         }
       })
     })
