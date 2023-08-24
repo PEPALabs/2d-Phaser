@@ -1,13 +1,21 @@
 import httpClient from '../httpClient'
-import type { LoginDTO, LoginData } from './type'
+import type { LoginDTO, LoginData, SignupDTO } from './type'
+
+const USER_API_PATH = 'user'
 
 const userAPI = {
   login: () => ({
     mutationFn: (params: LoginDTO) =>
-      httpClient.post('login', { json: params }).json<LoginData>()
+      httpClient
+        .post(USER_API_PATH + '/login', { json: params })
+        .json<LoginData>()
   }),
   logout: () => ({
-    mutationFn: () => httpClient.get('logout').json()
+    mutationFn: () => httpClient.post(USER_API_PATH + '/logout').json()
+  }),
+  signup: () => ({
+    mutationFn: (params: SignupDTO) =>
+      httpClient.post(USER_API_PATH + '/register', { json: params }).json()
   })
 }
 
