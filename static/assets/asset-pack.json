@@ -17,6 +17,16 @@
                 "key": "arrow"
             },
             {
+                "url": "assets/tiled/bank/bank.json",
+                "type": "tilemapTiledJSON",
+                "key": "bank"
+            },
+            {
+                "url": "assets/tiled/bar/bar_map.json",
+                "type": "tilemapTiledJSON",
+                "key": "bar_map"
+            },
+            {
                 "url": "assets/bundle1.png",
                 "frameConfig": {
                     "frameWidth": 32,
@@ -56,6 +66,11 @@
                 "url": "assets/FufuSuperDino.png",
                 "type": "image",
                 "key": "FufuSuperDino"
+            },
+            {
+                "url": "assets/tiled/log-cabin/log_cabin.json",
+                "type": "tilemapTiledJSON",
+                "key": "log_cabin"
             },
             {
                 "url": "assets/tile/main.json",
@@ -138,6 +153,11 @@
                 },
                 "type": "spritesheet",
                 "key": "portalRings2"
+            },
+            {
+                "url": "assets/tiled/seed-market/seedmarket.json",
+                "type": "tilemapTiledJSON",
+                "key": "seedmarket"
             }
         ]
     },
