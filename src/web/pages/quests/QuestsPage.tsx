@@ -1,13 +1,5 @@
 import React from 'react'
-import {
-  Text,
-  Group,
-  Stack,
-  Image,
-  ScrollArea,
-  AspectRatio,
-  Title
-} from '@mantine/core'
+import { Text, Group, Stack, Image, ScrollArea, Grid } from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
 import QuestCategoryTabs from './components/QuestCategoryTabs'
 import QuestCard from './components/QuestCard'
@@ -18,6 +10,8 @@ import useQuestCategory from './hooks/useQuestCategory'
 function QuestsPage() {
   const questItems = useGameStore(state => state.quests)
   const { category } = useQuestCategory()
+
+  const balance = useGameStore(state => state.inventories.balance)
 
   const categorizedQuests =
     category === 'all'
@@ -61,15 +55,19 @@ function QuestsPage() {
   }
   return (
     <Stack className="w-full overflow-hidden">
-      <Group className="w-full" position="apart">
-        <QuestCategoryTabs />
-        <Group spacing="sm">
-          <Image width={36} height={36} src="/assets/coin.png" />
-          <Text className="font-bold tracking-wider">
-            User Balance: 1000 ETH
-          </Text>
-        </Group>
-      </Group>
+      <Grid className="w-full" align="center" gutter={0}>
+        <Grid.Col span={9}>
+          <QuestCategoryTabs />
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <Group position="center" spacing="sm">
+            <Image width={36} height={36} src="/assets/coin.png" />
+            <Text size="lg" className="font-bold tracking-wider">
+              {balance} ETH
+            </Text>
+          </Group>
+        </Grid.Col>
+      </Grid>
       <Stack className="h-full w-full overflow-hidden">
         {categorizedQuests.length > 0 && (
           <ScrollArea>
