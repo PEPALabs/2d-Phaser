@@ -2,7 +2,7 @@
 
 /* START OF COMPILED CODE */
 
-import Phaser from 'phaser'
+import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import { Physics } from "phaser";
 import PubSub from 'pubsub-js'
@@ -17,11 +17,12 @@ import GameManager from '../GameManager'
 /* END-USER-IMPORTS */
 
 export default class OpenShop {
-  constructor(gameObject: Phaser.GameObjects.Rectangle) {
-    this.gameObject = gameObject
-    ;(gameObject as any)['__OpenShop'] = this
 
-    /* START-USER-CTR-CODE */
+	constructor(gameObject: Phaser.GameObjects.Rectangle) {
+		this.gameObject = gameObject;
+		(gameObject as any)["__OpenShop"] = this;
+
+		/* START-USER-CTR-CODE */
     // Write your code here.
     const scene = this.gameObject.scene
     this.scene = scene
@@ -30,16 +31,16 @@ export default class OpenShop {
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
 
     /* END-USER-CTR-CODE */
-  }
+	}
 
-  static getComponent(gameObject: Phaser.GameObjects.Rectangle): OpenShop {
-    return (gameObject as any)['__OpenShop']
-  }
+	static getComponent(gameObject: Phaser.GameObjects.Rectangle): OpenShop {
+		return (gameObject as any)["__OpenShop"];
+	}
 
-  private gameObject: Phaser.GameObjects.Rectangle
-  public player!: Phaser.GameObjects.GameObject
+	private gameObject: Phaser.GameObjects.Rectangle;
+	public player!: Phaser.GameObjects.GameObject;
 
-  /* START-USER-CODE */
+	/* START-USER-CODE */
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys
   private scene: Phaser.Scene
   private gameManager: GameManager = GameManager.getInstance()

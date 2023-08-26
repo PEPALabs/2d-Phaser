@@ -2,7 +2,7 @@
 
 /* START OF COMPILED CODE */
 
-import Phaser from 'phaser'
+import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import useGameStore from '../data/useGameStore'
 const COLOR_PRIMARY = 0xffffff // 0xfcb5cd;// 0xfc9694;
@@ -11,11 +11,12 @@ const COLOR_DARK = 0xfe6283 //0xe8735e;
 /* END-USER-IMPORTS */
 
 export default class DisplayText {
-  constructor(gameObject: Phaser.Physics.Arcade.Sprite) {
-    this.gameObject = gameObject
-    ;(gameObject as any)['__DisplayText'] = this
 
-    /* START-USER-CTR-CODE */
+	constructor(gameObject: Phaser.Physics.Arcade.Sprite) {
+		this.gameObject = gameObject;
+		(gameObject as any)["__DisplayText"] = this;
+
+		/* START-USER-CTR-CODE */
     // Write your code here.
 
     const scene = this.gameObject.scene
@@ -32,16 +33,16 @@ export default class DisplayText {
     // console.log("message", this.messageStore.getState().message);
 
     /* END-USER-CTR-CODE */
-  }
+	}
 
-  static getComponent(gameObject: Phaser.Physics.Arcade.Sprite): DisplayText {
-    return (gameObject as any)['__DisplayText']
-  }
+	static getComponent(gameObject: Phaser.Physics.Arcade.Sprite): DisplayText {
+		return (gameObject as any)["__DisplayText"];
+	}
 
-  private gameObject: Phaser.Physics.Arcade.Sprite
-  public sender: string = 'Fox'
+	private gameObject: Phaser.Physics.Arcade.Sprite;
+	public sender: string = "someone";
 
-  /* START-USER-CODE */
+	/* START-USER-CODE */
   private scene: Phaser.Scene
   private container: Phaser.GameObjects.Sprite
   private text: Phaser.GameObjects.Text

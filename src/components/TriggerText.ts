@@ -44,8 +44,8 @@ export default class TriggerText {
 	}
 
 	update() {
-		
-		
+
+
 		if (this.scene.physics.overlap(this.gameObject, this.player)) {
 			if(!this.overlap){
 				this.overlap = true;

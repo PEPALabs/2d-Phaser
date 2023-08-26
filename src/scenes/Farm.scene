@@ -152,13 +152,114 @@
             "y": 1465,
             "nestedPrefabs": [],
             "list": []
+        },
+        {
+            "type": "Container",
+            "id": "639cba75-a303-42ed-af36-00d2319a2d64",
+            "label": "container_2",
+            "components": [],
+            "list": [
+                {
+                    "type": "Rectangle",
+                    "id": "fc78b9eb-6449-4006-a8fd-904cc07b80b3",
+                    "label": "rectangle_1",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 1265,
+                    "y": 2153,
+                    "scaleX": 4.473832511589777,
+                    "scaleY": 24.67422412742155,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "c88e2039-fa6a-4d4c-882f-03fa5df85bf9",
+                    "label": "rectangle",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 3347,
+                    "y": 2194,
+                    "scaleX": 4.473832511589777,
+                    "scaleY": 24.67422412742155,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "b515967b-2e90-43d7-86cc-d503f0d502eb",
+                    "label": "rectangle_2",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 2217,
+                    "y": 949,
+                    "scaleX": 26.02126195648374,
+                    "scaleY": 5.736091529638177,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "b12d7f5e-812c-44d4-8c87-84d4aa6cef8a",
+                    "label": "rectangle_3",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 2247,
+                    "y": 3636,
+                    "scaleX": 26.02126195648374,
+                    "scaleY": 5.736091529638177,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                }
+            ]
         }
     ],
-    "plainObjects": [],
+    "plainObjects": [
+        {
+            "id": "431429a8-a4f0-419b-a9c5-092d97dc2cce",
+            "type": "Collider",
+            "label": "collider",
+            "scope": "METHOD",
+            "object1": "player",
+            "object2": "blocklist"
+        }
+    ],
     "meta": {
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
         "version": 3
-    }
+    },
+    "lists": [
+        {
+            "id": "947052ef-25cd-4906-b379-8f935b31aba4",
+            "label": "blocklist",
+            "objectIds": [
+                "fc78b9eb-6449-4006-a8fd-904cc07b80b3",
+                "c88e2039-fa6a-4d4c-882f-03fa5df85bf9",
+                "b515967b-2e90-43d7-86cc-d503f0d502eb",
+                "b12d7f5e-812c-44d4-8c87-84d4aa6cef8a"
+            ]
+        }
+    ]
 }

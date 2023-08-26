@@ -208,6 +208,140 @@
             "list": []
         },
         {
+            "type": "Container",
+            "id": "9ecd4da3-7f4d-49a5-8bf2-3c18a411bf8a",
+            "label": "blocks",
+            "components": [],
+            "list": [
+                {
+                    "type": "Rectangle",
+                    "id": "f277deb5-dfeb-4e43-b42a-68df5cfbccf5",
+                    "label": "rectangle_1",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 671,
+                    "y": 2054,
+                    "scaleX": 7.903769575657687,
+                    "scaleY": 37.68443640575428,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "5aeebcf6-7dec-4a60-91ac-60d515b6d45d",
+                    "label": "rectangle_2",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 2195,
+                    "y": 554,
+                    "scaleX": 35.69363743349427,
+                    "scaleY": 3.461741546608299,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "be875976-770a-476f-8014-55d9e2b5c924",
+                    "label": "rectangle",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 4221,
+                    "y": 2540,
+                    "scaleX": 12.445535079210995,
+                    "scaleY": 34.45458838253835,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "a971ade3-0818-4827-a6ed-e6c5e60500a5",
+                    "label": "rectangle_3",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 2231,
+                    "y": 3552,
+                    "scaleX": 35.69363743349427,
+                    "scaleY": 3.461741546608299,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "4bfb5163-467c-4ed1-b901-52f169a63eaa",
+                    "label": "rectangle_4",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 3064,
+                    "y": 2020,
+                    "scaleX": 13.133764125530927,
+                    "scaleY": 5.26642606819696,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "4a50e598-f9a6-4428-8923-1d2142779e84",
+                    "label": "rectangle_5",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 1082,
+                    "y": 2319,
+                    "scaleX": 13.133764125530927,
+                    "scaleY": 6.997050825581758,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "8212af1a-0072-4a06-bfce-69945c38be88",
+                    "label": "rectangle_6",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 3043,
+                    "y": 2843,
+                    "scaleX": 9.077211514843087,
+                    "scaleY": 3.585425469324598,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                }
+            ]
+        },
+        {
             "prefabId": "46239938-4ed4-4201-8fc6-4c848b0c5a5a",
             "id": "9632dffa-192c-4076-b1b7-7b79b3ad02c8",
             "unlock": [
@@ -304,6 +438,14 @@
             "type": "Keyboard.Key",
             "label": "keyboard_key_3",
             "keyCode": "D"
+        },
+        {
+            "id": "8b6890fe-ebf0-42f1-bca8-96fcad275dfe",
+            "type": "Collider",
+            "label": "collider",
+            "scope": "METHOD",
+            "object1": "blocklist",
+            "object2": "player"
         }
     ],
     "meta": {
@@ -328,6 +470,19 @@
             "id": "b7cbd2f6-b5c2-46e4-8af9-13250f7dafd2",
             "label": "list_1",
             "scope": "PUBLIC"
+        },
+        {
+            "id": "cb20fcf6-e9c8-4600-861c-2292cd9593f6",
+            "label": "blocklist",
+            "objectIds": [
+                "f277deb5-dfeb-4e43-b42a-68df5cfbccf5",
+                "5aeebcf6-7dec-4a60-91ac-60d515b6d45d",
+                "be875976-770a-476f-8014-55d9e2b5c924",
+                "a971ade3-0818-4827-a6ed-e6c5e60500a5",
+                "4bfb5163-467c-4ed1-b901-52f169a63eaa",
+                "4a50e598-f9a6-4428-8923-1d2142779e84",
+                "8212af1a-0072-4a06-bfce-69945c38be88"
+            ]
         }
     ]
 }

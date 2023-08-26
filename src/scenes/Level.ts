@@ -6,9 +6,9 @@ import Phaser from "phaser";
 import Physics from "../components/Physics";
 import PlayerMovement from "../components/PlayerMovement";
 import PigAnimation from "../components/PigAnimation";
+import DisplayText from "../components/DisplayText";
 import RectPhysics from "../components/RectPhysics";
 import OpenShop from "../components/OpenShop";
-import DisplayText from "../components/DisplayText";
 import TriggerText from "../components/TriggerText";
 import Teleport from "./Teleport";
 import testPrefab from "../script-nodes/testPrefab";
@@ -79,24 +79,24 @@ export default class Level extends Phaser.Scene {
 		// Shop
 		const shop = this.add.rectangle(2704, 2919, 500, 500);
 
-    // NPC
-    const nPC = this.physics.add.sprite(1817, 1315, 'fox')
-    nPC.scaleX = 0.1
-    nPC.scaleY = 0.1
-    nPC.setOrigin(0.1, 0.1)
-    nPC.body.setSize(1024, 1024, false)
+		// NPC
+		const nPC = this.physics.add.sprite(1817, 1315, "fox");
+		nPC.scaleX = 0.1;
+		nPC.scaleY = 0.1;
+		nPC.setOrigin(0.1, 0.1);
+		nPC.body.setSize(1024, 1024, false);
 
-    // ido_guide
-    const ido_guide = this.physics.add.sprite(2499, 1168, 'fox')
-    ido_guide.scaleX = 0.1
-    ido_guide.scaleY = 0.1
-    ido_guide.body.setSize(1118, 1572, false)
+		// ido_guide
+		const ido_guide = this.physics.add.sprite(2499, 1168, "fox");
+		ido_guide.scaleX = 0.1;
+		ido_guide.scaleY = 0.1;
+		ido_guide.body.setSize(1118, 1572, false);
 
-    // trading_fox
-    const trading_fox = this.physics.add.sprite(1858, 859, 'fox')
-    trading_fox.scaleX = 0.1
-    trading_fox.scaleY = 0.1
-    trading_fox.body.setSize(1024, 1024, false)
+		// trading_fox
+		const trading_fox = this.physics.add.sprite(1858, 859, "fox");
+		trading_fox.scaleX = 0.1;
+		trading_fox.scaleY = 0.1;
+		trading_fox.body.setSize(1024, 1024, false);
 
 		// NPC_bank
 		const nPC_bank = this.physics.add.sprite(1695, 2762, "fox");
@@ -105,16 +105,75 @@ export default class Level extends Phaser.Scene {
 		nPC_bank.setOrigin(0.1, 0.1);
 		nPC_bank.body.setSize(1024, 1024, false);
 
-    // NPC_market
-    const nPC_market = this.physics.add.sprite(2475, 3046, 'fox')
-    nPC_market.scaleX = 0.1
-    nPC_market.scaleY = 0.1
-    nPC_market.setOrigin(0.1, 0.1)
-    nPC_market.body.setSize(1024, 1024, false)
+		// NPC_market
+		const nPC_market = this.physics.add.sprite(2475, 3046, "fox");
+		nPC_market.scaleX = 0.1;
+		nPC_market.scaleY = 0.1;
+		nPC_market.setOrigin(0.1, 0.1);
+		nPC_market.body.setSize(1024, 1024, false);
 
 		// teleport
 		const teleport = new Teleport(this, 1251, 1101);
 		this.add.existing(teleport);
+
+		// blocks
+		const blocks = this.add.container(0, 0);
+
+		// rectangle_1
+		const rectangle_1 = this.add.rectangle(671, 2054, 128, 128);
+		rectangle_1.scaleX = 7.903769575657687;
+		rectangle_1.scaleY = 37.68443640575428;
+		rectangle_1.visible = false;
+		rectangle_1.isFilled = true;
+		blocks.add(rectangle_1);
+
+		// rectangle_2
+		const rectangle_2 = this.add.rectangle(2195, 554, 128, 128);
+		rectangle_2.scaleX = 35.69363743349427;
+		rectangle_2.scaleY = 3.461741546608299;
+		rectangle_2.visible = false;
+		rectangle_2.isFilled = true;
+		blocks.add(rectangle_2);
+
+		// rectangle
+		const rectangle = this.add.rectangle(4221, 2540, 128, 128);
+		rectangle.scaleX = 12.445535079210995;
+		rectangle.scaleY = 34.45458838253835;
+		rectangle.visible = false;
+		rectangle.isFilled = true;
+		blocks.add(rectangle);
+
+		// rectangle_3
+		const rectangle_3 = this.add.rectangle(2231, 3552, 128, 128);
+		rectangle_3.scaleX = 35.69363743349427;
+		rectangle_3.scaleY = 3.461741546608299;
+		rectangle_3.visible = false;
+		rectangle_3.isFilled = true;
+		blocks.add(rectangle_3);
+
+		// rectangle_4
+		const rectangle_4 = this.add.rectangle(3064, 2020, 128, 128);
+		rectangle_4.scaleX = 13.133764125530927;
+		rectangle_4.scaleY = 5.26642606819696;
+		rectangle_4.visible = false;
+		rectangle_4.isFilled = true;
+		blocks.add(rectangle_4);
+
+		// rectangle_5
+		const rectangle_5 = this.add.rectangle(1082, 2319, 128, 128);
+		rectangle_5.scaleX = 13.133764125530927;
+		rectangle_5.scaleY = 6.997050825581758;
+		rectangle_5.visible = false;
+		rectangle_5.isFilled = true;
+		blocks.add(rectangle_5);
+
+		// rectangle_6
+		const rectangle_6 = this.add.rectangle(3043, 2843, 128, 128);
+		rectangle_6.scaleX = 9.077211514843087;
+		rectangle_6.scaleY = 3.585425469324598;
+		rectangle_6.visible = false;
+		rectangle_6.isFilled = true;
+		blocks.add(rectangle_6);
 
 		// scriptnode_1
 		new testPrefab(this);
@@ -122,6 +181,10 @@ export default class Level extends Phaser.Scene {
 		// lists
 		const list: Array<any> = [];
 		const list_1: Array<any> = [];
+		const blocklist = [rectangle_1, rectangle_2, rectangle, rectangle_3, rectangle_4, rectangle_5, rectangle_6];
+
+		// collider
+		this.physics.add.collider(blocklist, player);
 
 		// player (components)
 		new Physics(player);
@@ -129,6 +192,8 @@ export default class Level extends Phaser.Scene {
 		playerPlayerMovement.velocity = 250;
 		const playerPigAnimation = new PigAnimation(player);
 		playerPigAnimation.animationKey = "pig-walk";
+		const playerDisplayText = new DisplayText(player);
+		playerDisplayText.sender = "player";
 
 		// shop (components)
 		new RectPhysics(shop);
@@ -177,6 +242,34 @@ export default class Level extends Phaser.Scene {
 		// teleport (prefab fields)
 		teleport.player = player;
 
+		// rectangle_1 (components)
+		const rectangle_1RectPhysics = new RectPhysics(rectangle_1);
+		rectangle_1RectPhysics.static = true;
+
+		// rectangle_2 (components)
+		const rectangle_2RectPhysics = new RectPhysics(rectangle_2);
+		rectangle_2RectPhysics.static = true;
+
+		// rectangle (components)
+		const rectangleRectPhysics = new RectPhysics(rectangle);
+		rectangleRectPhysics.static = true;
+
+		// rectangle_3 (components)
+		const rectangle_3RectPhysics = new RectPhysics(rectangle_3);
+		rectangle_3RectPhysics.static = true;
+
+		// rectangle_4 (components)
+		const rectangle_4RectPhysics = new RectPhysics(rectangle_4);
+		rectangle_4RectPhysics.static = true;
+
+		// rectangle_5 (components)
+		const rectangle_5RectPhysics = new RectPhysics(rectangle_5);
+		rectangle_5RectPhysics.static = true;
+
+		// rectangle_6 (components)
+		const rectangle_6RectPhysics = new RectPhysics(rectangle_6);
+		rectangle_6RectPhysics.static = true;
+
 		this.player = player;
 		this.shop = shop;
 		this.nPC = nPC;
@@ -191,6 +284,7 @@ export default class Level extends Phaser.Scene {
 		this.keyboard_key_3 = keyboard_key_3;
 		this.list = list;
 		this.list_1 = list_1;
+		this.blocklist = blocklist;
 
 		this.events.emit("scene-awake");
 	}
@@ -209,6 +303,7 @@ export default class Level extends Phaser.Scene {
 	private keyboard_key_3!: Phaser.Input.Keyboard.Key;
 	public list!: Array<any>;
 	public list_1!: Array<any>;
+	private blocklist!: Phaser.GameObjects.Rectangle[];
 
 	/* START-USER-CODE */
 
