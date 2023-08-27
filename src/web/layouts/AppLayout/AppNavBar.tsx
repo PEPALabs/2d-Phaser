@@ -45,17 +45,17 @@ const navList = [
     text: 'Quest Book',
     path: '/quests',
     icon: IconShoppingBag
-  },
-  {
-    color: 'violet',
-    text: 'Sign In',
-    icon: IconLogin
-  },
-  {
-    color: 'grape',
-    text: 'Sign Up',
-    icon: IconUserUp
   }
+  // {
+  //   color: 'violet',
+  //   text: 'Sign In',
+  //   icon: IconLogin
+  // },
+  // {
+  //   color: 'grape',
+  //   text: 'Sign Up',
+  //   icon: IconUserUp
+  // }
 ]
 
 const AppNavBar = () => {
