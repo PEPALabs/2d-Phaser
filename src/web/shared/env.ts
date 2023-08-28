@@ -1,5 +1,6 @@
 const env = {
-  BASE_API_PATH: 'http://localhost:8081'
+  BASE_API_PATH: process.env.BASE_API_PATH,
+  REQUIRED_PASSWORD: process.env.REQUIRED_PASSWORD
 }
 
 export default env

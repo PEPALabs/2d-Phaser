@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   entry: {
@@ -79,6 +80,7 @@ module.exports = {
     port: 8080
   },
   plugins: [
+    new Dotenv({ path: `.env.${process.env.NODE_ENV}` }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src/index.html'),
       minify: false
