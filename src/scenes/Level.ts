@@ -6,9 +6,9 @@ import Phaser from "phaser";
 import Physics from "../components/Physics";
 import PlayerMovement from "../components/PlayerMovement";
 import PigAnimation from "../components/PigAnimation";
+import DisplayText from "../components/DisplayText";
 import RectPhysics from "../components/RectPhysics";
 import OpenShop from "../components/OpenShop";
-import DisplayText from "../components/DisplayText";
 import TriggerText from "../components/TriggerText";
 import Teleport from "./Teleport";
 import testPrefab from "../script-nodes/testPrefab";
@@ -31,7 +31,7 @@ export default class Level extends Phaser.Scene {
 
 	preload_all(): void {
 
-		this.load.pack("asset-pack", "assets/asset-pack.json");
+		this.load.pack("asset-pack", "static/assets/asset-pack.json");
 	}
 
 	editorCreate(): void {
@@ -79,24 +79,24 @@ export default class Level extends Phaser.Scene {
 		// Shop
 		const shop = this.add.rectangle(2704, 2919, 500, 500);
 
-    // NPC
-    const nPC = this.physics.add.sprite(1817, 1315, 'fox')
-    nPC.scaleX = 0.1
-    nPC.scaleY = 0.1
-    nPC.setOrigin(0.1, 0.1)
-    nPC.body.setSize(1024, 1024, false)
+		// NPC
+		const nPC = this.physics.add.sprite(1817, 1315, "fox");
+		nPC.scaleX = 0.1;
+		nPC.scaleY = 0.1;
+		nPC.setOrigin(0.1, 0.1);
+		nPC.body.setSize(1024, 1024, false);
 
-    // ido_guide
-    const ido_guide = this.physics.add.sprite(2499, 1168, 'fox')
-    ido_guide.scaleX = 0.1
-    ido_guide.scaleY = 0.1
-    ido_guide.body.setSize(1118, 1572, false)
+		// ido_guide
+		const ido_guide = this.physics.add.sprite(2499, 1168, "fox");
+		ido_guide.scaleX = 0.1;
+		ido_guide.scaleY = 0.1;
+		ido_guide.body.setSize(1118, 1572, false);
 
-    // trading_fox
-    const trading_fox = this.physics.add.sprite(1858, 859, 'fox')
-    trading_fox.scaleX = 0.1
-    trading_fox.scaleY = 0.1
-    trading_fox.body.setSize(1024, 1024, false)
+		// trading_fox
+		const trading_fox = this.physics.add.sprite(1858, 859, "fox");
+		trading_fox.scaleX = 0.1;
+		trading_fox.scaleY = 0.1;
+		trading_fox.body.setSize(1024, 1024, false);
 
 		// NPC_bank
 		const nPC_bank = this.physics.add.sprite(1695, 2762, "fox");
@@ -105,12 +105,12 @@ export default class Level extends Phaser.Scene {
 		nPC_bank.setOrigin(0.1, 0.1);
 		nPC_bank.body.setSize(1024, 1024, false);
 
-    // NPC_market
-    const nPC_market = this.physics.add.sprite(2475, 3046, 'fox')
-    nPC_market.scaleX = 0.1
-    nPC_market.scaleY = 0.1
-    nPC_market.setOrigin(0.1, 0.1)
-    nPC_market.body.setSize(1024, 1024, false)
+		// NPC_market
+		const nPC_market = this.physics.add.sprite(2475, 3046, "fox");
+		nPC_market.scaleX = 0.1;
+		nPC_market.scaleY = 0.1;
+		nPC_market.setOrigin(0.1, 0.1);
+		nPC_market.body.setSize(1024, 1024, false);
 
 		// teleport
 		const teleport = new Teleport(this, 1251, 1101);
@@ -126,9 +126,11 @@ export default class Level extends Phaser.Scene {
 		// player (components)
 		new Physics(player);
 		const playerPlayerMovement = new PlayerMovement(player);
-		playerPlayerMovement.velocity = 250;
+		playerPlayerMovement.velocity = 300;
 		const playerPigAnimation = new PigAnimation(player);
 		playerPigAnimation.animationKey = "pig-walk";
+		const playerDisplayText = new DisplayText(player);
+		playerDisplayText.sender = "player";
 
 		// shop (components)
 		new RectPhysics(shop);
@@ -279,6 +281,7 @@ export default class Level extends Phaser.Scene {
 
     // set camera
     this.cameras.main.startFollow(this.player)
+	this.cameras.main.setZoom(0.8)
 
     // event dispatcher
     this.emitter = EventDispatcher.getInstance()

@@ -25,7 +25,7 @@ export default class Farm extends Phaser.Scene {
 
 	preload(): void {
 
-		this.load.pack("asset-pack", "assets/asset-pack.json");
+		this.load.pack("asset-pack", "static/assets/asset-pack.json");
 	}
 
 	editorCreate(): void {
@@ -35,8 +35,8 @@ export default class Farm extends Phaser.Scene {
 
 		// map
 		const map = this.add.image(0, 0, "_composite");
-		map.scaleX = 2;
-		map.scaleY = 2;
+		map.scaleX = 1.2;
+		map.scaleY = 1.2;
 		map.setOrigin(0, 0);
 		layer_1.add(map);
 
@@ -44,19 +44,25 @@ export default class Farm extends Phaser.Scene {
 		const farmlands = this.add.layer();
 
 		// Farmland
-		const farmland = new Farmland(this, 3143, 1463);
+		const farmland = new Farmland(this, 1885.8, 877.8);
+		farmland.scaleX = 0.6;
+		farmland.scaleY = 0.6;
 		farmlands.add(farmland);
 
 		// Farmland_1
-		const farmland_1 = new Farmland(this, 3389, 1462);
+		const farmland_1 = new Farmland(this, 2033.4, 877.2);
+		farmland_1.scaleX = 0.6;
+		farmland_1.scaleY = 0.6;
 		farmlands.add(farmland_1);
 
 		// Farmland_2
-		const farmland_2 = new Farmland(this, 3630, 1465);
+		const farmland_2 = new Farmland(this, 2178, 879);
+		farmland_2.scaleX = 0.6;
+		farmland_2.scaleY = 0.6;
 		farmlands.add(farmland_2);
 
 		// player
-		const player = this.physics.add.sprite(1773, 2038, "pig");
+		const player = this.physics.add.sprite(1063.8, 1222.8, "pig");
 		player.name = "player";
 		player.scaleX = 0.1;
 		player.scaleY = 0.1;
@@ -66,13 +72,15 @@ export default class Farm extends Phaser.Scene {
 		const farm = this.add.container(2315, 2203);
 
 		// container_1
-		const container_1 = new Teleport(this, 1642, 1465);
+		const container_1 = new Teleport(this, 985.2, 879);
 		this.add.existing(container_1);
+		container_1.scaleX = 0.6;
+		container_1.scaleY = 0.6;
 
 		// player (components)
 		const playerPlayerMovement = new PlayerMovement(player);
 		playerPlayerMovement.speed = 20;
-		playerPlayerMovement.velocity = 250;
+		playerPlayerMovement.velocity = 300;
 		new Physics(player);
 		new PigAnimation(player);
 		new ItemUsage(player);
@@ -109,6 +117,7 @@ export default class Farm extends Phaser.Scene {
     this.editorCreate()
 
     this.cameras.main.startFollow(this.player)
+	this.cameras.main.setZoom(0.8)
   }
 
   /* END-USER-CODE */
