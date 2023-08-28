@@ -26,7 +26,7 @@ export default class Farm extends Phaser.Scene {
 
 	preload(): void {
 
-		this.load.pack("asset-pack", "assets/asset-pack.json");
+		this.load.pack("asset-pack", "static/assets/asset-pack.json");
 	}
 
 	editorCreate(): void {
@@ -67,7 +67,7 @@ export default class Farm extends Phaser.Scene {
 		const farm = this.add.container(2315, 2203);
 
 		// container_1
-		const container_1 = new Teleport(this, 1642, 1465);
+		const container_1 = new Teleport(this, 1624, 2373);
 		this.add.existing(container_1);
 
 		// container_2
@@ -105,11 +105,15 @@ export default class Farm extends Phaser.Scene {
 		rectangle_3.isFilled = true;
 		container_2.add(rectangle_3);
 
+		// teleport_1
+		const teleport_1 = new Teleport(this, 1636, 1212);
+		this.add.existing(teleport_1);
+
 		// lists
 		const blocklist = [rectangle_1, rectangle, rectangle_2, rectangle_3];
 
 		// collider
-		this.physics.add.collider(player, blocklist);
+		const collider = this.physics.add.collider(player, blocklist);
 
 		// player (components)
 		const playerPlayerMovement = new PlayerMovement(player);
@@ -145,6 +149,10 @@ export default class Farm extends Phaser.Scene {
 		// rectangle_3 (components)
 		const rectangle_3RectPhysics = new RectPhysics(rectangle_3);
 		rectangle_3RectPhysics.static = true;
+
+		// teleport_1 (prefab fields)
+		teleport_1.teleportScene = "inside-cabin";
+		teleport_1.player = player;
 
 		this.map = map;
 		this.layer_1 = layer_1;

@@ -1,4 +1,5 @@
-{ "compressionlevel":-1,
+{ 
+"compressionlevel":-1,
  "height":80,
  "infinite":false,
  "layers":[
@@ -2335,121 +2336,121 @@
          "tiles":[
                 {
                  "id":0,
-                 "image":"png\/bank_0000_Clock.png",
+                 "image":"bank_0000_Clock.png",
                  "imageheight":214,
                  "imagewidth":350
                 }, 
                 {
                  "id":1,
-                 "image":"png\/bank_0001_Pepa-Mall.png",
+                 "image":"bank_0001_Pepa-Mall.png",
                  "imageheight":496,
                  "imagewidth":305
                 }, 
                 {
                  "id":2,
-                 "image":"png\/bank_0002_ATM.png",
+                 "image":"bank_0002_ATM.png",
                  "imageheight":583,
                  "imagewidth":462
                 }, 
                 {
                  "id":3,
-                 "image":"png\/bank_0003_S_Table.png",
+                 "image":"bank_0003_S_Table.png",
                  "imageheight":274,
                  "imagewidth":353
                 }, 
                 {
                  "id":4,
-                 "image":"png\/bank_0004_ReceptionTable.png",
+                 "image":"bank_0004_ReceptionTable.png",
                  "imageheight":1033,
                  "imagewidth":2360
                 }, 
                 {
                  "id":5,
-                 "image":"png\/bank_0005_Coffee-Table.png",
+                 "image":"bank_0005_Coffee-Table.png",
                  "imageheight":415,
                  "imagewidth":818
                 }, 
                 {
                  "id":6,
-                 "image":"png\/bank_0006_Bank-Rug.png",
+                 "image":"bank_0006_Bank-Rug.png",
                  "imageheight":240,
                  "imagewidth":525
                 }, 
                 {
                  "id":7,
-                 "image":"png\/bank_0007_Column.png",
+                 "image":"bank_0007_Column.png",
                  "imageheight":2104,
                  "imagewidth":3351
                 }, 
                 {
                  "id":8,
-                 "image":"png\/bank_0008_Wall.png",
+                 "image":"bank_0008_Wall.png",
                  "imageheight":2913,
                  "imagewidth":3921
                 }, 
                 {
                  "id":9,
-                 "image":"png\/bank_0009_SofaBack.png",
+                 "image":"bank_0009_SofaBack.png",
                  "imageheight":356,
                  "imagewidth":308
                 }, 
                 {
                  "id":10,
-                 "image":"png\/bank_0010_SofaLateral.png",
+                 "image":"bank_0010_SofaLateral.png",
                  "imageheight":356,
                  "imagewidth":297
                 }, 
                 {
                  "id":11,
-                 "image":"png\/bank_0011_Loudspeaker-Box.png",
+                 "image":"bank_0011_Loudspeaker-Box.png",
                  "imageheight":350,
                  "imagewidth":572
                 }, 
                 {
                  "id":12,
-                 "image":"png\/bank_0012_WelcomeRug.png",
+                 "image":"bank_0012_WelcomeRug.png",
                  "imageheight":476,
                  "imagewidth":943
                 }, 
                 {
                  "id":13,
-                 "image":"png\/bank_0013_Carpet.png",
+                 "image":"bank_0013_Carpet.png",
                  "imageheight":2259,
                  "imagewidth":3426
                 }, 
                 {
                  "id":14,
-                 "image":"png\/bank_0014_Steps.png",
+                 "image":"bank_0014_Steps.png",
                  "imageheight":227,
                  "imagewidth":4000
                 }, 
                 {
                  "id":15,
-                 "image":"png\/bank_0015_Landscape.png",
+                 "image":"bank_0015_Landscape.png",
                  "imageheight":583,
                  "imagewidth":4000
                 }, 
                 {
                  "id":16,
-                 "image":"png\/bank_0016_bg.png",
+                 "image":"bank_0016_bg.png",
                  "imageheight":4000,
                  "imagewidth":4000
                 }, 
                 {
                  "id":17,
-                 "image":"png\/Pepa2.png",
+                 "image":"Pepa2.png",
                  "imageheight":4000,
                  "imagewidth":4000
                 }, 
                 {
                  "id":18,
-                 "image":"png\/Pepa3.png",
+                 "image":"Pepa3.png",
                  "imageheight":4000,
                  "imagewidth":4000
                 }, 
                 {
                  "id":19,
-                 "image":"png\/Rabbit.png",
+                 "image":"Rabbit.png",
                  "imageheight":4000,
                  "imagewidth":4000
                 }],

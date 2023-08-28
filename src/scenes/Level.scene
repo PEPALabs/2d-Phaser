@@ -6,7 +6,8 @@
         "autoImport": true,
         "preloadMethodName": "preload_all",
         "preloadPackFiles": [
-            "Proj1/static/assets/asset-pack.json"
+            "2d-Phaser/static/assets/asset-pack.json",
+            "2d-Phaser/static/assets/tiled/png-asset-pack.json"
         ],
         "createMethodName": "editorCreate",
         "sceneKey": "Level",
@@ -19,13 +20,11 @@
             "type": "Image",
             "id": "946c881d-e531-4a51-89ff-fb630f59ab0f",
             "label": "image_2",
-            "components": [],
             "texture": {
                 "key": "map-town"
             },
             "originX": 0,
-            "originY": 0,
-            "list": []
+            "originY": 0
         },
         {
             "type": "ArcadeSprite",
@@ -49,8 +48,7 @@
             "scaleX": 0.1,
             "scaleY": 0.1,
             "body.width": 1134,
-            "body.height": 1572,
-            "list": []
+            "body.height": 1572
         },
         {
             "type": "Rectangle",
@@ -65,8 +63,7 @@
             "x": 2704,
             "y": 2919,
             "width": 500,
-            "height": 500,
-            "list": []
+            "height": 500
         },
         {
             "type": "ArcadeSprite",
@@ -90,8 +87,7 @@
             "originX": 0.1,
             "originY": 0.1,
             "body.width": 1024,
-            "body.height": 1024,
-            "list": []
+            "body.height": 1024
         },
         {
             "type": "ArcadeSprite",
@@ -113,8 +109,7 @@
             "scaleX": 0.1,
             "scaleY": 0.1,
             "body.width": 1118,
-            "body.height": 1572,
-            "list": []
+            "body.height": 1572
         },
         {
             "type": "ArcadeSprite",
@@ -136,8 +131,7 @@
             "scaleX": 0.1,
             "scaleY": 0.1,
             "body.width": 1024,
-            "body.height": 1024,
-            "list": []
+            "body.height": 1024
         },
         {
             "type": "ArcadeSprite",
@@ -162,8 +156,7 @@
             "originX": 0.1,
             "originY": 0.1,
             "body.width": 1024,
-            "body.height": 1024,
-            "list": []
+            "body.height": 1024
         },
         {
             "type": "ArcadeSprite",
@@ -188,8 +181,7 @@
             "originX": 0.1,
             "originY": 0.1,
             "body.width": 1024,
-            "body.height": 1024,
-            "list": []
+            "body.height": 1024
         },
         {
             "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
@@ -201,17 +193,13 @@
             ],
             "label": "teleport",
             "player": "player",
-            "components": [],
             "x": 1251,
-            "y": 1101,
-            "nestedPrefabs": [],
-            "list": []
+            "y": 1101
         },
         {
             "type": "Container",
             "id": "9ecd4da3-7f4d-49a5-8bf2-3c18a411bf8a",
             "label": "blocks",
-            "components": [],
             "list": [
                 {
                     "type": "Rectangle",
@@ -221,15 +209,14 @@
                         "RectPhysics"
                     ],
                     "RectPhysics.static": true,
-                    "x": 671,
+                    "x": 343,
                     "y": 2054,
                     "scaleX": 7.903769575657687,
                     "scaleY": 37.68443640575428,
                     "visible": false,
                     "isFilled": true,
                     "width": 128,
-                    "height": 128,
-                    "list": []
+                    "height": 128
                 },
                 {
                     "type": "Rectangle",
@@ -246,8 +233,7 @@
                     "visible": false,
                     "isFilled": true,
                     "width": 128,
-                    "height": 128,
-                    "list": []
+                    "height": 128
                 },
                 {
                     "type": "Rectangle",
@@ -264,8 +250,7 @@
                     "visible": false,
                     "isFilled": true,
                     "width": 128,
-                    "height": 128,
-                    "list": []
+                    "height": 128
                 },
                 {
                     "type": "Rectangle",
@@ -282,8 +267,7 @@
                     "visible": false,
                     "isFilled": true,
                     "width": 128,
-                    "height": 128,
-                    "list": []
+                    "height": 128
                 },
                 {
                     "type": "Rectangle",
@@ -300,8 +284,7 @@
                     "visible": false,
                     "isFilled": true,
                     "width": 128,
-                    "height": 128,
-                    "list": []
+                    "height": 128
                 },
                 {
                     "type": "Rectangle",
@@ -318,8 +301,7 @@
                     "visible": false,
                     "isFilled": true,
                     "width": 128,
-                    "height": 128,
-                    "list": []
+                    "height": 128
                 },
                 {
                     "type": "Rectangle",
@@ -336,10 +318,84 @@
                     "visible": false,
                     "isFilled": true,
                     "width": 128,
-                    "height": 128,
-                    "list": []
+                    "height": 128
                 }
             ]
+        },
+        {
+            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+            "id": "62bd1d23-0dd1-4c77-bf88-4259b569e1b3",
+            "unlock": [
+                "x",
+                "y",
+                "teleportScene",
+                "player"
+            ],
+            "label": "teleport_1",
+            "teleportScene": "inside_bank",
+            "player": "player",
+            "x": 1431,
+            "y": 2673
+        },
+        {
+            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+            "id": "a2b56c77-0c9c-4f59-905c-b2d1028987a4",
+            "unlock": [
+                "x",
+                "y",
+                "player",
+                "teleportScene"
+            ],
+            "label": "teleport_2",
+            "teleportScene": "inside_exchange",
+            "player": "player",
+            "x": 884,
+            "y": 2681
+        },
+        {
+            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+            "id": "0f274629-7597-477b-81dc-159d21e47517",
+            "unlock": [
+                "x",
+                "y",
+                "teleportScene",
+                "player"
+            ],
+            "label": "teleport_3",
+            "teleportScene": "inside_seedmarket",
+            "player": "player",
+            "x": 2575,
+            "y": 2900
+        },
+        {
+            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+            "id": "b89a0d0d-7032-4e3f-8337-f2439cfb7598",
+            "unlock": [
+                "x",
+                "y",
+                "teleportScene",
+                "player"
+            ],
+            "label": "teleport_4",
+            "teleportScene": "inside_clothing",
+            "player": "player",
+            "x": 3066,
+            "y": 2867
+        },
+        {
+            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+            "id": "2a1f1f06-8f2e-4094-8260-67003fd8a21e",
+            "unlock": [
+                "x",
+                "y",
+                "teleportScene",
+                "player"
+            ],
+            "label": "teleport_5",
+            "teleportScene": "inside_bar",
+            "player": "player",
+            "x": 2889,
+            "y": 2102
         },
         {
             "prefabId": "46239938-4ed4-4201-8fc6-4c848b0c5a5a",
@@ -348,10 +404,7 @@
                 "x",
                 "y"
             ],
-            "label": "scriptnode_1",
-            "components": [],
-            "nestedPrefabs": [],
-            "list": []
+            "label": "scriptnode_1"
         }
     ],
     "plainObjects": [
@@ -452,7 +505,7 @@
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 3
+        "version": 4
     },
     "lists": [
         {

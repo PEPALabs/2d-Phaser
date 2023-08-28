@@ -32,6 +32,7 @@ export default class Level extends Phaser.Scene {
 	preload_all(): void {
 
 		this.load.pack("asset-pack", "assets/asset-pack.json");
+		this.load.pack("png-asset-pack", "assets/tiled/png-asset-pack.json");
 	}
 
 	editorCreate(): void {
@@ -120,7 +121,7 @@ export default class Level extends Phaser.Scene {
 		const blocks = this.add.container(0, 0);
 
 		// rectangle_1
-		const rectangle_1 = this.add.rectangle(671, 2054, 128, 128);
+		const rectangle_1 = this.add.rectangle(343, 2054, 128, 128);
 		rectangle_1.scaleX = 7.903769575657687;
 		rectangle_1.scaleY = 37.68443640575428;
 		rectangle_1.visible = false;
@@ -175,6 +176,26 @@ export default class Level extends Phaser.Scene {
 		rectangle_6.isFilled = true;
 		blocks.add(rectangle_6);
 
+		// teleport_1
+		const teleport_1 = new Teleport(this, 1431, 2673);
+		this.add.existing(teleport_1);
+
+		// teleport_2
+		const teleport_2 = new Teleport(this, 884, 2681);
+		this.add.existing(teleport_2);
+
+		// teleport_3
+		const teleport_3 = new Teleport(this, 2575, 2900);
+		this.add.existing(teleport_3);
+
+		// teleport_4
+		const teleport_4 = new Teleport(this, 3066, 2867);
+		this.add.existing(teleport_4);
+
+		// teleport_5
+		const teleport_5 = new Teleport(this, 2889, 2102);
+		this.add.existing(teleport_5);
+
 		// scriptnode_1
 		new testPrefab(this);
 
@@ -184,7 +205,7 @@ export default class Level extends Phaser.Scene {
 		const blocklist = [rectangle_1, rectangle_2, rectangle, rectangle_3, rectangle_4, rectangle_5, rectangle_6];
 
 		// collider
-		this.physics.add.collider(blocklist, player);
+		const collider = this.physics.add.collider(blocklist, player);
 
 		// player (components)
 		new Physics(player);
@@ -269,6 +290,26 @@ export default class Level extends Phaser.Scene {
 		// rectangle_6 (components)
 		const rectangle_6RectPhysics = new RectPhysics(rectangle_6);
 		rectangle_6RectPhysics.static = true;
+
+		// teleport_1 (prefab fields)
+		teleport_1.teleportScene = "inside_bank";
+		teleport_1.player = player;
+
+		// teleport_2 (prefab fields)
+		teleport_2.teleportScene = "inside_exchange";
+		teleport_2.player = player;
+
+		// teleport_3 (prefab fields)
+		teleport_3.teleportScene = "inside_seedmarket";
+		teleport_3.player = player;
+
+		// teleport_4 (prefab fields)
+		teleport_4.teleportScene = "inside_clothing";
+		teleport_4.player = player;
+
+		// teleport_5 (prefab fields)
+		teleport_5.teleportScene = "inside_bar";
+		teleport_5.player = player;
 
 		this.player = player;
 		this.shop = shop;

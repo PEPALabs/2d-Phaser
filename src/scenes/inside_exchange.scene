@@ -1,0 +1,75 @@
+{
+    "id": "e73231bd-f59a-487e-bcb6-8a0b0ad59ed7",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadPackFiles": [
+            "2d-Phaser/static/assets/tiled/png-asset-pack.json",
+            "2d-Phaser/static/assets/asset-pack.json"
+        ],
+        "createMethodName": "editorCreate",
+        "sceneKey": "inside_exchange",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "792b6c47-a482-4d18-915e-76d3c2a198d7",
+            "label": "exchange",
+            "texture": {
+                "key": "exchange"
+            },
+            "x": 475,
+            "y": 518
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "bb4becfd-a8d2-4728-88af-48a9ea7b6d48",
+            "label": "pig",
+            "components": [
+                "Physics",
+                "PlayerMovement",
+                "PigAnimation"
+            ],
+            "PlayerMovement.velocity": 250,
+            "texture": {
+                "key": "pig"
+            },
+            "x": -502,
+            "y": 1137,
+            "scaleX": 0.3,
+            "scaleY": 0.3,
+            "body.width": 1134,
+            "body.height": 1572
+        },
+        {
+            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+            "id": "99861877-cdc9-461f-96e3-c2504497fb47",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY",
+                "teleportScene",
+                "player"
+            ],
+            "label": "teleport",
+            "teleportScene": "Level",
+            "player": "pig",
+            "x": -1213,
+            "y": 1524,
+            "scaleX": 3,
+            "scaleY": 3
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 4
+    }
+}

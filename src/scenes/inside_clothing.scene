@@ -1,0 +1,83 @@
+{
+    "id": "91dc8855-880d-4994-ae8e-8e64018ea416",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadPackFiles": [
+            "2d-Phaser/static/assets/asset-pack.json",
+            "2d-Phaser/static/assets/tiled/png-asset-pack.json"
+        ],
+        "createMethodName": "editorCreate",
+        "sceneKey": "inside_clothing",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "86d713c9-ab8d-40bd-81d4-b40ad2bd6c5b",
+            "label": "clothing_store",
+            "texture": {
+                "key": "clothing_store"
+            },
+            "x": 485,
+            "y": 348
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "45f57bf1-755a-4fc2-ba19-b4be2d20df73",
+            "label": "pig",
+            "scope": "CLASS",
+            "components": [
+                "PlayerMovement",
+                "Physics",
+                "PigAnimation"
+            ],
+            "PlayerMovement.velocity": 250,
+            "texture": {
+                "key": "pig"
+            },
+            "x": 607,
+            "y": 431,
+            "scaleX": 0.05,
+            "scaleY": 0.05,
+            "body.width": 1134,
+            "body.height": 1572
+        },
+        {
+            "type": "Container",
+            "id": "541beb68-d2bf-4ef7-b4da-cb7dafdcca94",
+            "label": "container_1",
+            "x": 306,
+            "y": 276,
+            "scaleX": 0.5,
+            "scaleY": 0.5,
+            "list": [
+                {
+                    "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+                    "id": "ad8ae00c-e538-4606-b4ff-9c5078a72193",
+                    "unlock": [
+                        "x",
+                        "y",
+                        "teleportScene",
+                        "player"
+                    ],
+                    "label": "teleport",
+                    "teleportScene": "Level",
+                    "player": "pig",
+                    "x": 511,
+                    "y": 357
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 4
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "id": "1c4ad8f4-92ae-4e0d-b5db-ea570d0c9315",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadPackFiles": [
+            "2d-Phaser/static/assets/asset-pack.json",
+            "2d-Phaser/static/assets/tiled/png-asset-pack.json"
+        ],
+        "createMethodName": "editorCreate",
+        "sceneKey": "inside_bar",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "5115f330-c136-41d2-8d17-0d2f6f0559bb",
+            "label": "bar_map_1",
+            "texture": {
+                "key": "bar_map_1"
+            },
+            "x": 350,
+            "y": 288,
+            "scaleX": 0.5,
+            "scaleY": 0.5
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "7537c244-a74e-4c51-b7a7-753b67648177",
+            "label": "pig",
+            "components": [
+                "PlayerMovement",
+                "Physics",
+                "PigAnimation"
+            ],
+            "PlayerMovement.velocity": 250,
+            "texture": {
+                "key": "pig"
+            },
+            "x": -49,
+            "y": 610,
+            "scaleX": 0.15,
+            "scaleY": 0.15,
+            "body.width": 1134,
+            "body.height": 1572
+        },
+        {
+            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+            "id": "b4a65ecf-9599-4b54-9550-8abdefe5e945",
+            "unlock": [
+                "x",
+                "y",
+                "teleportScene",
+                "player"
+            ],
+            "label": "teleport",
+            "teleportScene": "Level.scene",
+            "player": "pig",
+            "x": -464,
+            "y": 775
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 4
+    }
+}
