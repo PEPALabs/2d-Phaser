@@ -16,6 +16,7 @@ import {
 } from '@mantine/core'
 import { Link } from 'react-router-dom'
 import useLoginForm from './useLoginForm'
+import useIsLoggedIn from '../../shared/useIsLoggedIn'
 
 const LoginPage = () => {
   // TODO: add connect wallet to button here
@@ -24,46 +25,58 @@ const LoginPage = () => {
 
   const { form, handleSubmit, isPending } = useLoginForm()
 
+  const isLoggedIn = useIsLoggedIn()
+
   return (
     <Container className="h-5/6">
       <Center className="h-full">
         <Paper p="xl" radius="md" w={400}>
           <Title color="primary">Welcome to PEPA</Title>
-          <Anchor component={Link} size="sm" color="dimmed" to="/signup">
-            Do not have an account yet?{' '}
-            <Text span color="primary">
-              Sign up
-            </Text>
-          </Anchor>
-          <Box component="form" mt="xl" onSubmit={handleSubmit}>
-            <Stack>
-              <TextInput
-                autoComplete="email"
-                placeholder="Your email"
-                label="Email"
-                withAsterisk
-                {...form.getInputProps('email')}
-              />
-              <PasswordInput
-                autoComplete="current-password"
-                placeholder="Your password"
-                label="Password"
-                withAsterisk
-                {...form.getInputProps('password')}
-              />
-            </Stack>
-            <Stack mt="xl">
-              <Group position="apart">
-                <Checkbox label="Remember me" defaultChecked />
-                <Anchor component="button" size="sm">
-                  Forgot password?
-                </Anchor>
-              </Group>
-              <Button type="submit" fullWidth loading={isPending}>
-                Login
-              </Button>
-            </Stack>
-          </Box>
+          {isLoggedIn ? (
+            <div className="mt-4 text-center">
+              ✅ You have successfully logged in!
+              <br></br>
+              🐷Enjoy your journey!
+            </div>
+          ) : (
+            <>
+              <Anchor component={Link} size="sm" color="dimmed" to="/signup">
+                Do not have an account yet?{' '}
+                <Text span color="primary">
+                  Sign up
+                </Text>
+              </Anchor>
+              <Box component="form" mt="xl" onSubmit={handleSubmit}>
+                <Stack>
+                  <TextInput
+                    autoComplete="email"
+                    placeholder="Your email"
+                    label="Email"
+                    withAsterisk
+                    {...form.getInputProps('email')}
+                  />
+                  <PasswordInput
+                    autoComplete="current-password"
+                    placeholder="Your password"
+                    label="Password"
+                    withAsterisk
+                    {...form.getInputProps('password')}
+                  />
+                </Stack>
+                <Stack mt="xl">
+                  <Group position="apart">
+                    <Checkbox label="Remember me" defaultChecked />
+                    <Anchor component="button" size="sm">
+                      Forgot password?
+                    </Anchor>
+                  </Group>
+                  <Button type="submit" fullWidth loading={isPending}>
+                    Login
+                  </Button>
+                </Stack>
+              </Box>
+            </>
+          )}
         </Paper>
       </Center>
     </Container>
