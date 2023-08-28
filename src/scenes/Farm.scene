@@ -21,22 +21,19 @@
             "id": "2bc73b27-c0db-471a-b7be-6d5122e136a5",
             "label": "layer_1",
             "scope": "CLASS",
-            "components": [],
             "list": [
                 {
                     "type": "Image",
                     "id": "5abd520a-5220-4944-a8cd-6d705f74fedd",
                     "label": "map",
                     "scope": "CLASS",
-                    "components": [],
                     "texture": {
                         "key": "_composite"
                     },
-                    "scaleX": 2,
-                    "scaleY": 2,
+                    "scaleX": 1.2,
+                    "scaleY": 1.2,
                     "originX": 0,
-                    "originY": 0,
-                    "list": []
+                    "originY": 0
                 }
             ]
         },
@@ -44,7 +41,6 @@
             "type": "Layer",
             "id": "727c1343-3def-4d13-a68c-4df34f51fa0b",
             "label": "Farmlands",
-            "components": [],
             "list": [
                 {
                     "prefabId": "32c77594-c428-44d4-9a37-657989684462",
@@ -52,14 +48,15 @@
                     "unlock": [
                         "x",
                         "y",
-                        "FarmPlant.player"
+                        "FarmPlant.player",
+                        "scaleX",
+                        "scaleY"
                     ],
                     "label": "Farmland",
-                    "components": [],
-                    "x": 3143,
-                    "y": 1463,
-                    "nestedPrefabs": [],
-                    "list": []
+                    "x": 1885.8,
+                    "y": 877.8,
+                    "scaleX": 0.6,
+                    "scaleY": 0.6
                 },
                 {
                     "prefabId": "32c77594-c428-44d4-9a37-657989684462",
@@ -67,14 +64,15 @@
                     "unlock": [
                         "x",
                         "y",
-                        "FarmPlant.player"
+                        "FarmPlant.player",
+                        "scaleX",
+                        "scaleY"
                     ],
                     "label": "Farmland_1",
-                    "components": [],
-                    "x": 3389,
-                    "y": 1462,
-                    "nestedPrefabs": [],
-                    "list": []
+                    "x": 2033.4,
+                    "y": 877.2,
+                    "scaleX": 0.6,
+                    "scaleY": 0.6
                 },
                 {
                     "prefabId": "32c77594-c428-44d4-9a37-657989684462",
@@ -82,14 +80,15 @@
                     "unlock": [
                         "x",
                         "y",
-                        "FarmPlant.player"
+                        "FarmPlant.player",
+                        "scaleX",
+                        "scaleY"
                     ],
                     "label": "Farmland_2",
-                    "components": [],
-                    "x": 3630,
-                    "y": 1465,
-                    "nestedPrefabs": [],
-                    "list": []
+                    "x": 2178,
+                    "y": 879,
+                    "scaleX": 0.6,
+                    "scaleY": 0.6
                 }
             ]
         },
@@ -106,17 +105,16 @@
                 "ItemUsage"
             ],
             "PlayerMovement.speed": 20,
-            "PlayerMovement.velocity": 250,
+            "PlayerMovement.velocity": 300,
             "texture": {
                 "key": "pig"
             },
-            "x": 1773,
-            "y": 2038,
+            "x": 1063.8,
+            "y": 1222.8,
             "scaleX": 0.1,
             "scaleY": 0.1,
             "body.width": 1134,
-            "body.height": 1572,
-            "list": []
+            "body.height": 1572
         },
         {
             "type": "Container",
@@ -132,8 +130,7 @@
             "FarmContainer.gap_h": 207,
             "FarmContainer.gap_w": 240,
             "x": 2315,
-            "y": 2203,
-            "list": []
+            "y": 2203
         },
         {
             "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
@@ -142,16 +139,17 @@
                 "x",
                 "y",
                 "teleportScene",
-                "player"
+                "player",
+                "scaleX",
+                "scaleY"
             ],
             "label": "container_1",
             "teleportScene": "Level",
             "player": "player",
-            "components": [],
-            "x": 1642,
-            "y": 1465,
-            "nestedPrefabs": [],
-            "list": []
+            "x": 985.2,
+            "y": 879,
+            "scaleX": 0.6,
+            "scaleY": 0.6
         }
     ],
     "plainObjects": [],
@@ -159,6 +157,6 @@
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 3
+        "version": 4
     }
 }
