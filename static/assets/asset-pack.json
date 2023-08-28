@@ -17,6 +17,26 @@
                 "key": "arrow"
             },
             {
+                "url": "assets/tiled/bank/bank.json",
+                "type": "tilemapTiledJSON",
+                "key": "bank"
+            },
+            {
+                "url": "assets/tiled/folder-map/bank.png",
+                "type": "image",
+                "key": "bank_1"
+            },
+            {
+                "url": "assets/tiled/bar/bar_map.json",
+                "type": "tilemapTiledJSON",
+                "key": "bar_map"
+            },
+            {
+                "url": "assets/tiled/folder-map/bar_map.png",
+                "type": "image",
+                "key": "bar_map_1"
+            },
+            {
                 "url": "assets/bundle1.png",
                 "frameConfig": {
                     "frameWidth": 32,
@@ -48,6 +68,16 @@
                 "key": "Button_Green"
             },
             {
+                "url": "assets/tiled/folder-map/clothing store.png",
+                "type": "image",
+                "key": "clothing_store"
+            },
+            {
+                "url": "assets/tiled/folder-map/exchange.png",
+                "type": "image",
+                "key": "exchange"
+            },
+            {
                 "url": "assets/images/狐狸NPC.png",
                 "type": "image",
                 "key": "fox"
@@ -56,6 +86,16 @@
                 "url": "assets/FufuSuperDino.png",
                 "type": "image",
                 "key": "FufuSuperDino"
+            },
+            {
+                "url": "assets/tiled/folder-map/log cabin.png",
+                "type": "image",
+                "key": "log_cabin"
+            },
+            {
+                "url": "assets/tiled/log-cabin/log_cabin.json",
+                "type": "tilemapTiledJSON",
+                "key": "log_cabin"
             },
             {
                 "url": "assets/tile/main.json",
@@ -138,6 +178,16 @@
                 },
                 "type": "spritesheet",
                 "key": "portalRings2"
+            },
+            {
+                "url": "assets/tiled/seed-market/seedmarket.json",
+                "type": "tilemapTiledJSON",
+                "key": "seedmarket"
+            },
+            {
+                "url": "assets/tiled/folder-map/seedmarket.png",
+                "type": "image",
+                "key": "seedmarket_1"
             }
         ]
     },

@@ -2,18 +2,19 @@
 
 /* START OF COMPILED CODE */
 
-import Phaser from 'phaser'
+import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import { GameObjects } from 'phaser'
 import GameManager from '../GameManager'
 /* END-USER-IMPORTS */
 
 export default class DisplayPlants {
-  constructor(gameObject: Phaser.GameObjects.Container) {
-    this.gameObject = gameObject
-    ;(gameObject as any)['__DisplayPlants'] = this
 
-    /* START-USER-CTR-CODE */
+	constructor(gameObject: Phaser.GameObjects.Container) {
+		this.gameObject = gameObject;
+		(gameObject as any)["__DisplayPlants"] = this;
+
+		/* START-USER-CTR-CODE */
     // Write your code here.
 
     this.fieldLocation = this.gameObject.list
@@ -28,16 +29,16 @@ export default class DisplayPlants {
       this.childLocation.push([child.x, child.y])
     }
     /* END-USER-CTR-CODE */
-  }
+	}
 
-  static getComponent(gameObject: Phaser.GameObjects.Container): DisplayPlants {
-    return (gameObject as any)['__DisplayPlants']
-  }
+	static getComponent(gameObject: Phaser.GameObjects.Container): DisplayPlants {
+		return (gameObject as any)["__DisplayPlants"];
+	}
 
-  private gameObject: Phaser.GameObjects.Container
-  public property1: number = 0
+	private gameObject: Phaser.GameObjects.Container;
+	public property1: number = 0;
 
-  /* START-USER-CODE */
+	/* START-USER-CODE */
 
   // Write your code here.
   public plantLocation: [number, number][] = [

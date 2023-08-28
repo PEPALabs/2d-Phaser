@@ -9,9 +9,9 @@ import {
   useMantineTheme
 } from '@mantine/core'
 import { useFocusable } from '@noriginmedia/norigin-spatial-navigation'
-import { type ItemType } from '../../../../data/items.type'
 import { IconMoneybag } from '@tabler/icons-react'
-import useShopStore from '../stores/useShopStore'
+import { type ItemType } from '../../../../data/items.type'
+import { shopActions } from '../../../../data/useGameStore'
 
 interface ProductItemProps {
   product: ItemType
@@ -23,13 +23,11 @@ const ProductItem = ({ product, index }: ProductItemProps) => {
 
   const theme = useMantineTheme()
 
-  const setIndex = useShopStore(state => state.setIndex)
-
   useEffect(() => {
     if (focused) {
-      setIndex(index)
+      shopActions.setIndex(index)
     }
-  }, [focused, index, setIndex])
+  }, [focused, index])
 
   return (
     <Indicator
@@ -41,16 +39,13 @@ const ProductItem = ({ product, index }: ProductItemProps) => {
       <Card
         ref={ref}
         className={clsx(
-          'overflow-hidden outline outline-2 transition-all',
+          'overflow-hidden bg-white/70 outline outline-2 transition-all',
           focused ? 'scale-110 shadow-lg outline-pepa-gold' : 'outline-gray-200'
         )}
         onClick={() => focusSelf()}>
         <Card.Section pt="xs" px="xs">
           <Image
-            width={80}
-            height={80}
-            withPlaceholder
-            placeholder={<></>}
+            className="aspect-square"
             src={product.icon}
             alt={product.name}
           />

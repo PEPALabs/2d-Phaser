@@ -1,11 +1,11 @@
 import { ItemCategoriesType, ItemsMainCategoriesType } from './items.type'
 
 const PUBLIC_URL = 'http://localhost:8080/'
-export default {
+const items= {
   [ItemsMainCategoriesType.WEAPONS]: [
     {
       name: 'Tree Branch',
-      category: ItemCategoriesType.WEAPON,
+      category: ItemCategoriesType.BUILDINGS,
       icon: PUBLIC_URL + 'items/weapons/BotW_Tree_Branch_Icon.png',
       value: '2',
       isNew: true,
@@ -15,7 +15,7 @@ export default {
     },
     {
       name: 'Ancient Short Sword',
-      category: ItemCategoriesType.WEAPON,
+      category: ItemCategoriesType.EQUIPMENTS,
       icon: PUBLIC_URL + 'items/weapons/BotW_Ancient_Short_Sword_Icon.png',
       value: '40',
       description:
@@ -51,3 +51,5 @@ export default {
     }
   ]
 }
+
+export default items

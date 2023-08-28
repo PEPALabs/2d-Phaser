@@ -5,7 +5,7 @@
 
 import Phaser from "phaser";
 /* START-USER-IMPORTS */
-import  MessageStore  from "../store/MessageStore";
+import { messageActions } from "../data/useGameStore";
 /* END-USER-IMPORTS */
 
 export default class TriggerText {
@@ -20,7 +20,6 @@ export default class TriggerText {
 		this.scene = scene;
 		this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
 		scene.physics.add.existing(this.gameObject);
-		this.messageStore = MessageStore;
 		/* END-USER-CTR-CODE */
 	}
 
@@ -37,21 +36,16 @@ export default class TriggerText {
 	private scene: Phaser.Scene;
 	private messageSet: boolean = false;
 	private overlap: boolean = false;
-	private messageStore;
 	// Write your code here.
 
 	setMessage(msg:string) {
-		if(this.messageStore) {
-			// console.log("sender",this.messageStore.getState().message[this.sender]);
-			this.messageStore.getState().addMessage(this.sender, msg);
+			messageActions.addMessage({sender:this.sender,message:msg});
 			return true
-		}
-		return false;
 	}
 
 	update() {
-		
-		
+
+
 		if (this.scene.physics.overlap(this.gameObject, this.player)) {
 			if(!this.overlap){
 				this.overlap = true;

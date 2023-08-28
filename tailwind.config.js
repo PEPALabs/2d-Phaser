@@ -1,9 +1,20 @@
+const plugin = require('tailwindcss/plugin')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   corePlugins: { preflight: false },
   theme: {
     extend: {
+      fontFamily: {
+        normalText: ['Comic Neue', 'cursive'],
+        Chewy: ['Chewy', 'cursive'],
+        JotiOne: ['Joti One', 'cursive'],
+        Kranky: ['Kranky', 'cursive'],
+        LakkiReddy: ['Lakki Reddy', 'cursive'],
+        Mansalva: ['Mansalva', 'cursive'],
+        title: ['Rampart One', 'cursive']
+      },
       colors: {
         zelda: {
           bgBlackTransparent: 'rgba(0, 0, 0, 0.5)',
@@ -35,5 +46,33 @@ module.exports = {
   variants: {
     margin: ['responsive', 'even']
   },
-  plugins: []
+  plugins: [
+    plugin(({ addComponents }) => {
+      addComponents({
+        '.border-image-primary': {
+          borderImage: 'url(../assets/images/background-border.png)',
+          borderImageSlice: '70 fill',
+          borderWidth: '1rem'
+        },
+        '.border-image-second': {
+          borderImage: 'url(../assets/images/background-border2.png)',
+          borderImageSlice: '20 fill',
+          borderWidth: '0.5rem'
+        },
+        '.border-image-third': {
+          borderImage: 'url(../assets/images/background-border3.png)',
+          borderImageSlice: '40 fill',
+          borderWidth: '0.5rem'
+        },
+        '.drop-shadow-map-area': {
+          filter:
+            'drop-shadow(2px 2px 0px white) drop-shadow(-2px -2px 0px white)' //Apply a white border to the image
+        },
+        '.drop-shadow-map-area-active': {
+          filter:
+            'drop-shadow(2px 2px 0px white) drop-shadow(-2px -2px 0px white) drop-shadow(0 0 20px white)'
+        }
+      })
+    })
+  ]
 }

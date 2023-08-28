@@ -2,7 +2,7 @@
 
 /* START OF COMPILED CODE */
 
-import Phaser from 'phaser'
+import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import { Physics } from 'phaser'
 // import { publish} from '../event';
@@ -12,17 +12,22 @@ import GameManager from '../GameManager'
 /* END-USER-IMPORTS */
 
 export default class PlayerMovement {
-  constructor(gameObject: Phaser.Physics.Arcade.Sprite) {
-    this.gameObject = gameObject
-    ;(gameObject as any)['__PlayerMovement'] = this
 
-    /* START-USER-CTR-CODE */
+	constructor(gameObject: Phaser.Physics.Arcade.Sprite) {
+		this.gameObject = gameObject;
+		(gameObject as any)["__PlayerMovement"] = this;
+
+		/* START-USER-CTR-CODE */
     /** @type {number} */
     this.velocity = 20
 
     const scene = this.gameObject.scene
     this.scene = scene
     this.cursors = scene.input.keyboard.createCursorKeys()
+    this.keyW = this.scene.input.keyboard.addKey('W')
+    this.keyA = this.scene.input.keyboard.addKey('A')
+    this.keyS = this.scene.input.keyboard.addKey('S')
+    this.keyD = this.scene.input.keyboard.addKey('D')
 
     //this.keyW = this.scene.input.keyboard.addKey('W');
     //this.keyA = this.scene.input.keyboard.addKey('A');
@@ -31,20 +36,22 @@ export default class PlayerMovement {
 
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
     /* END-USER-CTR-CODE */
-  }
+	}
 
-  static getComponent(
-    gameObject: Phaser.Physics.Arcade.Sprite
-  ): PlayerMovement {
-    return (gameObject as any)['__PlayerMovement']
-  }
+	static getComponent(gameObject: Phaser.Physics.Arcade.Sprite): PlayerMovement {
+		return (gameObject as any)["__PlayerMovement"];
+	}
 
-  private gameObject: Phaser.Physics.Arcade.Sprite
-  public speed: number = 2
-  public velocity: number = 50
+	private gameObject: Phaser.Physics.Arcade.Sprite;
+	public speed: number = 2;
+	public velocity: number = 50;
 
-  /* START-USER-CODE */
+	/* START-USER-CODE */
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys
+  private keyW: Phaser.Input.Keyboard.Key
+  private keyA: Phaser.Input.Keyboard.Key
+  private keyS: Phaser.Input.Keyboard.Key
+  private keyD: Phaser.Input.Keyboard.Key
   private scene: Phaser.Scene
   private gameManager: GameManager = GameManager.getInstance()
   private shopText: Phaser.GameObjects.Text = null
@@ -66,18 +73,20 @@ export default class PlayerMovement {
     if (!body) {
       return
     }
-    if (this.cursors.left.isDown) {
+    if (this.cursors.left.isDown || this.keyA.isDown) {
       this.gameObject.setVelocity(-this.velocity, 0)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
-    } else if (this.cursors.right.isDown) {
+      this.gameObject.flipX = false // Flip the sprite to face left
+    } else if (this.cursors.right.isDown || this.keyD.isDown) {
       this.gameObject.setVelocity(this.velocity, 0)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
+      this.gameObject.flipX = true // Reset the flipX property to face right
       // this.gameObject.anims.play('right', true);
-    } else if (this.cursors.up.isDown) {
+    } else if (this.cursors.up.isDown || this.keyW.isDown) {
       this.gameObject.setVelocity(0, -this.velocity)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
       // this.gameObject.anims.play('right', true);
-    } else if (this.cursors.down.isDown) {
+    } else if (this.cursors.down.isDown || this.keyS.isDown) {
       this.gameObject.setVelocity(0, this.velocity)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
       // this.gameObject.anims.play('right', true);

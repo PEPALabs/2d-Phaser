@@ -1,41 +1,57 @@
 import React from 'react'
-import { Text, Group, Stack, Box, Title, Container, Image } from '@mantine/core'
+import { Text, Group, Stack, Image, Grid, ScrollArea } from '@mantine/core'
 import ProductList from './components/ProductList'
-import useShopStore from './stores/useShopStore'
 import ShoppingBar from './components/ShoppingBar'
+import ProductCategoryTabs from './components/ProductCategoryTabs'
+import useProductCategory from './hooks/useProductCategory'
+import useGameStore from '../../../data/useGameStore'
 
 function ShopUI() {
-  const products = useShopStore(state => state.products)
+  const { category } = useProductCategory()
 
-  const index = useShopStore(state => state.index)
+  const products = useGameStore(state => state.shop.products)
 
-  const amount = useShopStore(state => state.amount)
+  const categorizedProducts =
+    category === 'all'
+      ? products
+      : products.filter(product => product.category === category)
 
-  const selectedProduct = products[index]
+  const index = useGameStore(state => state.shop.index)
+
+  const balance = useGameStore(state => state.shop.balance)
+
+  const selectedProduct = categorizedProducts[index]
 
   return (
-    <Box className="h-full bg-pepa-blue">
-      <Container className="h-full py-14" size="lg">
-        <Stack className="h-full gap-y-16" align="center">
-          <Group className="w-full" position="apart">
-            <Title
-              order={2}
-              variant="gradient"
-              gradient={{ from: 'indigo', to: 'cyan', deg: 45 }}>
-              PEPA Shop
-            </Title>
-            <Group spacing="sm">
-              <Image width={36} height={36} src="/assets/coin.png" />
-              <Text>User Balance: {amount} ETH</Text>
-            </Group>
+    <Stack className="h-full w-full overflow-hidden">
+      <Grid className="w-full" align="center" gutter={0}>
+        <Grid.Col span={9}>
+          <ProductCategoryTabs />
+        </Grid.Col>
+        <Grid.Col span={3}>
+          <Group position="center" spacing="sm">
+            <Image width={36} height={36} src="/assets/coin.png" />
+            <Text size="lg" className="font-bold tracking-wider">
+              {balance} ETH
+            </Text>
           </Group>
-          <Box className="grow">
-            <ProductList products={products} />
-          </Box>
-          {selectedProduct?.name && <ShoppingBar product={selectedProduct} />}
-        </Stack>
-      </Container>
-    </Box>
+        </Grid.Col>
+      </Grid>
+      <Grid className="h-full overflow-hidden">
+        <Grid.Col className="h-full" span={9}>
+          {categorizedProducts.length > 0 && (
+            <ScrollArea className="h-full">
+              <ProductList products={categorizedProducts} />
+            </ScrollArea>
+          )}
+        </Grid.Col>
+        <Grid.Col span={3}>
+          {selectedProduct && selectedProduct.name && (
+            <ShoppingBar product={selectedProduct} />
+          )}
+        </Grid.Col>
+      </Grid>
+    </Stack>
   )
 }
 

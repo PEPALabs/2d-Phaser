@@ -52,7 +52,7 @@ const ResourceList = () => {
     <ResourceSection name="Resources">
       <SimpleGrid cols={2}>
         {resources.map(resource => (
-          <Group position="apart" key={resource.name}>
+          <Group position="apart" key={resource.name} className="tracking-wide">
             <Text>{`${resource.icon} ${resource.name}`}</Text>
 
             <Text span fw="bold" color={theme.primaryColor}>

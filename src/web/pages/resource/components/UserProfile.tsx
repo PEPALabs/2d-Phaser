@@ -23,7 +23,9 @@ const UserProfile = () => {
         </Indicator>
         <Stack spacing="xs">
           <Group spacing="xs">
-            <Title order={5}>{name}</Title>
+            <Title className="font-JotiOne text-xl" order={5}>
+              {name}
+            </Title>
             <Badge>{title}</Badge>
           </Group>
           <Anchor href={`mailto:${email}`}>{email}</Anchor>

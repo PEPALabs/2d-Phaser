@@ -1,12 +1,28 @@
 import React from 'react'
-import { Center, Container, Stack } from '@mantine/core'
+import {
+  Text,
+  Group,
+  Stack,
+  Image,
+  ScrollArea,
+  AspectRatio,
+  Title
+} from '@mantine/core'
 import { useLocalStorage } from '@mantine/hooks'
+import QuestCategoryTabs from './components/QuestCategoryTabs'
 import QuestCard from './components/QuestCard'
-import quests from '../../../data/questData'
+import useGameStore, { questActions } from '../../../data/useGameStore'
+import useQuestCategory from './hooks/useQuestCategory'
 
 // TODO: Add quest sorting
 function QuestsPage() {
-  const [questItems, setQuestItems] = React.useState(quests)
+  const questItems = useGameStore(state => state.quests)
+  const { category } = useQuestCategory()
+
+  const categorizedQuests =
+    category === 'all'
+      ? questItems
+      : questItems.filter(quest => quest.questCategory === category)
 
   const [focusedItem, setFocusedItem] = useLocalStorage({
     key: 'quest.focusedItem',
@@ -40,36 +56,36 @@ function QuestsPage() {
 
   function updateQuests(quest) {
     return () => {
-      if (quest.questStatus === 'Available') quest.questStatus = 'In Progress'
-      else if (quest.questStatus === 'In Progress')
-        quest.questStatus = 'Completed'
-      else if (quest.questStatus === 'Completed') quest.questStatus = 'Archived'
-      else return
-      var tmpQuests = [...questItems]
-      for (var i = 0; i < tmpQuests.length; i++) {
-        if (tmpQuests[i].questId == quest.questId) {
-          tmpQuests[i] = quest
-        }
-      }
-      setQuestItems(tmpQuests)
+      questActions.updateQuests(quest.questId)
     }
   }
   return (
-    <Container className="h-full" size="lg">
-      <Center className="h-full">
-        <Stack className="w-full">
-          {questItems.map(quest => (
-            <QuestCard
-              key={quest.questId}
-              questItem={quest}
-              questUpdate={updateQuests(quest)}
-              isActive={focusedItem === quest.questId}
-              onClick={focusQuest(quest)}
-            />
-          ))}
-        </Stack>
-      </Center>
-    </Container>
+    <Stack className="w-full overflow-hidden">
+      <Group className="w-full" position="apart">
+        <QuestCategoryTabs />
+        <Group spacing="sm">
+          <Image width={36} height={36} src="/assets/coin.png" />
+          <Text className="font-bold tracking-wider">
+            User Balance: 1000 ETH
+          </Text>
+        </Group>
+      </Group>
+      <Stack className="h-full w-full overflow-hidden">
+        {categorizedQuests.length > 0 && (
+          <ScrollArea>
+            {categorizedQuests.map(quest => (
+              <QuestCard
+                key={quest.questId}
+                questItem={quest}
+                questUpdate={updateQuests(quest)}
+                isActive={focusedItem === quest.questId}
+                onClick={focusQuest(quest)}
+              />
+            ))}
+          </ScrollArea>
+        )}
+      </Stack>
+    </Stack>
   )
 }
 

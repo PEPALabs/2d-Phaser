@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   Stack,
   ScrollArea,
@@ -10,14 +10,24 @@ import {
   Title
 } from '@mantine/core'
 
-import messageData from '../../data/messageData'
 import ChatMessage from './ChatMessage'
 import { IconSend } from '@tabler/icons-react'
+import useGameStore, { messageActions } from '../../data/useGameStore'
 
 function ChatBox() {
-  const [messages, setMessage] = useState(messageData)
+  const messages = useGameStore(state => state.messages)
+
   const [text, setText] = useState('')
-  const [username, setUsername] = useState('Test User')
+  const [username, setUsername] = useState('player')
+
+  const viewportRef = useRef<HTMLDivElement>()
+
+  useEffect(() => {
+    viewportRef.current.scrollTo({
+      top: viewportRef.current.scrollHeight,
+      behavior: 'smooth'
+    })
+  }, [messages])
 
   const theme = useMantineTheme()
 
@@ -27,19 +37,27 @@ function ChatBox() {
       sender: username,
       message: text
     }
-    setMessage([...messages, newMessage])
+    messageActions.addMessage(newMessage)
     // e.target.message.value = "";
     setText('')
   }
 
   return (
     <>
-      <Title order={3}>Chat History</Title>
-      <Navbar.Section grow component={ScrollArea}>
+      <Title color="primary" order={3}>
+        Chat History
+      </Title>
+      <Navbar.Section
+        className="border-image-primary border-solid"
+        grow
+        component={ScrollArea}
+        viewportRef={viewportRef}>
         <Stack spacing="lg">
-          {messages.map((message, index) => (
-            <ChatMessage key={index} message={message} />
-          ))}
+          {messages
+            .filter(item => item.message.trim() !== '')
+            .map((message, index) => (
+              <ChatMessage key={index} message={message} />
+            ))}
         </Stack>
       </Navbar.Section>
       <Group spacing="xs">

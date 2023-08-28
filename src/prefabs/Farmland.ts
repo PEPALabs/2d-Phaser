@@ -7,8 +7,8 @@ import Phaser from "phaser";
 import Plant from "../components/Plant";
 import Button from "./ui/Button";
 /* START-USER-IMPORTS */
-import usePlantStore from "../data/plantStore";
-import {PlantType} from "../data/plants";
+import useGameStore from "../data/useGameStore";
+import {PlantType} from "../data/items.type";
 /* END-USER-IMPORTS */
 
 export default class Farmland extends Phaser.GameObjects.Container {
@@ -26,6 +26,21 @@ export default class Farmland extends Phaser.GameObjects.Container {
 		// ActionButton
 		const actionButton = new Button(scene, 26, 3);
 		this.add(actionButton);
+		// if(usePlantStore.getState().plants[id] != null)
+		// actionButton.on("pointerdown", () => {
+		// 	const plant:PlantType = this.gameStore.getState().plants[id];
+
+		// 	if(plant){
+		// 		const plantComponent = Plant.getComponent(this);
+		// 		if (plant.state == "READY") {
+		// 			console.log("harvesting");
+		// 			plantComponent.harvest();
+		// 		}else if(plant.state == "EMPTY"){
+		// 			plantComponent.updateStore(plant);
+		// 			console.log("planting");
+		// 		}
+		// 	}
+		// });
 
 		// this (components)
 		new Plant(this);
@@ -48,7 +63,7 @@ export default class Farmland extends Phaser.GameObjects.Container {
 	public id: string = "0";
 
 	/* START-USER-CODE */
-	private plantStore = usePlantStore;
+	private gameStore = useGameStore;
 
 	// onPointerClick(id:string){
 	// 	const plant:PlantType = this.plantStore.getState().plants[id];

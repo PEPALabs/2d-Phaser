@@ -6,7 +6,7 @@ import ItemsContext from './ItemsContext'
 
 import GameManager from '../GameManager'
 import { Game } from 'phaser'
-import { getItems } from '../utils/getItems'
+import { getItems } from '../data/getItems'
 enum ModalOptions {
   EQUIP = 0,
   DROP = 1,

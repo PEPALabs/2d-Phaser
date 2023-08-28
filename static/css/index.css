@@ -1,21 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Comic+Neue&family=Joti+One&family=Kranky&family=Lakki+Reddy&family=Mansalva&family=Rampart+One&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-a {
-  text-decoration: none;
-}
-
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-*,
-::before,
-::after {
-  border-width: 0;
-  border-style: solid;
-  border-color: currentColor /* or gray-DEFAULT / gray-400 */;
+/* Fix 'jumping scrollbar' issue */
+html {
+  width: 100vw;
+  overflow-x: hidden;
 }

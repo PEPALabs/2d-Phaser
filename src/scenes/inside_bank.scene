@@ -1,0 +1,165 @@
+{
+    "id": "ead39a03-e447-40c5-b1df-dbbb356c159c",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadPackFiles": [
+            "2d-Phaser/static/assets/asset-pack.json",
+            "2d-Phaser/static/assets/tiled/png-asset-pack.json"
+        ],
+        "createMethodName": "editorCreate",
+        "sceneKey": "inside_bank",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "be83d80e-f6ed-4e6f-a144-3c4156223cea",
+            "label": "bank",
+            "scope": "CLASS",
+            "texture": {
+                "key": "bank_1"
+            },
+            "x": 403,
+            "y": 398
+        },
+        {
+            "type": "ArcadeSprite",
+            "id": "f856f2f2-b93f-4c57-8e40-9d374ce77f14",
+            "label": "player",
+            "scope": "CLASS",
+            "components": [
+                "PigAnimation",
+                "PlayerMovement",
+                "Physics"
+            ],
+            "PlayerMovement.velocity": 250,
+            "texture": {
+                "key": "pig"
+            },
+            "x": 398,
+            "y": 464,
+            "scaleX": 0.06,
+            "scaleY": 0.06,
+            "body.width": 1134,
+            "body.height": 1572
+        },
+        {
+            "type": "Container",
+            "id": "b0da74a0-6e1b-427f-b750-06b6ffc5bd6b",
+            "label": "container_1",
+            "x": 202,
+            "y": 320,
+            "scaleX": 0.5,
+            "scaleY": 0.5,
+            "list": [
+                {
+                    "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+                    "id": "50ba4aa0-04e9-442c-a2d7-a9d987482765",
+                    "unlock": [
+                        "x",
+                        "y",
+                        "teleportScene",
+                        "player"
+                    ],
+                    "label": "teleport",
+                    "teleportScene": "Level",
+                    "player": "player",
+                    "x": 280,
+                    "y": 512
+                }
+            ]
+        },
+        {
+            "type": "Rectangle",
+            "id": "b168224a-9340-4b7e-9c30-61f38c0153f2",
+            "label": "rectangle_1",
+            "components": [
+                "RectPhysics"
+            ],
+            "RectPhysics.static": true,
+            "x": 57,
+            "y": 306,
+            "scaleX": 0.6635179325946723,
+            "scaleY": 7.006235600883343,
+            "width": 128,
+            "height": 128
+        },
+        {
+            "type": "Rectangle",
+            "id": "4311e478-2fcc-4e8c-9e5d-07474dcd9544",
+            "label": "rectangle",
+            "components": [
+                "RectPhysics"
+            ],
+            "RectPhysics.static": true,
+            "x": 787,
+            "y": 326,
+            "scaleX": 0.6635179325946723,
+            "scaleY": 7.006235600883343,
+            "width": 128,
+            "height": 128
+        },
+        {
+            "type": "Rectangle",
+            "id": "adc2bb19-c89f-42a4-b9af-c23a413f7635",
+            "label": "rectangle_2",
+            "components": [
+                "RectPhysics"
+            ],
+            "RectPhysics.static": true,
+            "x": 421,
+            "y": 73,
+            "scaleX": 7.113420897946245,
+            "scaleY": 0.6185891507319239,
+            "width": 128,
+            "height": 128
+        },
+        {
+            "type": "Rectangle",
+            "id": "3c4764d0-46eb-4756-a8d0-c97c3b1be2b2",
+            "label": "rectangle_3",
+            "components": [
+                "RectPhysics"
+            ],
+            "RectPhysics.static": true,
+            "x": 422,
+            "y": 707,
+            "scaleX": 7.113420897946245,
+            "scaleY": 0.6185891507319239,
+            "width": 128,
+            "height": 128
+        }
+    ],
+    "plainObjects": [
+        {
+            "id": "0fd1cba6-5724-40c9-bea1-b237cb23bd47",
+            "type": "Collider",
+            "label": "collider",
+            "scope": "LOCAL",
+            "object1": "player",
+            "object2": "list"
+        }
+    ],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 4
+    },
+    "lists": [
+        {
+            "id": "2a959803-a886-4e90-9cd5-38bc9c9a6e77",
+            "label": "list",
+            "objectIds": [
+                "b168224a-9340-4b7e-9c30-61f38c0153f2",
+                "3c4764d0-46eb-4756-a8d0-c97c3b1be2b2",
+                "4311e478-2fcc-4e8c-9e5d-07474dcd9544",
+                "adc2bb19-c89f-42a4-b9af-c23a413f7635"
+            ]
+        }
+    ]
+}

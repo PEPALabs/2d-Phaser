@@ -6,7 +6,8 @@
         "autoImport": true,
         "preloadMethodName": "preload_all",
         "preloadPackFiles": [
-            "Proj1/static/assets/asset-pack.json"
+            "2d-Phaser/static/assets/asset-pack.json",
+            "2d-Phaser/static/assets/tiled/png-asset-pack.json"
         ],
         "createMethodName": "editorCreate",
         "sceneKey": "Level",
@@ -19,13 +20,11 @@
             "type": "Image",
             "id": "946c881d-e531-4a51-89ff-fb630f59ab0f",
             "label": "image_2",
-            "components": [],
             "texture": {
                 "key": "map-town"
             },
             "originX": 0,
-            "originY": 0,
-            "list": []
+            "originY": 0
         },
         {
             "type": "ArcadeSprite",
@@ -35,10 +34,12 @@
             "components": [
                 "Physics",
                 "PlayerMovement",
-                "PigAnimation"
+                "PigAnimation",
+                "DisplayText"
             ],
             "PlayerMovement.velocity": 250,
             "PigAnimation.animationKey": "pig-walk",
+            "DisplayText.sender": "player",
             "texture": {
                 "key": "pig"
             },
@@ -47,8 +48,7 @@
             "scaleX": 0.1,
             "scaleY": 0.1,
             "body.width": 1134,
-            "body.height": 1572,
-            "list": []
+            "body.height": 1572
         },
         {
             "type": "Rectangle",
@@ -63,8 +63,7 @@
             "x": 2704,
             "y": 2919,
             "width": 500,
-            "height": 500,
-            "list": []
+            "height": 500
         },
         {
             "type": "ArcadeSprite",
@@ -88,8 +87,7 @@
             "originX": 0.1,
             "originY": 0.1,
             "body.width": 1024,
-            "body.height": 1024,
-            "list": []
+            "body.height": 1024
         },
         {
             "type": "ArcadeSprite",
@@ -111,8 +109,7 @@
             "scaleX": 0.1,
             "scaleY": 0.1,
             "body.width": 1118,
-            "body.height": 1572,
-            "list": []
+            "body.height": 1572
         },
         {
             "type": "ArcadeSprite",
@@ -134,8 +131,7 @@
             "scaleX": 0.1,
             "scaleY": 0.1,
             "body.width": 1024,
-            "body.height": 1024,
-            "list": []
+            "body.height": 1024
         },
         {
             "type": "ArcadeSprite",
@@ -160,8 +156,7 @@
             "originX": 0.1,
             "originY": 0.1,
             "body.width": 1024,
-            "body.height": 1024,
-            "list": []
+            "body.height": 1024
         },
         {
             "type": "ArcadeSprite",
@@ -186,8 +181,7 @@
             "originX": 0.1,
             "originY": 0.1,
             "body.width": 1024,
-            "body.height": 1024,
-            "list": []
+            "body.height": 1024
         },
         {
             "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
@@ -199,11 +193,209 @@
             ],
             "label": "teleport",
             "player": "player",
-            "components": [],
             "x": 1251,
-            "y": 1101,
-            "nestedPrefabs": [],
-            "list": []
+            "y": 1101
+        },
+        {
+            "type": "Container",
+            "id": "9ecd4da3-7f4d-49a5-8bf2-3c18a411bf8a",
+            "label": "blocks",
+            "list": [
+                {
+                    "type": "Rectangle",
+                    "id": "f277deb5-dfeb-4e43-b42a-68df5cfbccf5",
+                    "label": "rectangle_1",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 343,
+                    "y": 2054,
+                    "scaleX": 7.903769575657687,
+                    "scaleY": 37.68443640575428,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "5aeebcf6-7dec-4a60-91ac-60d515b6d45d",
+                    "label": "rectangle_2",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 2195,
+                    "y": 554,
+                    "scaleX": 35.69363743349427,
+                    "scaleY": 3.461741546608299,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "be875976-770a-476f-8014-55d9e2b5c924",
+                    "label": "rectangle",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 4221,
+                    "y": 2540,
+                    "scaleX": 12.445535079210995,
+                    "scaleY": 34.45458838253835,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "a971ade3-0818-4827-a6ed-e6c5e60500a5",
+                    "label": "rectangle_3",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 2231,
+                    "y": 3552,
+                    "scaleX": 35.69363743349427,
+                    "scaleY": 3.461741546608299,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "4bfb5163-467c-4ed1-b901-52f169a63eaa",
+                    "label": "rectangle_4",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 3064,
+                    "y": 2020,
+                    "scaleX": 13.133764125530927,
+                    "scaleY": 5.26642606819696,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "4a50e598-f9a6-4428-8923-1d2142779e84",
+                    "label": "rectangle_5",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 1082,
+                    "y": 2319,
+                    "scaleX": 13.133764125530927,
+                    "scaleY": 6.997050825581758,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "8212af1a-0072-4a06-bfce-69945c38be88",
+                    "label": "rectangle_6",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 3043,
+                    "y": 2843,
+                    "scaleX": 9.077211514843087,
+                    "scaleY": 3.585425469324598,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128
+                }
+            ]
+        },
+        {
+            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+            "id": "62bd1d23-0dd1-4c77-bf88-4259b569e1b3",
+            "unlock": [
+                "x",
+                "y",
+                "teleportScene",
+                "player"
+            ],
+            "label": "teleport_1",
+            "teleportScene": "inside_bank",
+            "player": "player",
+            "x": 1431,
+            "y": 2673
+        },
+        {
+            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+            "id": "a2b56c77-0c9c-4f59-905c-b2d1028987a4",
+            "unlock": [
+                "x",
+                "y",
+                "player",
+                "teleportScene"
+            ],
+            "label": "teleport_2",
+            "teleportScene": "inside_exchange",
+            "player": "player",
+            "x": 884,
+            "y": 2681
+        },
+        {
+            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+            "id": "0f274629-7597-477b-81dc-159d21e47517",
+            "unlock": [
+                "x",
+                "y",
+                "teleportScene",
+                "player"
+            ],
+            "label": "teleport_3",
+            "teleportScene": "inside_seedmarket",
+            "player": "player",
+            "x": 2575,
+            "y": 2900
+        },
+        {
+            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+            "id": "b89a0d0d-7032-4e3f-8337-f2439cfb7598",
+            "unlock": [
+                "x",
+                "y",
+                "teleportScene",
+                "player"
+            ],
+            "label": "teleport_4",
+            "teleportScene": "inside_clothing",
+            "player": "player",
+            "x": 3066,
+            "y": 2867
+        },
+        {
+            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+            "id": "2a1f1f06-8f2e-4094-8260-67003fd8a21e",
+            "unlock": [
+                "x",
+                "y",
+                "teleportScene",
+                "player"
+            ],
+            "label": "teleport_5",
+            "teleportScene": "inside_bar",
+            "player": "player",
+            "x": 2889,
+            "y": 2102
         },
         {
             "prefabId": "46239938-4ed4-4201-8fc6-4c848b0c5a5a",
@@ -212,10 +404,7 @@
                 "x",
                 "y"
             ],
-            "label": "scriptnode_1",
-            "components": [],
-            "nestedPrefabs": [],
-            "list": []
+            "label": "scriptnode_1"
         }
     ],
     "plainObjects": [
@@ -302,13 +491,21 @@
             "type": "Keyboard.Key",
             "label": "keyboard_key_3",
             "keyCode": "D"
+        },
+        {
+            "id": "8b6890fe-ebf0-42f1-bca8-96fcad275dfe",
+            "type": "Collider",
+            "label": "collider",
+            "scope": "METHOD",
+            "object1": "blocklist",
+            "object2": "player"
         }
     ],
     "meta": {
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 3
+        "version": 4
     },
     "lists": [
         {
@@ -326,6 +523,19 @@
             "id": "b7cbd2f6-b5c2-46e4-8af9-13250f7dafd2",
             "label": "list_1",
             "scope": "PUBLIC"
+        },
+        {
+            "id": "cb20fcf6-e9c8-4600-861c-2292cd9593f6",
+            "label": "blocklist",
+            "objectIds": [
+                "f277deb5-dfeb-4e43-b42a-68df5cfbccf5",
+                "5aeebcf6-7dec-4a60-91ac-60d515b6d45d",
+                "be875976-770a-476f-8014-55d9e2b5c924",
+                "a971ade3-0818-4827-a6ed-e6c5e60500a5",
+                "4bfb5163-467c-4ed1-b901-52f169a63eaa",
+                "4a50e598-f9a6-4428-8923-1d2142779e84",
+                "8212af1a-0072-4a06-bfce-69945c38be88"
+            ]
         }
     ]
 }

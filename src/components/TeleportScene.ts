@@ -2,7 +2,7 @@
 
 /* START OF COMPILED CODE */
 
-import Phaser from 'phaser'
+import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import { Physics } from 'phaser'
 import PubSub from 'pubsub-js'
@@ -12,11 +12,12 @@ import { notifications } from '@mantine/notifications'
 /* END-USER-IMPORTS */
 
 export default class TeleportScene {
-  constructor(gameObject: Phaser.GameObjects.Rectangle) {
-    this.gameObject = gameObject
-    ;(gameObject as any)['__TeleportScene'] = this
 
-    /* START-USER-CTR-CODE */
+	constructor(gameObject: Phaser.GameObjects.Rectangle) {
+		this.gameObject = gameObject;
+		(gameObject as any)["__TeleportScene"] = this;
+
+		/* START-USER-CTR-CODE */
     // Write your code here.
     const scene = this.gameObject.scene
     this.scene = scene
@@ -25,17 +26,17 @@ export default class TeleportScene {
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
 
     /* END-USER-CTR-CODE */
-  }
+	}
 
-  static getComponent(gameObject: Phaser.GameObjects.Rectangle): TeleportScene {
-    return (gameObject as any)['__TeleportScene']
-  }
+	static getComponent(gameObject: Phaser.GameObjects.Rectangle): TeleportScene {
+		return (gameObject as any)["__TeleportScene"];
+	}
 
-  private gameObject: Phaser.GameObjects.Rectangle
-  public targetScene: string = ''
-  public player!: Phaser.GameObjects.GameObject
+	private gameObject: Phaser.GameObjects.Rectangle;
+	public targetScene: string = "";
+	public player!: Phaser.GameObjects.GameObject;
 
-  /* START-USER-CODE */
+	/* START-USER-CODE */
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys
   private proximity: Boolean = false
   private textShown: Boolean = false
