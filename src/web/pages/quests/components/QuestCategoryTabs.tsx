@@ -19,6 +19,7 @@ const QuestCategoryTabs = () => {
 
   return (
     <Tabs
+      className="border-image-primary border-solid"
       variant="pills"
       value={category}
       onTabChange={value => {
