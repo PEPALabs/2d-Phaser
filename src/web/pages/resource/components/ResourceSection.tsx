@@ -17,7 +17,7 @@ const ResourceSection = ({
         className="font-JotiOne tracking-wide text-black/70">
         {name}
       </Title>
-      <Box p="xl" className="border-image-primary border-solid">
+      <Box p="md" className="border-image-primary border-solid">
         {children}
       </Box>
     </Stack>

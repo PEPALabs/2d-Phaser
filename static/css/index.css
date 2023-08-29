@@ -9,3 +9,8 @@ html {
   width: 100vw;
   overflow-x: hidden;
 }
+
+@font-face {
+  font-family: 'Avara';
+  src: url('../assets/fonts/Avara.woff2') format('woff2');
+}
