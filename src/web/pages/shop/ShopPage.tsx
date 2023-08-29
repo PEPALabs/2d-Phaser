@@ -1,20 +1,27 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Text, Group, Stack, Image, Grid, ScrollArea } from '@mantine/core'
 import ProductList from './components/ProductList'
 import ShoppingBar from './components/ShoppingBar'
 import ProductCategoryTabs from './components/ProductCategoryTabs'
 import useProductCategory from './hooks/useProductCategory'
 import useGameStore from '../../../data/useGameStore'
+import { emptyItem } from '../../../data/getItems'
 
 function ShopUI() {
   const { category } = useProductCategory()
 
   const products = useGameStore(state => state.shop.products)
 
-  const categorizedProducts =
-    category === 'all'
-      ? products
-      : products.filter(product => product.category === category)
+  const categorizedProducts = useMemo(() => {
+    const result =
+      category === 'all'
+        ? products
+        : products.filter(product => product.category === category)
+
+    return result.concat(
+      Array.from({ length: 21 - result.length }, () => emptyItem)
+    )
+  }, [category, products])
 
   const index = useGameStore(state => state.shop.index)
 

@@ -4,8 +4,7 @@ import { subscribeWithSelector } from 'zustand/middleware'
 import type { QuestType, PlantType, MessageType, ItemType } from './items.type'
 import quests from './questData'
 import messageData from './messageData'
-import { getInventoryItems, getItems } from './getItems'
-import GameManager from '../GameManager'
+import { getItems } from './getItems'
 
 interface GameState {
   playerID: string

@@ -13,6 +13,7 @@ module.exports = {
         Kranky: ['Kranky', 'cursive'],
         LakkiReddy: ['Lakki Reddy', 'cursive'],
         Mansalva: ['Mansalva', 'cursive'],
+        Avara: ['Avara', 'cursive'],
         title: ['Rampart One', 'cursive']
       },
       colors: {

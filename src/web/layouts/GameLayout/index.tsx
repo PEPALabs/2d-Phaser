@@ -5,6 +5,7 @@ import {
   Center,
   CloseButton,
   Container,
+  ScrollArea,
   SimpleGrid,
   Stack,
   Title
@@ -44,7 +45,9 @@ const GameLayout = () => {
                 <Stack className="!justify-start">
                   <SimpleGrid cols={3} className="w-full">
                     <Box />
-                    <Title className="justify-self-center" color="primary">
+                    <Title
+                      className="justify-self-center whitespace-nowrap font-Avara text-yellow-700"
+                      color="primary">
                       {pageTitle}
                     </Title>
                     <CloseButton
@@ -54,7 +57,12 @@ const GameLayout = () => {
                       onClick={handleGoBack}
                     />
                   </SimpleGrid>
-                  <Outlet />
+                  <ScrollArea
+                    className="h-full w-full"
+                    offsetScrollbars
+                    classNames={{ viewport: '[&>div]:h-full' }}>
+                    <Outlet />
+                  </ScrollArea>
                 </Stack>
               </AspectRatio>
             </Box>

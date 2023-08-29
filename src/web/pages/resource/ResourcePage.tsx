@@ -9,10 +9,10 @@ const ResourcePage = () => {
   return (
     <Center className="h-full">
       <Group
-        className="border-image-primary gap-10 border-solid"
+        className="border-image-primary border-solid"
         align="flex-start"
-        p="md">
-        <Stack className="gap-10">
+        p="xs">
+        <Stack>
           <UserProfile />
           <ResourceList />
         </Stack>
