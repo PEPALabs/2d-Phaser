@@ -37,8 +37,8 @@ const UniswapPage = () => {
         className="relative h-full w-full"
         bg="radial-gradient(100% 100% at 50% 0%, rgba(255, 184, 226, 0.51) 0%, rgba(255, 255, 255, 0) 100%), rgb(255, 255, 255)">
         <PepaLogo />
-        <Center className="h-full">
-          <Card withBorder className="w-1/3">
+        <Center className="h-full px-8 py-8 lg:px-0">
+          <Card withBorder className="w-full lg:w-7/12 xl:w-1/2 2xl:w-1/3">
             <Tabs color="pink" defaultValue="swap">
               <Group position="apart">
                 <Tabs.List>

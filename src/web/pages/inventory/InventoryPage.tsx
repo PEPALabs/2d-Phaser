@@ -47,14 +47,14 @@ function InventoryUI() {
         </Grid.Col>
       </Grid>
       <Grid className="h-full overflow-hidden">
-        <Grid.Col className="h-full" span={9}>
+        <Grid.Col className="h-full" md={12} lg={9}>
           {categorizedProducts.length > 0 && (
             <ScrollArea className="h-full">
               <ProductList products={categorizedProducts} />
             </ScrollArea>
           )}
         </Grid.Col>
-        <Grid.Col span={3}>
+        <Grid.Col md={12} lg={3}>
           {selectedProduct && selectedProduct.name && (
             <InventoryBar product={selectedProduct} />
           )}
