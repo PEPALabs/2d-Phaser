@@ -95,7 +95,18 @@
             "name": "RectPhysics",
             "baseClass": "",
             "gameObjectType": "Phaser.GameObjects.Rectangle",
-            "properties": []
+            "properties": [
+                {
+                    "name": "static",
+                    "label": "static",
+                    "tooltip": "static",
+                    "defValue": false,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "boolean"
+                    }
+                }
+            ]
         },
         {
             "name": "Teleport",

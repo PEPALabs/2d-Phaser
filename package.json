@@ -8,8 +8,8 @@
     "build": "webpack --mode=production --node-env production && phaser-asset-pack-hashing -r dist",
     "format": "npx prettier . --write",
     "lint": "npx eslint './src/**/*.{js,jsx,ts,tsx}' --fix",
-    "editor": "phasereditor2d-launcher -project . -port 1959",
-    "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959",
+    "editor": "phasereditor2d-launcher -project . -port 1959 -max-number-files 5000",
+    "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959 -max-number-files 50000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Phaser Editor 2D <developers@phasereditor2d.com> (https://phasereditor2d.com/)",

@@ -1,0 +1,252 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "/home/felix/Downloads/tiled_maps/tiled/seed-market/seedmarket.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "exportAsImage.drawObjectLabels": false,
+    "exportAsImage.drawTileGrid": false,
+    "exportAsImage.includeBackgroundColor": true,
+    "exportAsImage.useCurrentScale": true,
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 0.5
+        },
+        "/home/felix/Downloads/tiled_maps/tiled/seed-market/SeedMarket.tsx": {
+            "scaleInDock": 1
+        },
+        "/home/felix/Downloads/tiled_maps/tiled/seed-market/seedmarket.tmx": {
+            "scale": 0.128725,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2004.2726743056903,
+                "y": 2004.27267430569
+            }
+        },
+        "C:/Users/86183/Desktop/新建文件夹/log cabin/log cabin.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 3256,
+                "y": 2036
+            }
+        },
+        "C:/Users/86183/Desktop/新建文件夹/log cabin/log cabin.tmx#bg": {
+            "scaleInDock": 1
+        },
+        "C:/Users/86183/Desktop/新建文件夹/log cabin/log_cabin.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/86183/Documents/WeChat Files/wxid_4vfndxd42ci122/FileStorage/File/2023-07/log cabin/log cabin.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1928,
+                "y": 2176
+            }
+        },
+        "C:/Users/86183/Documents/WeChat Files/wxid_4vfndxd42ci122/FileStorage/File/2023-07/log cabin/log cabin.tmx#bg": {
+            "scaleInDock": 1
+        },
+        "C:/Users/86183/Documents/WeChat Files/wxid_4vfndxd42ci122/FileStorage/File/2023-07/log cabin/log_cabin.tsx": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx": {
+            "scale": 0.25,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2360,
+                "y": 2312
+            }
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_BGbrick": {
+            "scaleInDock": 0.015625
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_BGgrass": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_PepaBank": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_bellTower": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_bench1": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_bench2": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_bench3": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_bench4": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_boutiqueStore": {
+            "scaleInDock": 0.015625
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_brickEdge": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_bridge1": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_bridge2": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_bush1": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_bush2": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_cat": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_dog": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_exchangeStore": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_fences": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_fountain": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_fox": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_monster": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_parkBrick": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_path1": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_path2": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_pathEdge": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_pepa1": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_pepa2": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_pepa3": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_pepa4": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_pepa5": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_rabbit": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_river": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_seedMarket": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_stockMarket": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_streetLight": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_tradingCenter": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_tree1": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_tree2": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_tree3": {
+            "scaleInDock": 1
+        },
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx#TownScene_unionBuilding": {
+            "scaleInDock": 1
+        },
+        "log cabin.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2256,
+                "y": 1768
+            }
+        },
+        "log cabin.tmx#bg": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 0.5
+        },
+        "log_cabin.json": {
+            "scale": 0.1277667493796526,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2011.4779568848323,
+                "y": 2011.4779568848326
+            }
+        },
+        "log_cabin.json#bg": {
+            "scaleInDock": 1
+        },
+        "log_cabin.json#log_cabin": {
+            "scaleInDock": 1
+        },
+        "log_cabin.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.015625,
+            "scaleInEditor": 0.03
+        }
+    },
+    "last.exportedFilePath": "/home/felix/Downloads/tiled_maps/tiled/seed-market",
+    "last.imagePath": "E:/work/scene construction/log cabin/png",
+    "map.height": 80,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 50,
+    "map.tileWidth": 50,
+    "map.width": 80,
+    "openFiles": [
+        "log_cabin.tsx",
+        "log_cabin.json",
+        "/home/felix/Downloads/tiled_maps/tiled/seed-market/seedmarket.tmx"
+    ],
+    "project": "log_cabin.tiled-project",
+    "recentFiles": [
+        "log_cabin.tsx",
+        "log_cabin.json",
+        "/home/felix/Downloads/tiled_maps/tiled/seed-market/seedmarket.tmx",
+        "log cabin.tmx",
+        "C:/Users/86183/Documents/WeChat Files/wxid_4vfndxd42ci122/FileStorage/File/2023-07/log cabin/log cabin.tmx",
+        "E:/work/ldtk/TownScene/tiled/Level_0.tmx",
+        "C:/Users/86183/Desktop/新建文件夹/log cabin/log cabin.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 50,
+        "width": 50
+    },
+    "tileset.type": 0
+}

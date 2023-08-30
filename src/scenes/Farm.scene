@@ -53,10 +53,8 @@
                         "scaleY"
                     ],
                     "label": "Farmland",
-                    "x": 1885.8,
-                    "y": 877.8,
-                    "scaleX": 0.6,
-                    "scaleY": 0.6
+                    "x": 3143,
+                    "y": 1463
                 },
                 {
                     "prefabId": "32c77594-c428-44d4-9a37-657989684462",
@@ -69,10 +67,8 @@
                         "scaleY"
                     ],
                     "label": "Farmland_1",
-                    "x": 2033.4,
-                    "y": 877.2,
-                    "scaleX": 0.6,
-                    "scaleY": 0.6
+                    "x": 3389,
+                    "y": 1462
                 },
                 {
                     "prefabId": "32c77594-c428-44d4-9a37-657989684462",
@@ -85,10 +81,8 @@
                         "scaleY"
                     ],
                     "label": "Farmland_2",
-                    "x": 2178,
-                    "y": 879,
-                    "scaleX": 0.6,
-                    "scaleY": 0.6
+                    "x": 3630,
+                    "y": 1465
                 }
             ]
         },
@@ -146,17 +140,126 @@
             "label": "container_1",
             "teleportScene": "Level",
             "player": "player",
-            "x": 985.2,
-            "y": 879,
-            "scaleX": 0.6,
-            "scaleY": 0.6
+            "x": 1624,
+            "y": 2373
+        },
+        {
+            "type": "Container",
+            "id": "639cba75-a303-42ed-af36-00d2319a2d64",
+            "label": "container_2",
+            "list": [
+                {
+                    "type": "Rectangle",
+                    "id": "fc78b9eb-6449-4006-a8fd-904cc07b80b3",
+                    "label": "rectangle_1",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 1265,
+                    "y": 2153,
+                    "scaleX": 4.473832511589777,
+                    "scaleY": 24.67422412742155,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "c88e2039-fa6a-4d4c-882f-03fa5df85bf9",
+                    "label": "rectangle",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 3347,
+                    "y": 2194,
+                    "scaleX": 4.473832511589777,
+                    "scaleY": 24.67422412742155,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "b515967b-2e90-43d7-86cc-d503f0d502eb",
+                    "label": "rectangle_2",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 2217,
+                    "y": 949,
+                    "scaleX": 26.02126195648374,
+                    "scaleY": 5.736091529638177,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "b12d7f5e-812c-44d4-8c87-84d4aa6cef8a",
+                    "label": "rectangle_3",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 2247,
+                    "y": 3636,
+                    "scaleX": 26.02126195648374,
+                    "scaleY": 5.736091529638177,
+                    "visible": false,
+                    "isFilled": true,
+                    "width": 128,
+                    "height": 128
+                }
+            ]
+        },
+        {
+            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+            "id": "1b2a8c6e-c66b-4e90-b8e8-090064893f80",
+            "unlock": [
+                "x",
+                "y",
+                "teleportScene",
+                "player"
+            ],
+            "label": "teleport_1",
+            "teleportScene": "inside-cabin",
+            "player": "player",
+            "x": 1636,
+            "y": 1212
         }
     ],
-    "plainObjects": [],
+    "plainObjects": [
+        {
+            "id": "431429a8-a4f0-419b-a9c5-092d97dc2cce",
+            "type": "Collider",
+            "label": "collider",
+            "scope": "METHOD",
+            "object1": "player",
+            "object2": "blocklist"
+        }
+    ],
     "meta": {
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
         "version": 4
-    }
+    },
+    "lists": [
+        {
+            "id": "947052ef-25cd-4906-b379-8f935b31aba4",
+            "label": "blocklist",
+            "objectIds": [
+                "fc78b9eb-6449-4006-a8fd-904cc07b80b3",
+                "c88e2039-fa6a-4d4c-882f-03fa5df85bf9",
+                "b515967b-2e90-43d7-86cc-d503f0d502eb",
+                "b12d7f5e-812c-44d4-8c87-84d4aa6cef8a"
+            ]
+        }
+    ]
 }

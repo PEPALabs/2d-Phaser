@@ -1,0 +1,107 @@
+{
+    "id": "91dc8855-880d-4994-ae8e-8e64018ea416",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadPackFiles": [
+            "2d-Phaser/static/assets/asset-pack.json",
+            "2d-Phaser/static/assets/tiled/png-asset-pack.json"
+        ],
+        "createMethodName": "editorCreate",
+        "sceneKey": "inside_clothing",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Rectangle",
+            "id": "41919dd3-e4ca-4e8f-a8ce-963e9e35edb3",
+            "label": "rectangle_1",
+            "x": 643,
+            "y": 342,
+            "scaleX": 13.619777307723384,
+            "scaleY": 8.113026797333477,
+            "isFilled": true,
+            "fillColor": "#020000",
+            "width": 128,
+            "height": 128
+        },
+        {
+            "type": "Container",
+            "id": "541beb68-d2bf-4ef7-b4da-cb7dafdcca94",
+            "label": "container_1",
+            "x": 109,
+            "y": 138,
+            "scaleX": 1.5,
+            "scaleY": 1.5,
+            "list": [
+                {
+                    "type": "Container",
+                    "id": "305e0e44-7372-4204-bc0f-a1aaca9365b8",
+                    "label": "container_2",
+                    "x": -612,
+                    "y": -552
+                },
+                {
+                    "type": "Image",
+                    "id": "86d713c9-ab8d-40bd-81d4-b40ad2bd6c5b",
+                    "label": "clothing_store",
+                    "texture": {
+                        "key": "clothing_store"
+                    },
+                    "x": 358,
+                    "y": 144
+                },
+                {
+                    "type": "ArcadeSprite",
+                    "id": "45f57bf1-755a-4fc2-ba19-b4be2d20df73",
+                    "label": "pig",
+                    "scope": "CLASS",
+                    "components": [
+                        "PlayerMovement",
+                        "Physics",
+                        "PigAnimation"
+                    ],
+                    "PlayerMovement.velocity": 250,
+                    "texture": {
+                        "key": "pig"
+                    },
+                    "x": 468,
+                    "y": 223,
+                    "scaleX": 0.05,
+                    "scaleY": 0.05,
+                    "body.width": 1134,
+                    "body.height": 1572
+                },
+                {
+                    "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+                    "id": "ad8ae00c-e538-4606-b4ff-9c5078a72193",
+                    "unlock": [
+                        "x",
+                        "y",
+                        "teleportScene",
+                        "player",
+                        "scaleX",
+                        "scaleY"
+                    ],
+                    "label": "teleport",
+                    "teleportScene": "Level",
+                    "player": "pig",
+                    "x": 442,
+                    "y": 244,
+                    "scaleX": 0.5,
+                    "scaleY": 0.5
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 4
+    }
+}

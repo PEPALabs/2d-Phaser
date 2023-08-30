@@ -2,7 +2,7 @@
 
 /* START OF COMPILED CODE */
 
-import Phaser from 'phaser'
+import Phaser from "phaser";
 /* START-USER-IMPORTS */
 import { Physics } from 'phaser'
 // import { publish} from '../event';
@@ -12,11 +12,12 @@ import GameManager from '../GameManager'
 /* END-USER-IMPORTS */
 
 export default class PlayerMovement {
-  constructor(gameObject: Phaser.Physics.Arcade.Sprite) {
-    this.gameObject = gameObject
-    ;(gameObject as any)['__PlayerMovement'] = this
 
-    /* START-USER-CTR-CODE */
+	constructor(gameObject: Phaser.Physics.Arcade.Sprite) {
+		this.gameObject = gameObject;
+		(gameObject as any)["__PlayerMovement"] = this;
+
+		/* START-USER-CTR-CODE */
     /** @type {number} */
     this.velocity = 20
 
@@ -35,19 +36,17 @@ export default class PlayerMovement {
 
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
     /* END-USER-CTR-CODE */
-  }
+	}
 
-  static getComponent(
-    gameObject: Phaser.Physics.Arcade.Sprite
-  ): PlayerMovement {
-    return (gameObject as any)['__PlayerMovement']
-  }
+	static getComponent(gameObject: Phaser.Physics.Arcade.Sprite): PlayerMovement {
+		return (gameObject as any)["__PlayerMovement"];
+	}
 
-  private gameObject: Phaser.Physics.Arcade.Sprite
-  public speed: number = 2
-  public velocity: number = 50
+	private gameObject: Phaser.Physics.Arcade.Sprite;
+	public speed: number = 2;
+	public velocity: number = 50;
 
-  /* START-USER-CODE */
+	/* START-USER-CODE */
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys
   private keyW: Phaser.Input.Keyboard.Key
   private keyA: Phaser.Input.Keyboard.Key
