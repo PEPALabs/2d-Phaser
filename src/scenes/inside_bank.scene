@@ -16,6 +16,19 @@
     },
     "displayList": [
         {
+            "type": "Rectangle",
+            "id": "4cc4d7ae-a7d2-4138-a4f7-7e87b34c319f",
+            "label": "rectangle_4",
+            "x": 639,
+            "y": 340,
+            "scaleX": 15.178135927682032,
+            "scaleY": 8.296563713536147,
+            "isFilled": true,
+            "fillColor": "#000000",
+            "width": 128,
+            "height": 128
+        },
+        {
             "type": "Image",
             "id": "be83d80e-f6ed-4e6f-a144-3c4156223cea",
             "label": "bank",
@@ -23,8 +36,8 @@
             "texture": {
                 "key": "bank_1"
             },
-            "x": 403,
-            "y": 398
+            "x": 647,
+            "y": 362
         },
         {
             "type": "ArcadeSprite",
@@ -40,8 +53,8 @@
             "texture": {
                 "key": "pig"
             },
-            "x": 398,
-            "y": 464,
+            "x": 642,
+            "y": 428,
             "scaleX": 0.06,
             "scaleY": 0.06,
             "body.width": 1134,
@@ -51,8 +64,8 @@
             "type": "Container",
             "id": "b0da74a0-6e1b-427f-b750-06b6ffc5bd6b",
             "label": "container_1",
-            "x": 202,
-            "y": 320,
+            "x": 446,
+            "y": 284,
             "scaleX": 0.5,
             "scaleY": 0.5,
             "list": [
@@ -81,8 +94,8 @@
                 "RectPhysics"
             ],
             "RectPhysics.static": true,
-            "x": 57,
-            "y": 306,
+            "x": 301,
+            "y": 270,
             "scaleX": 0.6635179325946723,
             "scaleY": 7.006235600883343,
             "width": 128,
@@ -96,8 +109,8 @@
                 "RectPhysics"
             ],
             "RectPhysics.static": true,
-            "x": 787,
-            "y": 326,
+            "x": 1031,
+            "y": 290,
             "scaleX": 0.6635179325946723,
             "scaleY": 7.006235600883343,
             "width": 128,
@@ -111,8 +124,8 @@
                 "RectPhysics"
             ],
             "RectPhysics.static": true,
-            "x": 421,
-            "y": 73,
+            "x": 665,
+            "y": 37,
             "scaleX": 7.113420897946245,
             "scaleY": 0.6185891507319239,
             "width": 128,
@@ -126,8 +139,8 @@
                 "RectPhysics"
             ],
             "RectPhysics.static": true,
-            "x": 422,
-            "y": 707,
+            "x": 666,
+            "y": 671,
             "scaleX": 7.113420897946245,
             "scaleY": 0.6185891507319239,
             "width": 128,

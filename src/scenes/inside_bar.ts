@@ -29,20 +29,34 @@ export default class inside_bar extends Phaser.Scene {
 
 	editorCreate(): void {
 
+		// rectangle_1
+		const rectangle_1 = this.add.rectangle(684, 378, 128, 128);
+		rectangle_1.scaleX = 14.245814137595259;
+		rectangle_1.scaleY = 8.059605729828485;
+		rectangle_1.isFilled = true;
+		rectangle_1.fillColor = 0;
+
+		// container_1
+		const container_1 = this.add.container(411, 159);
+		container_1.scaleX = 0.35;
+		container_1.scaleY = 0.35;
+
 		// bar_map_1
-		const bar_map_1 = this.add.image(350, 288, "bar_map_1");
+		const bar_map_1 = this.add.image(700, 576, "bar_map_1");
 		bar_map_1.scaleX = 0.5;
 		bar_map_1.scaleY = 0.5;
+		container_1.add(bar_map_1);
 
 		// pig
-		const pig = this.physics.add.sprite(-49, 610, "pig");
+		const pig = this.physics.add.sprite(299, 991, "pig");
 		pig.scaleX = 0.15;
 		pig.scaleY = 0.15;
 		pig.body.setSize(1134, 1572, false);
+		container_1.add(pig);
 
 		// teleport
-		const teleport = new Teleport(this, -464, 775);
-		this.add.existing(teleport);
+		const teleport = new Teleport(this, -104, 1034);
+		container_1.add(teleport);
 
 		// pig (components)
 		const pigPlayerMovement = new PlayerMovement(pig);
