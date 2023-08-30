@@ -23,3 +23,5 @@ const ResourcePage = () => {
 }
 
 export default ResourcePage
+
+export const Component = ResourcePage

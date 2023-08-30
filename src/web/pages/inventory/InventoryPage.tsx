@@ -9,7 +9,7 @@ import { emptyItem } from '../../../data/getItems'
 
 // import linkImage from "./assets/bg.png";
 
-function InventoryUI() {
+function InventoryPage() {
   const { category } = useProductCategory()
 
   const products = useGameStore(state => state.inventories.products)
@@ -64,4 +64,6 @@ function InventoryUI() {
   )
 }
 
-export default InventoryUI
+export default InventoryPage
+
+export const Component = InventoryPage

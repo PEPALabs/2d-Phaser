@@ -74,3 +74,5 @@ const GameLayout = () => {
 }
 
 export default GameLayout
+
+export const Component = GameLayout

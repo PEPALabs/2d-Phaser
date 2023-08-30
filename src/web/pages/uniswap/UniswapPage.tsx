@@ -68,3 +68,5 @@ const UniswapPage = () => {
 }
 
 export default UniswapPage
+
+export const Component = UniswapPage

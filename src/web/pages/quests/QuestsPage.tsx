@@ -88,3 +88,5 @@ function QuestsPage() {
 }
 
 export default QuestsPage
+
+export const Component = QuestsPage

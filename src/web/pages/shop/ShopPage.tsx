@@ -7,7 +7,7 @@ import useProductCategory from './hooks/useProductCategory'
 import useGameStore from '../../../data/useGameStore'
 import { emptyItem } from '../../../data/getItems'
 
-function ShopUI() {
+function ShopPage() {
   const { category } = useProductCategory()
 
   const products = useGameStore(state => state.shop.products)
@@ -62,4 +62,6 @@ function ShopUI() {
   )
 }
 
-export default ShopUI
+export default ShopPage
+
+export const Component = ShopPage
