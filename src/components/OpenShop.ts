@@ -26,7 +26,8 @@ export default class OpenShop {
     // Write your code here.
     const scene = this.gameObject.scene
     this.scene = scene
-    this.cursors = scene.input.keyboard.createCursorKeys()
+    this.space = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+
 
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
 
@@ -41,7 +42,7 @@ export default class OpenShop {
 	public player!: Phaser.GameObjects.GameObject;
 
 	/* START-USER-CODE */
-  private cursors: Phaser.Types.Input.Keyboard.CursorKeys
+  private space: Phaser.Input.Keyboard.Key
   private scene: Phaser.Scene
   private gameManager: GameManager = GameManager.getInstance()
   private shopText: Phaser.GameObjects.Text = null
@@ -60,8 +61,8 @@ export default class OpenShop {
     // var touching = this.gameManager.values[this.textVariableName];
 
     // check space key
-    this.spaceActivated = this.cursors.space.isDown && !this.spaceDown
-    this.spaceDown = this.cursors.space.isDown
+    this.spaceActivated = this.space.isDown && !this.spaceDown
+    this.spaceDown = this.space.isDown
 
     // var proximity = ("shopText" in this.gameManager.values)? this.gameManager.values["shopText"] : false;
 

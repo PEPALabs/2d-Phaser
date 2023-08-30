@@ -8,6 +8,7 @@ import { Physics } from 'phaser'
 // import { publish} from '../event';
 import PubSub from 'pubsub-js'
 import GameManager from '../GameManager'
+import { assert } from "ethers";
 // import Phaser from 'phaser';
 /* END-USER-IMPORTS */
 
@@ -23,16 +24,20 @@ export default class PlayerMovement {
 
     const scene = this.gameObject.scene
     this.scene = scene
-    this.cursors = scene.input.keyboard.createCursorKeys()
     this.keyW = this.scene.input.keyboard.addKey('W')
     this.keyA = this.scene.input.keyboard.addKey('A')
     this.keyS = this.scene.input.keyboard.addKey('S')
     this.keyD = this.scene.input.keyboard.addKey('D')
+    this.cursors = this.scene.input.keyboard.createCursorKeys()
+
+  this.scene.input.keyboard.disableGlobalCapture();
 
     //this.keyW = this.scene.input.keyboard.addKey('W');
     //this.keyA = this.scene.input.keyboard.addKey('A');
     //this.keyS = this.scene.input.keyboard.addKey('S');
     //this.keyD = this.scene.input.keyboard.addKey('D');
+
+    console.log("cursor",this.cursors.up,this.cursors.down, this.keyW)
 
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
     /* END-USER-CTR-CODE */
@@ -73,7 +78,7 @@ export default class PlayerMovement {
     if (!body) {
       return
     }
-    if (this.cursors.left.isDown || this.keyA.isDown) {
+    if (this.cursors.shift.isDown || this.keyA.isDown ) {
       this.gameObject.setVelocity(-this.velocity, 0)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
       this.gameObject.flipX = false // Flip the sprite to face left

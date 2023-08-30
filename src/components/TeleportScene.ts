@@ -22,7 +22,8 @@ export default class TeleportScene {
     const scene = this.gameObject.scene
     this.scene = scene
     this.scene.physics.add.existing(this.gameObject)
-    this.cursors = scene.input.keyboard.createCursorKeys()
+    // this.cursors = scene.input.keyboard.createCursorKeys()
+    this.space = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
 
     /* END-USER-CTR-CODE */
@@ -37,7 +38,7 @@ export default class TeleportScene {
 	public player!: Phaser.GameObjects.GameObject;
 
 	/* START-USER-CODE */
-  private cursors: Phaser.Types.Input.Keyboard.CursorKeys
+  private space: Phaser.Input.Keyboard.Key
   private proximity: Boolean = false
   private textShown: Boolean = false
   private scene: Phaser.Scene
@@ -70,7 +71,7 @@ export default class TeleportScene {
       }
     }
 
-    if (this.proximity && this.cursors.space.isDown) {
+    if (this.proximity && this.space.isDown) {
       console.log('teleporting3')
       this.proximity = false
       notifications.hide(this.teleport12TextId)
