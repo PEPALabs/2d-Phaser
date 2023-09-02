@@ -5,3 +5,5 @@ function GamePage() {
 }
 
 export default GamePage
+
+export const Component = GamePage
