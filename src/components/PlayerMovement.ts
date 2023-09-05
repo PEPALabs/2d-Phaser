@@ -8,6 +8,7 @@ import { Physics } from 'phaser'
 // import { publish} from '../event';
 import PubSub from 'pubsub-js'
 import GameManager from '../GameManager'
+import { Position, emitter } from '../web/shared/emitter'
 // import Phaser from 'phaser';
 /* END-USER-IMPORTS */
 
@@ -63,6 +64,7 @@ export default class PlayerMovement {
   public stopMessage: string = 'player:close'
   public textVariableName: string = 'shopText'
   public openVariableName: string = 'shopOpen'
+  public position: Position = { x: 0, y: 0 }
   // private gameObject: Phaser.Physics.Arcade.Sprite;
   // private velocity: number;
   // Write your code here.
@@ -107,6 +109,24 @@ export default class PlayerMovement {
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
       this.gameObject.anims.pause()
       // this.gameObject.anims.play('turn');
+    }
+
+    const bodyPosition = this.gameObject.body.position
+
+    if (
+      bodyPosition.x !== this.position.x ||
+      bodyPosition.y !== this.position.y
+    ) {
+      this.position = {
+        x: bodyPosition.x,
+        y: bodyPosition.y
+      }
+
+      emitter.emit('send', {
+        event: 'player_movement',
+        position: this.position,
+        sceneKey: this.scene.scene.key
+      })
     }
   }
 

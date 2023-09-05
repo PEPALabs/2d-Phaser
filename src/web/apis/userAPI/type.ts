@@ -8,7 +8,7 @@ export interface LoginData {
 }
 
 export interface SignupDTO {
-  name:string
+  name: string
   email: string
   password: string
   repeatPassword: string

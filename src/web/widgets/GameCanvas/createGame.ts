@@ -1,9 +1,9 @@
 import Phaser from 'phaser'
+import UIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin.js'
 import Level from '../../../scenes/Level'
 import Farm from '../../../scenes/Farm'
 import preloadAssetPackUrl from '../../../../static/assets/preload-asset-pack.json'
 import Preload from '../../../scenes/Preload'
-import UIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin.js'
 
 class Boot extends Phaser.Scene {
   constructor() {
