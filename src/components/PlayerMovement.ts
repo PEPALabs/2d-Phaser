@@ -8,7 +8,7 @@ import { Physics } from 'phaser'
 // import { publish} from '../event';
 import PubSub from 'pubsub-js'
 import GameManager from '../GameManager'
-import { Position, emitter } from '../web/shared/emitter'
+import { Position, sendEvent } from '../web/shared/emitter'
 // import Phaser from 'phaser';
 /* END-USER-IMPORTS */
 
@@ -79,11 +79,11 @@ export default class PlayerMovement {
     if (this.cursors.left.isDown || this.keyA.isDown) {
       this.gameObject.setVelocity(-this.velocity, 0)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
-      this.gameObject.flipX = false // Flip the sprite to face left
+      this.gameObject.setFlipX(false) // Flip the sprite to face left
     } else if (this.cursors.right.isDown || this.keyD.isDown) {
       this.gameObject.setVelocity(this.velocity, 0)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
-      this.gameObject.flipX = true // Reset the flipX property to face right
+      this.gameObject.setFlipX(true) // Reset the flipX property to face right
       // this.gameObject.anims.play('right', true);
     } else if (this.cursors.up.isDown || this.keyW.isDown) {
       this.gameObject.setVelocity(0, -this.velocity)
@@ -111,18 +111,16 @@ export default class PlayerMovement {
       // this.gameObject.anims.play('turn');
     }
 
-    const bodyPosition = this.gameObject.body.position
-
     if (
-      bodyPosition.x !== this.position.x ||
-      bodyPosition.y !== this.position.y
+      this.gameObject.x !== this.position.x ||
+      this.gameObject.y !== this.position.y
     ) {
       this.position = {
-        x: bodyPosition.x,
-        y: bodyPosition.y
+        x: this.gameObject.x,
+        y: this.gameObject.y
       }
 
-      emitter.emit('send', {
+      sendEvent({
         event: 'player_movement',
         position: this.position,
         sceneKey: this.scene.scene.key

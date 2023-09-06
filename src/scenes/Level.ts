@@ -17,8 +17,7 @@ import EventDispatcher from '../EventDispatcher'
 import GameManager from '../GameManager'
 import PubSub from 'pubsub-js'
 import DisplayNavigation from '../components/DisplayNavigation'
-import { EnterSceneData } from '../web/shared/emitter'
-import initializePlayers from '../utils/initializePlayers'
+import initializeMultiplayer from '../utils/initializeMultiplayer'
 /* END-USER-IMPORTS */
 
 export default class Level extends Phaser.Scene {
@@ -236,10 +235,8 @@ export default class Level extends Phaser.Scene {
     this.load.animation('walk', 'assets/animation/animations.json')
   }
 
-  init(data: EnterSceneData) {
-    this.events.on(Phaser.Scenes.Events.CREATE, () => {
-      initializePlayers(this, data)
-    })
+  init() {
+    initializeMultiplayer(this)
   }
 
   create() {

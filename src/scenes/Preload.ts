@@ -7,6 +7,7 @@ import PreloadBarUpdaterScript from '../script-nodes/PreloadBarUpdaterScript'
 /* START-USER-IMPORTS */
 import assetPackUrl from '../../static/assets/asset-pack.json'
 import { initSocket, emitter } from '../web/shared/emitter'
+import useSceneDataStore from '../utils/useSceneDataStore'
 /* END-USER-IMPORTS */
 
 export default class Preload extends Phaser.Scene {
@@ -77,7 +78,8 @@ export default class Preload extends Phaser.Scene {
 
     emitter.on('enter_scene', data => {
       emitter.off('enter_scene')
-      this.scene.start(data.sceneKey, data)
+      useSceneDataStore.setState(data)
+      this.scene.start(data.sceneKey)
     })
   }
 

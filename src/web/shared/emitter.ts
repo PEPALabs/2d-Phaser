@@ -47,18 +47,25 @@ interface PlayerExitScene {
   player: Player
 }
 
-type socketEvents = {
-  send: SwitchSceneDTO | PlayerMovementDTO
+type SocketEvents = {
   enter_scene: EnterSceneData
   player_moved: PlayerMovedData
   player_enter_scene: PlayerEnterSceneData
   player_exit_scene: PlayerExitScene
 }
 
-const emitter = mitt<socketEvents>()
+const emitter = mitt<SocketEvents>()
+
+let socket: WebSocket
+
+const sendEvent = (data: SwitchSceneDTO | PlayerMovementDTO) => {
+  if (socket) {
+    socket.send(JSON.stringify(data))
+  }
+}
 
 const initSocket = () => {
-  const socket = new WebSocket(
+  socket = new WebSocket(
     `ws://localhost:8818/ws?token=${useAuthStore.getState().token}`
   )
 
@@ -67,10 +74,6 @@ const initSocket = () => {
 
     emitter.emit(data.event, data)
   })
-
-  emitter.on('send', data => {
-    socket.send(JSON.stringify(data))
-  })
 }
 
-export { emitter, initSocket }
+export { emitter, initSocket, sendEvent }

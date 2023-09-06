@@ -10,9 +10,8 @@ import PigAnimation from '../components/PigAnimation'
 import ItemUsage from '../components/ItemUsage'
 import FarmContainer from '../components/FarmContainer'
 import Teleport from './Teleport'
-import { EnterSceneData } from '../web/shared/emitter'
-import initializePlayers from '../utils/initializePlayers'
 /* START-USER-IMPORTS */
+import initializeMultiplayer from '../utils/initializeMultiplayer'
 /* END-USER-IMPORTS */
 
 export default class Farm extends Phaser.Scene {
@@ -113,10 +112,8 @@ export default class Farm extends Phaser.Scene {
   // Write your code here
   // private farm!: Phaser.GameObjects.Container;
 
-  init(data: EnterSceneData) {
-    this.events.on(Phaser.Scenes.Events.CREATE, () => {
-      initializePlayers(this, data)
-    })
+  init() {
+    initializeMultiplayer(this)
   }
 
   create() {

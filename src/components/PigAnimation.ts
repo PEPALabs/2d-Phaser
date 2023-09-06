@@ -15,6 +15,7 @@ export default class PigAnimation {
     // Write your code here.
     this.gameObject.scene.events.once('update', () => {
       if (
+        this.gameObject.body &&
         Math.abs(this.gameObject.body.velocity.x) > 0 &&
         Math.abs(this.gameObject.body.velocity.y) > 0
       )
