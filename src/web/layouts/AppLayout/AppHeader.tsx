@@ -17,7 +17,8 @@ const headerNavList = [
   { name: 'Shop', to: 'shop', id: TargetId.Shop },
   { name: 'Home', to: 'home', id: TargetId.Game },
   { name: 'Uniswap', to: 'uniswap', id: TargetId.Uniswap },
-  { name: 'Inventory', to: 'inventory', id: TargetId.Inventory }
+  { name: 'Inventory', to: 'inventory', id: TargetId.Inventory },
+  { name: 'Unity', to: 'unity', id: TargetId.Inventory }
 ]
 
 const AppHeader = () => {

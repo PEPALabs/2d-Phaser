@@ -67,7 +67,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx', '.json', '.css']
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.json', '.css', '.unityweb']
   },
   devServer: {
     historyApiFallback: true,

@@ -37,6 +37,10 @@ const router = createBrowserRouter(
             path="resources"
             lazy={() => import('../pages/resource/ResourcePage')}
           />
+          <Route
+            path="unity"
+            lazy={() => import('../pages/unity/sampleUnity')}
+          />
         </Route>
       </Route>
     </Route>
