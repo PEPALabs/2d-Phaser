@@ -17,7 +17,7 @@ import EventDispatcher from '../EventDispatcher'
 import GameManager from '../GameManager'
 import PubSub from 'pubsub-js'
 import DisplayNavigation from '../components/DisplayNavigation'
-import initializeMultiplayer from '../utils/initializeMultiplayer'
+import initializeMultiplayer from '../multiplayer/initializeMultiplayer'
 /* END-USER-IMPORTS */
 
 export default class Level extends Phaser.Scene {
@@ -235,10 +235,6 @@ export default class Level extends Phaser.Scene {
     this.load.animation('walk', 'assets/animation/animations.json')
   }
 
-  init() {
-    initializeMultiplayer(this)
-  }
-
   create() {
     //animation
     // var frameNames4 = this.anims.generateFrameNames('walking', {
@@ -308,6 +304,8 @@ export default class Level extends Phaser.Scene {
     // this.physics.add.overlap(this.pig, this.shop, (e) => {
     // 	this.gameManager.values["teleport12"] = true;
     // });
+
+    initializeMultiplayer(this)
   }
 
   /* END-USER-CODE */

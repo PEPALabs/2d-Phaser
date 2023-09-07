@@ -8,7 +8,8 @@ import { Physics } from 'phaser'
 // import { publish} from '../event';
 import PubSub from 'pubsub-js'
 import GameManager from '../GameManager'
-import { Position, sendEvent } from '../web/shared/emitter'
+import { Position } from '../multiplayer/emitter'
+import { sendEvent } from '../multiplayer/socket'
 // import Phaser from 'phaser';
 /* END-USER-IMPORTS */
 

@@ -11,7 +11,7 @@ import ItemUsage from '../components/ItemUsage'
 import FarmContainer from '../components/FarmContainer'
 import Teleport from './Teleport'
 /* START-USER-IMPORTS */
-import initializeMultiplayer from '../utils/initializeMultiplayer'
+import initializeOtherPlayer from '../multiplayer/initializeMultiplayer'
 /* END-USER-IMPORTS */
 
 export default class Farm extends Phaser.Scene {
@@ -112,15 +112,13 @@ export default class Farm extends Phaser.Scene {
   // Write your code here
   // private farm!: Phaser.GameObjects.Container;
 
-  init() {
-    initializeMultiplayer(this)
-  }
-
   create() {
     this.editorCreate()
 
     this.cameras.main.startFollow(this.player)
     this.cameras.main.setZoom(0.8)
+
+    initializeOtherPlayer(this)
   }
 
   /* END-USER-CODE */

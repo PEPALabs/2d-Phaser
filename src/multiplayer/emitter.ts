@@ -1,5 +1,4 @@
 import mitt from 'mitt'
-import useAuthStore from './useAuthStore'
 
 export interface Position {
   x: number
@@ -17,17 +16,6 @@ export interface EnterSceneData {
   event: string
   players: Player[]
   playerId: string
-}
-
-interface SwitchSceneDTO {
-  event: 'switch_scene'
-  sceneKey: string
-}
-
-interface PlayerMovementDTO {
-  sceneKey: string
-  event: 'player_movement'
-  position: Position
 }
 
 interface PlayerMovedData {
@@ -56,24 +44,4 @@ type SocketEvents = {
 
 const emitter = mitt<SocketEvents>()
 
-let socket: WebSocket
-
-const sendEvent = (data: SwitchSceneDTO | PlayerMovementDTO) => {
-  if (socket) {
-    socket.send(JSON.stringify(data))
-  }
-}
-
-const initSocket = () => {
-  socket = new WebSocket(
-    `ws://localhost:8818/ws?token=${useAuthStore.getState().token}`
-  )
-
-  socket.addEventListener('message', event => {
-    const data = JSON.parse(event.data)
-
-    emitter.emit(data.event, data)
-  })
-}
-
-export { emitter, initSocket, sendEvent }
+export default emitter

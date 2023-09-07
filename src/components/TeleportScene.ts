@@ -9,7 +9,7 @@ import PubSub from 'pubsub-js'
 import React from 'react'
 import { Kbd } from '@mantine/core'
 import { notifications } from '@mantine/notifications'
-import { sendEvent } from '../web/shared/emitter'
+import { sendEvent } from '../multiplayer/socket'
 /* END-USER-IMPORTS */
 
 export default class TeleportScene {

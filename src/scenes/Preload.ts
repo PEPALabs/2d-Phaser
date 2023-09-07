@@ -6,8 +6,9 @@ import Phaser from 'phaser'
 import PreloadBarUpdaterScript from '../script-nodes/PreloadBarUpdaterScript'
 /* START-USER-IMPORTS */
 import assetPackUrl from '../../static/assets/asset-pack.json'
-import { initSocket, emitter } from '../web/shared/emitter'
-import useSceneDataStore from '../utils/useSceneDataStore'
+import emitter from '../multiplayer/emitter'
+import { initSocket } from '../multiplayer/socket'
+import useSceneDataStore from '../multiplayer/useSceneDataStore'
 /* END-USER-IMPORTS */
 
 export default class Preload extends Phaser.Scene {
