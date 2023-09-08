@@ -18,6 +18,12 @@ export interface EnterSceneData {
   playerId: string
 }
 
+export interface SceneMessage {
+  senderId: string
+  sender: string
+  content: string
+}
+
 interface PlayerMovedData {
   event: 'player_moved'
   sceneKey: string
@@ -30,16 +36,23 @@ interface PlayerEnterSceneData {
   player: Player
 }
 
-interface PlayerExitScene {
+interface PlayerExitSceneData {
   event: 'player_exit_scene'
   player: Player
+}
+
+interface ReceiveSceneMessageData {
+  event: 'receive_scene_message'
+  sceneKey: string
+  message: SceneMessage
 }
 
 type SocketEvents = {
   enter_scene: EnterSceneData
   player_moved: PlayerMovedData
   player_enter_scene: PlayerEnterSceneData
-  player_exit_scene: PlayerExitScene
+  player_exit_scene: PlayerExitSceneData
+  receive_scene_message: ReceiveSceneMessageData
 }
 
 const emitter = mitt<SocketEvents>()

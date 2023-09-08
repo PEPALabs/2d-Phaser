@@ -1,10 +1,10 @@
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 import { subscribeWithSelector } from 'zustand/middleware'
-import type { QuestType, PlantType, MessageType, ItemType } from './items.type'
+import type { QuestType, PlantType, ItemType } from './items.type'
 import quests from './questData'
-import messageData from './messageData'
 import { getItems } from './getItems'
+import { SceneMessage } from '../multiplayer/emitter'
 
 interface GameState {
   playerID: string
@@ -12,7 +12,7 @@ interface GameState {
   plants: Record<number, PlantType>
   quests: QuestType[]
   inventories: { products: ItemType[]; balance: number; index: number }
-  messages: MessageType[]
+  messages: SceneMessage[]
   shop: { products: ItemType[]; balance: number; index: number }
 }
 
@@ -24,7 +24,7 @@ const useGameStore = create(
       plants: {},
       quests,
       inventories: { products: getItems(), balance: 1000, index: 0 },
-      messages: messageData,
+      messages: [],
       shop: { products: getItems(), balance: 1000, index: 0 }
     }))
   )
@@ -114,7 +114,7 @@ export const inventoryActions = {
 }
 
 export const messageActions = {
-  addMessage(message: MessageType) {
+  addMessage(message: SceneMessage) {
     useGameStore.setState(state => {
       state.messages.push(message)
     })

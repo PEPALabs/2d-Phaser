@@ -8,6 +8,7 @@ import PlayerMovement from '../components/PlayerMovement'
 import Physics from '../components/Physics'
 import PigAnimation from '../components/PigAnimation'
 import ItemUsage from '../components/ItemUsage'
+import DisplayText from '../components/DisplayText'
 import FarmContainer from '../components/FarmContainer'
 import Teleport from './Teleport'
 /* START-USER-IMPORTS */
@@ -82,6 +83,8 @@ export default class Farm extends Phaser.Scene {
     new Physics(player)
     new PigAnimation(player)
     new ItemUsage(player)
+    const playerDisplayText = new DisplayText(player)
+    playerDisplayText.sender = 'player'
 
     // farm (components)
     const farmFarmContainer = new FarmContainer(farm)

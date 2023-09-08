@@ -102,10 +102,12 @@
                 "PlayerMovement",
                 "Physics",
                 "PigAnimation",
-                "ItemUsage"
+                "ItemUsage",
+                "DisplayText"
             ],
             "PlayerMovement.speed": 20,
             "PlayerMovement.velocity": 300,
+            "DisplayText.sender": "player",
             "texture": {
                 "key": "pig"
             },

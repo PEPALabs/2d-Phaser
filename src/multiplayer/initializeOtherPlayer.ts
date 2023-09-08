@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import { Player, Position } from '../multiplayer/emitter'
+import DisplayText from '../components/DisplayText'
 
 const initializeOtherPlayer = (scene: Phaser.Scene, player: Player) => {
   const otherPlayer = scene.physics.add.sprite(
@@ -7,6 +8,9 @@ const initializeOtherPlayer = (scene: Phaser.Scene, player: Player) => {
     player.position.y,
     'pig'
   )
+
+  const playerDisplayText = new DisplayText(otherPlayer)
+  playerDisplayText.sender = player.name
 
   otherPlayer.setScale(0.1)
   otherPlayer.body.setSize(1134, 1572, false)
