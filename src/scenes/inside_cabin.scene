@@ -19,6 +19,7 @@
             "type": "Rectangle",
             "id": "fee51240-4e77-4bc7-b669-bcb80af21765",
             "label": "rectangle_1",
+            "components": [],
             "x": 656,
             "y": 375,
             "scaleX": 14.157713156844872,
@@ -26,12 +27,14 @@
             "isFilled": true,
             "fillColor": "#000000",
             "width": 128,
-            "height": 128
+            "height": 128,
+            "list": []
         },
         {
             "type": "Container",
             "id": "62b2a0a5-d668-450d-a53a-b2bb5f303f9d",
             "label": "container_1",
+            "components": [],
             "x": 374,
             "y": 204,
             "scaleX": 0.5,
@@ -41,11 +44,13 @@
                     "type": "Image",
                     "id": "44fbc5d3-7df0-47de-9961-e06782ce4007",
                     "label": "log_cabin",
+                    "components": [],
                     "texture": {
                         "key": "log_cabin"
                     },
                     "x": 548,
-                    "y": 318
+                    "y": 318,
+                    "list": []
                 },
                 {
                     "type": "ArcadeSprite",
@@ -65,7 +70,8 @@
                     "scaleX": 0.1,
                     "scaleY": 0.1,
                     "body.width": 1134,
-                    "body.height": 1572
+                    "body.height": 1572,
+                    "list": []
                 },
                 {
                     "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
@@ -79,17 +85,105 @@
                     "label": "teleport",
                     "teleportScene": "Level",
                     "player": "pig",
+                    "components": [],
                     "x": 411,
-                    "y": 649
+                    "y": 649,
+                    "nestedPrefabs": [],
+                    "list": []
                 }
             ]
+        },
+        {
+            "type": "Rectangle",
+            "id": "a6e82de0-acfa-4f31-bebc-37a98d0a093f",
+            "label": "rectangle_2",
+            "components": [
+                "RectPhysics"
+            ],
+            "RectPhysics.static": true,
+            "x": 321,
+            "y": 386,
+            "scaleX": 0.39376556125616724,
+            "scaleY": 10.749507542775936,
+            "width": 128,
+            "height": 128,
+            "list": []
+        },
+        {
+            "type": "Rectangle",
+            "id": "a76ab5ba-6da7-46d4-b497-6a0059e6cd71",
+            "label": "rectangle",
+            "components": [
+                "RectPhysics"
+            ],
+            "RectPhysics.static": true,
+            "x": 957,
+            "y": 425,
+            "scaleX": 0.39376556125616724,
+            "scaleY": 10.749507542775936,
+            "width": 128,
+            "height": 128,
+            "list": []
+        },
+        {
+            "type": "Rectangle",
+            "id": "93fb9353-99c8-41dc-8a5b-eac36520797d",
+            "label": "rectangle_3",
+            "components": [
+                "RectPhysics"
+            ],
+            "RectPhysics.static": true,
+            "x": 711,
+            "y": 45,
+            "scaleX": 10.12449144648944,
+            "scaleY": 0.47242117316818444,
+            "width": 128,
+            "height": 128,
+            "list": []
+        },
+        {
+            "type": "Rectangle",
+            "id": "430eee97-0b2b-42d0-98ee-00475c8ceb98",
+            "label": "rectangle_4",
+            "components": [
+                "RectPhysics"
+            ],
+            "RectPhysics.static": true,
+            "x": 670,
+            "y": 665,
+            "scaleX": 10.12449144648944,
+            "scaleY": 0.47242117316818444,
+            "width": 128,
+            "height": 128,
+            "list": []
         }
     ],
-    "plainObjects": [],
+    "plainObjects": [
+        {
+            "id": "30a9bdab-ae03-40b1-817e-28502cbcd3ff",
+            "type": "Collider",
+            "label": "collider",
+            "scope": "METHOD",
+            "object1": "pig",
+            "object2": "list"
+        }
+    ],
     "meta": {
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 4
-    }
+        "version": 3
+    },
+    "lists": [
+        {
+            "id": "e9af607b-7d72-4642-81ab-99eccc27888e",
+            "label": "list",
+            "objectIds": [
+                "a6e82de0-acfa-4f31-bebc-37a98d0a093f",
+                "a76ab5ba-6da7-46d4-b497-6a0059e6cd71",
+                "93fb9353-99c8-41dc-8a5b-eac36520797d",
+                "430eee97-0b2b-42d0-98ee-00475c8ceb98"
+            ]
+        }
+    ]
 }

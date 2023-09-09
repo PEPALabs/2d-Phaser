@@ -24,8 +24,8 @@ export default class inside_seedmarket extends Phaser.Scene {
 
 	preload(): void {
 
-		this.load.pack("asset-pack", "assets/asset-pack.json");
-		this.load.pack("png-asset-pack", "assets/tiled/png-asset-pack.json");
+		this.load.pack("asset-pack", "static/assets/asset-pack.json");
+		this.load.pack("png-asset-pack", "static/assets/tiled/png-asset-pack.json");
 	}
 
 	editorCreate(): void {
@@ -43,7 +43,7 @@ export default class inside_seedmarket extends Phaser.Scene {
 		container_1.scaleY = 1.25;
 
 		// seedmarket_1
-		const seedmarket_1 = this.add.image(656, 289, "seedmarket_1");
+		const seedmarket_1 = this.add.image(643, 291, "seedmarket_1");
 		container_1.add(seedmarket_1);
 
 		// pig
@@ -85,6 +85,9 @@ export default class inside_seedmarket extends Phaser.Scene {
 
 		// lists
 		const list = [rectangle_1, rectangle, rectangle_2, rectangle_3];
+
+		// collider
+		this.physics.add.collider(list, pig);
 
 		// pig (components)
 		const pigPlayerMovement = new PlayerMovement(pig);

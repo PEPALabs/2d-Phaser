@@ -1,0 +1,194 @@
+{
+    "id": "d3003559-c5f5-4bf5-b2e4-d42bcf75fa32",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadPackFiles": [
+            "2d-Phaser/static/assets/asset-pack.json",
+            "2d-Phaser/static/assets/tiled/png-asset-pack.json"
+        ],
+        "createMethodName": "editorCreate",
+        "sceneKey": "inside_adventure",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Rectangle",
+            "id": "6b72ab12-2525-4276-b8f9-b7e477b16955",
+            "label": "rectangle_4",
+            "components": [],
+            "x": 608,
+            "y": 362,
+            "scaleX": 9.959234630797546,
+            "scaleY": 7.212942530022344,
+            "isFilled": true,
+            "fillColor": "#000000",
+            "width": 128,
+            "height": 128,
+            "list": []
+        },
+        {
+            "type": "Container",
+            "id": "9a89a786-f00b-4394-953c-c6509966f438",
+            "label": "container_1",
+            "components": [],
+            "x": -208,
+            "scaleX": 1.25,
+            "scaleY": 1.25,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "6954cfb5-30bc-4a62-9c19-aaae5710367f",
+                    "label": "adventure_1",
+                    "components": [],
+                    "texture": {
+                        "key": "adventure"
+                    },
+                    "x": 656,
+                    "y": 289,
+                    "scaleX": 0.15,
+                    "scaleY": 0.15,
+                    "list": []
+                },
+                {
+                    "type": "ArcadeSprite",
+                    "id": "8dae6bbb-d6c9-4f8b-8262-e9e70ccbc279",
+                    "label": "pig",
+                    "components": [
+                        "PlayerMovement",
+                        "Physics",
+                        "PigAnimation"
+                    ],
+                    "PlayerMovement.velocity": 250,
+                    "texture": {
+                        "key": "pig"
+                    },
+                    "x": 656,
+                    "y": 362,
+                    "scaleX": 0.05,
+                    "scaleY": 0.05,
+                    "body.width": 1134,
+                    "body.height": 1572,
+                    "list": []
+                },
+                {
+                    "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+                    "id": "bc832e9f-2f0a-4a59-a533-bc2a8aec80b7",
+                    "unlock": [
+                        "x",
+                        "y",
+                        "scaleX",
+                        "scaleY",
+                        "teleportScene",
+                        "player"
+                    ],
+                    "label": "teleport",
+                    "teleportScene": "Level",
+                    "player": "pig",
+                    "components": [],
+                    "x": 589,
+                    "y": 405,
+                    "scaleX": 0.5,
+                    "scaleY": 0.5,
+                    "nestedPrefabs": [],
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "396400b8-ec03-4cc9-9bea-886365be0cb7",
+                    "label": "rectangle_1",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 393,
+                    "y": 249,
+                    "scaleX": 0.4189179275473359,
+                    "scaleY": 4.8451941292431835,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "0fbaa3ba-89c1-42d1-823a-dd5b31e245bd",
+                    "label": "rectangle",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 921,
+                    "y": 273,
+                    "scaleX": 0.4189179275473359,
+                    "scaleY": 4.8451941292431835,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "d0f2a630-5d5a-415b-9a15-11ee9abc56eb",
+                    "label": "rectangle_2",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 653,
+                    "y": 487,
+                    "scaleX": 5.2211048064505405,
+                    "scaleY": 0.34685670273060865,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "c025532f-f2ee-4138-8a88-41ab0db60c5c",
+                    "label": "rectangle_3",
+                    "components": [
+                        "RectPhysics"
+                    ],
+                    "RectPhysics.static": true,
+                    "x": 666,
+                    "y": 79,
+                    "scaleX": 5.2211048064505405,
+                    "scaleY": 0.34685670273060865,
+                    "width": 128,
+                    "height": 128,
+                    "list": []
+                }
+            ]
+        }
+    ],
+    "plainObjects": [
+        {
+            "id": "20deedd9-e786-45ba-b632-974fa8047a4d",
+            "type": "Collider",
+            "label": "collider",
+            "scope": "METHOD",
+            "object1": "list",
+            "object2": "pig"
+        }
+    ],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 3
+    },
+    "lists": [
+        {
+            "id": "37458461-6ea0-49fa-ab94-d7efa4abcab9",
+            "label": "list",
+            "objectIds": [
+                "396400b8-ec03-4cc9-9bea-886365be0cb7",
+                "0fbaa3ba-89c1-42d1-823a-dd5b31e245bd",
+                "d0f2a630-5d5a-415b-9a15-11ee9abc56eb",
+                "c025532f-f2ee-4138-8a88-41ab0db60c5c"
+            ]
+        }
+    ]
+}

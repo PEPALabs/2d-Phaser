@@ -8,6 +8,7 @@ import PlayerMovement from "../components/PlayerMovement";
 import Physics from "../components/Physics";
 import PigAnimation from "../components/PigAnimation";
 import Teleport from "./Teleport";
+import RectPhysics from "../components/RectPhysics";
 /* START-USER-IMPORTS */
 /* END-USER-IMPORTS */
 
@@ -23,8 +24,8 @@ export default class inside_bar extends Phaser.Scene {
 
 	preload(): void {
 
-		this.load.pack("asset-pack", "assets/asset-pack.json");
-		this.load.pack("png-asset-pack", "assets/tiled/png-asset-pack.json");
+		this.load.pack("asset-pack", "static/assets/asset-pack.json");
+		this.load.pack("png-asset-pack", "static/assets/tiled/png-asset-pack.json");
 	}
 
 	editorCreate(): void {
@@ -58,6 +59,32 @@ export default class inside_bar extends Phaser.Scene {
 		const teleport = new Teleport(this, -104, 1034);
 		container_1.add(teleport);
 
+		// rectangle_2
+		const rectangle_2 = this.add.rectangle(293, 343, 128, 128);
+		rectangle_2.scaleX = 0.676847459784534;
+		rectangle_2.scaleY = 6.948122048252152;
+
+		// rectangle
+		const rectangle = this.add.rectangle(1022, 371, 128, 128);
+		rectangle.scaleX = 0.676847459784534;
+		rectangle.scaleY = 6.948122048252152;
+
+		// rectangle_3
+		const rectangle_3 = this.add.rectangle(670, -27, 128, 128);
+		rectangle_3.scaleX = 7.618579428606838;
+		rectangle_3.scaleY = 0.5879543109400194;
+
+		// rectangle_4
+		const rectangle_4 = this.add.rectangle(657, 632, 128, 128);
+		rectangle_4.scaleX = 7.618579428606838;
+		rectangle_4.scaleY = 0.5879543109400194;
+
+		// lists
+		const list = [rectangle_4, rectangle_3, rectangle, rectangle_2];
+
+		// collider
+		this.physics.add.collider(pig, list);
+
 		// pig (components)
 		const pigPlayerMovement = new PlayerMovement(pig);
 		pigPlayerMovement.velocity = 250;
@@ -68,8 +95,28 @@ export default class inside_bar extends Phaser.Scene {
 		teleport.teleportScene = "Level.scene";
 		teleport.player = pig;
 
+		// rectangle_2 (components)
+		const rectangle_2RectPhysics = new RectPhysics(rectangle_2);
+		rectangle_2RectPhysics.static = true;
+
+		// rectangle (components)
+		const rectangleRectPhysics = new RectPhysics(rectangle);
+		rectangleRectPhysics.static = true;
+
+		// rectangle_3 (components)
+		const rectangle_3RectPhysics = new RectPhysics(rectangle_3);
+		rectangle_3RectPhysics.static = true;
+
+		// rectangle_4 (components)
+		const rectangle_4RectPhysics = new RectPhysics(rectangle_4);
+		rectangle_4RectPhysics.static = true;
+
+		this.list = list;
+
 		this.events.emit("scene-awake");
 	}
+
+	private list!: Phaser.GameObjects.Rectangle[];
 
 	/* START-USER-CODE */
 

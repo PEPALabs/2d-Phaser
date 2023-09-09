@@ -7,6 +7,7 @@ import inside_seedmarket from '../../../scenes/inside_seedmarket'
 import inside_exchange from '../../../scenes/inside_exchange'
 import inside_clothing from '../../../scenes/inside_clothing'
 import inside_cabin from '../../../scenes/inside_cabin'
+import inside_adventure from '../../../scenes/inside_adventure'
 import preloadAssetPackUrl from '../../../../static/assets/preload-asset-pack.json'
 import Preload from '../../../scenes/Preload'
 import UIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin.js'
@@ -35,7 +36,7 @@ const createGame = <T extends HTMLElement>(parent: T) => {
       zoom: 1,
       mode: Phaser.Scale.FIT
     },
-    scene: [Boot, Preload, Level, Farm,inside_cabin,inside_bank,inside_bar,inside_seedmarket, inside_clothing, inside_exchange],
+    scene: [Boot, Preload, Level, Farm,inside_cabin,inside_bank,inside_bar,inside_seedmarket, inside_clothing, inside_exchange, inside_adventure],
     physics: {
       default: 'arcade',
       arcade: {

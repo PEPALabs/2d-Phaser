@@ -1,5 +1,5 @@
 {
-    "id": "d3003559-c5f5-4bf5-b2e4-d42bcf75fa31",
+    "id": "d3001259-c5f5-4bf5-b2e4-d42bcf75fa31",
     "sceneType": "SCENE",
     "settings": {
         "exportClass": true,
@@ -19,6 +19,7 @@
             "type": "Rectangle",
             "id": "6b72ab12-2525-4276-b8f9-b7e477b16955",
             "label": "rectangle_4",
+            "components": [],
             "x": 608,
             "y": 362,
             "scaleX": 9.959234630797546,
@@ -26,12 +27,14 @@
             "isFilled": true,
             "fillColor": "#000000",
             "width": 128,
-            "height": 128
+            "height": 128,
+            "list": []
         },
         {
             "type": "Container",
             "id": "9a89a786-f00b-4394-953c-c6509966f438",
             "label": "container_1",
+            "components": [],
             "x": -208,
             "scaleX": 1.25,
             "scaleY": 1.25,
@@ -40,11 +43,13 @@
                     "type": "Image",
                     "id": "6954cfb5-30bc-4a62-9c19-aaae5710367f",
                     "label": "seedmarket_1",
+                    "components": [],
                     "texture": {
                         "key": "seedmarket_1"
                     },
-                    "x": 656,
-                    "y": 289
+                    "x": 643,
+                    "y": 291,
+                    "list": []
                 },
                 {
                     "type": "ArcadeSprite",
@@ -64,7 +69,8 @@
                     "scaleX": 0.04,
                     "scaleY": 0.04,
                     "body.width": 1134,
-                    "body.height": 1572
+                    "body.height": 1572,
+                    "list": []
                 },
                 {
                     "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
@@ -80,10 +86,13 @@
                     "label": "teleport",
                     "teleportScene": "Level",
                     "player": "pig",
+                    "components": [],
                     "x": 588,
                     "y": 359,
                     "scaleX": 0.5,
-                    "scaleY": 0.5
+                    "scaleY": 0.5,
+                    "nestedPrefabs": [],
+                    "list": []
                 },
                 {
                     "type": "Rectangle",
@@ -98,7 +107,8 @@
                     "scaleX": 0.4189179275473359,
                     "scaleY": 4.8451941292431835,
                     "width": 128,
-                    "height": 128
+                    "height": 128,
+                    "list": []
                 },
                 {
                     "type": "Rectangle",
@@ -113,7 +123,8 @@
                     "scaleX": 0.4189179275473359,
                     "scaleY": 4.8451941292431835,
                     "width": 128,
-                    "height": 128
+                    "height": 128,
+                    "list": []
                 },
                 {
                     "type": "Rectangle",
@@ -128,7 +139,8 @@
                     "scaleX": 5.2211048064505405,
                     "scaleY": 0.34685670273060865,
                     "width": 128,
-                    "height": 128
+                    "height": 128,
+                    "list": []
                 },
                 {
                     "type": "Rectangle",
@@ -143,17 +155,27 @@
                     "scaleX": 5.2211048064505405,
                     "scaleY": 0.34685670273060865,
                     "width": 128,
-                    "height": 128
+                    "height": 128,
+                    "list": []
                 }
             ]
         }
     ],
-    "plainObjects": [],
+    "plainObjects": [
+        {
+            "id": "20deedd9-e786-45ba-b632-974fa8047a4d",
+            "type": "Collider",
+            "label": "collider",
+            "scope": "METHOD",
+            "object1": "list",
+            "object2": "pig"
+        }
+    ],
     "meta": {
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 4
+        "version": 3
     },
     "lists": [
         {

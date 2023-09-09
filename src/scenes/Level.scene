@@ -20,11 +20,13 @@
             "type": "Image",
             "id": "946c881d-e531-4a51-89ff-fb630f59ab0f",
             "label": "image_2",
+            "components": [],
             "texture": {
                 "key": "map-town"
             },
             "originX": 0,
-            "originY": 0
+            "originY": 0,
+            "list": []
         },
         {
             "type": "ArcadeSprite",
@@ -45,10 +47,11 @@
             },
             "x": 1641,
             "y": 1264,
-            "scaleX": 0.1,
-            "scaleY": 0.1,
+            "scaleX": 0.07,
+            "scaleY": 0.07,
             "body.width": 1134,
-            "body.height": 1572
+            "body.height": 1572,
+            "list": []
         },
         {
             "type": "Rectangle",
@@ -63,7 +66,8 @@
             "x": 2704,
             "y": 2919,
             "width": 500,
-            "height": 500
+            "height": 500,
+            "list": []
         },
         {
             "type": "ArcadeSprite",
@@ -87,7 +91,8 @@
             "originX": 0.1,
             "originY": 0.1,
             "body.width": 1024,
-            "body.height": 1024
+            "body.height": 1024,
+            "list": []
         },
         {
             "type": "ArcadeSprite",
@@ -109,7 +114,8 @@
             "scaleX": 0.1,
             "scaleY": 0.1,
             "body.width": 1118,
-            "body.height": 1572
+            "body.height": 1572,
+            "list": []
         },
         {
             "type": "ArcadeSprite",
@@ -131,7 +137,8 @@
             "scaleX": 0.1,
             "scaleY": 0.1,
             "body.width": 1024,
-            "body.height": 1024
+            "body.height": 1024,
+            "list": []
         },
         {
             "type": "ArcadeSprite",
@@ -156,7 +163,8 @@
             "originX": 0.1,
             "originY": 0.1,
             "body.width": 1024,
-            "body.height": 1024
+            "body.height": 1024,
+            "list": []
         },
         {
             "type": "ArcadeSprite",
@@ -181,7 +189,8 @@
             "originX": 0.1,
             "originY": 0.1,
             "body.width": 1024,
-            "body.height": 1024
+            "body.height": 1024,
+            "list": []
         },
         {
             "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
@@ -193,13 +202,17 @@
             ],
             "label": "teleport",
             "player": "player",
+            "components": [],
             "x": 1251,
-            "y": 1101
+            "y": 1101,
+            "nestedPrefabs": [],
+            "list": []
         },
         {
             "type": "Container",
             "id": "9ecd4da3-7f4d-49a5-8bf2-3c18a411bf8a",
             "label": "blocks",
+            "components": [],
             "list": [
                 {
                     "type": "Rectangle",
@@ -216,7 +229,8 @@
                     "visible": false,
                     "isFilled": true,
                     "width": 128,
-                    "height": 128
+                    "height": 128,
+                    "list": []
                 },
                 {
                     "type": "Rectangle",
@@ -233,7 +247,8 @@
                     "visible": false,
                     "isFilled": true,
                     "width": 128,
-                    "height": 128
+                    "height": 128,
+                    "list": []
                 },
                 {
                     "type": "Rectangle",
@@ -250,7 +265,8 @@
                     "visible": false,
                     "isFilled": true,
                     "width": 128,
-                    "height": 128
+                    "height": 128,
+                    "list": []
                 },
                 {
                     "type": "Rectangle",
@@ -267,7 +283,8 @@
                     "visible": false,
                     "isFilled": true,
                     "width": 128,
-                    "height": 128
+                    "height": 128,
+                    "list": []
                 },
                 {
                     "type": "Rectangle",
@@ -280,11 +297,12 @@
                     "x": 3064,
                     "y": 2020,
                     "scaleX": 13.133764125530927,
-                    "scaleY": 5.26642606819696,
+                    "scaleY": 4.016274045344373,
                     "visible": false,
                     "isFilled": true,
                     "width": 128,
-                    "height": 128
+                    "height": 128,
+                    "list": []
                 },
                 {
                     "type": "Rectangle",
@@ -301,7 +319,8 @@
                     "visible": false,
                     "isFilled": true,
                     "width": 128,
-                    "height": 128
+                    "height": 128,
+                    "list": []
                 },
                 {
                     "type": "Rectangle",
@@ -318,7 +337,8 @@
                     "visible": false,
                     "isFilled": true,
                     "width": 128,
-                    "height": 128
+                    "height": 128,
+                    "list": []
                 }
             ]
         },
@@ -334,8 +354,11 @@
             "label": "teleport_1",
             "teleportScene": "inside_bank",
             "player": "player",
+            "components": [],
             "x": 1431,
-            "y": 2673
+            "y": 2673,
+            "nestedPrefabs": [],
+            "list": []
         },
         {
             "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
@@ -349,8 +372,11 @@
             "label": "teleport_2",
             "teleportScene": "inside_exchange",
             "player": "player",
+            "components": [],
             "x": 884,
-            "y": 2681
+            "y": 2681,
+            "nestedPrefabs": [],
+            "list": []
         },
         {
             "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
@@ -364,8 +390,11 @@
             "label": "teleport_3",
             "teleportScene": "inside_seedmarket",
             "player": "player",
+            "components": [],
             "x": 2575,
-            "y": 2900
+            "y": 2900,
+            "nestedPrefabs": [],
+            "list": []
         },
         {
             "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
@@ -379,8 +408,11 @@
             "label": "teleport_4",
             "teleportScene": "inside_clothing",
             "player": "player",
+            "components": [],
             "x": 3066,
-            "y": 2867
+            "y": 2867,
+            "nestedPrefabs": [],
+            "list": []
         },
         {
             "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
@@ -392,10 +424,13 @@
                 "player"
             ],
             "label": "teleport_5",
-            "teleportScene": "inside_bar",
+            "teleportScene": "inside_adventure",
             "player": "player",
-            "x": 2889,
-            "y": 2102
+            "components": [],
+            "x": 2885,
+            "y": 2086,
+            "nestedPrefabs": [],
+            "list": []
         },
         {
             "prefabId": "46239938-4ed4-4201-8fc6-4c848b0c5a5a",
@@ -404,7 +439,10 @@
                 "x",
                 "y"
             ],
-            "label": "scriptnode_1"
+            "label": "scriptnode_1",
+            "components": [],
+            "nestedPrefabs": [],
+            "list": []
         }
     ],
     "plainObjects": [
@@ -505,7 +543,7 @@
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 4
+        "version": 3
     },
     "lists": [
         {
