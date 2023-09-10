@@ -13,7 +13,6 @@ import {
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import GameCanvas from '../../widgets/GameCanvas'
 import ParchmentBackground from './ParchmentBackground'
-import useSocketDisconnect from './useSocketDisconnect'
 
 const pageTitles = {
   '/shop': 'PEPA Shop',
@@ -27,8 +26,6 @@ const GameLayout = () => {
   const location = useLocation()
 
   const pageTitle = pageTitles[location.pathname]
-
-  useSocketDisconnect()
 
   const navigate = useNavigate()
 
