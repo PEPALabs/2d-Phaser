@@ -121,7 +121,7 @@ export default class Farm extends Phaser.Scene {
     this.cameras.main.startFollow(this.player)
     this.cameras.main.setZoom(0.8)
 
-    initializeOtherPlayer(this)
+    initializeOtherPlayer(this, this.player)
   }
 
   /* END-USER-CODE */

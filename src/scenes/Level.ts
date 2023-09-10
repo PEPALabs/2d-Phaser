@@ -305,7 +305,7 @@ export default class Level extends Phaser.Scene {
     // 	this.gameManager.values["teleport12"] = true;
     // });
 
-    initializeMultiplayer(this)
+    initializeMultiplayer(this, this.player)
   }
 
   /* END-USER-CODE */

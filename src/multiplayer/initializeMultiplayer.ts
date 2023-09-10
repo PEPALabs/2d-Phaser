@@ -3,78 +3,85 @@ import emitter from './emitter'
 import useSceneDataStore from './useSceneDataStore'
 import initializeOtherPlayer from './initializeOtherPlayer'
 
-const initializeMultiplayer = (scene: Phaser.Scene) => {
-  const sceneData = useSceneDataStore.getState()
-
+const initializeMultiplayer = (
+  scene: Phaser.Scene,
+  currentPlayer: Phaser.Physics.Arcade.Sprite
+) => {
   const playerGroup = scene.physics.add.group()
 
   const initializePlayerGroup = () => {
+    const sceneData = useSceneDataStore.getState()
+
     sceneData.players.forEach(player => {
-      if (player.id !== sceneData.playerId) {
+      if (player.id === sceneData.playerId) {
+        currentPlayer.setPosition(player.position.x, player.position.y)
+      } else {
         const otherPlayer = initializeOtherPlayer(scene, player)
 
         playerGroup.add(otherPlayer)
       }
     })
+  }
 
-    const clearEvents = () => {
-      emitter.all.clear()
-    }
+  const initializeEvents = () => {
+    emitter.on('enter_scene', data => {
+      useSceneDataStore.setState(data)
 
-    const initializeEvents = () => {
-      emitter.on('enter_scene', data => {
-        useSceneDataStore.setState(data)
+      scene.scene.switch(data.sceneKey)
+    })
 
-        clearEvents()
+    emitter.on('player_moved', data => {
+      const targetPlayer = playerGroup.getChildren().find(otherPlayer => {
+        const id = otherPlayer.getData('id')
 
-        scene.scene.switch(data.sceneKey)
-      })
+        const sceneData = useSceneDataStore.getState()
 
-      emitter.on('player_moved', data => {
-        const targetPlayer = playerGroup.getChildren().find(otherPlayer => {
-          const id = otherPlayer.getData('id')
+        return id === data.player.id && id !== sceneData.playerId
+      }) as Phaser.Types.Physics.Arcade.SpriteWithDynamicBody
 
-          return id === data.player.id && id !== sceneData.playerId
-        }) as Phaser.Types.Physics.Arcade.SpriteWithDynamicBody
+      if (targetPlayer) {
+        targetPlayer.setData('position', data.player.position)
+      }
+    })
 
-        if (targetPlayer) {
-          targetPlayer.setData('position', data.player.position)
-        }
-      })
+    emitter.on('player_enter_scene', data => {
+      const sceneData = useSceneDataStore.getState()
 
-      emitter.on('player_enter_scene', data => {
-        if (data.player.id !== sceneData.playerId) {
-          const otherPlayer = initializeOtherPlayer(scene, data.player)
+      if (data.player.id !== sceneData.playerId) {
+        const otherPlayer = initializeOtherPlayer(scene, data.player)
 
-          playerGroup.add(otherPlayer)
-        }
-      })
+        playerGroup.add(otherPlayer)
+      }
+    })
 
-      emitter.on('player_exit_scene', data => {
-        const targetPlayer = playerGroup
-          .getChildren()
-          .find(
-            otherPlayer => otherPlayer.getData('id') === data.player.id
-          ) as Phaser.Types.Physics.Arcade.SpriteWithDynamicBody
+    emitter.on('player_exit_scene', data => {
+      const targetPlayer = playerGroup
+        .getChildren()
+        .find(
+          otherPlayer => otherPlayer.getData('id') === data.player.id
+        ) as Phaser.Types.Physics.Arcade.SpriteWithDynamicBody
 
-        if (targetPlayer) {
-          playerGroup.remove(targetPlayer, true)
-        }
-      })
-    }
+      if (targetPlayer) {
+        playerGroup.remove(targetPlayer, true)
+      }
+    })
+  }
 
+  const initializePlayerGroupAndEvents = () => {
+    initializePlayerGroup()
     initializeEvents()
   }
 
-  initializePlayerGroup()
+  initializePlayerGroupAndEvents()
 
-  scene.events.on(Phaser.Scenes.Events.WAKE, () => {
-    initializePlayerGroup()
-  })
-
-  scene.events.on(Phaser.Scenes.Events.SLEEP, () => {
+  const cleanUpScene = () => {
     playerGroup.clear(true, true)
-  })
+    emitter.all.clear()
+  }
+
+  scene.events.on(Phaser.Scenes.Events.WAKE, initializePlayerGroupAndEvents)
+  scene.events.on(Phaser.Scenes.Events.SLEEP, cleanUpScene)
+  scene.events.on(Phaser.Scenes.Events.DESTROY, cleanUpScene)
 }
 
 export default initializeMultiplayer
