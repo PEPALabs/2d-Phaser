@@ -2,14 +2,11 @@ import React from 'react'
 import { DefaultMantineColor, MantineProvider, Tuple } from '@mantine/core'
 import { Notifications } from '@mantine/notifications'
 import { RouterProvider } from 'react-router-dom'
-import { init } from '@noriginmedia/norigin-spatial-navigation'
 import { Web3ReactProvider } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import router from './router'
-
-init({})
 
 const getLibrary = provider => new Web3Provider(provider)
 

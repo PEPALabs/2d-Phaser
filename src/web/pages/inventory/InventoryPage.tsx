@@ -6,10 +6,13 @@ import ProductCategoryTabs from './components/ProductCategoryTabs'
 import useProductCategory from './hooks/useProductCategory'
 import useGameStore from '../../../data/useGameStore'
 import { emptyItem } from '../../../data/getItems'
+import useSpatialNavigationInit from '../../shared/useSpatialNavigationInit'
 
 // import linkImage from "./assets/bg.png";
 
 function InventoryPage() {
+  useSpatialNavigationInit()
+
   const { category } = useProductCategory()
 
   const products = useGameStore(state => state.inventories.products)
