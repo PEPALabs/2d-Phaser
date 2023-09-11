@@ -19,7 +19,8 @@ const pageTitles = {
   '/uniswap': 'Uniswap',
   '/inventory': 'PEPA Inventory',
   '/quests': 'PEPA Quest Book',
-  '/resources': 'PEPA Dashboard'
+  '/resources': 'PEPA Dashboard',
+  '/unity': 'PEPA Games'
 }
 
 const GameLayout = () => {

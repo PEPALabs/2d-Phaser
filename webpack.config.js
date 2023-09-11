@@ -23,7 +23,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name]-[contenthash].bundle.js',
-    assetModuleFilename: 'asset-packs/[name]-[hash][ext][query]'
+    assetModuleFilename: 'asset-packs/[name]-[hash][ext][query]',
+    publicPath: 'auto'
   },
   module: {
     rules: [
@@ -67,7 +68,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx', '.json', '.css', '.unityweb']
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.json', '.css', '.unityweb', '.loader', '.wasm', 'data']
   },
   devServer: {
     historyApiFallback: true,
