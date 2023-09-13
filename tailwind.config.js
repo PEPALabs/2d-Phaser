@@ -36,7 +36,9 @@ module.exports = {
           darkBlue: '#132A49',
           textBlue: '#474FA2',
           black: '#252525',
-          darkBlack: '#1B1C1E'
+          darkBlack: '#1B1C1E',
+          primary: '#FF9797',
+          secondary: '#FFBF74'
         }
       },
       boxShadow: {

@@ -1,13 +1,5 @@
 import React from 'react'
-import {
-  Header,
-  Group,
-  Anchor,
-  Avatar,
-  Title,
-  Button,
-  BackgroundImage
-} from '@mantine/core'
+import { Header, Group, Button, Image } from '@mantine/core'
 import { NavLink } from 'react-router-dom'
 import GuidedTours from '../../../web/widgets/GuidedTours'
 import { TargetId } from '../../widgets/GuidedTours/getSteps'
@@ -24,39 +16,36 @@ const AppHeader = () => {
   const isLoggedIn = useIsLoggedIn()
 
   return (
-    <Header height={64} className="bg-transparent" withBorder={false}>
-      <BackgroundImage
-        className="h-full"
-        src="/assets/images/heroTop-shadow.png"
-        px="xl">
-        <Group className="h-full" position="apart" noWrap>
-          <Group align="center" className="h-full grow-[0.5]" noWrap>
-            <Anchor className="hover:no-underline">
-              <Group align="center" spacing="xs" noWrap>
-                <Avatar src="/assets/images/pepa.png" className="h-full w-16" />
-                <Title className="font-title text-pepa-pink" order={2}>
-                  PEPA
-                </Title>
-              </Group>
-            </Anchor>
-
-            {isLoggedIn && (
-              <Group spacing="xl" position="center" className="grow" noWrap>
-                {headerNavList.map(navItem => (
-                  <NavLink key={navItem.to} to={navItem.to} id={navItem.id}>
-                    {({ isActive }) => (
-                      <Button variant={isActive ? 'filled' : 'light'}>
-                        {navItem.name}
-                      </Button>
-                    )}
-                  </NavLink>
-                ))}
-              </Group>
-            )}
-          </Group>
-          {isLoggedIn && <GuidedTours />}
+    <Header
+      height={56}
+      className="border-0 border-b-2 border-solid border-b-pepa-secondary bg-[#FFF4DD]"
+      px="xl"
+      withBorder={false}>
+      <Group className="h-full" position="apart" noWrap>
+        <Group align="center" className="h-full grow-[0.5]" noWrap>
+          <NavLink to="/home">
+            <Image
+              src="/assets/images/pepa.png"
+              className="h-full"
+              height={50}
+            />
+          </NavLink>
+          {isLoggedIn && (
+            <Group spacing="xl" position="center" className="grow" noWrap>
+              {headerNavList.map(navItem => (
+                <NavLink key={navItem.to} to={navItem.to} id={navItem.id}>
+                  {({ isActive }) => (
+                    <Button variant={isActive ? 'filled' : 'light'}>
+                      {navItem.name}
+                    </Button>
+                  )}
+                </NavLink>
+              ))}
+            </Group>
+          )}
         </Group>
-      </BackgroundImage>
+        {isLoggedIn && <GuidedTours />}
+      </Group>
     </Header>
   )
 }

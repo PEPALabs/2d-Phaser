@@ -34,7 +34,7 @@ const GameLayout = () => {
   }
 
   return (
-    <Container className="h-full max-w-screen-2xl">
+    <Container className="h-full" fluid>
       <Center className="relative h-full">
         <GameCanvas />
         {pageTitle && (

@@ -5,7 +5,6 @@ import {
   TextInput,
   Group,
   ActionIcon,
-  useMantineTheme,
   Navbar,
   Title
 } from '@mantine/core'
@@ -29,8 +28,6 @@ function ChatBox() {
     })
   }, [messages])
 
-  const theme = useMantineTheme()
-
   const handleSend = e => {
     e.preventDefault()
     const newMessage = {
@@ -44,22 +41,26 @@ function ChatBox() {
 
   return (
     <>
-      <Title color="primary" order={3}>
-        Chat History
-      </Title>
-      <Navbar.Section
-        className="border-image-primary border-solid"
-        grow
-        component={ScrollArea}
-        viewportRef={viewportRef}>
-        <Stack spacing="lg">
-          {messages
-            .filter(item => item.message.trim() !== '')
-            .map((message, index) => (
-              <ChatMessage key={index} message={message} />
-            ))}
-        </Stack>
-      </Navbar.Section>
+      <Stack className="grow overflow-hidden" spacing={0}>
+        <Title color="primary" order={4}>
+          Chat History
+        </Title>
+        <Navbar.Section
+          grow
+          component={ScrollArea}
+          viewportRef={viewportRef}
+          p="xs"
+          sx={theme => ({ borderRadius: theme.radius.lg })}
+          className="border-solid border-[#F7CE88] bg-[#FCE8C6]">
+          <Stack spacing="lg">
+            {messages
+              .filter(item => item.message.trim() !== '')
+              .map((message, index) => (
+                <ChatMessage key={index} message={message} />
+              ))}
+          </Stack>
+        </Navbar.Section>
+      </Stack>
       <Group spacing="xs">
         <TextInput
           className="grow"
@@ -70,7 +71,7 @@ function ChatBox() {
         <ActionIcon
           variant="filled"
           size="lg"
-          color={theme.primaryColor}
+          color="secondary"
           onClick={handleSend}>
           <IconSend size="1.3rem" />
         </ActionIcon>
