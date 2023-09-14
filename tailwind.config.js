@@ -67,6 +67,20 @@ module.exports = {
           borderImageSlice: '40 fill',
           borderWidth: '0.5rem'
         },
+        '.glossy-button': {
+          '&:after': {
+            content: "''",
+            margin: '0.5px 1px',
+            position: 'absolute',
+            inset: 0,
+            borderRadius: 4,
+            background: `linear-gradient(rgba(255,255,255,0.4) 60%, rgba(255,255,255,0.0) 70%)`
+          }
+        },
+        '.glossy-button-text': {
+          fontWeight: 700,
+          textShadow: '1px 1px 2px rgb(0 0 0 / 60%)'
+        },
         '.drop-shadow-map-area': {
           filter:
             'drop-shadow(2px 2px 0px white) drop-shadow(-2px -2px 0px white)' //Apply a white border to the image

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Group, Button, Image } from '@mantine/core'
+import { Header, Group, Button, Image, Flex } from '@mantine/core'
 import { NavLink } from 'react-router-dom'
 import GuidedTours from '../../../web/widgets/GuidedTours'
 import { TargetId } from '../../widgets/GuidedTours/getSteps'
@@ -22,7 +22,7 @@ const AppHeader = () => {
       px="xl"
       withBorder={false}>
       <Group className="h-full" position="apart" noWrap>
-        <Group align="center" className="h-full grow-[0.5]" noWrap>
+        <Flex align="center" className="h-full basis-2/3" wrap="nowrap">
           <NavLink to="/home">
             <Image
               src="/assets/images/pepa.png"
@@ -35,7 +35,12 @@ const AppHeader = () => {
               {headerNavList.map(navItem => (
                 <NavLink key={navItem.to} to={navItem.to} id={navItem.id}>
                   {({ isActive }) => (
-                    <Button variant={isActive ? 'filled' : 'light'}>
+                    <Button
+                      className="glossy-button glossy-button-text text-base"
+                      color={isActive ? 'secondary' : 'primary'}
+                      sx={theme => ({
+                        boxShadow: theme.shadows.lg
+                      })}>
                       {navItem.name}
                     </Button>
                   )}
@@ -43,7 +48,7 @@ const AppHeader = () => {
               ))}
             </Group>
           )}
-        </Group>
+        </Flex>
         {isLoggedIn && <GuidedTours />}
       </Group>
     </Header>

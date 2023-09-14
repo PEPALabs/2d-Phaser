@@ -79,7 +79,7 @@ const AppNavBar = () => {
                 </Center>
               }
               label={
-                <Text size="xl" className="font-bold text-white drop-shadow-md">
+                <Text size="xl" className="glossy-button-text text-white">
                   {navItem.text}
                 </Text>
               }

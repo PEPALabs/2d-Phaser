@@ -42,7 +42,7 @@ function ChatBox() {
   return (
     <>
       <Stack className="grow overflow-hidden" spacing={0}>
-        <Title color="primary" order={4}>
+        <Title order={4} className="text-[#E17777]">
           Chat History
         </Title>
         <Navbar.Section
