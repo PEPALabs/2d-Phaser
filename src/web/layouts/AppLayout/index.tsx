@@ -16,6 +16,7 @@ const AppLayout = () => {
       header={<AppHeader />}
       navbar={isLoggedIn && <AppNavBar />}
       bg="url(/assets/images/main-background.png)"
+      bgsz="cover"
       padding={0}
       styles={{ main: { maxHeight: '100vh' } }}>
       <Outlet />

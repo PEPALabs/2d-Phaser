@@ -12,12 +12,14 @@ interface ChatMessageProps {
 function ChatMessage({ message }: ChatMessageProps) {
   return (
     <Group align="flex-start" noWrap spacing="xs">
-      <Avatar color="primary" radius="xl">
+      <Avatar color="secondary" radius="xl">
         <IconUser />
       </Avatar>
       <Box>
         <Group spacing="xs" align="center">
-          <Badge size="sm">npc</Badge>
+          <Badge size="sm" color="secondary">
+            npc
+          </Badge>
           <Text color="dimmed" size="sm">
             {message.sender}
           </Text>

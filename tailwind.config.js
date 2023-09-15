@@ -36,7 +36,9 @@ module.exports = {
           darkBlue: '#132A49',
           textBlue: '#474FA2',
           black: '#252525',
-          darkBlack: '#1B1C1E'
+          darkBlack: '#1B1C1E',
+          primary: '#FF9797',
+          secondary: '#FFBF74'
         }
       },
       boxShadow: {
@@ -64,6 +66,20 @@ module.exports = {
           borderImage: 'url(../assets/images/background-border3.png)',
           borderImageSlice: '40 fill',
           borderWidth: '0.5rem'
+        },
+        '.glossy-button': {
+          '&:after': {
+            content: "''",
+            margin: '0.5px 1px',
+            position: 'absolute',
+            inset: 0,
+            borderRadius: 4,
+            background: `linear-gradient(rgba(255,255,255,0.4) 60%, rgba(255,255,255,0.0) 70%)`
+          }
+        },
+        '.glossy-button-text': {
+          fontWeight: 700,
+          textShadow: '1px 1px 2px rgb(0 0 0 / 60%)'
         },
         '.drop-shadow-map-area': {
           filter:
