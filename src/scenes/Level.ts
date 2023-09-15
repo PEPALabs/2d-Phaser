@@ -31,8 +31,8 @@ export default class Level extends Phaser.Scene {
 
 	preload_all(): void {
 
-		this.load.pack("asset-pack", "assets/asset-pack.json");
-		this.load.pack("png-asset-pack", "assets/tiled/png-asset-pack.json");
+		this.load.pack("asset-pack", "static/assets/asset-pack.json");
+		this.load.pack("png-asset-pack", "static/assets/tiled/png-asset-pack.json");
 	}
 
 	editorCreate(): void {
@@ -73,8 +73,8 @@ export default class Level extends Phaser.Scene {
 
 		// player
 		const player = this.physics.add.sprite(1641, 1264, "pig");
-		player.scaleX = 0.1;
-		player.scaleY = 0.1;
+		player.scaleX = 0.07;
+		player.scaleY = 0.07;
 		player.body.setSize(1134, 1572, false);
 
 		// Shop
@@ -155,7 +155,7 @@ export default class Level extends Phaser.Scene {
 		// rectangle_4
 		const rectangle_4 = this.add.rectangle(3064, 2020, 128, 128);
 		rectangle_4.scaleX = 13.133764125530927;
-		rectangle_4.scaleY = 5.26642606819696;
+		rectangle_4.scaleY = 4.016274045344373;
 		rectangle_4.visible = false;
 		rectangle_4.isFilled = true;
 		blocks.add(rectangle_4);
@@ -193,7 +193,7 @@ export default class Level extends Phaser.Scene {
 		this.add.existing(teleport_4);
 
 		// teleport_5
-		const teleport_5 = new Teleport(this, 2889, 2102);
+		const teleport_5 = new Teleport(this, 2885, 2086);
 		this.add.existing(teleport_5);
 
 		// scriptnode_1
@@ -205,7 +205,7 @@ export default class Level extends Phaser.Scene {
 		const blocklist = [rectangle_1, rectangle_2, rectangle, rectangle_3, rectangle_4, rectangle_5, rectangle_6];
 
 		// collider
-		const collider = this.physics.add.collider(blocklist, player);
+		this.physics.add.collider(blocklist, player);
 
 		// player (components)
 		new Physics(player);
@@ -308,7 +308,7 @@ export default class Level extends Phaser.Scene {
 		teleport_4.player = player;
 
 		// teleport_5 (prefab fields)
-		teleport_5.teleportScene = "inside_bar";
+		teleport_5.teleportScene = "inside_adventure";
 		teleport_5.player = player;
 
 		this.player = player;

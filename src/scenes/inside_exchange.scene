@@ -16,60 +16,184 @@
     },
     "displayList": [
         {
-            "type": "Image",
-            "id": "792b6c47-a482-4d18-915e-76d3c2a198d7",
-            "label": "exchange",
-            "texture": {
-                "key": "exchange"
-            },
-            "x": 475,
-            "y": 518
+            "type": "Rectangle",
+            "id": "5b81cc7a-fb5c-432f-b070-8dd942acb3a6",
+            "label": "rectangle_1",
+            "components": [],
+            "x": 698,
+            "y": 375,
+            "scaleX": 14.898631528427925,
+            "scaleY": 8.887469917237537,
+            "isFilled": true,
+            "fillColor": "#000000",
+            "width": 128,
+            "height": 128,
+            "list": []
         },
         {
-            "type": "ArcadeSprite",
-            "id": "bb4becfd-a8d2-4728-88af-48a9ea7b6d48",
-            "label": "pig",
+            "type": "Container",
+            "id": "a2fe66c3-1ee0-4084-b8e2-f155bfc7c611",
+            "label": "container_1",
+            "components": [],
+            "x": 578,
+            "y": 271,
+            "scaleX": 0.2,
+            "scaleY": 0.2,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "792b6c47-a482-4d18-915e-76d3c2a198d7",
+                    "label": "exchange",
+                    "components": [],
+                    "texture": {
+                        "key": "exchange"
+                    },
+                    "x": 475,
+                    "y": 518,
+                    "list": []
+                },
+                {
+                    "type": "ArcadeSprite",
+                    "id": "bb4becfd-a8d2-4728-88af-48a9ea7b6d48",
+                    "label": "pig",
+                    "components": [
+                        "Physics",
+                        "PlayerMovement",
+                        "PigAnimation"
+                    ],
+                    "PlayerMovement.velocity": 250,
+                    "texture": {
+                        "key": "pig"
+                    },
+                    "x": -418,
+                    "y": 1250,
+                    "scaleX": 0.3,
+                    "scaleY": 0.3,
+                    "body.width": 1134,
+                    "body.height": 1572,
+                    "list": []
+                },
+                {
+                    "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
+                    "id": "99861877-cdc9-461f-96e3-c2504497fb47",
+                    "unlock": [
+                        "x",
+                        "y",
+                        "scaleX",
+                        "scaleY",
+                        "teleportScene",
+                        "player"
+                    ],
+                    "label": "teleport",
+                    "teleportScene": "Level",
+                    "player": "pig",
+                    "components": [],
+                    "x": -1213,
+                    "y": 1524,
+                    "scaleX": 3,
+                    "scaleY": 3,
+                    "nestedPrefabs": [],
+                    "list": []
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "id": "4675af3f-c6a1-4ac4-a0fc-87ca16522cb8",
+            "label": "container_2",
+            "components": [],
+            "scaleX": 0.4,
+            "scaleY": 0.4,
+            "list": []
+        },
+        {
+            "type": "Rectangle",
+            "id": "47a3d19f-eeae-43c8-b9b4-7e8ea099c915",
+            "label": "rectangle_2",
             "components": [
-                "Physics",
-                "PlayerMovement",
-                "PigAnimation"
+                "RectPhysics"
             ],
-            "PlayerMovement.velocity": 250,
-            "texture": {
-                "key": "pig"
-            },
-            "x": -502,
-            "y": 1137,
-            "scaleX": 0.3,
-            "scaleY": 0.3,
-            "body.width": 1134,
-            "body.height": 1572
+            "RectPhysics.static": true,
+            "x": 293,
+            "y": 347,
+            "scaleX": 1.0666491715220632,
+            "scaleY": 7.852267796736732,
+            "width": 128,
+            "height": 128,
+            "list": []
         },
         {
-            "prefabId": "4556d993-eef5-4e02-a1e5-68d7944f8330",
-            "id": "99861877-cdc9-461f-96e3-c2504497fb47",
-            "unlock": [
-                "x",
-                "y",
-                "scaleX",
-                "scaleY",
-                "teleportScene",
-                "player"
+            "type": "Rectangle",
+            "id": "8036f0ac-2091-4a9b-bc0a-04709700e020",
+            "label": "rectangle",
+            "components": [
+                "RectPhysics"
             ],
-            "label": "teleport",
-            "teleportScene": "Level",
-            "player": "pig",
-            "x": -1213,
-            "y": 1524,
-            "scaleX": 3,
-            "scaleY": 3
+            "RectPhysics.static": true,
+            "x": 1044,
+            "y": 366,
+            "scaleX": 1.0666491715220632,
+            "scaleY": 7.852267796736732,
+            "width": 128,
+            "height": 128,
+            "list": []
+        },
+        {
+            "type": "Rectangle",
+            "id": "e5ae1526-8f00-4a1b-b6ca-6f86abfb899f",
+            "label": "rectangle_3",
+            "components": [
+                "RectPhysics"
+            ],
+            "RectPhysics.static": true,
+            "x": 719,
+            "y": 88,
+            "scaleX": 10.019484476225713,
+            "scaleY": 0.7367271235000157,
+            "width": 128,
+            "height": 128,
+            "list": []
+        },
+        {
+            "type": "Rectangle",
+            "id": "2b3c980a-2a49-4dcf-9095-2656138a1367",
+            "label": "rectangle_4",
+            "components": [
+                "RectPhysics"
+            ],
+            "RectPhysics.static": true,
+            "x": 698,
+            "y": 673,
+            "scaleX": 10.019484476225713,
+            "scaleY": 0.7367271235000157,
+            "width": 128,
+            "height": 128,
+            "list": []
         }
     ],
-    "plainObjects": [],
+    "plainObjects": [
+        {
+            "id": "fb8f4c39-1569-45d3-a9c3-89661c43a736",
+            "type": "Collider",
+            "label": "collider",
+            "scope": "METHOD",
+            "object1": "pig",
+            "object2": "list"
+        }
+    ],
     "meta": {
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 4
-    }
+        "version": 3
+    },
+    "lists": [
+        {
+            "id": "f07a7cdf-55c8-4f10-92cf-b0856943ad92",
+            "label": "list",
+            "objectIds": [
+                "47a3d19f-eeae-43c8-b9b4-7e8ea099c915"
+            ]
+        }
+    ]
 }
