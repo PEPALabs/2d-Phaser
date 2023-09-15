@@ -9,7 +9,7 @@ import { Physics } from 'phaser'
 import PubSub from 'pubsub-js'
 import GameManager from '../GameManager'
 import { Position } from '../multiplayer/emitter'
-import { sendEvent } from '../multiplayer/socket'
+import sendSceneEvent from '../multiplayer/sendSceneEvent'
 // import Phaser from 'phaser';
 /* END-USER-IMPORTS */
 
@@ -121,7 +121,7 @@ export default class PlayerMovement {
         y: this.gameObject.y
       }
 
-      sendEvent({
+      sendSceneEvent({
         event: 'player_movement',
         position: this.position,
         sceneKey: this.scene.scene.key

@@ -1,7 +1,7 @@
 import { WebSocket } from 'partysocket'
 import useAuthStore from '../web/shared/useAuthStore'
 import env from '../web/shared/env'
-import emitter, { Position, SceneMessage } from './emitter'
+import emitter from './emitter'
 
 const getSocketUrl = () => {
   const url = new URL(env.MULTIPLAYER_API_PATH)
@@ -18,34 +18,5 @@ socket.addEventListener('message', event => {
 
   emitter.emit(data.event, data)
 })
-
-const initSocket = () => {
-  socket.reconnect()
-}
-
-interface SwitchSceneDTO {
-  event: 'switch_scene'
-  sceneKey: string
-}
-
-interface PlayerMovementDTO {
-  sceneKey: string
-  event: 'player_movement'
-  position: Position
-}
-
-interface SendSceneMessageDTO {
-  sceneKey: string
-  event: 'send_scene_message'
-  message: Omit<SceneMessage, 'sender'>
-}
-
-const sendEvent = (
-  data: SwitchSceneDTO | PlayerMovementDTO | SendSceneMessageDTO
-) => {
-  socket.send(JSON.stringify(data))
-}
-
-export { initSocket, sendEvent }
 
 export default socket

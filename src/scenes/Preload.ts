@@ -6,9 +6,7 @@ import Phaser from 'phaser'
 import PreloadBarUpdaterScript from '../script-nodes/PreloadBarUpdaterScript'
 /* START-USER-IMPORTS */
 import assetPackUrl from '../../static/assets/asset-pack.json'
-import emitter from '../multiplayer/emitter'
-import { initSocket } from '../multiplayer/socket'
-import useSceneDataStore from '../multiplayer/useSceneDataStore'
+import connectToGameServer from '../multiplayer/connectToGameServer'
 /* END-USER-IMPORTS */
 
 export default class Preload extends Phaser.Scene {
@@ -75,13 +73,7 @@ export default class Preload extends Phaser.Scene {
       }
     }
 
-    initSocket()
-
-    emitter.on('enter_scene', data => {
-      emitter.off('enter_scene')
-      useSceneDataStore.setState(data)
-      this.scene.start(data.sceneKey)
-    })
+    connectToGameServer(this)
   }
 
   /* END-USER-CODE */

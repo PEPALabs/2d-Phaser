@@ -13,7 +13,7 @@ export interface Player {
 
 export interface EnterSceneData {
   sceneKey: string
-  event: string
+  event: 'enter_scene'
   players: Player[]
   playerId: string
 }

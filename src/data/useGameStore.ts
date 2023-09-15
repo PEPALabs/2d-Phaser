@@ -4,10 +4,13 @@ import { subscribeWithSelector } from 'zustand/middleware'
 import type { QuestType, PlantType, ItemType } from './items.type'
 import quests from './questData'
 import { getItems } from './getItems'
-import { SceneMessage } from '../multiplayer/emitter'
+import { EnterSceneData, SceneMessage } from '../multiplayer/emitter'
 
 interface GameState {
   playerID: string
+  roomId: string | null
+  isOnlineMode: boolean
+  sceneData: EnterSceneData | null
   time: Date
   plants: Record<number, PlantType>
   quests: QuestType[]
@@ -20,6 +23,9 @@ const useGameStore = create(
   subscribeWithSelector(
     immer<GameState>(() => ({
       playerID: Date.now().toString(),
+      roomId: null,
+      isOnlineMode: false,
+      sceneData: null,
       time: new Date(),
       plants: {},
       quests,

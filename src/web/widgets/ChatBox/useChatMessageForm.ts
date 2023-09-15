@@ -1,6 +1,6 @@
 import { useForm } from '@mantine/form'
-import useSceneDataStore from '../../../multiplayer/useSceneDataStore'
-import { sendEvent } from '../../../multiplayer/socket'
+import useGameStore from '../../../data/useGameStore'
+import sendSceneEvent from '../../../multiplayer/sendSceneEvent'
 
 const useChatMessageForm = () => {
   const form = useForm({
@@ -10,10 +10,10 @@ const useChatMessageForm = () => {
   })
 
   const handleSubmit = form.onSubmit(values => {
-    const sceneData = useSceneDataStore.getState()
+    const sceneData = useGameStore.getState().sceneData
 
     if (sceneData) {
-      sendEvent({
+      sendSceneEvent({
         event: 'send_scene_message',
         message: {
           senderId: sceneData.playerId,

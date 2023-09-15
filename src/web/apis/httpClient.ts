@@ -27,6 +27,11 @@ const httpClient = ky.create({
         const json: APIResponse = await response.json()
 
         if (!response.ok) {
+          if (response.status === 401) {
+            useAuthStore.setState({ token: null })
+            return
+          }
+
           const error = new Error(json.msg)
           error.name = response.status.toString()
 

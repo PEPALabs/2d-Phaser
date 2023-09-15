@@ -9,7 +9,7 @@ import PubSub from 'pubsub-js'
 import React from 'react'
 import { Kbd } from '@mantine/core'
 import { notifications } from '@mantine/notifications'
-import { sendEvent } from '../multiplayer/socket'
+import sendSceneEvent from '../multiplayer/sendSceneEvent'
 /* END-USER-IMPORTS */
 
 export default class TeleportScene {
@@ -33,7 +33,7 @@ export default class TeleportScene {
           this.proximity = false
           notifications.hide(this.teleport12TextId)
 
-          sendEvent({
+          sendSceneEvent({
             event: 'switch_scene',
             sceneKey: this.targetScene
           })

@@ -5,7 +5,6 @@
 import Phaser from 'phaser'
 /* START-USER-IMPORTS */
 import useGameStore from '../data/useGameStore'
-import useSceneDataStore from '../multiplayer/useSceneDataStore'
 const COLOR_PRIMARY = 0xffffff // 0xfcb5cd;// 0xfc9694;
 const COLOR_LIGHT = 0x228be6
 const COLOR_DARK = 0xfe6283 //0xe8735e;
@@ -23,14 +22,14 @@ export default class DisplayText {
     this.scene = scene
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
 
-    const sceneData = useSceneDataStore.getState()
-
     let unsubscribe: () => void
 
     const subscribeMessage = () => {
       unsubscribe = useGameStore.subscribe(
         state => state.messages,
         messages => {
+          const sceneData = useGameStore.getState().sceneData
+
           if (this.sender === 'player' && sceneData) {
             this.sender = sceneData.players.find(
               player => player.id === sceneData.playerId

@@ -13,6 +13,8 @@ import {
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import GameCanvas from '../../widgets/GameCanvas'
 import ParchmentBackground from './ParchmentBackground'
+import GameLobby from '../../widgets/GameLobby'
+import useGameStore from '../../../data/useGameStore'
 
 const pageTitles = {
   '/shop': 'PEPA Shop',
@@ -33,10 +35,12 @@ const GameLayout = () => {
     navigate('/home')
   }
 
+  const roomId = useGameStore(state => state.roomId)
+
   return (
     <Container className="h-full max-w-screen-2xl">
       <Center className="relative h-full">
-        <GameCanvas />
+        {roomId ? <GameCanvas /> : <GameLobby />}
         {pageTitle && (
           <>
             <Box className="absolute w-11/12 overflow-hidden" p="lg">
@@ -74,5 +78,3 @@ const GameLayout = () => {
 }
 
 export default GameLayout
-
-export const Component = GameLayout

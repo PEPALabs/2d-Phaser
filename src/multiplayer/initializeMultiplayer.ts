@@ -1,7 +1,7 @@
 import Phaser from 'phaser'
 import emitter from './emitter'
-import useSceneDataStore from './useSceneDataStore'
 import initializeOtherPlayer from './initializeOtherPlayer'
+import useGameStore from '../data/useGameStore'
 
 const initializeMultiplayer = (
   scene: Phaser.Scene,
@@ -10,7 +10,7 @@ const initializeMultiplayer = (
   const playerGroup = scene.physics.add.group()
 
   const initializePlayerGroup = () => {
-    const sceneData = useSceneDataStore.getState()
+    const sceneData = useGameStore.getState().sceneData
 
     sceneData.players.forEach(player => {
       if (player.id === sceneData.playerId) {
@@ -25,7 +25,7 @@ const initializeMultiplayer = (
 
   const initializeEvents = () => {
     emitter.on('enter_scene', data => {
-      useSceneDataStore.setState(data)
+      useGameStore.setState({ sceneData: data })
 
       scene.scene.switch(data.sceneKey)
     })
@@ -34,7 +34,7 @@ const initializeMultiplayer = (
       const targetPlayer = playerGroup.getChildren().find(otherPlayer => {
         const id = otherPlayer.getData('id')
 
-        const sceneData = useSceneDataStore.getState()
+        const sceneData = useGameStore.getState().sceneData
 
         return id === data.player.id && id !== sceneData.playerId
       }) as Phaser.Types.Physics.Arcade.SpriteWithDynamicBody
@@ -45,7 +45,7 @@ const initializeMultiplayer = (
     })
 
     emitter.on('player_enter_scene', data => {
-      const sceneData = useSceneDataStore.getState()
+      const sceneData = useGameStore.getState().sceneData
 
       if (data.player.id !== sceneData.playerId) {
         const otherPlayer = initializeOtherPlayer(scene, data.player)
