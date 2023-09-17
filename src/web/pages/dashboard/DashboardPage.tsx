@@ -5,7 +5,7 @@ import UserProfile from './components/UserProfile'
 import ResourceList from './components/ResourceList'
 import PlantList from './components/PlantList'
 
-const ResourcePage = () => {
+const DashboardPage = () => {
   return (
     <Center className="h-full">
       <Group
@@ -22,6 +22,6 @@ const ResourcePage = () => {
   )
 }
 
-export default ResourcePage
+export default DashboardPage
 
-export const Component = ResourcePage
+export const Component = DashboardPage

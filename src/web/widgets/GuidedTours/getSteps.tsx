@@ -3,7 +3,7 @@ import { Kbd, List } from '@mantine/core'
 import { type Step } from 'react-joyride'
 
 export enum TargetId {
-  Resources = 'resources-page',
+  Dashboard = 'dashboard-page',
   Shop = 'shop-page',
   Game = 'game-page',
   GameCanvas = 'game-canvas',
@@ -13,11 +13,11 @@ export enum TargetId {
 
 const getSteps = (): Step[] => [
   {
-    target: '#' + TargetId.Resources,
+    target: '#' + TargetId.Dashboard,
     disableBeacon: true,
-    title: 'Resources',
+    title: 'Dashboard',
     content:
-      'This is the Resources page, where you can view and manage your in-game resources, including gold, wood, stone, and more.'
+      'This is the Dashboard page, where you can view and manage your in-game resources, including gold, wood, stone, and more.'
   },
   {
     target: '#' + TargetId.Shop,

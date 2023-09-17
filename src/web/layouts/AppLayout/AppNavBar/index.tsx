@@ -26,9 +26,9 @@ const navList = [
     color: 'blue',
     text: 'Dashboard',
     icon: '/assets/images/dashboard-icon.png',
-    path: '/resources',
+    path: '/dashboard',
     background: '/assets/images/dashboard-button-bg.png',
-    id: TargetId.Resources
+    id: TargetId.Dashboard
   },
   {
     color: 'green',
