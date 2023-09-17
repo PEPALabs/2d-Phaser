@@ -8,24 +8,19 @@ import {
   ScrollArea,
   SimpleGrid,
   Stack,
-  Title
+  Title,
+  Transition
 } from '@mantine/core'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import GameCanvas from '../../widgets/GameCanvas'
 import ParchmentBackground from './ParchmentBackground'
-
-const pageTitles = {
-  '/shop': 'PEPA Shop',
-  '/uniswap': 'Uniswap',
-  '/inventory': 'PEPA Inventory',
-  '/quests': 'PEPA Quest Book',
-  '/resources': 'PEPA Dashboard'
-}
+import useEscapeToHomepage from './useEscapeToHomepage'
+import usePageTitle from './usePageTitle'
 
 const GameLayout = () => {
-  const location = useLocation()
+  useEscapeToHomepage()
 
-  const pageTitle = pageTitles[location.pathname]
+  const pageTitle = usePageTitle()
 
   const navigate = useNavigate()
 
@@ -37,12 +32,12 @@ const GameLayout = () => {
     <Container className="h-full" fluid>
       <Center className="relative h-full">
         <GameCanvas />
-        {pageTitle && (
-          <>
-            <Box className="absolute w-11/12 overflow-hidden" p="lg">
+        <Transition mounted={!!pageTitle} transition="fade">
+          {styles => (
+            <Box className="absolute w-11/12" p="lg" style={styles}>
               <ParchmentBackground />
               <AspectRatio className="w-full" ratio={16 / 9}>
-                <Stack className="!justify-start">
+                <Stack>
                   <SimpleGrid cols={3} className="w-full">
                     <Box />
                     <Title
@@ -66,8 +61,8 @@ const GameLayout = () => {
                 </Stack>
               </AspectRatio>
             </Box>
-          </>
-        )}
+          )}
+        </Transition>
       </Center>
     </Container>
   )
