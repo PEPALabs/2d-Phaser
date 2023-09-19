@@ -45,7 +45,7 @@ const useStyles = createStyles(theme => ({
   }
 }))
 
-const ErrorPage = () => {
+const NoMatch = () => {
   const { classes } = useStyles()
 
   return (
@@ -72,4 +72,4 @@ const ErrorPage = () => {
   )
 }
 
-export default ErrorPage
+export default NoMatch
