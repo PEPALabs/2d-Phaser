@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import {
   AspectRatio,
   Box,
@@ -40,7 +40,7 @@ const GameLayout = () => {
   return (
     <Container className="h-full max-w-screen-2xl">
       <Center className="relative h-full">
-        {roomId ? <GameCanvas /> : <GameLobby />}
+        <Suspense>{roomId ? <GameCanvas /> : <GameLobby />}</Suspense>
         {pageTitle && (
           <>
             <Box className="absolute w-11/12 overflow-hidden" p="lg">

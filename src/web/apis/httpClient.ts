@@ -12,6 +12,7 @@ interface APIResponse {
 const httpClient = ky.create({
   prefixUrl: env.BASE_API_PATH,
   retry: 0,
+  timeout: false,
   hooks: {
     beforeRequest: [
       request => {

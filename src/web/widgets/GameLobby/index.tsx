@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import {
   Button,
   Collapse,
@@ -16,18 +16,21 @@ import multiplayerAPI from '../../apis/multiplayerAPI'
 import useGameStore from '../../../data/useGameStore'
 
 const GameLobby = () => {
-  const { data: rooms, refetch } = useSuspenseQuery({
+  const { data: rooms, refetch } = useQuery({
     ...multiplayerAPI.getRooms(),
     select(data) {
       return data.rooms
     }
   })
 
-  const [roomId, setRoomId] = useState<string>(rooms[0].id)
+  const [roomId, setRoomId] = useState<string>(null)
   const [isOnlineMode, setIsOnlineMode] = useState(true)
 
   const handleEnterGame = () => {
-    useGameStore.setState({ isOnlineMode, roomId })
+    useGameStore.setState({
+      isOnlineMode,
+      roomId: isOnlineMode ? roomId : 'default_room'
+    })
   }
 
   return (
@@ -35,7 +38,7 @@ const GameLobby = () => {
       <Paper p="md" radius="md" className="w-full">
         <Stack className="w-full">
           <Group position="apart">
-            <Title order={2}>GameLobby</Title>
+            <Title order={2}>Game Lobby</Title>
             <Switch
               label={isOnlineMode ? 'Multiplayer' : 'Single player'}
               checked={isOnlineMode}
@@ -53,7 +56,6 @@ const GameLobby = () => {
                     <th>Select</th>
                     <th>Name</th>
                     <th>Player Count</th>
-                    <th>Max Players Count</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -63,8 +65,9 @@ const GameLobby = () => {
                         <Radio value={room.id} />
                       </td>
                       <td>{room.name}</td>
-                      <td>{room.playerCount}</td>
-                      <td>{room.maxPlayersCount}</td>
+                      <td>
+                        {room.playerCount}/{room.maxPlayersCount}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -78,7 +81,7 @@ const GameLobby = () => {
               }}>
               Refresh
             </Button>
-            <Button onClick={handleEnterGame}>Start Game</Button>
+            <Button onClick={handleEnterGame}>Play Now</Button>
           </Group>
         </Stack>
       </Paper>

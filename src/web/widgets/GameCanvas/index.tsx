@@ -3,6 +3,7 @@ import { AspectRatio, Center } from '@mantine/core'
 import createGame from './createGame'
 import { TargetId } from '../GuidedTours/getSteps'
 import ConnectionStatus from './ConnectionStatus'
+import GameMenu from './GameMenu'
 
 const GameCanvas = () => {
   const gameContainerRef = useRef<HTMLDivElement>(null)
@@ -24,6 +25,7 @@ const GameCanvas = () => {
         ratio={16 / 9}
         sx={theme => ({ borderRadius: theme.radius[theme.defaultRadius] })}>
         <ConnectionStatus />
+        <GameMenu />
       </AspectRatio>
     </Center>
   )

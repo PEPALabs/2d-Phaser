@@ -9,7 +9,8 @@ const multiplayerAPI = {
     queryOptions({
       queryKey: [MULTIPLAYER_API_PATH, multiplayerAPI.getRooms.name],
       queryFn: () =>
-        httpClient.get(MULTIPLAYER_API_PATH + '/room').json<GetRoomsData>()
+        httpClient.get(MULTIPLAYER_API_PATH + '/room').json<GetRoomsData>(),
+      initialData: { rooms: [] }
     })
 }
 

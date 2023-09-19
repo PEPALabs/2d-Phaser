@@ -2,6 +2,7 @@ import { match } from 'ts-pattern'
 import socket from './socket'
 import useGameStore from '../data/useGameStore'
 import emitter, { Position, SceneMessage } from './emitter'
+import initialPlayerPosition from './initialPlayerPosition'
 
 interface SwitchSceneDTO {
   sceneKey: string
@@ -26,23 +27,28 @@ const sendSceneEvent = (
   if (useGameStore.getState().isOnlineMode) {
     socket.send(JSON.stringify(data))
   } else {
-    match(data).with({ event: 'switch_scene' }, data => {
-      emitter.emit('enter_scene', {
-        event: 'enter_scene',
-        playerId: 'player_id',
-        players: [
-          {
-            id: 'player_id',
-            name: 'player',
-            position: match(data.sceneKey)
-              .with('Level', () => ({ x: 1640, y: 1264 }))
-              .with('Farm', () => ({ x: 1064, y: 1222 }))
-              .otherwise(() => ({ x: 0, y: 0 }))
-          }
-        ],
-        sceneKey: data.sceneKey
+    match(data)
+      .with({ event: 'switch_scene' }, data => {
+        emitter.emit('enter_scene', {
+          event: 'enter_scene',
+          playerId: 'player_id',
+          players: [
+            {
+              id: 'player_id',
+              name: 'player',
+              position: initialPlayerPosition[data.sceneKey]
+            }
+          ],
+          sceneKey: data.sceneKey
+        })
       })
-    })
+      .with({ event: 'send_scene_message' }, data => {
+        emitter.emit('receive_scene_message', {
+          event: 'receive_scene_message',
+          message: { ...data.message, sender: 'player' },
+          sceneKey: data.sceneKey
+        })
+      })
   }
 }
 

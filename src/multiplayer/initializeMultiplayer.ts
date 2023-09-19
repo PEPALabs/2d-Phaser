@@ -3,6 +3,7 @@ import emitter from './emitter'
 import initializeOtherPlayer from './initializeOtherPlayer'
 import useGameStore from '../data/useGameStore'
 
+// This function is called only within the create lifecycle of a Phaser scene
 const initializeMultiplayer = (
   scene: Phaser.Scene,
   currentPlayer: Phaser.Physics.Arcade.Sprite
@@ -75,7 +76,9 @@ const initializeMultiplayer = (
   initializePlayerGroupAndEvents()
 
   const cleanUpScene = () => {
-    playerGroup.clear(true, true)
+    if (playerGroup.children) {
+      playerGroup.clear(true, true)
+    }
     emitter.all.clear()
   }
 

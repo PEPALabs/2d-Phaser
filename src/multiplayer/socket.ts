@@ -2,9 +2,12 @@ import { WebSocket } from 'partysocket'
 import useAuthStore from '../web/shared/useAuthStore'
 import env from '../web/shared/env'
 import emitter from './emitter'
+import useGameStore from '../data/useGameStore'
 
 const getSocketUrl = () => {
-  const url = new URL(env.MULTIPLAYER_API_PATH)
+  const url = new URL(
+    env.MULTIPLAYER_API_PATH + '/' + useGameStore.getState().roomId
+  )
 
   url.searchParams.append('token', useAuthStore.getState().token)
 

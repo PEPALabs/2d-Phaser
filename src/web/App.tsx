@@ -34,7 +34,9 @@ const primary: Tuple<string, 10> = [
   '#8F591F'
 ]
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { retry: 0 } }
+})
 
 function App() {
   return (

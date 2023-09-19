@@ -2,6 +2,7 @@ import Phaser from 'phaser'
 import useGameStore from '../data/useGameStore'
 import socket from './socket'
 import emitter from './emitter'
+import initialPlayerPosition from './initialPlayerPosition'
 
 const connectToGameServer = (scene: Phaser.Scene) => {
   emitter.on('enter_scene', data => {
@@ -17,7 +18,11 @@ const connectToGameServer = (scene: Phaser.Scene) => {
       event: 'enter_scene',
       playerId: 'player_id',
       players: [
-        { id: 'player_id', name: 'player', position: { x: 1640, y: 1264 } }
+        {
+          id: 'player_id',
+          name: 'player',
+          position: initialPlayerPosition.Level
+        }
       ],
       sceneKey: 'Level'
     })
