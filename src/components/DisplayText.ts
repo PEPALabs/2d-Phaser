@@ -181,6 +181,10 @@ export default class DisplayText {
           this.textBox = null
           clearTimeout(timer)
         }, 1500)
+
+        this.scene.events.on(Phaser.Scenes.Events.DESTROY, () => {
+          clearTimeout(timer)
+        })
       })
 
     return textBox
