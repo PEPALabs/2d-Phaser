@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query'
 import httpClient from '../httpClient'
-import { GetRoomsData } from './type'
+import { CreateRoomDTO, GetRoomsData } from './type'
 
 const MULTIPLAYER_API_PATH = 'multiplayer'
 
@@ -11,7 +11,12 @@ const multiplayerAPI = {
       queryFn: () =>
         httpClient.get(MULTIPLAYER_API_PATH + '/room').json<GetRoomsData>(),
       initialData: { rooms: [] }
-    })
+    }),
+  createRoom: () => ({
+    //Only called during development and testing
+    mutationFn: (params: CreateRoomDTO) =>
+      httpClient.post(MULTIPLAYER_API_PATH + '/room', { json: params }).json()
+  })
 }
 
 export default multiplayerAPI

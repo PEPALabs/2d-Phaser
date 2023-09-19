@@ -66,7 +66,7 @@ const GameLobby = () => {
                       </td>
                       <td>{room.name}</td>
                       <td>
-                        {room.playerCount}/{room.maxPlayersCount}
+                        {room.playerCount}/{room.maxPlayerCount}
                       </td>
                     </tr>
                   ))}
