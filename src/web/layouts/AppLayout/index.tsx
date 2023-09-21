@@ -13,13 +13,21 @@ const AppLayout = () => {
 
   return (
     <AppShell
-      header={<AppHeader />}
-      navbar={isLoggedIn && <AppNavBar />}
-      bg="url(/assets/images/main-background.png)"
-      bgsz="cover"
+      header={{ height: 56 }}
+      navbar={{
+        width: 280,
+        breakpoint: 0,
+        collapsed: { desktop: !isLoggedIn }
+      }}
       padding={0}
-      styles={{ main: { maxHeight: '100vh' } }}>
-      <Outlet />
+      withBorder={false}
+      bg="url(/assets/images/main-background.png)"
+      bgsz="cover">
+      <AppHeader />
+      <AppNavBar />
+      <AppShell.Main className="h-screen">
+        <Outlet />
+      </AppShell.Main>
     </AppShell>
   )
 }

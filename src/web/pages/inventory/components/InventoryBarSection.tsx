@@ -10,10 +10,10 @@ const InventoryBarSection = ({
   children
 }: PropsWithChildren<InventoryBarSectionProps>) => {
   return (
-    <Group className="w-full" position="apart">
+    <Group className="w-full" justify="space-between">
       <Text size="md">{name}</Text>
       {typeof children !== 'object' ? (
-        <Text color="yellow" size="md" fw="bold">
+        <Text c="yellow" size="md" fw="bold">
           {children}
         </Text>
       ) : (

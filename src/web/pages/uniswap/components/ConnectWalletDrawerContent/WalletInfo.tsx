@@ -28,7 +28,7 @@ const WalletInfo = () => {
         <Badge>Connected</Badge>
       </Group>
 
-      <Group noWrap>
+      <Group wrap='nowrap'>
         <Text className="whitespace-nowrap">account:</Text>
         <Text className="truncate">{account}</Text>
       </Group>

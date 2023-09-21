@@ -22,10 +22,10 @@ const SignupPage = () => {
     <Container className="h-5/6">
       <Center className="h-full">
         <Paper p="xl" radius="md" w={400}>
-          <Title color="primary">Create new account.</Title>
-          <Anchor component={Link} size="sm" color="dimmed" to="/login">
+          <Title c="primary">Create new account.</Title>
+          <Anchor component={Link} size="sm" c="dimmed" to="/login">
             Already have an account?{' '}
-            <Text span color="primary">
+            <Text span c="primary">
               Login
             </Text>
           </Anchor>

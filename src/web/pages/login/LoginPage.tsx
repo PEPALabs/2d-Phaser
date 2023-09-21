@@ -31,7 +31,7 @@ const LoginPage = () => {
     <Container className="h-5/6">
       <Center className="h-full">
         <Paper p="xl" radius="md" w={400}>
-          <Title color="primary">Welcome to PEPA</Title>
+          <Title c="primary">Welcome to PEPA</Title>
           {isLoggedIn ? (
             <div className="mt-4 text-center">
               ✅ You have successfully logged in!
@@ -40,9 +40,9 @@ const LoginPage = () => {
             </div>
           ) : (
             <>
-              <Anchor component={Link} size="sm" color="dimmed" to="/signup">
+              <Anchor component={Link} size="sm" c="dimmed" to="/signup">
                 Do not have an account yet?{' '}
-                <Text span color="primary">
+                <Text span c="primary">
                   Sign up
                 </Text>
               </Anchor>
@@ -64,7 +64,7 @@ const LoginPage = () => {
                   />
                 </Stack>
                 <Stack mt="xl">
-                  <Group position="apart">
+                  <Group justify="space-between">
                     <Checkbox label="Remember me" defaultChecked />
                     <Anchor component="button" size="sm">
                       Forgot password?

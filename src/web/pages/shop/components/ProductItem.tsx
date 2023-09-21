@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import {
   Image,
-  clsx,
   Text,
   Indicator,
   Card,
   Flex,
   useMantineTheme
 } from '@mantine/core'
+import { clsx } from 'clsx'
 import { useFocusable } from '@noriginmedia/norigin-spatial-navigation'
 import { IconMoneybag } from '@tabler/icons-react'
 import { type ItemType } from '../../../../data/items.type'
@@ -54,7 +54,7 @@ const ProductItem = ({ product, index }: ProductItemProps) => {
           {product.price && (
             <Flex align="center">
               <IconMoneybag size="1rem" color={theme.colors.orange[6]} />
-              <Text span fw="bold" color="orange">
+              <Text span fw="bold" c="orange">
                 {product.price}
               </Text>
             </Flex>

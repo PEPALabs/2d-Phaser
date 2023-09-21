@@ -53,7 +53,7 @@ const GuidedTours = () => {
         onClick={handleClickStart}
         className="glossy-button glossy-button-text text-base"
         color="secondary"
-        sx={theme => ({ boxShadow: theme.shadows.md })}>
+        style={theme => ({ boxShadow: theme.shadows.md })}>
         Guided tours
       </Button>
     </>

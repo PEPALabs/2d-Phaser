@@ -10,10 +10,10 @@ const ShoppingBarSection = ({
   children
 }: PropsWithChildren<ShoppingBarSectionProps>) => {
   return (
-    <Group className="w-full" position="apart">
+    <Group className="w-full" gap="apart">
       <Text size="md">{name}</Text>
       {typeof children !== 'object' ? (
-        <Text color="yellow" size="md" fw="bold">
+        <Text c="yellow" size="md" fw="bold">
           {children}
         </Text>
       ) : (

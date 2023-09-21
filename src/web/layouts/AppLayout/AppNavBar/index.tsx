@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Navbar,
+  AppShell,
   Text,
   NavLink,
   Image,
@@ -55,20 +55,20 @@ const AppNavBar = () => {
 
   return (
     <NavBarContainer>
-      <Navbar.Section>
-        <Stack spacing="xs">
+      <AppShell.Section>
+        <Stack gap="xs">
           {navList.map(navItem => (
             <NavLink
               key={navItem.text}
               component={Link}
               pl={20}
-              sx={theme => ({
+              style={theme => ({
                 borderImage: `url(${navItem.background}) 0 fill`,
                 boxShadow: theme.shadows.lg
               })}
               to={navItem.path ?? '/login'}
               className="transition-transform hover:scale-105"
-              icon={
+              leftSection={
                 <Center className="w-8 text-center">
                   <Image
                     src={navItem.icon}
@@ -87,16 +87,16 @@ const AppNavBar = () => {
             />
           ))}
         </Stack>
-      </Navbar.Section>
+      </AppShell.Section>
       <Divider color="primary" size="sm" />
       <ChatBox />
       <Divider color="primary" size="sm" />
-      <Navbar.Section>
-        <Group position="apart">
+      <AppShell.Section>
+        <Group justify="space-between">
           <Group>
             <Avatar color="secondary" />
             <Box>
-              <Text size="md" weight={500} className="font-JotiOne">
+              <Text size="md" fw={500} className="font-JotiOne">
                 HelloWorld
               </Text>
               <Text size="xs">helloworld@gmail.com</Text>
@@ -113,7 +113,7 @@ const AppNavBar = () => {
             <IconLogout size="1.3rem" />
           </ActionIcon>
         </Group>
-      </Navbar.Section>
+      </AppShell.Section>
     </NavBarContainer>
   )
 }

@@ -40,7 +40,7 @@ const UniswapPage = () => {
         <Center className="h-full px-8 py-8 lg:px-0">
           <Card withBorder className="w-full lg:w-7/12 xl:w-1/2 2xl:w-1/3">
             <Tabs color="pink" defaultValue="swap">
-              <Group position="apart">
+              <Group justify="space-between">
                 <Tabs.List>
                   <Tabs.Tab value="swap">Swap</Tabs.Tab>
                   <Tabs.Tab value="buy">Buy</Tabs.Tab>

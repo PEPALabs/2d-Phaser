@@ -36,7 +36,7 @@ const ShoppingBar = ({ product }: ShoppingBarProps) => {
       my="xs"
       color="primary">
       <Stack>
-        <Title color="primary" order={3}>
+        <Title c="primary" order={3}>
           {product.name}
         </Title>
         <Text size="md">{product.description}</Text>
@@ -47,7 +47,7 @@ const ShoppingBar = ({ product }: ShoppingBarProps) => {
           </ShoppingBarSection>
           <ShoppingBarSection name="Price">{product.price}</ShoppingBarSection>
           <ShoppingBarSection name="Amount">
-            <Group spacing={4} align="center">
+            <Group gap={4} align="center">
               <ActionIcon
                 variant="default"
                 size={36}
@@ -64,7 +64,7 @@ const ShoppingBar = ({ product }: ShoppingBarProps) => {
                 max={+product.value}
                 value={count}
                 onChange={value => {
-                  setCount(value === '' ? 0 : value)
+                  setCount(value === '' ? 0 : Number(value))
                 }}
               />
               <ActionIcon
@@ -82,7 +82,7 @@ const ShoppingBar = ({ product }: ShoppingBarProps) => {
           </ShoppingBarSection>
           <Button
             className="self-end"
-            rightIcon={<IconCoin />}
+            rightSection={<IconCoin />}
             disabled={count === 0 || +product.value === 0}
             onClick={() => {
               shopActions.purchase(count)

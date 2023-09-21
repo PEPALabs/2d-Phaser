@@ -47,7 +47,7 @@ const GameLayout = () => {
                     <Box />
                     <Title
                       className="justify-self-center whitespace-nowrap font-Avara text-yellow-700"
-                      color="primary">
+                      c="primary">
                       {pageTitle}
                     </Title>
                     <CloseButton

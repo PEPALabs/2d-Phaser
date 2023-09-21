@@ -33,9 +33,14 @@ const PlantCard = ({ plant }: PlantCardProps) => {
   return (
     <Card className="border-image-second border-solid">
       <Flex justify="space-between" align="center">
-        <Group spacing="xs" noWrap>
-          <Image width={80} height={80} src={null} withPlaceholder />
-          <Stack spacing="xs">
+        <Group gap="xs" wrap="nowrap">
+          <Image
+            width={80}
+            height={80}
+            src={null}
+            fallbackSrc="https://placehold.co/80x80?text=Placeholder"
+          />
+          <Stack gap="xs">
             <Title order={5} className="tracking-wider">
               {plant.name}
             </Title>

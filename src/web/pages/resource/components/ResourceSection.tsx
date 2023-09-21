@@ -10,9 +10,9 @@ const ResourceSection = ({
   children
 }: PropsWithChildren<ResourceSectionProps>) => {
   return (
-    <Stack spacing="xs">
+    <Stack gap="xs">
       <Title
-        color="primary"
+        c="primary"
         order={2}
         className="font-JotiOne tracking-wide text-black/70">
         {name}

@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import {
+  AppShell,
   Stack,
   ScrollArea,
   TextInput,
   Group,
   ActionIcon,
-  Navbar,
   Title
 } from '@mantine/core'
 
@@ -41,27 +41,27 @@ function ChatBox() {
 
   return (
     <>
-      <Stack className="grow overflow-hidden" spacing={0}>
+      <Stack className="grow overflow-hidden" gap={0}>
         <Title order={4} className="text-[#E17777]">
           Chat History
         </Title>
-        <Navbar.Section
+        <AppShell.Section
           grow
           component={ScrollArea}
           viewportRef={viewportRef}
           p="xs"
-          sx={theme => ({ borderRadius: theme.radius.lg })}
+          style={theme => ({ borderRadius: theme.radius.lg })}
           className="border-solid border-[#F7CE88] bg-[#FCE8C6]">
-          <Stack spacing="lg">
+          <Stack gap="lg">
             {messages
               .filter(item => item.message.trim() !== '')
               .map((message, index) => (
                 <ChatMessage key={index} message={message} />
               ))}
           </Stack>
-        </Navbar.Section>
+        </AppShell.Section>
       </Stack>
-      <Group spacing="xs">
+      <Group gap="xs">
         <TextInput
           className="grow"
           placeholder="Type something..."

@@ -22,7 +22,7 @@ const QuestCategoryTabs = () => {
       className="border-image-primary border-solid"
       variant="pills"
       value={category}
-      onTabChange={value => {
+      onChange={value => {
         setCategory(value)
       }}>
       <Tabs.List>

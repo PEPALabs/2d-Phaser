@@ -7,7 +7,7 @@ import {
 
 export const emptyItem = {
   name: '',
-  icon: '',
+  icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"/>',
   value: '',
   description: '',
   category: ItemCategoriesType.WEAPON
