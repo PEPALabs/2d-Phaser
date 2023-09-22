@@ -14,7 +14,10 @@ const getSocketUrl = () => {
   return url.toString()
 }
 
-const socket = new WebSocket(getSocketUrl, undefined, { startClosed: true })
+const socket = new WebSocket(getSocketUrl, undefined, {
+  startClosed: true,
+  maxEnqueuedMessages: 0
+})
 
 socket.addEventListener('message', event => {
   const data = JSON.parse(event.data)

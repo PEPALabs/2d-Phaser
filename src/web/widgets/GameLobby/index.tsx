@@ -62,7 +62,9 @@ const GameLobby = () => {
                   {rooms.map(room => (
                     <tr key={room.id} onClick={() => setRoomId(room.id)}>
                       <td>
-                        <Radio value={room.id} />
+                        {room.playerCount < room.maxPlayerCount && (
+                          <Radio value={room.id} />
+                        )}
                       </td>
                       <td>{room.name}</td>
                       <td>
