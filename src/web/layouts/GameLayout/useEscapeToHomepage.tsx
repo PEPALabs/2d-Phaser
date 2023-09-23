@@ -3,7 +3,7 @@ import { useWindowEvent } from '@mantine/hooks'
 import { useNavigate } from 'react-router-dom'
 import GameManager from '../../../GameManager'
 
-const useGameEvent = () => {
+const useEscapeToHomepage = () => {
   const [gameManager] = useState(() => GameManager.getInstance())
 
   const navigate = useNavigate()
@@ -17,4 +17,4 @@ const useGameEvent = () => {
   })
 }
 
-export default useGameEvent
+export default useEscapeToHomepage

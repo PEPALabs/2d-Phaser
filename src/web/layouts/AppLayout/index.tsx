@@ -4,12 +4,9 @@ import { Outlet } from 'react-router-dom'
 import AppHeader from './AppHeader'
 import AppNavBar from './AppNavBar'
 import useIsLoggedIn from '../../shared/useIsLoggedIn'
-import useGameEvent from './useGameEvent'
 
 const AppLayout = () => {
   const isLoggedIn = useIsLoggedIn()
-
-  useGameEvent()
 
   return (
     <AppShell

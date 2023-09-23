@@ -34,6 +34,7 @@ const GameCanvas = () => {
         ref={gameContainerRef}
         className="absolute w-full overflow-hidden border-4 border-solid border-pepa-secondary"
         ratio={16 / 9}
+        sx={theme => ({ borderRadius: theme.radius[theme.defaultRadius] })}
       />
     </Center>
   )
