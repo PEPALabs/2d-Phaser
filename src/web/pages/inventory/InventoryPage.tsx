@@ -41,7 +41,7 @@ function InventoryPage() {
           <ProductCategoryTabs />
         </Grid.Col>
         <Grid.Col span={3}>
-          <Group position="center" spacing="sm">
+          <Group justify="center" gap="sm">
             <Image width={36} height={36} src="/assets/coin.png" />
             <Text size="lg" className="font-bold tracking-wider">
               {balance} ETH
@@ -50,14 +50,14 @@ function InventoryPage() {
         </Grid.Col>
       </Grid>
       <Grid className="h-full overflow-hidden">
-        <Grid.Col className="h-full" md={12} lg={9}>
+        <Grid.Col className="h-full" span={{ md: 12, lg: 9 }}>
           {categorizedProducts.length > 0 && (
             <ScrollArea className="h-full">
               <ProductList products={categorizedProducts} />
             </ScrollArea>
           )}
         </Grid.Col>
-        <Grid.Col md={12} lg={3}>
+        <Grid.Col span={{ md: 12, lg: 3 }}>
           {selectedProduct && selectedProduct.name && (
             <InventoryBar product={selectedProduct} />
           )}

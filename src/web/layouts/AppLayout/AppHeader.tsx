@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Group, Button, Image, Flex } from '@mantine/core'
+import { AppShell, Group, Button, Image, Flex } from '@mantine/core'
 import { NavLink } from 'react-router-dom'
 import GuidedTours from '../../../web/widgets/GuidedTours'
 import { TargetId } from '../../widgets/GuidedTours/getSteps'
@@ -16,29 +16,23 @@ const AppHeader = () => {
   const isLoggedIn = useIsLoggedIn()
 
   return (
-    <Header
-      height={56}
+    <AppShell.Header
       className="border-0 border-b-2 border-solid border-b-pepa-secondary bg-[#FFF4DD]"
-      px="xl"
-      withBorder={false}>
-      <Group className="h-full" position="apart" noWrap>
+      px="xl">
+      <Group className="h-full" justify="space-between" wrap="nowrap">
         <Flex align="center" className="h-full basis-2/3" wrap="nowrap">
           <NavLink to="/home">
-            <Image
-              src="/assets/images/pepa.png"
-              className="h-full"
-              height={50}
-            />
+            <Image src="/assets/images/pepa.png" w={72} />
           </NavLink>
           {isLoggedIn && (
-            <Group spacing="xl" position="center" className="grow" noWrap>
+            <Group gap="xl" justify="center" className="grow" wrap="nowrap">
               {headerNavList.map(navItem => (
                 <NavLink key={navItem.to} to={navItem.to} id={navItem.id}>
                   {({ isActive }) => (
                     <Button
                       className="glossy-button glossy-button-text text-base"
                       color={isActive ? 'secondary' : 'primary'}
-                      sx={theme => ({
+                      style={theme => ({
                         boxShadow: theme.shadows.lg
                       })}>
                       {navItem.name}
@@ -51,7 +45,7 @@ const AppHeader = () => {
         </Flex>
         {isLoggedIn && <GuidedTours />}
       </Group>
-    </Header>
+    </AppShell.Header>
   )
 }
 

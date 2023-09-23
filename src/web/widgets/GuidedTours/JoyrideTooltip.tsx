@@ -9,15 +9,14 @@ const JoyrideTooltip = ({
   skipProps,
   index,
   backProps,
-  primaryProps,
-  continuous
+  primaryProps
 }: TooltipRenderProps) => {
   return (
     <Card className="max-w-sm" {...tooltipProps}>
-      <Stack spacing="sm">
+      <Stack gap="sm">
         <Title order={2}>{step.title}</Title>
         <Text>{step.content}</Text>
-        <Group position="apart">
+        <Group justify="space-between">
           <Box>
             {!isLastStep && (
               <Button variant="default" {...skipProps}>

@@ -45,9 +45,16 @@ const GameMap = () => {
 
   const [ref, rect] = useResizeObserver()
 
+  const mapScale = rect.width / GameMapRect.BASE_WIDTH
+
   return (
     <AspectRatio ratio={16 / 9} className="w-full">
-      <Box ref={ref} className="relative">
+      <Box
+        ref={ref}
+        className="relative"
+        style={
+          { '--map-hover-scale': mapScale * 1.05 } as React.CSSProperties
+        }>
         <BackgroundImage
           src="/assets/images/world-map.png"
           className="h-full"
@@ -56,7 +63,7 @@ const GameMap = () => {
           <MapArea
             key={mapArea.name}
             {...mapArea}
-            scale={rect.width / GameMapRect.BASE_WIDTH}
+            scale={mapScale}
             isActive={mapArea.name === activeAreaName}
             onChange={setActiveAreaName}
           />

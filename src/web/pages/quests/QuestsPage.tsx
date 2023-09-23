@@ -60,7 +60,7 @@ function QuestsPage() {
           <QuestCategoryTabs />
         </Grid.Col>
         <Grid.Col span={3}>
-          <Group position="center" spacing="sm">
+          <Group justify="center" gap="sm">
             <Image width={36} height={36} src="/assets/coin.png" />
             <Text size="lg" className="font-bold tracking-wider">
               {balance} ETH

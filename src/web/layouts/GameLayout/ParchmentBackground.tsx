@@ -19,7 +19,7 @@ const ParchmentBackground = () => {
       <Box
         className="absolute inset-0 h-full w-full bg-cover bg-center"
         bg="url(/assets/images/parchment.jpeg)"
-        sx={{ filter: 'url(#wavy)' }}
+        style={{ filter: 'url(#wavy)' }}
       />
     </>
   )

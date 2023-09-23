@@ -21,8 +21,8 @@ const UserProfile = () => {
         <Indicator label={<Badge variant="filled">LV.16</Badge>} size={0}>
           <Avatar size="xl">{name}</Avatar>
         </Indicator>
-        <Stack spacing="xs">
-          <Group spacing="xs">
+        <Stack gap="xs">
+          <Group gap="xs">
             <Title className="font-JotiOne text-xl" order={5}>
               {name}
             </Title>

@@ -1,15 +1,7 @@
 import React, { useEffect } from 'react'
-import {
-  Image,
-  clsx,
-  Text,
-  Indicator,
-  Card,
-  Flex,
-  useMantineTheme
-} from '@mantine/core'
+import { Image, Indicator, Card } from '@mantine/core'
+import { clsx } from 'clsx'
 import { useFocusable } from '@noriginmedia/norigin-spatial-navigation'
-import { IconMoneybag } from '@tabler/icons-react'
 import { type ItemType } from '../../../../data/items.type'
 import { inventoryActions } from '../../../../data/useGameStore'
 

@@ -41,7 +41,7 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
       my="xs"
       color="primary">
       <Stack>
-        <Title color="primary" order={3}>
+        <Title c="primary" order={3}>
           {product.name}
         </Title>
         <Text size="md">{product.description}</Text>
@@ -49,7 +49,7 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
         <Stack>
           <InventoryBarSection name="Owns">{product.value}</InventoryBarSection>
           <InventoryBarSection name="Amount">
-            <Group spacing={4} align="center">
+            <Group gap={4} align="center">
               <ActionIcon
                 variant="default"
                 size={36}
@@ -66,7 +66,7 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
                 max={+product.value}
                 value={count}
                 onChange={value => {
-                  setCount(value === '' ? 0 : value)
+                  setCount(value === '' ? 0 : Number(value))
                 }}
               />
               <ActionIcon
@@ -79,9 +79,9 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
               </ActionIcon>
             </Group>
           </InventoryBarSection>
-          <Group position="apart">
+          <Group justify="space-between">
             <Button
-              rightIcon={<IconArrowRight />}
+              rightSection={<IconArrowRight />}
               disabled={count === 0 || +product.value === 0}
               onClick={() => {
                 inventoryActions.updateAmount(count)
@@ -89,7 +89,7 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
               Use
             </Button>
             <Button
-              rightIcon={<IconTrash />}
+              rightSection={<IconTrash />}
               disabled={count === 0 || +product.value === 0}
               onClick={() => {
                 inventoryActions.updateAmount(count)

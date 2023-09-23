@@ -24,14 +24,9 @@ const ProductList = ({ products }: ProductListProps) => {
     <FocusContext.Provider value={focusKey}>
       <SimpleGrid
         ref={ref}
-        cols={7}
+        cols={{ sm: 1, md: 3, lg: 5, xl: 7 }}
         spacing="xl"
-        m="xs"
-        breakpoints={[
-          { maxWidth: 'lg', cols: 5 },
-          { maxWidth: 'md', cols: 3 },
-          { maxWidth: 'sm', cols: 1 }
-        ]}>
+        m="xs">
         {products.map((product, index) => (
           <ProductItem key={index} product={product} index={index} />
         ))}

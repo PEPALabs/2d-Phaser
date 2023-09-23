@@ -29,8 +29,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
-        include: path.join(__dirname, 'static/css')
+        use: ['style-loader', 'css-loader', 'postcss-loader']
       },
       // {
       //     test: /\.jsx?$/,

@@ -22,7 +22,7 @@ const ConnectWalletDrawerContent = () => {
   return (
     <Stack px="md">
       <Title order={2}>Sign in with your wallet</Title>
-      <Text color="dimmed" size="sm">
+      <Text c="dimmed" size="sm">
         Sign in with one of available wallet providers or create a new wallet.
       </Text>
       <Space />

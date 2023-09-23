@@ -7,13 +7,13 @@ import {
 } from 'react-router-dom'
 
 import AppLayout from '../layouts/AppLayout'
-import ErrorPage from '../pages/error/ErrorPage'
+import NotFound from '../pages/error/NotFound'
 import GameLayout from '../layouts/GameLayout'
 import RequireAuthLayout from '../layouts/RequireAuthLayout'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
+    <Route path="/" element={<AppLayout />} errorElement={<NotFound />}>
       <Route index element={<Navigate to="/home" replace />} />
       <Route path="login" lazy={() => import('../pages/login/LoginPage')} />
       <Route path="signup" lazy={() => import('../pages/signup/SignupPage')} />

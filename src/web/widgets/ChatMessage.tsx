@@ -11,16 +11,16 @@ interface ChatMessageProps {
 
 function ChatMessage({ message }: ChatMessageProps) {
   return (
-    <Group align="flex-start" noWrap spacing="xs">
+    <Group align="flex-start" wrap="nowrap" gap="xs">
       <Avatar color="secondary" radius="xl">
         <IconUser />
       </Avatar>
       <Box>
-        <Group spacing="xs" align="center">
+        <Group gap="xs" align="center">
           <Badge size="sm" color="secondary">
             npc
           </Badge>
-          <Text color="dimmed" size="sm">
+          <Text c="dimmed" size="sm">
             {message.sender}
           </Text>
         </Group>
