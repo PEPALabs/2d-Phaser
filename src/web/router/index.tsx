@@ -34,8 +34,8 @@ const router = createBrowserRouter(
             lazy={() => import('../pages/quests/QuestsPage')}
           />
           <Route
-            path="resources"
-            lazy={() => import('../pages/resource/ResourcePage')}
+            path="dashboard"
+            lazy={() => import('../pages/dashboard/DashboardPage')}
           />
         </Route>
       </Route>
