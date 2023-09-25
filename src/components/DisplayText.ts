@@ -177,8 +177,7 @@ export default class DisplayText {
         console.log('all pages typing complete')
         //  hide the chatbox after 1.5 seconds of typing complete.
         const timer = setTimeout(() => {
-          this.hideTextBox(this.scene, this.textBox)
-          this.textBox = null
+          this.hideTextBox()
           clearTimeout(timer)
         }, 1500)
 
@@ -191,11 +190,11 @@ export default class DisplayText {
   }
 
   showTextBox(text: string) {
-    if (this.textBox !== null) {
-      this.hideTextBox(this.scene, this.textBox)
+    if (this.textBox) {
+      this.hideTextBox()
     }
 
-    const textBox = this.createTextBox(
+    this.textBox = this.createTextBox(
       this.scene,
       this.gameObject.x - 50,
       this.gameObject.y - 150,
@@ -203,12 +202,10 @@ export default class DisplayText {
         wrapWidth: 300
       }
     ).start(text, 50)
-
-    this.textBox = textBox
   }
 
-  hideTextBox(scene, textBox) {
-    scene.rexUI.hide(textBox)
+  hideTextBox() {
+    this.textBox.destroy()
   }
 
   update() {

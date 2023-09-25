@@ -12,7 +12,7 @@ import DisplayText from '../components/DisplayText'
 import FarmContainer from '../components/FarmContainer'
 import Teleport from './Teleport'
 /* START-USER-IMPORTS */
-import initializeOtherPlayer from '../multiplayer/initializeMultiplayer'
+import initializeMultiplayer from '../multiplayer/initializeMultiplayer'
 /* END-USER-IMPORTS */
 
 export default class Farm extends Phaser.Scene {
@@ -121,7 +121,7 @@ export default class Farm extends Phaser.Scene {
     this.cameras.main.startFollow(this.player)
     this.cameras.main.setZoom(0.8)
 
-    initializeOtherPlayer(this, this.player)
+    initializeMultiplayer(this, this.player)
   }
 
   /* END-USER-CODE */
