@@ -34,8 +34,8 @@ const ExchangePage = () => {
     <>
       <style>{css}</style>
       <Stack
-        className="relative h-full w-full"
-        bg="radial-gradient(100% 100% at 50% 0%, rgba(255, 184, 226, 0.51) 0%, rgba(255, 255, 255, 0) 100%), rgb(255, 255, 255)">
+        className="relative h-full w-full !bg-cover"
+        bg="url(/assets/images/main-background.png)">
         <PepaLogo />
         <Center className="h-full px-8 py-8 lg:px-0">
           <Card withBorder className="w-full lg:w-7/12 xl:w-1/2 2xl:w-1/3">
@@ -43,7 +43,7 @@ const ExchangePage = () => {
               <Group justify="space-between">
                 <Tabs.List>
                   <Tabs.Tab value="swap">Swap</Tabs.Tab>
-                  <Tabs.Tab value="buy">Buy</Tabs.Tab>
+                  <Tabs.Tab value="pool">Pool</Tabs.Tab>
                 </Tabs.List>
               </Group>
               <Space h={16} />
@@ -58,7 +58,17 @@ const ExchangePage = () => {
                   />
                 </div>
               </Tabs.Panel>
-              <Tabs.Panel value="buy">{null}</Tabs.Panel>
+              <Tabs.Panel value="pool">
+                <div className="uniswap">
+                  <SwapWidget
+                    width="100%"
+                    className="mx-auto"
+                    provider={web3React.library}
+                    onConnectWalletClick={onConnectClick}
+                    theme={theme}
+                  />
+                </div>
+              </Tabs.Panel>
             </Tabs>
           </Card>
         </Center>
