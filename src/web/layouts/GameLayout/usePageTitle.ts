@@ -14,6 +14,10 @@ const usePageTitle = () => {
       () => 'Uniswap'
     )
     .when(
+      pathName => matchPath('/exchange', pathName),
+      () => 'PEPA Exchange'
+    )
+    .when(
       pathName => matchPath('/inventory', pathName),
       () => 'PEPA Inventory'
     )

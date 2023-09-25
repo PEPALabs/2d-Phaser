@@ -26,6 +26,10 @@ const router = createBrowserRouter(
             lazy={() => import('../pages/uniswap/UniswapPage')}
           />
           <Route
+            path="exchange"
+            lazy={() => import('../pages/exchange/ExchangePage')}
+          />
+          <Route
             path="inventory"
             lazy={() => import('../pages/inventory/InventoryPage')}
           />

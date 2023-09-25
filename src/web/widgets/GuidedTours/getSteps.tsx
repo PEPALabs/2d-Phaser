@@ -8,6 +8,7 @@ export enum TargetId {
   Game = 'game-page',
   GameCanvas = 'game-canvas',
   Uniswap = 'uniswap-page',
+  Exchange = 'exchange-page',
   Inventory = 'inventory-page'
 }
 
@@ -56,6 +57,13 @@ const getSteps = (): Step[] => [
     disableBeacon: true,
     title: 'Uniswap',
     content: 'This is the Uniswap page, a trading platform.'
+  },
+  {
+    target: '#' + TargetId.Exchange,
+    disableBeacon: true,
+    title: 'Exchange',
+    content:
+      "This is the PEPA Exchange page, PEPA's official Decentralized Exchange."
   },
   {
     target: '#' + TargetId.Inventory,
