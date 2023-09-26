@@ -1,10 +1,11 @@
 import React from 'react'
 import { UnstyledButton, Image, Tooltip } from '@mantine/core'
+import { NavLink } from 'react-router-dom'
 
 const PlayerInventory = () => {
   return (
     <Tooltip label="Inventory">
-      <UnstyledButton>
+      <UnstyledButton component={NavLink} to="/inventory">
         <Image
           src="/assets/images/inventory-icon.png"
           alt="Inventory"
