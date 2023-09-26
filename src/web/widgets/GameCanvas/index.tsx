@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react'
-import { AspectRatio, Center } from '@mantine/core'
+import { Box, Center } from '@mantine/core'
 import { useLocation } from 'react-router-dom'
 import Phaser from 'phaser'
 import createGame from './createGame'
 import { TargetId } from '../GuidedTours/getSteps'
+import GameHUD from '../GameHUD'
 
 const GameCanvas = () => {
   const gameContainerRef = useRef<HTMLDivElement>(null)
@@ -28,15 +29,14 @@ const GameCanvas = () => {
   }, [location])
 
   return (
-    <Center>
-      <AspectRatio
+    <Box className="relative aspect-video h-full">
+      <Center
+        className="absolute"
         id={TargetId.GameCanvas}
         ref={gameContainerRef}
-        className="absolute w-full overflow-hidden border-4 border-solid border-pepa-secondary"
-        ratio={16 / 9}
-        style={theme => ({ borderRadius: theme.radius[theme.defaultRadius] })}
       />
-    </Center>
+      <GameHUD />
+    </Box>
   )
 }
 
