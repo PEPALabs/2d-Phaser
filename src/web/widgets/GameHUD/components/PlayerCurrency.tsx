@@ -1,17 +1,22 @@
 import React from 'react'
-import { Flex, Image, Pill } from '@mantine/core'
+import { Flex, Image, Pill, Tooltip } from '@mantine/core'
+import { NavLink } from 'react-router-dom'
 
 const PlayerCurrency = () => {
   return (
     <Flex align="center">
-      <Pill
-        size="lg"
-        className="border-2 border-solid border-[#4A2E10] bg-white px-4"
-        classNames={{
-          label: 'text-[#4A2E10] tracking-widest font-bold'
-        }}>
-        1000
-      </Pill>
+      <Tooltip label="Shop">
+        <NavLink to="/shop">
+          <Pill
+            size="lg"
+            className="border-2 border-solid border-[#4A2E10] bg-white px-4"
+            classNames={{
+              label: 'text-[#4A2E10] tracking-widest font-bold'
+            }}>
+            1000
+          </Pill>
+        </NavLink>
+      </Tooltip>
       <Image
         src="/assets/images/pepa-coin.png"
         alt="PEPA coin"

@@ -8,13 +8,16 @@ import {
   Card,
   ScrollArea,
   Stack,
-  Title
+  Title,
+  SimpleGrid,
+  Space,
+  Box
 } from '@mantine/core'
 import { useMatch, useNavigate } from 'react-router-dom'
-import usePageTitle from './usePageTitle'
+import usePageMetadata from './usePageMetadata'
 
 const SubWindow = ({ children }: PropsWithChildren<{}>) => {
-  const pageTitle = usePageTitle()
+  const { title, headerRightSection } = usePageMetadata()
 
   const navigate = useNavigate()
 
@@ -38,11 +41,20 @@ const SubWindow = ({ children }: PropsWithChildren<{}>) => {
         src="/assets/images/subwindow-background.png"
         className="aspect-[1495/827]">
         <Stack align="center" className="h-full overflow-hidden px-14 py-6">
-          <Card py={4} px="lg" radius="xl" shadow="lg">
-            <Title c="primary" order={2}>
-              {pageTitle}
-            </Title>
-          </Card>
+          <SimpleGrid cols={3} className="w-full" px="xl">
+            <Space />
+            <Card
+              py={4}
+              px="lg"
+              radius="xl"
+              shadow="lg"
+              className="justify-self-center">
+              <Title c="primary" order={2}>
+                {title}
+              </Title>
+            </Card>
+            <Box className="justify-self-end">{headerRightSection}</Box>
+          </SimpleGrid>
           <Divider size="md" color="white" className="w-full" />
           <ScrollArea
             className="h-full w-full"
