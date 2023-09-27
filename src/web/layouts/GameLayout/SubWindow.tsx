@@ -38,7 +38,7 @@ const SubWindow = ({ children }: PropsWithChildren<{}>) => {
         src="/assets/images/subwindow-background.png"
         className="aspect-[1495/827]">
         <Stack align="center" className="h-full overflow-hidden px-14 py-6">
-          <Card py={4} px="lg" radius="xl">
+          <Card py={4} px="lg" radius="xl" shadow="lg">
             <Title c="primary" order={2}>
               {pageTitle}
             </Title>

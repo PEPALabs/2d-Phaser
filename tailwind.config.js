@@ -67,6 +67,14 @@ module.exports = {
           borderImageSlice: '40 fill',
           borderWidth: '0.5rem'
         },
+        '.quest-item-background': {
+          borderImage: 'url(../assets/images/quest-item-background-odd.png)',
+          borderImageSlice: '0 fill',
+          '&:nth-child(even)': {
+            borderImage: 'url(../assets/images/quest-item-background-even.png)',
+            borderImageSlice: '0 fill'
+          }
+        },
         '.drop-shadow-map-area': {
           filter:
             'drop-shadow(2px 2px 0px white) drop-shadow(-2px -2px 0px white)' //Apply a white border to the image
