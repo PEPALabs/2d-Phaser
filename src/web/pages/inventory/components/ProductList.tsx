@@ -24,9 +24,10 @@ const ProductList = ({ products }: ProductListProps) => {
     <FocusContext.Provider value={focusKey}>
       <SimpleGrid
         ref={ref}
-        cols={{ sm: 1, md: 3, lg: 5, xl: 7 }}
-        spacing="xl"
-        m="xs">
+        py="md"
+        px="xs"
+        cols={{ sm: 2, md: 3, lg: 4 }}
+        spacing={{ base: 'sm', lg: 'xl' }}>
         {products.map((product, index) => (
           <ProductItem key={index} product={product} index={index} />
         ))}

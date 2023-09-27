@@ -29,7 +29,7 @@ const SubWindow = ({ children }: PropsWithChildren<{}>) => {
       opened={!isHomePage}
       onClose={handleClose}
       centered
-      size="80%"
+      size="86%"
       padding={0}
       returnFocus={false}
       withCloseButton={false}
