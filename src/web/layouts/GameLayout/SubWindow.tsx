@@ -46,13 +46,15 @@ const SubWindow = ({ children }: PropsWithChildren<{}>) => {
             px="lg"
             py="sm">
             <Space />
-            <Group className="justify-self-center">
+            <Group className="justify-self-center" wrap="nowrap">
               <Image
                 src={titleIcon}
                 alt={title}
                 className="h-14 w-16 basis-16"
               />
-              <Title c="secondary">{title}</Title>
+              <Title c="secondary" className="whitespace-nowrap">
+                {title}
+              </Title>
             </Group>
             <Box className="self-start justify-self-end">
               <ActionIcon
