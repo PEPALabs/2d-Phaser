@@ -7,11 +7,8 @@ import {
   Stack,
   Button,
   Box,
-  Paper,
-  useMantineTheme,
   UnstyledButton
 } from '@mantine/core'
-import { clsx } from 'clsx'
 import {
   IconArchive,
   IconArrowRight,
@@ -19,6 +16,7 @@ import {
   IconMapPin,
   IconProgress
 } from '@tabler/icons-react'
+import { match } from 'ts-pattern'
 import { type QuestType } from '../../../../data/items.type'
 
 interface QuestCardProps {
@@ -34,37 +32,21 @@ function QuestCard({
   isActive,
   onClick
 }: QuestCardProps) {
-  const theme = useMantineTheme()
-
   return (
-    <Paper
-      withBorder
-      radius="lg"
-      style={{ borderColor: isActive ? 'transparent' : undefined }}
-      className={clsx(
-        'mb-10 ml-2 mr-5 overflow-hidden first:mt-3 last:mb-3',
-        isActive && theme.focusClassName
-      )}
-      onClick={onClick}>
-      <UnstyledButton
-        className="border-image-second border-solid"
-        py="md"
-        px="lg"
-        component={Group}
-        justify="space-between">
-        <Stack gap="xs" className="tracking-wider">
+    <Box onClick={onClick} className="quest-item-background w-full">
+      <UnstyledButton py="lg" px={56} component={Group} justify="space-between">
+        <Stack gap="sm" align="start">
           <Box>
-            <Text c={theme.primaryColor} size="sm">
+            <Text c="primary" fw="bold">
               {questItem.questTag}
             </Text>
             <Title order={2}>{questItem.questName}</Title>
           </Box>
           <Group>
-            <Badge size="lg" className="normal-case tracking-wider">
+            <Badge variant="white" size="lg" className="normal-case">
               {questItem.questTag}
             </Badge>
             <Button
-              className="tracking-wider"
               variant="subtle"
               color="dark"
               leftSection={<IconMapPin size="1rem" />}>
@@ -72,38 +54,36 @@ function QuestCard({
             </Button>
           </Group>
         </Stack>
-        {questItem.questStatus === 'Completed' ? (
-          // awaiting rewards
-          <Button
-            onClick={questUpdate}
-            rightSection={<IconCheck size="1rem" />}
-            className="tracking-wider">
-            Take Rewards
-          </Button>
-        ) : questItem.questStatus === 'In Progress' ? (
-          <Button
-            rightSection={<IconProgress size="1rem" />}
-            className="tracking-wider">
-            In Progress
-          </Button>
-        ) : questItem.questStatus === 'Available' ? (
-          <Button
-            onClick={questUpdate}
-            rightSection={<IconArrowRight size="1rem" />}
-            className="tracking-wider">
-            Start Quest
-          </Button>
-        ) : (
-          <Button
-            className="tracking-wider"
-            color="gray"
-            disabled
-            rightSection={<IconArchive size="1rem" />}>
-            Archived
-          </Button>
-        )}
+        {match(questItem.questStatus)
+          .with('Completed', () => (
+            <Button
+              onClick={questUpdate}
+              rightSection={<IconCheck size="1rem" />}>
+              Take Rewards
+            </Button>
+          ))
+          .with('In Progress', () => (
+            <Button rightSection={<IconProgress size="1rem" />}>
+              In Progress
+            </Button>
+          ))
+          .with('Available', () => (
+            <Button
+              onClick={questUpdate}
+              rightSection={<IconArrowRight size="1rem" />}>
+              Start Quest
+            </Button>
+          ))
+          .otherwise(() => (
+            <Button
+              color="gray"
+              disabled
+              rightSection={<IconArchive size="1rem" />}>
+              Archived
+            </Button>
+          ))}
       </UnstyledButton>
-    </Paper>
+    </Box>
   )
 }
 

@@ -6,34 +6,16 @@ import {
 } from './items.type'
 
 export const emptyItem = {
-  name: '',
-  icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"/>',
+  name: '\u200B',
+  icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96"/>',
   value: '',
   description: '',
   category: ItemCategoriesType.WEAPON
 }
 
 export const getItems = (
-  category = ItemsMainCategoriesType.WEAPONS,
-  itemsPerPage = 21
+  category = ItemsMainCategoriesType.WEAPONS
 ): ItemType[] => {
-  const itemsGrid = items[category].concat(
-    new Array(itemsPerPage - items[category].length).fill(emptyItem)
-  )
-
-  return itemsGrid
+  return [...items[category], ...items[category], ...items[category]]
+  // return items[category]
 }
-
-export const getInventoryItems = (
-  itemList: ItemType[],
-  itemsPerPage = 20
-): ItemType[] => {
-  const itemsGrid = itemList.concat(
-    new Array(itemsPerPage - itemList.length).fill(emptyItem)
-  )
-
-  return itemsGrid
-}
-
-// export class getItems;
-// export class getInventoryItems;

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Image, Indicator, Card } from '@mantine/core'
+import { Image, Card, Title } from '@mantine/core'
 import { clsx } from 'clsx'
 import { useFocusable } from '@noriginmedia/norigin-spatial-navigation'
 import { type ItemType } from '../../../../data/items.type'
@@ -20,28 +20,21 @@ const ProductItem = ({ product, index }: ProductItemProps) => {
   }, [focused, index])
 
   return (
-    <Indicator
-      label={product.value}
-      color="dark"
-      size={20}
-      position="bottom-end"
-      disabled={product.name === ''}>
-      <Card
-        ref={ref}
-        className={clsx(
-          'overflow-hidden bg-white/70 outline outline-2 transition-all',
-          focused ? 'scale-110 shadow-lg outline-pepa-gold' : 'outline-gray-200'
-        )}
-        onClick={() => focusSelf()}>
-        <Card.Section p="xs">
-          <Image
-            className="aspect-square"
-            src={product.icon}
-            alt={product.name}
-          />
-        </Card.Section>
-      </Card>
-    </Indicator>
+    <Card
+      ref={ref}
+      className={clsx(
+        'item-background h-fit bg-transparent transition-transform',
+        focused && 'scale-110 drop-shadow-lg'
+      )}
+      padding={0}
+      onClick={() => focusSelf()}>
+      <Card.Section p="xl">
+        <Image src={product.icon} alt={product.name} className="w-full" />
+        <Title ta="center" order={6}>
+          {product.name}
+        </Title>
+      </Card.Section>
+    </Card>
   )
 }
 

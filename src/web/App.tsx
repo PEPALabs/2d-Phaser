@@ -6,6 +6,7 @@ import { Web3ReactProvider } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import '@mantine/core/styles.css'
+import '@mantine/notifications/styles.css'
 
 import router from './router'
 import mantineTheme from './config/mantineTheme'

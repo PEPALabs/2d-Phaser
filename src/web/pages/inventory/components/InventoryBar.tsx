@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import {
-  Alert,
   Stack,
   Title,
   Text,
@@ -10,7 +9,8 @@ import {
   Button,
   NumberInput,
   rem,
-  Divider
+  Divider,
+  Card
 } from '@mantine/core'
 import { type ItemType } from '../../../../data/items.type'
 import {
@@ -36,16 +36,13 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
   const handlers = useRef<NumberInputHandlers>()
 
   return (
-    <Alert
-      className="border-image-primary w-full border-solid bg-transparent"
-      my="xs"
-      color="primary">
+    <Card mt="md">
       <Stack>
         <Title c="primary" order={3}>
           {product.name}
         </Title>
         <Text size="md">{product.description}</Text>
-        <Divider />
+        <Divider color="primary" size="sm" />
         <Stack>
           <InventoryBarSection name="Owns">{product.value}</InventoryBarSection>
           <InventoryBarSection name="Amount">
@@ -99,7 +96,7 @@ const InventoryBar = ({ product }: InventoryBarProps) => {
           </Group>
         </Stack>
       </Stack>
-    </Alert>
+    </Card>
   )
 }
 

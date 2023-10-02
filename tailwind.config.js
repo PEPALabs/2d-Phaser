@@ -67,19 +67,21 @@ module.exports = {
           borderImageSlice: '40 fill',
           borderWidth: '0.5rem'
         },
-        '.glossy-button': {
-          '&:after': {
-            content: "''",
-            margin: '0.5px 1px',
-            position: 'absolute',
-            inset: 0,
-            borderRadius: 4,
-            background: `linear-gradient(rgba(255,255,255,0.4) 60%, rgba(255,255,255,0.0) 70%)`
+        '.quest-item-background': {
+          borderImage: 'url(../assets/images/quest-item-background-odd.png)',
+          borderImageSlice: '0 fill',
+          '&:nth-child(even)': {
+            borderImage: 'url(../assets/images/quest-item-background-even.png)',
+            borderImageSlice: '0 fill'
           }
         },
-        '.glossy-button-text': {
-          fontWeight: 700,
-          textShadow: '1px 1px 2px rgb(0 0 0 / 60%)'
+        '.item-background': {
+          borderImage: 'url(../assets/images/item-background-odd.png)',
+          borderImageSlice: '0 fill',
+          '&:nth-child(even)': {
+            borderImage: 'url(../assets/images/item-background-even.png)',
+            borderImageSlice: '0 fill'
+          }
         },
         '.drop-shadow-map-area': {
           filter:
