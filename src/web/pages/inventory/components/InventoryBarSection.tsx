@@ -1,5 +1,5 @@
-import { Group, Text } from '@mantine/core'
 import React, { PropsWithChildren } from 'react'
+import { Group, Text } from '@mantine/core'
 
 interface InventoryBarSectionProps {
   name: string
@@ -11,7 +11,9 @@ const InventoryBarSection = ({
 }: PropsWithChildren<InventoryBarSectionProps>) => {
   return (
     <Group className="w-full" justify="space-between">
-      <Text size="md">{name}</Text>
+      <Text size="md" fw="bold">
+        {name}
+      </Text>
       {typeof children !== 'object' ? (
         <Text c="yellow" size="md" fw="bold">
           {children}

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import {
-  Alert,
+  Card,
   Stack,
   Title,
   Text,
@@ -31,16 +31,13 @@ const ShoppingBar = ({ product }: ShoppingBarProps) => {
   const handlers = useRef<NumberInputHandlers>()
 
   return (
-    <Alert
-      className="border-image-primary w-full border-solid bg-transparent"
-      my="xs"
-      color="primary">
+    <Card mt="md">
       <Stack>
         <Title c="primary" order={3}>
           {product.name}
         </Title>
         <Text size="md">{product.description}</Text>
-        <Divider />
+        <Divider color="primary" size="sm" />
         <Stack>
           <ShoppingBarSection name="In Stock">
             {product.value}
@@ -91,7 +88,7 @@ const ShoppingBar = ({ product }: ShoppingBarProps) => {
           </Button>
         </Stack>
       </Stack>
-    </Alert>
+    </Card>
   )
 }
 
