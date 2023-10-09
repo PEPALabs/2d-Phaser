@@ -29,6 +29,7 @@ module.exports = {
         },
         pepa: {
           blue: '#C2DAFF',
+          lightGreen: '#8EFCE1',
           lightPink: '#FFEBF3',
           pink: '#FE619A',
           darkPink: '#F14986',
@@ -90,6 +91,9 @@ module.exports = {
         '.drop-shadow-map-area-active': {
           filter:
             'drop-shadow(2px 2px 0px white) drop-shadow(-2px -2px 0px white) drop-shadow(0 0 20px white)'
+        },
+        '.swap-form-change-button': {
+          backgroundImage: 'url(../assets/images/swap-form-change.png)'
         }
       })
     })

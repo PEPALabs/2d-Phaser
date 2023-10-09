@@ -1,38 +1,116 @@
-import React from 'react'
-import { Center, Card, Tabs, Space, Group, Stack } from '@mantine/core'
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { useForm } from '@mantine/form'
+import {
+  Center,
+  Card,
+  Tabs,
+  Space,
+  Group,
+  Stack,
+  TextInput,
+  Button,
+  Select,
+  Box
+} from '@mantine/core'
 import PepaLogo from './components/PepaLogo'
 
-import { Theme, SwapWidget } from '@uniswap/widgets'
-import { useWeb3React } from '@web3-react/core'
-import { InjectedConnector } from '@web3-react/injected-connector'
+const pairs = [['WETH', 'PEPA']]
 
-const theme: Theme = {
-  fontFamily: '"Comic Neue"'
+type SwapInputProps = {
+  token: string
+  amount: string
+  setAmount: (amount: string) => void
+  disabled: boolean
+  readOnly: boolean
 }
 
-const css = `
-.uniswap [color='container'] > div > div:nth-child(3) {
-  position: relative;
+const SwapInput = ({
+  token,
+  amount,
+  setAmount,
+  disabled,
+  readOnly
+}: SwapInputProps) => {
+  return (
+    <fieldset
+      disabled={disabled}
+      className="mb-1 flex flex-col rounded-xl border border-pepa-blue bg-pepa-lightGreen/10 px-6 py-4 text-pepa-textBlue">
+      <div className="flex flex-row justify-between">
+        <label
+          htmlFor={token + '_amount'}
+          className="mb-2 w-1/3 text-lg font-bold">
+          {token}
+        </label>
+        <label
+          htmlFor={token + '_balance'}
+          className="mb-2 w-1/3 text-right text-lg">
+          Balance: 0.00
+        </label>
+      </div>
+
+      <input
+        type="text"
+        id={token + '_amount'}
+        placeholder="0.0"
+        value={amount}
+        onChange={e => setAmount(e.target.value)}
+        readOnly={readOnly}
+        className="w-full border-0 bg-transparent text-3xl font-bold text-pepa-textBlue focus:border-0 focus:!outline-none focus:ring-0"
+      />
+    </fieldset>
+  )
 }
-`
+
+type ChangeDirectionButtonProps = {
+  zeroForOne: boolean
+  setZeroForOne: (zeroForOne: boolean) => void
+  isDisabled: boolean
+}
+
+const ChangeDirectionButton = ({
+  zeroForOne,
+  setZeroForOne,
+  isDisabled
+}: ChangeDirectionButtonProps) => {
+  return (
+    <div className="w-full text-center">
+      <button
+        className="swap-form-change-button my-3 h-10 w-10 cursor-pointer select-none rounded-full border-0 bg-pink-300 bg-cover p-0"
+        disabled={isDisabled}
+        onClick={e => {
+          e.preventDefault()
+          setZeroForOne(!zeroForOne)
+        }}>
+        {/* <img src="/assets/images/swap-form-change.png" className="w-40"></img> */}
+      </button>
+    </div>
+  )
+}
 
 const ExchangePage = () => {
-  const web3React = useWeb3React()
+  const pair = pairs[0]
 
-  const onConnectClick = () => {
-    web3React.activate(
-      new InjectedConnector({
-        supportedChainIds: [1, 3, 4, 5, 42]
-      })
-    )
-    return false
+  const enabled = true
+
+  const [zeroForOne, setZeroForOne] = useState(true)
+  const [amount0, setAmount0] = useState()
+  const [amount1, setAmount1] = useState()
+  const [token0, setToken0] = useState()
+  const [token1, setToken1] = useState()
+  const [manager, setManager] = useState()
+  const [quoter, setQuoter] = useState()
+  const [loading, setLoading] = useState(false)
+
+  const setAmount_ = setAmountFn => {
+    return amount => {
+      amount = amount || 0
+      setAmountFn(amount)
+    }
   }
-
-  console.log({ web3React })
 
   return (
     <>
-      <style>{css}</style>
       <Stack
         className="relative h-full w-full !bg-cover"
         bg="url(/assets/images/main-background.png)">
@@ -48,26 +126,30 @@ const ExchangePage = () => {
               </Group>
               <Space h={16} />
               <Tabs.Panel value="swap">
-                <div className="uniswap">
-                  <SwapWidget
-                    width="100%"
-                    className="mx-auto"
-                    provider={web3React.library}
-                    onConnectWalletClick={onConnectClick}
-                    theme={theme}
+                <Box mx="auto" className="w-full">
+                  <SwapInput
+                    amount={zeroForOne ? amount0 : amount1}
+                    setAmount={setAmount_(zeroForOne ? setAmount0 : setAmount1)}
+                    token={zeroForOne ? pair[0] : pair[1]}
+                    disabled={!enabled || loading}
+                    readOnly={false}
                   />
-                </div>
+                  <ChangeDirectionButton
+                    zeroForOne={zeroForOne}
+                    setZeroForOne={setZeroForOne}
+                    isDisabled={!enabled || loading}
+                  />
+                  <SwapInput
+                    amount={zeroForOne ? amount1 : amount0}
+                    setAmount={setAmount_(zeroForOne ? setAmount0 : setAmount1)}
+                    disabled={!enabled || loading}
+                    readOnly={true}
+                    token={zeroForOne ? pair[1] : pair[0]}
+                  />
+                </Box>
               </Tabs.Panel>
               <Tabs.Panel value="pool">
-                <div className="uniswap">
-                  <SwapWidget
-                    width="100%"
-                    className="mx-auto"
-                    provider={web3React.library}
-                    onConnectWalletClick={onConnectClick}
-                    theme={theme}
-                  />
-                </div>
+                <Box mx="auto">This is pool</Box>
               </Tabs.Panel>
             </Tabs>
           </Card>

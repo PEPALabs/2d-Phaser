@@ -21,6 +21,10 @@ const usePageMetadata = () => {
       () => ({ title: 'Uniswap' })
     )
     .when(
+      pathName => matchPath('/exchange', pathName),
+      () => ({ title: 'PEPA Exchange' })
+    )
+    .when(
       pathName => matchPath('/inventory', pathName),
       () => ({
         title: 'PEPA Inventory',
