@@ -14,6 +14,10 @@ import {
   Box
 } from '@mantine/core'
 import PepaLogo from './components/PepaLogo'
+import { useFuel } from './hooks/useFuel'
+import { useIsConnected } from './hooks/useIsConnected'
+import { FuelConnect, SwapButton } from './components/FuelConnect'
+import { useLoading } from './hooks/useLoading'
 
 const pairs = [['WETH', 'PEPA']]
 
@@ -109,6 +113,10 @@ const ExchangePage = () => {
     }
   }
 
+  const [fuel, notDetected] = useFuel()
+  const [connected, setConnected] = useState(false)
+  const [currentAccount, setCurrentAccount] = useState<string>('')
+
   return (
     <>
       <Stack
@@ -127,6 +135,14 @@ const ExchangePage = () => {
               <Space h={16} />
               <Tabs.Panel value="swap">
                 <Box mx="auto" className="w-full">
+                  <Box className="flex w-full justify-end pb-4">
+                    <FuelConnect
+                      connected={connected}
+                      setConnected={setConnected}
+                      currentAccount={currentAccount}
+                      setCurrentAccount={setCurrentAccount}
+                    />
+                  </Box>
                   <SwapInput
                     amount={zeroForOne ? amount0 : amount1}
                     setAmount={setAmount_(zeroForOne ? setAmount0 : setAmount1)}
@@ -146,10 +162,24 @@ const ExchangePage = () => {
                     readOnly={true}
                     token={zeroForOne ? pair[1] : pair[0]}
                   />
+                  <SwapButton
+                    connected={connected}
+                    setConnected={setConnected}
+                    currentAccount={currentAccount}
+                    setCurrentAccount={setCurrentAccount}
+                  />
                 </Box>
               </Tabs.Panel>
               <Tabs.Panel value="pool">
-                <Box mx="auto">This is pool</Box>
+                <Box mx="auto">
+                  This is pool
+                  <FuelConnect
+                    connected={connected}
+                    setConnected={setConnected}
+                    currentAccount={currentAccount}
+                    setCurrentAccount={setCurrentAccount}
+                  />
+                </Box>
               </Tabs.Panel>
             </Tabs>
           </Card>
