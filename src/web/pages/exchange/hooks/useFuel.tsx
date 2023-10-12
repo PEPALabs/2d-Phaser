@@ -1,3 +1,4 @@
+/// <reference types="@fuel-wallet/sdk" />
 import { Fuel } from '@fuel-wallet/sdk'
 import { useState, useEffect } from 'react'
 

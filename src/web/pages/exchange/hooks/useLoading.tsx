@@ -1,3 +1,4 @@
+/// <reference types="@fuel-wallet/sdk" />
 import { useState, useCallback } from 'react'
 
 import { useFuel } from './useFuel'

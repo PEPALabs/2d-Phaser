@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/// <reference types="@fuel-wallet/sdk" />
 import React, { useState, useEffect } from 'react'
 
 import { Box, Button, Tag, Text } from '@fuel-ui/react'
@@ -6,6 +7,16 @@ import { Button as Btn } from '@mantine/core'
 import { cssObj } from '@fuel-ui/css'
 import { useFuel } from '../hooks/useFuel'
 import { useLoading } from '../hooks/useLoading'
+import type { Asset } from '@fuel-wallet/sdk'
+
+type FuelConnectProps = {
+  connected: boolean
+  setConnected: (connected: boolean) => void
+  currentAccount: string
+  setCurrentAccount: (currentAccount: string) => void
+  assets: Asset[]
+  setAssets: (assets: Asset[]) => void
+}
 
 type ButtonProps = {
   connected: boolean
@@ -18,8 +29,10 @@ export function FuelConnect({
   connected,
   setConnected,
   currentAccount,
-  setCurrentAccount
-}: ButtonProps) {
+  setCurrentAccount,
+  assets,
+  setAssets
+}: FuelConnectProps) {
   const [fuel, notDetected] = useFuel()
 
   const [handleConnect, isConnecting, errorConnect] = useLoading(async () => {
@@ -51,18 +64,33 @@ export function FuelConnect({
     setCurrentAccount(account)
   }
 
+  const [handleAssets, errorAssets] = useLoading(async () => {
+    const assets = await fuel.assets()
+    setAssets(assets)
+  })
+
+  /* eventAssets:start */
+  const handleAssetsEvent = (assets: Asset[]) => {
+    setAssets(assets)
+  }
+
   useEffect(() => {
     // listen to the current event account, and call the handleAccountEvent
     fuel?.on(fuel.events.currentAccount, handleAccountEvent)
+    fuel?.on(fuel.events.assets, handleAssetsEvent)
     return () => {
       // remove the listener when the component is unmounted
       fuel?.off(fuel.events.currentAccount, handleAccountEvent)
+      fuel?.off(fuel.events.assets, handleAssetsEvent)
     }
   }, [fuel])
   /* eventCurrentAccount:end */
 
   useEffect(() => {
-    if (connected) handleCurrentAccount()
+    if (connected) {
+      handleCurrentAccount()
+      handleAssets()
+    }
   }, [connected])
 
   // const errorMessage = errorConnect || errorDisconnect || notDetected
@@ -120,7 +148,7 @@ export function SwapButton({
 }: ButtonProps) {
   const [fuel, notDetected] = useFuel()
 
-  console.log(notDetected)
+  // console.log(notDetected)
 
   return (
     <Btn

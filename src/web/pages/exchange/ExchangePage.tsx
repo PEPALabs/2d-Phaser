@@ -1,25 +1,16 @@
+/// <reference types="@fuel-wallet/sdk" />
 import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
-import { useForm } from '@mantine/form'
-import {
-  Center,
-  Card,
-  Tabs,
-  Space,
-  Group,
-  Stack,
-  TextInput,
-  Button,
-  Select,
-  Box
-} from '@mantine/core'
+import { Center, Card, Tabs, Space, Group, Stack, Box } from '@mantine/core'
 import PepaLogo from './components/PepaLogo'
 import { useFuel } from './hooks/useFuel'
 import { useIsConnected } from './hooks/useIsConnected'
 import { FuelConnect, SwapButton } from './components/FuelConnect'
 import { useLoading } from './hooks/useLoading'
+import type { Asset } from '@fuel-wallet/sdk'
+import { BaseAssetId, Wallet } from 'fuels'
+import { ethers } from 'ethers'
 
-const pairs = [['WETH', 'PEPA']]
+const pairs = [['ETH', 'PEPA']]
 
 type SwapInputProps = {
   token: string
@@ -27,6 +18,7 @@ type SwapInputProps = {
   setAmount: (amount: string) => void
   disabled: boolean
   readOnly: boolean
+  balance: string
 }
 
 const SwapInput = ({
@@ -34,7 +26,8 @@ const SwapInput = ({
   amount,
   setAmount,
   disabled,
-  readOnly
+  readOnly,
+  balance
 }: SwapInputProps) => {
   return (
     <fieldset
@@ -49,7 +42,7 @@ const SwapInput = ({
         <label
           htmlFor={token + '_balance'}
           className="mb-2 w-1/3 text-right text-lg">
-          Balance: 0.00
+          Balance: {balance ? balance : '0.0'}
         </label>
       </div>
 
@@ -116,6 +109,27 @@ const ExchangePage = () => {
   const [fuel, notDetected] = useFuel()
   const [connected, setConnected] = useState(false)
   const [currentAccount, setCurrentAccount] = useState<string>('')
+  const [assets, setAssets] = useState<Asset[]>()
+  const [wallet, setWallet] = useState<Wallet>()
+  const [ethBalance, setEthBalance] = useState<string>()
+
+  useEffect(() => {
+    async function getEthBalance() {
+      const accounts = await fuel.accounts()
+      const account = accounts[0]
+      const wallet = await fuel.getWallet(account)
+      const balance = await wallet.getBalance(BaseAssetId)
+      const balances = await wallet.getBalances()
+      // console.log(JSON.stringify(wallet) + ':' + JSON.stringify(ethBalance))
+      console.log(balances)
+      setWallet(wallet)
+      setEthBalance(ethers.formatUnits(balance.toNumber(), 9))
+    }
+
+    if (!ethBalance) getEthBalance()
+  }, [wallet, ethBalance, fuel, currentAccount])
+
+  // console.log(currentAccount)
 
   return (
     <>
@@ -141,6 +155,8 @@ const ExchangePage = () => {
                       setConnected={setConnected}
                       currentAccount={currentAccount}
                       setCurrentAccount={setCurrentAccount}
+                      assets={assets}
+                      setAssets={setAssets}
                     />
                   </Box>
                   <SwapInput
@@ -149,6 +165,7 @@ const ExchangePage = () => {
                     token={zeroForOne ? pair[0] : pair[1]}
                     disabled={!enabled || loading}
                     readOnly={false}
+                    balance={connected && ethBalance}
                   />
                   <ChangeDirectionButton
                     zeroForOne={zeroForOne}
@@ -161,6 +178,7 @@ const ExchangePage = () => {
                     disabled={!enabled || loading}
                     readOnly={true}
                     token={zeroForOne ? pair[1] : pair[0]}
+                    balance=""
                   />
                   <SwapButton
                     connected={connected}
@@ -168,6 +186,18 @@ const ExchangePage = () => {
                     currentAccount={currentAccount}
                     setCurrentAccount={setCurrentAccount}
                   />
+
+                  {/* {assets?.length ? (
+                    <>
+                      {assets.map(asset => (
+                        <div key={asset.assetId}>
+                          {asset.name} ({asset.symbol}): {asset.assetId}
+                        </div>
+                      ))}
+                    </>
+                  ) : (
+                    <div> No assets </div>
+                  )} */}
                 </Box>
               </Tabs.Panel>
               <Tabs.Panel value="pool">
@@ -178,6 +208,8 @@ const ExchangePage = () => {
                     setConnected={setConnected}
                     currentAccount={currentAccount}
                     setCurrentAccount={setCurrentAccount}
+                    assets={assets}
+                    setAssets={setAssets}
                   />
                 </Box>
               </Tabs.Panel>
