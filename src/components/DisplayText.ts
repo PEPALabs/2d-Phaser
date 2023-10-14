@@ -22,14 +22,34 @@ export default class DisplayText {
     this.scene = scene
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
 
-    this.gameStore = useGameStore
-    this.gameStore.subscribe(
-      state => state.messages,
-      () => {
-        this.textChanged = true
-      }
-    )
-    // console.log("message", this.messageStore.getState().message);
+    let unsubscribe: () => void
+
+    const subscribeMessage = () => {
+      unsubscribe = useGameStore.subscribe(
+        state => state.messages,
+        messages => {
+          const sceneData = useGameStore.getState().sceneData
+
+          if (this.sender === 'player' && sceneData) {
+            this.sender = sceneData.players.find(
+              player => player.id === sceneData.playerId
+            )?.name
+          }
+
+          const latestMessage = messages[messages.length - 1]
+
+          if (latestMessage.sender === this.sender) {
+            this.showTextBox(latestMessage.content)
+          }
+        }
+      )
+    }
+
+    subscribeMessage()
+
+    scene.events.on(Phaser.Scenes.Events.WAKE, subscribeMessage)
+    scene.events.on(Phaser.Scenes.Events.SLEEP, unsubscribe)
+    scene.events.on(Phaser.Scenes.Events.DESTROY, unsubscribe)
 
     /* END-USER-CTR-CODE */
   }
@@ -46,18 +66,9 @@ export default class DisplayText {
   private container: Phaser.GameObjects.Sprite
   private text: Phaser.GameObjects.Text
   private textBox: Phaser.GameObjects.GameObject
-  private displayText: string = ''
-  private gameStore: typeof useGameStore
 
   //hook state
-  private textChanged: boolean = false
   // Write your code here.
-
-  getMessage() {
-    const messages = this.gameStore.getState().messages
-
-    return messages.findLast(item => item.sender === this.sender)?.message ?? ''
-  }
 
   getBBcodeText(scene, wrapWidth, fixedWidth, fixedHeight) {
     return scene.rexUI.add.BBCodeText(0, 0, '', {
@@ -164,22 +175,37 @@ export default class DisplayText {
       )
       .on('complete', () => {
         console.log('all pages typing complete')
-        if (this.sender === 'player') {
-          // If the sender is a player, hide the chatbox after 1.5 seconds of typing complete.
-          const timer = setTimeout(() => {
-            this.hideTextBox(this.scene, this.textBox)
-            this.textBox = null
-            clearTimeout(timer)
-          }, 1500)
-        }
+        //  hide the chatbox after 1.5 seconds of typing complete.
+        const timer = setTimeout(() => {
+          this.hideTextBox()
+          clearTimeout(timer)
+        }, 1500)
+
+        this.scene.events.on(Phaser.Scenes.Events.DESTROY, () => {
+          clearTimeout(timer)
+        })
       })
-    //.on('type', function () {
-    //})
 
     return textBox
   }
-  hideTextBox(scene, textBox) {
-    scene.rexUI.hide(textBox)
+
+  showTextBox(text: string) {
+    if (this.textBox) {
+      this.hideTextBox()
+    }
+
+    this.textBox = this.createTextBox(
+      this.scene,
+      this.gameObject.x - 50,
+      this.gameObject.y - 150,
+      {
+        wrapWidth: 300
+      }
+    ).start(text, 50)
+  }
+
+  hideTextBox() {
+    this.textBox.destroy()
   }
 
   update() {
@@ -194,34 +220,6 @@ export default class DisplayText {
         x: this.gameObject.x - 50,
         y: this.gameObject.y - 150
       })
-    }
-
-    // check if message store has changed
-    var showText = this.textChanged
-    this.textChanged = false // reset state
-    if (showText) {
-      var text = this.getMessage()
-      if (text !== this.displayText && text.length > 0) {
-        if (this.textBox !== null) {
-          this.hideTextBox(this.scene, this.textBox)
-        }
-        // this.textBox.destroy();
-        // this.textBox.setActive(false);
-        var textBox = this.createTextBox(
-          this.scene,
-          this.gameObject.x - 50,
-          this.gameObject.y - 150,
-          {
-            wrapWidth: 300
-          }
-        ).start(text, 50)
-        this.textBox = textBox
-        this.displayText = text
-      } else if (text.length == 0 && text !== this.displayText) {
-        this.hideTextBox(this.scene, this.textBox)
-        this.displayText = ''
-        this.textBox = null
-      }
     }
   }
 

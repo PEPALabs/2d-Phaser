@@ -9,6 +9,7 @@ import PubSub from 'pubsub-js'
 import React from 'react'
 import { Kbd } from '@mantine/core'
 import { notifications } from '@mantine/notifications'
+import sendSceneEvent from '../multiplayer/sendSceneEvent'
 /* END-USER-IMPORTS */
 
 export default class TeleportScene {
@@ -23,6 +24,22 @@ export default class TeleportScene {
     this.scene.physics.add.existing(this.gameObject)
     this.cursors = scene.input.keyboard.createCursorKeys()
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
+
+    this.scene.events.on(Phaser.Scenes.Events.CREATE, () => {
+      this.cursors.space.on('down', () => {
+        if (this.proximity) {
+          console.log('teleporting3')
+
+          this.proximity = false
+          notifications.hide(this.teleport12TextId)
+
+          sendSceneEvent({
+            event: 'switch_scene',
+            sceneKey: this.targetScene
+          })
+        }
+      })
+    })
 
     /* END-USER-CTR-CODE */
   }
@@ -67,13 +84,6 @@ export default class TeleportScene {
         this.proximity = false
         notifications.hide(this.teleport12TextId)
       }
-    }
-
-    if (this.proximity && this.cursors.space.isDown) {
-      console.log('teleporting3')
-      this.proximity = false
-      notifications.hide(this.teleport12TextId)
-      this.scene.scene.start(this.targetScene)
     }
   }
   /* END-USER-CODE */

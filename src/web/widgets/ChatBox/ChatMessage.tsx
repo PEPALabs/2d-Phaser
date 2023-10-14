@@ -1,12 +1,10 @@
 import React from 'react'
 import { Avatar, Badge, Box, Group, Paper, Text } from '@mantine/core'
 import { IconUser } from '@tabler/icons-react'
+import { SceneMessage } from '../../../multiplayer/emitter'
 
 interface ChatMessageProps {
-  message: {
-    sender: string
-    message: string
-  }
+  message: SceneMessage
 }
 
 function ChatMessage({ message }: ChatMessageProps) {
@@ -25,7 +23,7 @@ function ChatMessage({ message }: ChatMessageProps) {
           </Text>
         </Group>
         <Paper className="mt-1 max-w-fit bg-gray-100" px="sm" py="xs">
-          <Text>{message.message}</Text>
+          <Text>{message.content}</Text>
         </Paper>
       </Box>
     </Group>
