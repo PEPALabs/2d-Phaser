@@ -53,11 +53,6 @@ export type QuestType = {
   questImage: string
 }
 
-export type MessageType = {
-  sender: string
-  message: string
-}
-
 export type ItemsType = {
   [key: string]: ItemType[]
 }

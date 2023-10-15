@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Center, Container } from '@mantine/core'
 import { Outlet } from 'react-router-dom'
+import useGameStore from '../../../data/useGameStore'
 import GameCanvas from '../../widgets/GameCanvas'
+import GameLobby from '../../widgets/GameLobby'
 import SubWindow from './SubWindow'
 
 const GameLayout = () => {
+  const roomId = useGameStore(state => state.roomId)
+
   return (
     <Container className="h-full" fluid>
       <Center className="relative h-full">
-        <GameCanvas />
+        <Suspense>{roomId ? <GameCanvas /> : <GameLobby />}</Suspense>
         <SubWindow>
           <Outlet />
         </SubWindow>

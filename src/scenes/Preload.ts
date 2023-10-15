@@ -6,6 +6,7 @@ import Phaser from 'phaser'
 import PreloadBarUpdaterScript from '../script-nodes/PreloadBarUpdaterScript'
 /* START-USER-IMPORTS */
 import assetPackUrl from '../../static/assets/asset-pack.json'
+import connectToGameServer from '../multiplayer/connectToGameServer'
 /* END-USER-IMPORTS */
 
 export default class Preload extends Phaser.Scene {
@@ -72,7 +73,7 @@ export default class Preload extends Phaser.Scene {
       }
     }
 
-    this.scene.start('Level')
+    connectToGameServer(this)
   }
 
   /* END-USER-CODE */
