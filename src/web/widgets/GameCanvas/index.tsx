@@ -5,6 +5,8 @@ import Phaser from 'phaser'
 import createGame from './createGame'
 import { TargetId } from '../GuidedTours/getSteps'
 import GameHUD from '../GameHUD'
+import GameMenu from './GameMenu'
+import ConnectionStatus from './ConnectionStatus'
 
 const GameCanvas = () => {
   const gameContainerRef = useRef<HTMLDivElement>(null)
@@ -36,6 +38,8 @@ const GameCanvas = () => {
         ref={gameContainerRef}
       />
       <GameHUD />
+      <ConnectionStatus />
+      <GameMenu />
     </Box>
   )
 }

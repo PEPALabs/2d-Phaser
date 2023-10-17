@@ -8,6 +8,8 @@ import { Physics } from 'phaser'
 // import { publish} from '../event';
 import PubSub from 'pubsub-js'
 import GameManager from '../GameManager'
+import { Position } from '../multiplayer/emitter'
+import sendSceneEvent from '../multiplayer/sendSceneEvent'
 // import Phaser from 'phaser';
 /* END-USER-IMPORTS */
 
@@ -63,6 +65,7 @@ export default class PlayerMovement {
   public stopMessage: string = 'player:close'
   public textVariableName: string = 'shopText'
   public openVariableName: string = 'shopOpen'
+  public position: Position = { x: 0, y: 0 }
   // private gameObject: Phaser.Physics.Arcade.Sprite;
   // private velocity: number;
   // Write your code here.
@@ -77,11 +80,11 @@ export default class PlayerMovement {
     if (this.cursors.left.isDown || this.keyA.isDown) {
       this.gameObject.setVelocity(-this.velocity, 0)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
-      this.gameObject.flipX = false // Flip the sprite to face left
+      this.gameObject.setFlipX(false) // Flip the sprite to face left
     } else if (this.cursors.right.isDown || this.keyD.isDown) {
       this.gameObject.setVelocity(this.velocity, 0)
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
-      this.gameObject.flipX = true // Reset the flipX property to face right
+      this.gameObject.setFlipX(true) // Reset the flipX property to face right
       // this.gameObject.anims.play('right', true);
     } else if (this.cursors.up.isDown || this.keyW.isDown) {
       this.gameObject.setVelocity(0, -this.velocity)
@@ -107,6 +110,22 @@ export default class PlayerMovement {
       this.gameObject.anims.play({ key: 'walk', repeat: 1 }, true)
       this.gameObject.anims.pause()
       // this.gameObject.anims.play('turn');
+    }
+
+    if (
+      this.gameObject.x !== this.position.x ||
+      this.gameObject.y !== this.position.y
+    ) {
+      this.position = {
+        x: this.gameObject.x,
+        y: this.gameObject.y
+      }
+
+      sendSceneEvent({
+        event: 'player_movement',
+        position: this.position,
+        sceneKey: this.scene.scene.key
+      })
     }
   }
 
