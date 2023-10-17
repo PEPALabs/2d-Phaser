@@ -21,7 +21,8 @@
       // "node_module/phaser/types"
     ],
     "types": [
-      "node"
+      "node",
+      "chrome"
       // "phaser"
       // "@fuel-wallet/sdk"
     ]
